@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "figma": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@figma/mcp"
+      ],
+      "env": {
+        "FIGMA_ACCESS_TOKEN": "<SẾP_LẤY_PERSONAL_ACCESS_TOKEN_TRÊN_FIGMA_DÁN_VÀO_ĐÂY>"
+      }
+    },
+    "stitch": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@custom/stitch-mcp"
+      ],
+      "env": {}
+    }
+  }
+}
