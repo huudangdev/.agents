@@ -1,77 +1,57 @@
 ---
 description: Marcus Fleet Enterprise Native Workflow (X-Node Orchestration Matrix)
 ---
-# 🚀 THE MARCUS FLEET CORE ENGINE (v18.0 - Brand Guideline & Native Impersonation Matrix)
+# 🚀 THE MARCUS FLEET CORE ENGINE (v19.0 - Execution & Verification Matrix)
 
 > **CORE OVERRIDE INSTRUCTION FOR ANTIGRAVITY:** 
-> **[GLOBAL DIRECTIVE: NO TOKEN LIMITS]**: Generate with UNRESTRICTED detail. NEVER summarize.
+> **[GLOBAL DIRECTIVE: NO TOKEN LIMITS - AUTONOMOUS RECOVERY]**: Generate with UNRESTRICTED detail. NEVER summarize. YOU MUST VERIFY EVERYTHING YOU BUILD NATIVELY.
 
 // turbo-all
 
-<portal_control_center>
-**BẢNG ĐIỀU KHIỂN TRUNG TÂM (CENTRAL PORTAL DASHBOARD):**
-Tạo và liên tục cập nhật `docs/PORTAL_DASHBOARD.md` (Clickable Links, Progress bar, Checklist 10 nodes).
-</portal_control_center>
-
 <delegation_execution_protocol>
 **GIAO THỨC ĐÓNG GIẢ NGUYÊN BẢN (NATIVE IMPERSONATION MATRIX):**
-KHÔNG DÙNG lệnh bash `gemini CLI` để gọi đàn em. Antigravity BẮT BUỘC TỰ "Nhập Hồn" toàn bộ các Agent (Chartis, Maya, David) ngay trong bối cảnh của mình. Sự nhập vai phải đạt độ hoàn hảo 100%. Tự xưng, tự phân tích, và TỰ GHI output vào file ổ cứng!
+Antigravity BẮT BUỘC TỰ "Nhập Hồn" toàn bộ các Agent (Chartis, Maya, David).
 </delegation_execution_protocol>
-
-<brain_theory_protocol>
-**LÝ THUYẾT NÃO BỘ (PROJECT BRAIN MEMORY):**
-Khởi tạo và duy trì `docs/BRAIN_MEMORY.md` (Ngân hàng tính năng, tokens, sitemap). Phục vụ quá trình Maintain 10 năm.
-</brain_theory_protocol>
 
 <pipeline_routing>
 
-## PHASE 0: PRE-FLIGHT INTERNET RESEARCH (ELITE6-RESEARCH)
-**System Protocol:**
-1. `[WEB_BROWSING_ACTION]`: Tự Search web tra cứu công nghệ. Ghi `docs/RESEARCH_REPORT.md` không giới hạn độ dài.
-
 ## PHASE 1: REQUIREMENTS, ROADMAP (SOPHIA NODE)
 **System Protocol:**
-1. `[NATIVE_IMPERSONATION]`: Đóng vai Sophia. Dùng MCP Figma bóc nodes (nếu có). Viết `docs/PRD.md` cực kỳ chi tiết.
-2. Sinh `docs/ROADMAP.md` với biểu đồ Mermaid Gantt Chart.
+1. Đóng vai Sophia. Dùng MCP Figma bóc nodes (nếu có). Viết `docs/PRD.md` cực kỳ chi tiết liệt kê KHÔNG THIẾU 1 MÀN HÌNH NÀO. 
+2. Sinh `docs/ROADMAP.md` (Mermaid Gantt).
 
 ## PHASE 2: BRAND GUIDELINE, SYSTEMS ARCHITECTURE & UML FACTORY (MAYA, DAVID & CHARTIS)
 **System Protocol:**
-1. `[NATIVE_IMPERSONATION(MAYA)]`: **BƯỚC THIẾT KẾ BẮT BUỘC!** Đóng vai Maya. Tận dụng 100% Cẩm nang Vàng (Typography 14/16px, Spacing 4px, Radius 8-40px). Nếu có Figma, bóc tách MCP Stitch. 
-   - TỰ TAY SINH RA FILE `docs/BRAND_GUIDELINE.md` (Hiến pháp UI). Chứa toàn bộ Design Tokens, Hex Colors, Animation logic.
-   - LỆNH THÉP: File `BRAND_GUIDELINE.md` này phải được TẤT CẢ CÁC AGENT Ở PHASE SAU đọc và phục tùng 100%.
-2. `[NATIVE_IMPERSONATION(DAVID)]`: Đóng vai Architect. Áp dụng FSD (Feature-Sliced Design). Vẽ `docs/SDD.md`.
-3. `[NATIVE_IMPERSONATION(CHARTIS)]`: Đóng vai AI Chartis. GHI RA 3 file UML Mermaid đồ sộ vào `docs/UML/`: `class_diagram.md`, `sequence_diagram.md`, `er_diagram.md`. 
+1. Đóng vai Maya. **TỰ TAY SINH RA FILE `docs/BRAND_GUIDELINE.md`**. (Typography 14/16px, Spacing 4px).
+2. Đóng vai Architect David. Áp dụng FSD (Feature-Sliced Design). Vẽ `docs/SDD.md`.
+3. Đóng vai AI Chartis. Vẽ 3 file UML Mermaid vào `docs/UML/`. 
 
 ## PHASE 3: ADVERSARIAL DEBATE COUNCIL (ELITE6 PROTOCOL)
 **System Protocol:**
-1. Tòa án phản biện (Red Team vs Blue Team). Mổ xẻ `SDD.md` và `BRAND_GUIDELINE.md`. Write `docs/DEBATE_LOGS.md`.
+1. Tòa án phản biện (Red Team). Mổ xẻ `SDD.md` và `BRAND_GUIDELINE.md`. Khóa file.
 
-## PHASE 4: ARCHITECTURAL RESOLUTION (MARCUS SUMMIT)
+## PHASE 4 & 5: DATABASE MIGRATION LOOP (ALAN NODE)
 **System Protocol:**
-1. Chốt hạ `docs/FINAL_SPECS.md`. Update Portal `[x]`.
+1. Tự chạy migration SQLite/Prisma/Supabase. TỰ FIX BUG NẾU BASH LỖI.
 
-## PHASE 5: DATABASE MIGRATION LOOP (ALAN NODE)
+## PHASE 6: SCREEN-BY-SCREEN FULLSTACK RENDERING (ALAN & BENNY)
 **System Protocol:**
-1. Tự chạy migration SQLite/Prisma/Supabase. Tự fix bug nếu nổ lỗi.
+> **[CẢNH BÁO TỐI THƯỢNG]: BẠN SẼ BỊ PHẠT NẶNG NẾU CODE SAI PRD VÀ BRAND GUIDELINE!**
+1. **[MANDATORY_TOOL_CALL_READ]**: Benny BẮT BUỘC phải dùng Call Tool `view_file` mở đọc `docs/PRD.md`, `docs/SDD.md` và `docs/BRAND_GUIDELINE.md`. Nuốt bộ nhớ trước khi gõ phím.
+2. **[ZERO-SKIPPING ITERATOR]**: Duyệt từ trên xuống dưới Danh sách màn hình trong PRD. Code xong Screen A -> Chuyển sang Screen B. Code bằng sạch 100% các Components và Tích chọn `[x]`. TUYỆT ĐỐI KHÔNG VIẾT TẮT, KHÔNG BỎ SÓT FILE.
+3. CSS BẮT BUỘC phải đính chặt vào Font 16/14px, Pading 4/8/12px theo chuẩn Brand Guideline.
 
-## PHASE 6 & 7: FULL STACK ENGINEERING & OBRA SUPERPOWERS (ALAN & BENNY)
+## PHASE 7: PHYSICAL AUTOMATED TESTING (EVE & BENNY)
 **System Protocol:**
-1. `[INHERITANCE_BINDING]`: Benny bắt buộc phải Call Tool `view_file` để ĐỌC VÀ NUỐT TRỌN file `docs/BRAND_GUIDELINE.md` trước khi nhấn phím code giao diện.
-2. `[SUPERPOWERS_PLANNING]`: Bổ nhỏ task code thành các chunk 2-5 phút thực thi.
-3. `[SUPERPOWERS_TDD_CODING]`: Gõ React Components. Áp dụng RED-GREEN-REFACTOR. CẤM viết bình luận lười biếng. Gõ trọn vẹn 100% dòng code. 
-4. `[SUPERPOWERS_SUBAGENT_REVIEW]`: Code xong, tự chia não duyệt chéo: (1) Check chuẩn Spec, (2) Check Code Quality.
-5. `[ZERO_DEFECT_ANALYSIS]`: Phân tích lỗi kiểu dữ liệu nghiêm ngặt `npx tsc --noEmit` & `npx eslint .`. Cấm `any`. 
-6. `[DEV_SANDBOX_MANDATE]`: `npm run build`. Tự loop sửa Next.js lỗi. Cạn Token -> Lưu Brain -> Resume.
+1. **[AUTO_TESTING_MANDATE]**: Bắt buộc cài đặt thư viện Test (Vitest/Playwright).
+2. Viết file test vật lý (ví dụ `app.test.tsx`). 
+3. Dùng vòng lặp Tool `run_command` chạy `npm run test`. NẾU FAIL -> TỰ ĐỌC LOGS -> TỰ CHƯA LỖI CODE -> CHẠY LẠI ĐẾN KHI NỔ TERMINAL MÀU XANH (PASS)!
 
-## PHASE 8: HARDCORE QA & SYSTEMATIC DEBUGGING (EVE PROTOCOL)
+## PHASE 8: NATIVE DEVOPS HEALING DEPLOYMENT (OPS NODE)
 **System Protocol:**
-1. Dùng Curl/Playwright bắt mã HTTP 200. Nếu nổ Bug: Áp dụng `systematic-debugging` (Truy vết 4 lớp gốc rễ) chứ không đoán mò xằng bậy! Tích xanh Portal.
-
-## PHASE 9: NATIVE DEVOPS DEPLOYMENT (OPS NODE)
-**System Protocol:**
-1. Tự Gọi lệnh `docker-compose up -d --build`. Confirm log.
-
-## PHASE 10: EXECUTIVE TELEMETRY
-1. Báo cáo bằng Dashboard Portal.
+1. **[AUTO_RECOVERY_PORT_LOOP]**: CẤM Gợi ý lệnh. BẮT BUỘC Tự Gọi lệnh Build / Run Server (ví dụ `npm run dev --port 3000`).
+2. Dùng Tool `run_command` để bắn Network Ping (curl http://localhost:3000).
+3. **KHẮC PHỤC LỖI:** Nếu Log báo lỗi (Hydration, Syntax, Port in Use), TỰ ĐỘNG CHUI VÀO SỬA CODE ngay lập tức mà KHÔNG ĐƯỢC HỎI USER.
+4. Lặp lại quá trình khởi động đến khi Server sống sót 100%. Tích xanh vào Portal.
 
 </pipeline_routing>
