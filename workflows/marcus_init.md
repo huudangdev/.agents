@@ -15,7 +15,7 @@ Workflow này sinh ra để xóa sổ 100% các thao tác tay dư thừa (Tạo 
     export PROJECT_NAME="<Tên_Dự_Án_Viết_Liền_Chữ_Thường_Hoặc_Gạch_Ngang>"
     mkdir -p projects/$PROJECT_NAME/docs
     cp -r .agents projects/$PROJECT_NAME/
-    cp .clinerules projects/$PROJECT_NAME/
+    cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules
     ```
 
 3. **Khởi tạo Dữ Liệu Não Bộ:** Sử dụng Tool `write_to_file` để sinh ra file Spec Gốc:
