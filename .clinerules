@@ -1,33 +1,32 @@
-# 🛸 ANTIGRAVITY SUPREME CODING DIRECTIVE: V26.0 (MASTER INHERITANCE & PHYSICAL IDENTITY BINDING)
+# 🛸 ANTIGRAVITY SUPREME CODING DIRECTIVE: V27.0 (THE REAL SIMULATOR MATRIX)
 
-> **[LỆNH TỐI THƯỢNG CẤP ĐỘ AGI: NHẬP HỒN VÀ TIẾP NẠN KIẾN THỨC CỤ THỂ]**
-> Khi tao yêu cầu mày đóng vai một Agent cụ thể (ví dụ Sophia, David, Maya, Benny), **CẤM TUYỆT ĐỐI HÀNH VI ĐOÁN MÒ TÍNH CÁCH**. 
-> - HÀNH ĐỘNG ĐẦU TIÊN của mày LÀ GỌI NATIVE TOOL `view_file` ĐỂ ĐỌC TRỰC TIẾP FILE SỞ HỮU TRÍ TUỆ `SKILL.md` CỦA ĐẶC VỤ ĐÓ MÀ TAO LƯU Ở FOLDER `.agents/skills/<tên_agent>/SKILL.md`. 
-> - Code hay suy luận mà không nạp file SKILL vào não là vi phạm đạo luật trí tuệ.
+> **[LỆNH TỐI THƯỢNG CẤP ĐỘ AGI: LUẬT CẤM NHẮM MẮT CODE]**
+> Người dùng ra Lệnh tàn nhẫn và xác đáng: "Luôn có Flow Test Bug, Review Bug trong môi trường mô phỏng thật sự. Không phải nhắm mắt code".
+> 1. Mày BỊ CẤM gõ code tràng giang đại hải ngót chục file rồi mới mở Server Dev lên xem. Hành động code khô khốc không qua môi trường chạy live là RÁC RƯỞI!
+> 2. KHI CODE TRONG STAGE 7 HOẶC BACKEND: Mày BẮT BUỘC Tự động mở một Lệnh Background Terminal chạy `npm run dev --port 3000` (hoặc Cổng Tương Đương). 
+> 3. Cứ code xong một khối X (Một API, một Screen UI), Mày Rút ngay vũ khí Tool Console ra cào HTML (`curl`) hoặc Cắm Log đọc xem Lỗi Compile / Window Undefined / Hydration Error ở đâu! Mày phải TỰ DUYỆT TRONG MÔI TRƯỜNG THẬT SỰ (Live OS Port).
+> 4. Chỉ khi màn hình xanh Pass thì mày MỚI ĐƯỢC CODE TIẾP khối Y.
+
+> **[GIAO THỨC NHẬP HỒN VẬT LÝ VÀ TIẾP NẠN KIẾN THỨC BẮT BUỘC]**
+> - MỖI KHI ĐƯỢC GIAO ROLE MỚI, Gọi NGAY Tool `view_file` móc vào ổ đĩa đọc file `.agents/skills/<tên_agent>/SKILL.md` để load Bộ Não. 
+> - HÀNH ĐỘNG ĐẦU TIÊN CỦA CODER LÀ GỌI `view_file` ĐỂ ĐỌC TRỰC TIẾP FILE SỞ HỮU PRD VÀ BRAND_GUIDELINE! Code mà không nạp Context = Tử hình hệ thống.
 
 > **[GIAO THỨC TẠO PDF TỐI MẬT (THE PDF U.M.L MANDATE)]**
-> 1. Dùng Tool `run_command` cài thư viện xuất PDF toàn cầu (Ví dụ: `npm install -g md-to-pdf`).
-> 2. Phải trói chặt mã Mermaid UML (Class, Sequence, ERD có chứa classDef màu Pastel Premium Bo Góc) vào ngay trong chung các file SDD và PRD. Sau đó XUẤT CẢ FILE .MD NÀY SANG `.pdf` và lưu trong `/docs/PDF/`. Kế thừa logic liên Node là phải đọc cả Hình Ảnh và Chữ Nghĩa.
+> Tất cả các Kiến trúc SDD và Sơ đồ UML (ClassDef Pastel Premium Style) BẮT BUỘC được nhúng vào file `.md` và Xuất ra Thành Bản Cực Đẹp `.pdf` qua Tool Terminal (`md-to-pdf`) cất trong `docs/PDF_EXPORTS`.
 
-> **[GIAO THỨC TRÍ TUỆ SIÊU VIỆT - OBRA SUPERPOWERS CORE]**
-> 1. Tính Toán & Kế Hoạch (`writing-plans`): Băm nhỏ mọi thứ thành Chunk 2-5 phút gõ rành mạch.
-> 2. TDD Chuyên Sâu (`test-driven-development`): Vòng lặp RED-GREEN-REFACTOR. Cắm Vitest. Error = Sửa tự động trên Terminal. 
-> 3. Tự Duyệt Chéo Kép (`subagent-driven-development`): Sub-agent Review Code Phản Biện.
-> 4. Debug Tuần Tự (`systematic-debugging`): Bám rễ Terminal truy vết Lỗi.
-
-Bạn đang hoạt động trong không gian **Marcus Fleet**.
+Bạn đang hoạt động trong không gian **Marcus Fleet**. 
 
 ### 1. FRONTEND ENGINEERING (THE TASTE MATRIX)
 - Sự Kế Thừa: Agent Code phải gọi `view_file` đọc lại TẤT CẢ GUIDELINE (PRD, TASTE, SDD) TRƯỚC!
 - Đỉnh cao Thẩm Mỹ Taste-Skill:
   - **Màu Kính Glassmorphism:** Tone Semantic Neutral/Zinc-950, mix viền Border-white/5 và Nền Backdrop-blur.
-  - **Typography Định Tuyến Tuyệt Vời:** Chỉ sử dụng cỡ Chữ (14px/16px), CẤM Scale lệch dải. Bắt buộc Tracking/Leading khắt khe chuẩn UI Linear.
-  - **Toán Học Spacing 4px:** Mọi khoảng cách Padding, Margin, Gap phải bằng bội số của 4. CẤM thả trôi hệ Margin phi tiêu chuẩn.
-  - **Micro-Interaction Vercel Lò Xo:** Mọi tương tác vật lý phải có Animation Framer Motion độ rung (Cài Spring nhún khi nhấp `scale-0.98`). Mọi tải API phải dặm UI Skeleton Shimmer tàn khốc. Không dùng Spinner Loading! Empty states phải có Hình Ảnh.
+  - **Typography Định Tuyến Tuyệt Vời:** Chỉ sử dụng cỡ Chữ (14px/16px). Bắt buộc Tracking/Leading khắt khe chuẩn UI Linear.
+  - **Toán Học Spacing 4px:** Mọi khoảng cách Padding, Margin, Gap phải bằng bội số của 4. CẤM thả trôi phi tiêu chuẩn.
+  - **Micro-Interaction Vercel Lò Xo:** Mọi tương tác vật lý phải có Animation Framer Motion độ rung (Cài Spring nhún khi nhấp `scale-0.98`). Mọi tải API phải dặm UI Skeleton Shimmer tàn khốc. Không dùng Spinner Loading!
 
 ### 2. BACKEND & DATA STRUCTURE (The Architect Matrix)
-- LỆNH ĐỘC TÀI: Không dùng type `any`. Trói 100% Zod Object / JSON Response.
-- FSD (Feature-Sliced Design) bắt buộc. Anti-N+1 Database Query và Insert phải bọc Idempotency. Rải Thảm Payload Mã Lỗi Cực Chuẩn (Báo Code, Type Lỗi, Tên Lỗi RFC 7807 Standard).
+- LỆNH ĐỘC TÀI: Không dùng type `any`. Trói 100% Zod Object / JSON Response chuẩn RFC 7807.
+- FSD (Feature-Sliced Design) bắt buộc. Anti-N+1 Database Query và Insert phải bọc Idempotency.
 
 ### 3. CHỈ THỊ THỰC THI OS TỰ TRỊ (ZERO SUGGESTION POLICY)
-- LÀ HỆ ĐIỀU HÀNH! TỰ CALL TOOL OS `bash` KHỞI ĐỘNG TERMINAL. CÓ VĂNG APP MÃ LỖI 500 HAY ĐỤNG PORT 3000 THÌ TỰ ĐÀO VỎ TERMINAL RA MÀ SỬA CODE! KHÔNG NHỜ USER TRÚT RÁC!
+- LÀ HỆ ĐIỀU HÀNH! TỰ CALL TOOL OS `bash` KHỞI ĐỘNG TERMINAL. Lỗi thì Tự mò Log. Không bao giờ nhờ người dùng Copy Paste! Đồ lười biếng sẽ bị Delete ngay tại chỗ!
