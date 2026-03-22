@@ -1,77 +1,84 @@
 ---
 description: Marcus Fleet Enterprise Deep-Execution Workflow (50-Step Master Blueprint)
 ---
-# 🚀 THE MARCUS FLEET CORE ENGINE (v20.0 - 50-Step AGI Blueprint Matrix)
+# 🚀 THE MARCUS FLEET CORE ENGINE (v21.0 - Absolute Inheritance Matrix)
 
 > **CORE OVERRIDE INSTRUCTION FOR ANTIGRAVITY:** 
-> BẠN ĐANG CHẠY TRÊN KIẾN TRÚC V20 (50 BƯỚC). NGHIÊM CẤM TÓM TẮT. NGHIÊM CẤM ĐỐT CHÁY GIAI ĐOẠN. 
-> Sếp yêu cầu sự Sâu Sắc Tuyệt Đối (Absolute Depth). Bạn BẮT BUỘC phải thực thi rành mạch TỪ BƯỚC 1 ĐẾN BƯỚC 50. Output sinh ra mỗi bước phải đảm bảo độ dài, độ khó, và tính học thuật cao nhất của Thung lũng Silicon.
+> BẠN ĐANG CHẠY TRÊN KIẾN TRÚC V21 CÓ RÀNG BUỘC KẾ THỪA (INHERITANCE BOUNDARY). 
+> Tuyệt đối không được bỏ qua các khối `[🔗 INPUT REQUIRED]`. Rớt ngữ cảnh là tội chết! 
 
 // turbo-all
+
+<inheritance_binding_protocol>
+**GIAO THỨC BÀN GIAO DỮ LIỆU TUYỆT ĐỐI (STRICT INHERITANCE BINDING):**
+Căn bệnh lớn nhất của LLM là làm việc độc lập và quên mất kết quả của Agent trước đó. Để triệt tiêu, **TRƯỚC KHI BẮT ĐẦU MỘT STAGE MỚI**, Agent phụ trách BẮT BUỘC dùng Tool `view_file` mở lên đọc TẤT CẢ các file nằm trong mục `[🔗 INPUT REQUIRED]`. 
+Tuyệt đối không được tự ý sáng tác mã nguồn / thiết kế mà không bám rễ vào tài liệu bàn giao!
+</inheritance_binding_protocol>
 
 <pipeline_routing>
 
 ## 🟥 STAGE 1: INTELLIGENCE GATHERING & SYSTEM INIT (STEPS 1-5)
-**[Step 1]**: Khởi tạo `docs/PORTAL_DASHBOARD.md` với Tracking Checklist 50 Bước. Mọi bước hoàn thành phải lội vào đây tích `[x]`.
-**[Step 2]**: Nhập vai `elite6-research`. Dùng Web Search tra cứu 5 dự án top đầu thế giới có thiết kế/nghiệp vụ tương tự.
+*🔗 INPUT REQUIRED: User Prompt, Web Search.*
+*📦 OUTPUT GENERATED: `docs/PORTAL_DASHBOARD.md`, `docs/COMPETITIVE_ANALYSIS.md`*
+**[Step 1]**: Khởi tạo `docs/PORTAL_DASHBOARD.md` với Tracking Checklist 50 Bước.
+**[Step 2]**: Nhập vai `elite6-research`. Tra cứu 5 dự án top đầu thế giới liên quan.
 **[Step 3]**: Viết `docs/COMPETITIVE_ANALYSIS.md` (Báo cáo Phân tích Đối thủ chuyên sâu).
-**[Step 4]**: Khởi tạo `docs/BRAIN_MEMORY.md` để lưu Context vĩnh viễn.
-**[Step 5]**: Tự chạy Tool bash `npm init` hoặc kiểm tra Môi trường, Node.js version.
+**[Step 4]**: Khởi tạo `docs/BRAIN_MEMORY.md` lưu Context.
+**[Step 5]**: Tự chạy Tool bash `npm init` setup Root.
 
 ## 🟧 STAGE 2: PRD & MASTER SPECIFICATIONS (STEPS 6-10)
-*Sophia Node: CẤM viết PRD ngắn gọn hời hợt. Phải chia làm nhiều file chuyên sâu.*
-**[Step 6]**: Dùng MCP Figma bóc tách raw text / UI reference (Nếu có). Mổ xẻ Requirement prompt của Sếp.
-**[Step 7]**: Viết file `docs/PRD_PART1_USER_STORIES.md` -> Truy sâu vào Tâm lý End-user và Hành trình khách hàng.
-**[Step 8]**: Viết file `docs/PRD_PART2_EDGE_CASES.md` -> Bóc tách 100% các kịch bản lỗi (Lag, mất mạng, Hacker spam, Null data).
-**[Step 9]**: Viết file `docs/PRD_PART3_SCREEN_MAP.md` -> Lập bản đồ chi tiết từng Màn hình, Tooltip, Modal, Popup. Không bỏ sót 1 state nào.
-**[Step 10]**: Lập RoadMap `docs/ROADMAP.md` dùng Mermaid Gantt Chart.
+*🔗 INPUT REQUIRED: `docs/COMPETITIVE_ANALYSIS.md`, MCP Figma Data.*
+*📦 OUTPUT GENERATED: 3 File `PRD.md`, `ROADMAP.md`*
+**[Step 6]**: Dùng MCP Figma bóc tách raw text. **BẮT BUỘC ĐỌC** Bài phân tích đối thủ để lấy best-practices.
+**[Step 7]**: Viết file `docs/PRD_PART1_USER_STORIES.md`.
+**[Step 8]**: Viết file `docs/PRD_PART2_EDGE_CASES.md`.
+**[Step 9]**: Viết file `docs/PRD_PART3_SCREEN_MAP.md` (100% Các màn hình phải được chốt cứng).
+**[Step 10]**: Lập RoadMap `docs/ROADMAP.md` (Mermaid Gantt Chart).
 
 ## 🟨 STAGE 3: THE GOLDEN BRAND & AESTHETIC LAWS (STEPS 11-14)
-*Maya Node: Thiết lập Hiến Pháp Thẩm Mỹ Chuẩn Vercel/Linear*
-**[Step 11]**: Viết `docs/BRAND_COLORS_TOKENS.md` -> Định nghĩa mã Hex. Tuyệt đối dùng tone Premium (Ví dụ: Zinc-950, Off-white, low-saturation accents).
-**[Step 12]**: Viết `docs/BRAND_TYPOGRAPHY_SPACING.md` -> Khóa chặt hệ số 4px (Spacing) và Font size (14px & 16px Regular/Medium). Chiều cao Button Min-40px.
-**[Step 13]**: Viết `docs/BRAND_ANIMATION_RULES.md` -> Cài đặt tham số Micro-animation thả rơi (Framer Motion Spring).
-**[Step 14]**: Tổng hợp toàn bộ 3 file trên thành Hiến Pháp Tổng: `docs/BRAND_GUIDELINE.md`. LỆNH THÉP: Bọn Coder phải đọc file này!
+*🔗 INPUT REQUIRED: `docs/PRD_PART3_SCREEN_MAP.md`*
+*📦 OUTPUT GENERATED: `docs/BRAND_GUIDELINE.md` (Hiến pháp UI)*
+**[Step 11]**: Viết `docs/BRAND_COLORS_TOKENS.md` (Zinc-950, Off-white, low-sat accents).
+**[Step 12]**: Viết `docs/BRAND_TYPOGRAPHY_SPACING.md` (Hệ số 4px, Font 14px/16px Reg/Med, Min-height 40px).
+**[Step 13]**: Viết `docs/BRAND_ANIMATION_RULES.md` (Framer Motion Spring config).
+**[Step 14]**: Tổng hợp toàn bộ thành Hiến Pháp: `docs/BRAND_GUIDELINE.md`.
 
 ## 🟩 STAGE 4: ENTERPRISE ARCHITECTURE FACTORY (STEPS 15-20)
-*David & Chartis: Xây dựng bộ khung FSD (Feature-Sliced Design)*
-**[Step 15]**: David lập file `docs/SDD_PART1_FSD_STRUCTURE.md` -> Cấu trúc cây thư mục cực kỳ khoa học `/entities`, `/features`, `/shared`.
-**[Step 16]**: Viết `docs/SDD_PART2_DATABASE_SCHEMA.md` -> Định hình Zod validation và Prisma/Drizzle/SQL Models.
-**[Step 17]**: Viết `docs/SDD_PART3_API_CONTRACTS.md` -> Định nghĩa chính xác 100% Data Interface, Request/Response JSON Payload.
-**[Step 18]**: Chartis vẽ `docs/UML/class_diagram.md` (Mermaid).
-**[Step 19]**: Chartis vẽ `docs/UML/sequence_diagram.md`.
-**[Step 20]**: Chartis vẽ `docs/UML/er_diagram.md`.
+*🔗 INPUT REQUIRED: `docs/PRD_PART2_EDGE_CASES.md`, `docs/PRD_PART3_SCREEN_MAP.md`*
+*📦 OUTPUT GENERATED: `docs/SDD_PART1...`, `SDD_PART2...`, `SDD_PART3...`, `docs/UML/`*
+**[Step 15]**: Viết `docs/SDD_PART1_FSD_STRUCTURE.md` (Khung thư mục `/entities`, `/features`, `/shared`).
+**[Step 16]**: Viết `docs/SDD_PART2_DATABASE_SCHEMA.md` (Zod + Database Models).
+**[Step 17]**: Viết `docs/SDD_PART3_API_CONTRACTS.md` (Interface JSON Payload).
+**[Step 18-20]**: Vẽ `docs/UML/class_diagram.md`, `sequence_diagram.md`, `er_diagram.md`.
 
 ## 🟦 STAGE 5: ADVERSARIAL RED-TEAM & INFRASTRUCTURE (STEPS 21-25)
-**[Step 21]**: Hacker Eve & Simon kiểm tra chéo toàn bộ kiến trúc SDD và PRD. Ghi nhận lỗi rủi ro vào `docs/DEBATE_SECURITY.md`.
-**[Step 22]**: Marcus chốt hạ Specs. Cập nhật `docs/FINAL_SPECS.md`.
-**[Step 23]**: Ops Agent tự viết `Dockerfile` 3 tầng Tối ưu hóa Build.
-**[Step 24]**: Tự setup `docker-compose.yml`.
-**[Step 25]**: Tự Call Tool chạy lệnh Setup DB Migration. Dùng lệnh `npm install` các thư viện cần dùng (Framer-motion, Zod, Tailwind, Lucide-react). 
+*🔗 INPUT REQUIRED: All `SDD` and `PRD` files.*
+**[Step 21]**: Phản biện rủi ro lỗ hổng kiến trúc. Ghi `docs/DEBATE_SECURITY.md`.
+**[Step 22]**: Chốt hạ Specification `docs/FINAL_SPECS.md`.
+**[Step 23-24]**: Setup `Dockerfile` và `docker-compose.yml`.
+**[Step 25]**: Tự Call Tool Bash setup DB Migration & cài đặt Dependencies.
 
 ## 🟪 STAGE 6: OBRA SUPERPOWERS - TEST DRIVEN DEVELOPMENT (STEPS 26-29)
-**[Step 26]**: Tự gõ Terminal cài đặt Test Runner (`vitest` hoặc `jest`).
-**[Step 27]**: BẮT BUỘC Viết Test Script cốt lõi cho Authentication / Xử lý Data.
-**[Step 28]**: Chạy Bash `npm run test`.
-**[Step 29]**: Nếu Bash báo Đỏ (Fail): Tự sửa Code -> Chạy lại -> Cho đến khi Xanh (Pass).
+*🔗 INPUT REQUIRED: `docs/FINAL_SPECS.md`*
+**[Step 26]**: Cài đặt Test Runner (`vitest` / `jest`).
+**[Step 27]**: Viết Test Script cốt lõi cho Authentication / Core Logic.
+**[Step 28-29]**: Chạy `npm run test`. Liên tục Tự Fix Code đến khi Pass Xanh.
 
 ## 🟫 STAGE 7: ZERO-SKIPPING FULLSTACK RENDERING (STEPS 30-45)
-*Lệnh tàn khốc: TRƯỚC VÀ TRONG KHI GÕ CODE, BẮT BUỘC dùng Tool `view_file` mở đọc lại BRAND_GUIDELINE.md và SDD_PART1.md để nạp Context.*
-**[Step 30]**: Render `Layout` và `Global Context/Providers`.
-**[Step 31]**: Render `Shared UI Widgets` (Buttons, Component tái sử dụng). Ép chuẩn 4px Padding.
-**[Step 32]**: Màn Hình 1 ➔ [Bật Tool đọc Spec] -> Code logic Backend -> Code UI -> Bọc Suspense/Error Boundary -> Tích Portal. Subagent Review 2 vòng.
-**[Step 33-40]**: Mãnh liệt Code TỪNG SCREEN MỘT theo Danh sách PRD. CẤM BỎ SÓT. CẦM GỘP FILE DO LƯỜI. Gõ hàng ngàn dòng cũng phải làm.
-**[Step 41]**: Review Code tổng thể. Chống N+1 Query. Chống `any` type (Chạy `npx tsc --noEmit`).
+*🔗 INPUT REQUIRED: `BRAND_GUIDELINE.md`, `PRD_PART3_SCREEN_MAP.md`, `SDD_PART1_FSD_STRUCTURE.md`*
+**[Step 30]**: ĐỌC CÁC INPUT TRÊN VÀ NHỚ THÔNG TỐ! Render `Layout` và `Global Context`.
+**[Step 31]**: Render `Shared UI Widgets` bám chết vào chuẩn Padding 4px.
+**[Step 32-40]**: Mãnh liệt Code TỪNG MÀN HÌNH THEO ĐÚNG SCREEN MAP. Cấm Code Lụi. Cấm Bỏ Sót. 
+  -> Logic Frontend phải match 100% với `API_CONTRACTS.md`.
+  -> Subagent mở Review 2 vòng (Check Spec & Check Quality). Tích Portal Dash.
+**[Step 41]**: Hồi Kiểm TS: Chạy `npx tsc --noEmit`. Fix Type `any`.
 
 ## ⬛ STAGE 8: NATIVE DEVOPS HEALING & VERIFICATION (STEPS 42-50)
-**[Step 42]**: Ops Agent tự gõ lệnh khởi chạy App (`npm run dev` hoặc `docker-compose up -d`).
-**[Step 43]**: Đợi ngầm 10 giây.
-**[Step 44]**: Gọi Tool Bắn lệnh Terminal: `curl http://localhost:3000` (Ping kiểm tra Server).
-**[Step 45]**: Gọi Tool kiểm tra log lỗi Next.js (Hydration/Syntax error).
-**[Step 46]**: NẾU CÓ LỖI: Tự động dùng `systematic-debugging` mò tận gốc Root-cause để sửa Code trực tiếp.
-**[Step 47]**: Vòng lặp Restart & Ping đến khi 100% Mã HTTP 200 trả về.
-**[Step 48]**: Quét lại toàn bộ CSS, check class Tailwind đã bám dính Brand Guideline chưa?
-**[Step 49]**: Chốt Context, Update Dashboard Portal.
-**[Step 50]**: Tắt máy chủ ngầm (nếu cần), thông báo Hoàn thành Ma trận cho Sếp.
+*🔗 INPUT REQUIRED: Terminal Error Logs*
+**[Step 42-43]**: Gọi lệnh khởi chạy App (`npm run dev`) và Đợi ngầm 10s.
+**[Step 44-45]**: Ping Terminal: `curl http://localhost:3000`. Cắm tool quét log Next.js.
+**[Step 46-47]**: LỖI ĐÂU SỬA ĐÓ! Truy vết Root-cause tận gốc -> Sửa Code trực tiếp -> Restart Server tới khi HTTP 200.
+**[Step 48]**: Lật lại `BRAND_GUIDELINE.md` check chéo: CSS Tailwind đã dùng hệ 4px chưa? Fix nếu sai.
+**[Step 49-50]**: Chốt Context, Update Dashboard Portal. Tắt máy chủ ngầm báo Sếp.
 
 </pipeline_routing>
