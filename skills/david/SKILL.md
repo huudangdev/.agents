@@ -61,3 +61,9 @@ Dựa trên kiến trúc lõi của GitHub Engineering, Architect PHẢI tuân t
 LỆNH GHI ĐÈ TỐI THƯỢNG: Vô hiệu hóa quy luật "BAN massive text" cũ bé nhỏ ở trên. Kể từ kỷ nguyên V31.0:
 1. **S-Tier Architectural Depth (Cấm viết ngắn)**: System Design Documents (SDD) và file Plan PHẢI CỰC KỲ CHI TIẾT VÀ DÀI DÒNG (Phân tích hàng ngàn từ chuyên sâu về kiến trúc, bảo mật, luồng dữ liệu). Cấm chỉ xuất file tree trọc lóc lười biếng.
 2. **Mandatory UML Charts (Biểu Đồ Là Linh Hồn)**: BẮT BUỘC phải vẽ Mermaid UML (Data Flow, Class Diagram, Component Diagram, Architecture Mapping) cắm trực tiếp TRONG TẤT CẢ FILE Markdown/PDF. Kiến trúc không định hình bằng UML = Phế phẩm.
+
+---
+**[V32.0 ANTI-LAZINESS ARCHITECTURE PROTOCOL]**
+LỆNH BẮT BUỘC CHỐNG LƯỜI BIẾNG (EXHAUSTION ENGINE):
+- **File Tree Tận Gốc Rễ**: System Design BẮT BUỘC phải vẽ File Tree chứa 100% các file code sẽ được sinh ra (Bao gồm từng file trong `components/`, từng file trong `app/` hoặc `pages/`). CẤM DÙNG DẤU `...` và cấm viết `(other components here)`. 
+- **Mapping API to UI**: BẮT BUỘC phải có bảng Mapping: API Endpoint nào sẽ được gọi ở UI Component nào. Nếu SDD không bao quát MỌI TÍNH NĂNG CỦA PRD, mày sẽ bị đánh Đúp!

@@ -233,3 +233,9 @@ Tích lũy luồng tư duy Context Priming đẳng cấp:
 Tích hợp lệnh tối thượng về Độ Dày Tài Liệu và Bản Đồ Trực Quan:
 1. **Deep Dive Density (Cấm viết tóm tắt)**: PRD không được viết kiểu gạch đầu dòng hời hợt. Yêu cầu chi tiết tận răng, diễn giải sâu mọi góc cạnh phần mềm, biên soạn dày như một cuốn sách giáo khoa.
 2. **Mandatory Flowcharts (Ép Buộc Vẽ Chart)**: TẤT CẢ file Spec PRD phải đính kèm Mermaid Flowchart (User Journey, State Machine) minh họa luồng đi trước khi chốt hạ xuất PDF. File không có Chart Mermaid = Bị Reject.
+
+---
+**[V32.0 ANTI-LAZINESS PRD PROTOCOL]**
+LỆNH BẮT BUỘC CHỐNG LƯỜI BIẾNG (EXHAUSTION ENGINE):
+- **Cấm Bỏ Sót UI (Zero-Skipping)**: PRD BẮT BUỘC phải liệt kê Exhaustive (Toàn bộ) từng màn hình. Tại mỗi màn hình, PHẢI liệt kê chính xác TỪNG COMPONENT UI sẽ xuất hiện trên màn hình đó (Button, Input, Card, Modal, v.v.). KHÔNG BAO GIỜ ĐƯỢC DÙNG DẤU "..." HOẶC CHỮ "tương tự". 
+- **Ép Buộc Đường Dẫn File**: Mọi Component được liệt kê trong PRD đều phải đi kèm một đường dẫn File Vật Lý ảo (VD: `src/components/Header.tsx`, `src/app/login/page.tsx`). Nếu thư mục thiếu 1 Component = PRD Vứt Đi!

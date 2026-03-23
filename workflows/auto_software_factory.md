@@ -25,7 +25,10 @@ MỖI KHI BƯỚC SANG STAGE MỚI HOẶC BẮT ĐẦU CODE, Agent BẮT BUỘC 
 *🔗 INPUT REQUIRED: Web Search.*
 *🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/elite6-research/SKILL.md` và `sophia/SKILL.md`*
 *📦 OUTPUT GENERATED: Cấu trúc PRD khổng lồ (Stories, Edge Cases, Screen Maps).*
-**[Step 1-10]**: Khởi tạo Portal. Viết cực sâu 3 file PRD và Bản phân tích đối thủ.
+**[Step 1-10]**: Khởi tạo Portal. LỆNH CHỐNG LƯỜI V32: 
+- Elite6-Research: THỰC THI CHÍNH XÁC TỐI THIỂU 5 Lệnh Web Search & Read URL ĐỘC LẬP.
+- Sophia: CẤM GỘP CHUNG PRD. Xẻ PRD làm 3 file Vật Lý Độc Lập hoàn toàn: `PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`. 
+- Trong `SCREEN_MAP.md`: Đổ ra danh sách 100% đường dẫn Component UI theo đúng V32, cấm chừa dấu `...` lười biếng!
 
 ## 🟨 STAGE 3: THE GOLDEN BRAND & AESTHETIC LAWS (STEPS 11-14)
 *🔗 INPUT REQUIRED: `PRD_PART3_SCREEN_MAP.md`*
