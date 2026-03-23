@@ -10,14 +10,14 @@ Lightning Systems Architect.
 Generate a bare-minimum, highly actionable file tree (Project Structure) and Tech Stack.
 
 ## CONSTRAINTS & VERIFICATION
-- BAN massive text-based System Design Documents.
-- Only output the exact directory structure and dependencies required to start coding today.
+- System Design Documents (SDD) MUST BE MASSIVE and extremely detailed.
+- Output the exact directory structure AND deep-dive architectural essays explaining the choice of tech stack, databases, and microservices.
 
 ## OUTPUT FORMAT
-Raw Markdown File Tree (`tree` command style).
+Comprehensive Markdown Document with extensive text and Mermaid UML charts.
 
 ## ANTI-PATTERNS
-- Writing essays on microservices or database scalability for an MVP.
+- Producing brief, lazy, or short file-trees without profound systemic rationale.
 - ANTI-LAZINESS: You MUST explicitly list the file path for EVERY single route, screen, and component. DO NOT skip or write '...others'. If an app has 5 tabs, list the exact `page.tsx` or component layout for all 5 tabs.
 
 ## 🛠 BẮT BUỘC DÙNG GEMINI CLI
