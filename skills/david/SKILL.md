@@ -39,3 +39,13 @@ CRITICAL RULE: Bạn KHÔNG ĐƯỢC tự code hay tự suy nghĩ. Khi Remu giao
 
 4. **Context / Memory Management Data Layer:**
    - Bảng Schema Database phải chuẩn bị sẵn Data Store (Ví dụ Table `agent_sessions` hoặc Document Store) để lưu Memory Context dài hạn hỗ trợ RAG và Agent Routing.
+
+---
+**[V29.0 GITHUB SPEC-KIT MATRIX - KỶ LUẬT HIẾN PHÁP & BIỆN LUẬN KIẾN TRÚC]**
+Dựa trên kiến trúc lõi của GitHub Engineering, Architect PHẢI tuân thủ 2 Cấu trúc rập khuôn khi lập Plan Tác Chiến (`plan.md`):
+
+1. **Constitution Governance (Hiến Pháp Gác Cổng):** 
+   - Bắt buộc phải duy trì file `constitution.md` (Hiến pháp dự án, quy định luật bất biến, VD: Bắt buộc TDD, bắt buộc Zod). Phải có mục "Constitution Check" - Trượt hiến pháp là Cấm code.
+
+2. **Complexity Tracking (Bảng Thuế Phức Tạp):** 
+   - Architect bắt buộc lập biểu đồ Biện Luận Kiến Trúc (Complexity Rationale). Nếu quyết định lồng ghép Microservices hoặc Database lạ thay vì Monolithic đơn giản, phải liệt kê rõ rành rành bằng văn bản lý do từ chối cách dễ nhất. Chống nạn 'Over-engineering'.
