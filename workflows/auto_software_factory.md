@@ -39,7 +39,7 @@ MỖI KHI BƯỚC SANG STAGE MỚI HOẶC BẮT ĐẦU CODE, Agent BẮT BUỘC 
 *📦 OUTPUT GENERATED: `SDD_*.md`, `UML/*.md`, `PDF/*.pdf`*
 **[Step 15-17]**: Architect David viết Hệ tầng Backend (FSD, Database Schema, API Contracts). Nhúng Sơ Đồ Cấu Trúc Trực Tiếp vào Dòng md.
 **[Step 18-20]**: [Chartis Mode]: Vẽ `docs/UML/`. BẮT BUỘC chèn lệnh `classDef` đổi màu Background các khối thành màu Pastel Premium Bo Góc Tròn.
-**[Step 21-22]**: **[PDF EXPORT MANDATE]**: Antigravity gọi Tool Bash convert 100% tài liệu SDD khổng lồ thành PDF Tối Mật có biểu đồ vào `/docs/PDF_EXPORTS/`.
+**[Step 21-22]**: **[PDF EXPORT MANDATE]**: Antigravity BẮT BUỘC chạy lệnh Bash `npx -y @mermaid-js/mermaid-cli -i <file.mmd> -o <chart.png>` render TẤT CẢ biểu đồ Mermaid thành file ảnh (.png), sau đó ghim thẻ `![chart](chart.png)` vào Markdown rồi mới xuất PDF ra `/docs/PDF_EXPORTS/`. Cấm convert PDF mù chữ khi chưa có ảnh vật lý.
 
 ## 🟦 STAGE 5 & 6: ADVERSARIAL QA & TDD BACKEND (STEPS 23-31)
 *🔗 INPUT REQUIRED: `FINAL_SPECS.md`*

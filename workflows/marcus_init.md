@@ -20,7 +20,7 @@ Workflow này sinh ra để xóa sổ 100% các thao tác tay dư thừa (Tạo 
 
 3. **Khởi tạo Dữ Liệu Não Bộ:** Sử dụng Tool `write_to_file` để sinh ra file Spec Gốc:
     - **Đường dẫn mục tiêu:** `projects/<Tên_Dự_Án>/docs/PRD_RAW.md`
-    - **Nội dung:** Bơm toàn bộ ý tưởng / yêu cầu của Sếp vào file này dưới dạng gạch đầu dòng Markdown rõ rệt. Đừng bỏ sót một từ nào sếp đã nhắn.
+    - **Nội dung:** Bơm toàn bộ ý tưởng của Sếp vào file này dưới dạng Văn bản PRD Khổng Lồ dài hàng ngàn chữ, phân tích cực kỳ chuyên sâu và BẮT BUỘC chèn code block sơ đồ Mermaid theo CHUẨN V31.1. Cấm viết gạch đầu dòng tóm tắt lười biếng!
 
 4. **Bàn Giao & Khai Hoả:** Sau khi chạy xong, hãy thông báo Báo Cáo Triển Khai thành công rực rỡ và hướng dẫn (hoặc tự động tuỳ quyền hạn) Sếp dịch chuyển Workspace:
     > "Dự án đã được Setup cấu trúc Mẹ thành công. Sếp chỉ cần nhảy vào thư mục `cd projects/<Tên_Dự_Án>` và gõ lệnh `/auto_software_factory` là Tòa Án AI sẽ lập tức thi hành!"
