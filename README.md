@@ -28,7 +28,15 @@ git clone https://github.com/huudangdev/.agents.git
 
 Hệ thống được thiết kế để tự động hóa vật lý mọi thao tác tay của lập trình viên. Bạn chỉ cần gõ lệnh vào khung chat của AI:
 
-### 1. Khởi tạo Dự Án Chớp Nhoáng
+### 1. Giao thức Khởi Động Não Bộ (Bắt Buộc cho Tab Mới)
+> Gõ: `/init_brain`
+
+**Hành động của AI:**
+- Tự động dùng Tool cào sạch data hiến pháp từ `.clinerules` và lõi Kỹ năng của TOÀN BỘ Đặc vụ từ thư mục `.agents/skills`.
+- Chống lười biếng và "Ảo giác" (Hallucination) tuyệt đối cho các Tab AI trống bằng cách ép buộc thực thi nạp Context Window (Chuẩn V31.1) trước khi bắt đầu đàm thoại.
+- Được thiết kế làm "Nghi thức Bừng Tỉnh" bắt buộc mỗi khi khởi tạo Tab Mới hoặc sao chép thư mục `.agents` sang Project mới.
+
+### 2. Khởi tạo Dự Án Chớp Nhoáng
 > Gõ: `/marcus_init <Tên-Dự-Án> "<Mô tả ngắn gọn ý tưởng của bạn>"`
 
 **Hành động của AI:**
@@ -36,7 +44,7 @@ Hệ thống được thiết kế để tự động hóa vật lý mọi thao 
 - Tự động Copy nhân bản bộ não `.agents` và `.clinerules` đi vào dự án con.
 - Đóng vai thư ký (PM Sophia) viết sẵn file Yêu cầu `PRD_RAW.md` vào dự án mới.
 
-### 2. Kích Hoạt Ma Trận Code 10 Lớp (The Factory)
+### 3. Kích Hoạt Ma Trận Code 10 Lớp (The Factory)
 Khi đã vào thư mục dự án con (`cd projects/Ten-Du-An`), gõ:
 > `/auto_software_factory`
 
