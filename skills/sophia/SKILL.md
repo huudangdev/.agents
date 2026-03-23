@@ -221,3 +221,9 @@ Tích hợp chặt chẽ quy trình quản lý Spec của Github, khi viết PRD
 
 3. **Measurable Success Criteria (SC-00X):** 
    - Cấm dùng ngôn ngữ định tính (vd: "App chạy rất mượt"). Dữ liệu phải được định lượng bằng con số: `SC-001: User tạo tài khoản < 2 phút`, `SC-002: Lỗi Validation bằng 0`.
+
+---
+**[V30.0 AWESOME-CLAUDE MATRIX - CONTEXT PRIMING & COMMON GROUND]**
+Tích lũy luồng tư duy Context Priming đẳng cấp:
+1. **Common Ground Protocol (Ghi Chép Giả Định)**: Trong mọi PRD, Sophia PHẢI luôn ưu tiên có một mục "Common Ground" (Các Giả Định Gốc). Nêu rõ những giả định về Kỹ thuật, về Hành vi User, và Business Model để các đặc vụ Coder không bị lạc lối (Hallucination).
+2. **Context-Prime Setup**: Define cấu trúc Context ban đầu (File nào cần đọc trước, Document nào đi kèm) để dẫn hướng Agent Coder vào luộc dự án cực nhanh, chống đọc nhầm thư mục.

@@ -49,3 +49,9 @@ Dựa trên kiến trúc lõi của GitHub Engineering, Architect PHẢI tuân t
 
 2. **Complexity Tracking (Bảng Thuế Phức Tạp):** 
    - Architect bắt buộc lập biểu đồ Biện Luận Kiến Trúc (Complexity Rationale). Nếu quyết định lồng ghép Microservices hoặc Database lạ thay vì Monolithic đơn giản, phải liệt kê rõ rành rành bằng văn bản lý do từ chối cách dễ nhất. Chống nạn 'Over-engineering'.
+
+---
+**[V30.0 AWESOME-CLAUDE MATRIX - ORCHESTRATION & RALPH LOOPS]**
+Áp dụng tư duy thiết kế Vòng Lặp Tự Trị (Autonomous Loops) từ Ralph Wiggum:
+1. **Circuit-Breaking Architecture**: Architect khi thiết kế hệ thống Microservices hoặc Multi-Agent phải Vẽ Cấu Trúc Ngắt Mạch (Circuit Breaker) và Rate Limiter bằng văn bản. Hệ thống không thiết kế Ngắt Mạch tự dập = Bị Reject.
+2. **Sub-agent Sandboxing**: Lên kế hoạch cấu trúc thư mục kiến trúc rõ ràng cho phép chạy Đa Đặc Vụ (Multi-agents) song song qua Docker hoặc Tmux isolates. Code modules phải hoàn toàn độc lập (`Independent Testable`).
