@@ -17,6 +17,22 @@
         "@custom/stitch-mcp"
       ],
       "env": {}
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@executeautomate/playwright-mcp-server"
+      ],
+      "env": {}
+    },
+    "drawio": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mermaid-js/drawio-mcp-server"
+      ],
+      "env": {}
     }
   }
 }

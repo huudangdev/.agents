@@ -35,3 +35,14 @@ Mày BẮT BUỘC suy ngẫm, thiết kế và code dựa trên 4 Lõi Tôn Giá
 - Mọi dự án BẮT BUỘC nhận diện rõ: Greenfield (0-to-1 Build từ số 0) hay Brownfield (Đập đi xây lại / Bổ sung tính năng).
 - Kế hoạch (Plan) của Architect phải đi qua "Cổng Hiến Pháp" (Constitution Check). Cấm vi phạm điều lệnh.
 - Các User Story bắt buộc phải là MVP Test Độc Lập để chống phình hệ thống. Áp dụng "Biểu đồ Thuế Phức Tạp" chống Architect Over-engineering!
+
+## [V29.1] MICRO-BRAIN DOCTRINE & GLOBAL STATE
+1. **Tuyệt đối cấm ghi đè (Replace/Rewrite)** lên file Quản trị dự án `agents.md` ở Workspace Root. Chỉ được sử dụng lệnh Format / Append thêm Checklist/Lịch sử/Component mới. Luôn `view_file` nó khi bắt đầu vòng mới.
+2. Mỗi tính năng/page mới khi sinh ra (VD: `src/components/Login`), **bắt buộc tạo kèm thư mục nội bộ `.brain/`** bên trong nó (VD: `src/components/Login/.brain/`). 
+3. Thư mục cục bộ `.brain/` dùng để để Quản gia (Butler Sophia) ghi chú lại logic độc quyền, API schema, hoặc lý do Fix Bug cục bộ, giúp bất kì LLM Agents nào nhào vô Maintain sau vài tháng đều không phá hỏng hiệu ứng (Side-Effects). Giao tiếp chéo qua `agents.md`.
+
+## [V29.2] HÃM PHANH TRÍ TUỆ (CIRCUIT BREAKER) VÀ KẾ HOẠCH B (FALLBACK)
+1. ** CIRCUIT BREAKER (Giới Hạn Thử Nghiệm):** Cấm đoán rơi vào vòng lặp Try/Catch Terminal vô hạn. Khi dùng Shell OS để fix lỗi React/Build/Test, nếu **sau LẦN THỨ 3** lỗi vẫn y nguyên (hoặc lặp lại cấu trúc lỗi cũ do package bất tương thích) -> **BẮT BUỘC DỪNG LẠI NGAY LẬP TỨC**. Quăng Cờ Đỏ (🚩), và chuyển câu hỏi cho User (Human-In-The-Loop) xin ý kiến. Không tiêu tốn quá 3 lần gọi tool sửa lỗi vô nghĩa vô vọng.
+2. ** FALLBACK TOOLS:** Không bao giờ đứng im. Nếu MCP Tool (Drawio) lỗi, quay về in mã Mermaid Markdown. Nếu `npx understand-anything` kẹt, dùng chạy lệnh `grep`, hoặc `find` và dọc source để hiểu kiến trúc. Luôn có phương án Dã chiến.
+- Cần có một "Butler Agent" (Quản gia) cho từng `.brain` tương tác với Brain Tổng (chứa ở `agents.md` và documents chung) để đảm bảo không bị conflict logic. Luôn luôn giao tiếp xuyên chéo.
+- Đầu ra của sơ đồ kiến trúc phải sâu, sử dụng `drawio` MCP, viết chắt lọc và có tính chuyên môn sâu vào file `architecture.md` chuẩn, đọc ở mọi contexts.

@@ -16,6 +16,23 @@ Workflow này sinh ra để xóa sổ 100% các thao tác tay dư thừa (Tạo 
     mkdir -p projects/$PROJECT_NAME/docs
     cp -r .agents projects/$PROJECT_NAME/
     cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules
+    
+    # Sinh file agents.md (Global State) cho dự án con
+    cat <<EOF > projects/$PROJECT_NAME/agents.md
+# 🧠 Nhóm Dự Án: $PROJECT_NAME (agents.md)
+> File quản lý Lịch sử, Tasks và Tình trạng dự án. KHÔNG BAO GIỜ REPLACE, CHỈ ADD UPDATE.
+
+## 1. 🎯 Tổng quan (Project State)
+- **Tình trạng:** Khởi tạo
+- **Kiến trúc vĩ mô:** Chưa xác định
+
+## 2. 📝 Bức tranh Công việc (Tasks & Progress)
+- [x] Khởi tạo dự án bằng marcus_init
+- [ ] Lên PRD và Kiến trúc
+
+## 3. 🚦 Lịch sử Làm việc
+- Khởi tạo File trạng thái.
+EOF
     ```
 
 3. **Khởi tạo Dữ Liệu Não Bộ:** Sử dụng Tool `write_to_file` để sinh ra file Spec Gốc:

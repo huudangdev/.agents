@@ -24,6 +24,17 @@ git clone https://github.com/huudangdev/.agents.git
 
 ---
 
+## Các câu lệnh Workflow Slash Commands (Đã được nén)
+Sếp chỉ cần Chat `/` và tên lệnh, hệ thống sẽ tự nạp luồng:
+1. `/init_brain`: Khởi động Bộ Não V29, Cấu hình Lazy-Load (RAG Index) cho >60 Agents, cấm xóa file, nạp .clinerules. Cần gõ Lệnh NÀY mọi khi bắt đầu phiên mới!
+2. `/marcus_init`: Set up một thư mục dự án mới tinh với đầy đủ kiến trúc Antigravity, .clinerules, và sinh sẵn Global State `agents.md`.
+3. `/mobile_init`: Lên khung xương Design Doctrine và Architecture cho Mobile App (React Native/Flutter).
+4. `/auto_software_factory`: [HEAVY] Kích hoạt Dây chuyền Lắp Ráp 9 Steps. Cần Build Web, DB khủng, Test liên hoàn thì gọi. Đợi hơi lâu nhưng chắc chắn xịn.
+5. `/quick_fix`: [LIGHTWEIGHT] Waifu của Tốc độ. Bỏ qua 9 giai đoạn rườm rà. Nạp đúng 1-2 Skill cần thiết qua RAG, sửa Bug, Check 3 lần (mạch ngắt), ghi vào `agents.md` rồi nghỉ. Dùng cho việc vặt.
+6. `/refactor_project`: Bốc thuốc cho các Repo Cũ kĩ. Sinh Knowledge-Graph bằng Understand-Anything và Audit theo C4 Architecture.
+
+---
+
 ## ⚡ Các Lệnh Tối Thượng (Slash Commands)
 
 Hệ thống được thiết kế để tự động hóa vật lý mọi thao tác tay của lập trình viên. Bạn chỉ cần gõ lệnh vào khung chat của AI:
@@ -57,6 +68,14 @@ Khi đã vào thư mục dự án con (`cd projects/Ten-Du-An`), gõ:
 6. **Obra Superpowers Coding:** Coder phân nhỏ task 5 phút (writing-plans), áp dụng TDD (Red-Green-Refactor). Code đến đâu sinh Test đến đó. Tuyệt đối không sinh code lười nhác.
 7. **Systematic Debugging:** Tự phân mảnh hai não bộ để check Lỗi Spec và Lỗi Code Quality. Gặp bug tự truy vết Root Cause nguyên thủy.
 8. **QA & DevOps:** Tự động Build Docker, start server trên port, và Verify bằng cURL.
+
+### 4. Luồng Dự Án Chuyên Nhanh
+> Gõ: `/mobile_init`
+- Tự động quyết định Design System (Tailwind First), bọc Safe-area thiết bị và Framework (RN/Flutter) theo học thuyết **Mobile Design Doctrine**.
+
+> Gõ: `/refactor_project`
+- Dành cho các dự án cũ cồng kềnh (Brownfield).
+- Giao thức yêu cầu Tool OS Terminal phải chạy npx "Understand-Anything" tạo graph trước khi chia chẻ Complexity.
 
 ---
 
