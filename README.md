@@ -28,9 +28,9 @@ graph TD
     end
     
     subgraph "Macro Workflows"
-    Context --> W1[/quick_fix]
-    Context --> W2[/auto_software_factory]
-    Context --> W3[/refactor_project]
+    Context --> W1["/quick_fix"]
+    Context --> W2["/auto_software_factory"]
+    Context --> W3["/refactor_project"]
     end
 ```
 
