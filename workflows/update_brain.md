@@ -22,4 +22,5 @@ description: Trigger OTA Upgrade from Github Repository while preserving agents.
 
 ## 🔵 STAGE 2: MEMORY RE-ALIGNMENT
 1. Perform a manual scan using the LLM context reader to check if the `.clinerules` protocol was drastically updated.
-2. Emit a success message to the User, signaling that the OTA pipeline has sealed the patch and the Agent Fleet is fully up to date. No code alteration should be carried out during `/update_brain` unless explicitly requested.
+2. Emit a success message to the User, signaling that the OTA pipeline has sealed the patch and the Agent Fleet is fully up to date. 
+3. **CRITICAL Handoff:** You MUST explicitly instruct the Human Operator to run `/init_brain` immediately following this update. Explain that `/init_brain` acts as a "Soft Reboot" to lock in the new `.clinerules`, parse the updated `SKILLS_INDEX`, and re-ignite the TrustGraph Docker instances. No code alteration should be carried out during `/update_brain` unless explicitly requested.

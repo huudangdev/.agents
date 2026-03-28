@@ -153,6 +153,7 @@ The AI is computationally restricted from generating code until this node return
 
 ### 8. `/update_brain` (OTA Intelligence Upgrade)
 **Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `.agents/agents.md` memory matrix or TrustGraph database.
+> **SOP MANDATE:** It is strictly required to follow this command natively with `/init_brain`. This performs a "Soft Reboot" to purge the LLM's stale context, load the newly downloaded `.clinerules`, and re-ignite the TrustGraph stack.
 
 ---
 
