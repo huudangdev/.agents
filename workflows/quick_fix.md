@@ -10,7 +10,7 @@ description: Đường tắt (Bypass) để vá lỗi nhỏ hoặc thêm tính n
 ## 🔸 BƯỚC 1: NẠP VŨ KHÍ RAG (CONTEXT RETRIEVAL)
 *🧠 Mệnh lệnh Bắt Buộc:* 
 - Mở file `.clinerules` và `agents.md` để nắm hiện trạng.
-- Quét nhanh `SKILLS_INDEX.md` và tuỳ ngữ cảnh gọi duy nhất **1 đến 2 SKILLS** phù hợp để tiết kiệm Token (VD: Lỗi UI -> Mở `sleek-design` hoặc `maya`).
+- Quét nhanh `SKILLS_INDEX.md` và tuỳ ngữ cảnh gọi duy nhất **1 đến 2 SKILLS** phù hợp để tiết kiệm Token (VD: Lỗi UI -> Mở `sleek-design` hoặc `maya-ui-ux-designer`).
 - Doline/Giao tiếp với thư mục `.brain/` của Component đang bị vỡ (nếu có) để nắm lý do tồn tại.
 
 ## 🔸 BƯỚC 2: MỔ XẺ VÀ CHẠY THỬ (STATIC SPRINT)
