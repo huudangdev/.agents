@@ -44,4 +44,4 @@ EOF
     - **Payload:** Extrapolate the User's raw ideas into a massive, rigorous, enterprise-grade PRD. This document MUST be thousands of words in density, featuring exhaustive structural logic and mandatory V31.1 compliant Mermaid (`.mmd`) diagrams. Bullet-point summaries or lazy extrapolations are strictly banned!
 
 4. **Handoff & Ignition:** Upon successful scaffolding, report the deployment triumph. Instruct (or autonomously route) the User into the new Workspace context:
-    > "Project Matrix has been successfully scaffolded. Traverse into the isolated node via `cd projects/<Project_Name>` and invoke `/auto_software_factory` to authorize the AI Supreme Court to begin logical execution!"
+    > "Project Matrix has been successfully scaffolded. Traverse into the isolated node via `cd projects/<Project_Name>` and invoke `/planning` to authorize the AI Supreme Court to begin logical execution!"
