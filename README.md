@@ -89,6 +89,15 @@ Integrate the matrix framework into any local project directory securely via our
 curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
 
+### 🔄 Upgrading Existing Environments (OTA Sync)
+
+For teams running older versions of the Engine that do not yet have the `/update_brain` slash command integrated, execute the physical **Non-Destructive Update Protocol** directly in your terminal. This specifically protects your `.agents/agents.md` local state file while updating the system schemas around it:
+
+```bash
+# Safely pull the newest Intelligence updates directly over your existing local repository.
+curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/update.sh | bash
+```
+
 > ⚠️ **CRITICAL DEPENDENCY:** Read the [ROUTING & OPERATIONAL MANUAL](./USAGE_GUIDE.md) to understand multi-agent parallel dispatch paradigms before transmitting commands.
 
 ---
