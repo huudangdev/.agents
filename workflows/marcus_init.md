@@ -1,43 +1,44 @@
 ---
-description: Marcus Fleet Startup Matrix (Tự động Scaffold Dự án, clone Agents & Gen Spec)
+description: Marcus Fleet Startup Matrix (Autonomous Project Scaffolding & Agent Replication)
 ---
 # 🚀 MARCUS FLEET - SUPREME PROJECT KICKSTARTER
 
-Workflow này sinh ra để xóa sổ 100% các thao tác tay dư thừa (Tạo Folder, Tạo File Spec, Copy Paste `.agents`...). Khi Sếp gọi lệnh này, Antigravity BẮT BUỘC phải làm thay toàn bộ bằng quyền truy cập OS.
+This workflow physically automates 100% of manual boilerplate scaffolding (Directory generation, PRD initialization, `.agents` global state injection). Upon invocation, the Antigravity Engine MUST leverage OS-level authority to autonomously bootstrap the physical file tree.
 
-> **HƯỚNG DẪN THỰC THI CHO ANTIGRAVITY:**
+> **ANTIGRAVITY EXECUTION DIRECTIVES:**
 
-1. **Phân tích Input:** Nếu trong câu lệnh của Sếp đã có <Tên Dự Án> và <Mô tả chức năng>, hãy lấy nội dung đó. (Nếu chưa có, hãy lịch sự hỏi Sếp trước khi sang Bước 2).
+1. **Input Parsing:** If the User's command specifies `<Project_Name>` and `<Feature_Description>`, capture these parameters immediately. (If omitted, politely halt execution and prompt the User for these variables prior to proceeding to Step 2).
 
 // turbo
-2. **Scaffold Hệ Sinh Thái (Vật Lý):** Bạn BẮT BUỘC dùng Tool `run_command` chạy Bash Script sau để tạo Cấu trúc thư mục chuẩn và Clone toàn bộ Lõi AI sang dự án mới:
+2. **Ecosystem Structuring (Physical Scaffold):** You are MANDATED to execute the `run_command` tool running the following Bash script. This clones the core Intelligence framework into the newly isolated Project Boundary:
     ```bash
-    export PROJECT_NAME="<Tên_Dự_Án_Viết_Liền_Chữ_Thường_Hoặc_Gạch_Ngang>"
+    export PROJECT_NAME="<lowercase_kebab_case_project_name>"
     mkdir -p projects/$PROJECT_NAME/docs
     cp -r .agents projects/$PROJECT_NAME/
     cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules
     
-    # Sinh file agents.md (Global State) cho dự án con
+    # Generate the Localized agents.md (Global Node State)
     cat <<EOF > projects/$PROJECT_NAME/agents.md
-# 🧠 Nhóm Dự Án: $PROJECT_NAME (agents.md)
-> File quản lý Lịch sử, Tasks và Tình trạng dự án. KHÔNG BAO GIỜ REPLACE, CHỈ ADD UPDATE.
+# 🧠 Project Node: $PROJECT_NAME (agents.md)
+> This file governs the History, Task Log, and Active State. NEVER OVERWRITE ENTIRELY. APPEND ONLY.
 
-## 1. 🎯 Tổng quan (Project State)
-- **Tình trạng:** Khởi tạo
-- **Kiến trúc vĩ mô:** Chưa xác định
+## 1. 🎯 Macro Overview (Project State)
+- **Status:** Bootstrapping
+- **Macro-Architecture:** Undefined
 
-## 2. 📝 Bức tranh Công việc (Tasks & Progress)
-- [x] Khởi tạo dự án bằng marcus_init
-- [ ] Lên PRD và Kiến trúc
+## 2. 📝 Agile Backlog (Tasks & Progress)
+- [x] Bootstrapped physical infrastructure via marcus_init
+- [ ] Render Core PRD & Architectural UML
+- [ ] Scaffold Initial UI State
 
-## 3. 🚦 Lịch sử Làm việc
-- Khởi tạo File trạng thái.
+## 3. 🚦 Execution History (Audit Log)
+- Initialized State Node.
 EOF
     ```
 
-3. **Khởi tạo Dữ Liệu Não Bộ:** Sử dụng Tool `write_to_file` để sinh ra file Spec Gốc:
-    - **Đường dẫn mục tiêu:** `projects/<Tên_Dự_Án>/docs/PRD_RAW.md`
-    - **Nội dung:** Bơm toàn bộ ý tưởng của Sếp vào file này dưới dạng Văn bản PRD Khổng Lồ dài hàng ngàn chữ, phân tích cực kỳ chuyên sâu và BẮT BUỘC chèn code block sơ đồ Mermaid theo CHUẨN V31.1. Cấm viết gạch đầu dòng tóm tắt lười biếng!
+3. **Cognitive Seeding (PRD Genesis):** Utilize the `write_to_file` tool to initialize the Master Specification:
+    - **Target Path:** `projects/<Project_Name>/docs/PRD_RAW.md`
+    - **Payload:** Extrapolate the User's raw ideas into a massive, rigorous, enterprise-grade PRD. This document MUST be thousands of words in density, featuring exhaustive structural logic and mandatory V31.1 compliant Mermaid (`.mmd`) diagrams. Bullet-point summaries or lazy extrapolations are strictly banned!
 
-4. **Bàn Giao & Khai Hoả:** Sau khi chạy xong, hãy thông báo Báo Cáo Triển Khai thành công rực rỡ và hướng dẫn (hoặc tự động tuỳ quyền hạn) Sếp dịch chuyển Workspace:
-    > "Dự án đã được Setup cấu trúc Mẹ thành công. Sếp chỉ cần nhảy vào thư mục `cd projects/<Tên_Dự_Án>` và gõ lệnh `/auto_software_factory` là Tòa Án AI sẽ lập tức thi hành!"
+4. **Handoff & Ignition:** Upon successful scaffolding, report the deployment triumph. Instruct (or autonomously route) the User into the new Workspace context:
+    > "Project Matrix has been successfully scaffolded. Traverse into the isolated node via `cd projects/<Project_Name>` and invoke `/auto_software_factory` to authorize the AI Supreme Court to begin logical execution!"
