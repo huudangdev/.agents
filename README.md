@@ -98,25 +98,49 @@ curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | 
 Command execution is handled algorithmically via direct prompts.
 
 ### 1. `/init_brain` (Global Ignition & Context Alignment)
-**MANDATORY for cold-start environments.** This command serves as the critical bootstrap sequence. It autonomously boots the local TrustGraph memory stack (Neo4j, Chroma, Postgres) via Docker Compose, loads the global constitution (`.clinerules`), and provisions the `SKILLS_INDEX.md` mapping. The AI is physically prohibited from executing code until this semantic ingestion is complete.
+**MANDATORY for cold-start environments.** This is the crucial bootstrap sequence for the Antigravity OS. Relying on an uninitialized LLM context window causes hallucination. When executed, the engine autonomously runs through absolute initialization stages:
+1. **Hardware Ignition:** It executes a background script to boot the TrustGraph local database cluster (Neo4j, Chroma, Postgres) via Docker Compose, bridging local memory with semantic vector spaces.
+2. **Lexical Binding:** It forces the AI to ingest the `.clinerules` protocol, enforcing all architectural boundaries and syntax limitations natively.
+3. **Skill Indexing:** It parses the `SKILLS_INDEX.md` dictionary to prepare the O(1) semantic routing table for agent selection.
+The AI is computationally restricted from generating code until this node returns a green success status.
 
-### 2. `/planning` (Architecture & Requirements Phase)
-**The Genesis of Software.** Triggers Phase 1 of the SDLC. The AI acts as a pure Systems Architect (Left Brain). It maps Feature-Sliced Architectures, synthesizes complete Product Requirement Documents (PRD), and constructs C4 PlantUML/Mermaid diagrams. Code generation is blocked; the system writes output strictly to `/docs` and triggers a **Hard Halt** for human review.
+### 2. `/planning` (Architecture & Requirements: Phase 1)
+**The Matrix Genesis (Left-Brain Logic).** Triggers Phase 1 of the Software Development Life Cycle (SDLC). The system delegates control to pure Systems Architects and PM Agents (e.g., `@david-systems-architect`, `@sophia-product-manager`).
+1. **Domain Research:** Explores edge cases and business complexities.
+2. **PRD Synthesis:** Generates granular Product Requirement Documents (`PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`).
+3. **UML Cartography:** Operates the `mermaid-cli` bin to mechanically map Database Entity-Relationship diagrams and Feature-Sliced folder structures (`SDD_ARCHITECTURE.md`).
+**Execution Halt:** Code writing operations are securely locked. The System presents the `/docs` payload to the human operator for explicit architectural approval.
 
-### 3. `/design` (UI/UX Aesthetic Matrix)
-**The Visual Tokenization Phase.** Initiates Phase 2 of the SDLC. The AI acts exclusively as an Art Director (Right Brain). It consumes the PRD and emits strict Figma-equivalent CSS variables, Typography scalar rules (Golden Ratio), Spacing constraints (4px/8px grid), and Brand Color Palettes into `BRAND_GUIDELINES.md`. This prevents token exhaustion by decoupling design logic from backend schemas. Halts for human review.
+### 3. `/design` (UI/UX Aesthetic Tokenization: Phase 2)
+**The Visual Blueprint (Right-Brain Creativity).** Initiates Phase 2 to prevent token-exhaustion bridging backend logic and aesthetic layout.
+1. **Ingestion:** Reads the Screen Maps from the `/planning` sequence.
+2. **Variable Formulation:** Orchestrates UI/UX specialists (`@maya-ui-ux-designer`, `@aris-designer`) to define specific Figma-equivalent Hex Color Arrays, CSS variables, and padding grids.
+3. **Physical Constraints:** Enforces absolute geometry (4px/8px layout rhythms, Golden Ratio typography scaling).
+4. **Interactive States:** Defines Framer Motion spring properties, hover mechanics, and Skeleton loaders.
+**Execution Halt:** Yields the `BRAND_GUIDELINES.md` to the user. Iterative prompt tweaks to colors and fonts happen here without reloading the entire SDD architecture.
 
-### 4. `/develop` (Execution & QA Simulation)
-**The deterministic Software Factory.** Initiates Phase 3 of the SDLC. A highly rigorous operational flow where the AI merges the Architectural Schemas (`/planning`) and the Design Matrix (`/design`) to physically structure the source code. It features **Cross-Platform Adaptability**—intelligently scanning the root directory to determine the exact execution framework (e.g. Next.js, Go, iOS Swift, Flutter) and launching the corresponding environment (`npm run dev`, `xcodebuild test`, etc.) to execute continuous TDD and Adversarial Playwright/XCTest simulations until all Exit Codes yield Green.
+### 4. `/develop` (The Software Factory Execution: Phase 3)
+**Deterministic Code Generation & Testing.** The engine executes a sequential factory protocol, consuming `/docs` schemas to construct the physical environment.
+1. **Targeting (Cross-Platform Contextualization):** Intelligently probes root-level manifestations (`package.json`, `pubspec.yaml`, `Podfile`) to pivot its underlying toolchain (Next.js, Flutter, iOS Native, etc.).
+2. **TDD Scaffolding:** Writes the Test Suites *first* based on Edge Cases documented in the PRD.
+3. **Component Interpolation:** Melds the PRD logic schemas and the UI/UX `BRAND_GUIDELINES.md` to output the component files into the active workspace.
+4. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
 
 ### 5. `/refactor` (Spaghetti Code Decoupling)
-**The Surgical Cleanse.** Designed strictly for "Brownfield" or legacy repositories. Before touching any logic, it executes Node commands (e.g. `npx understand-anything`) to extract the full Abstract Syntax Tree (AST) and generate an N-dimensional Knowledge Graph. It then strategically reduces Cyclomatic Complexity (e.g. flattening prop-drilling, decoupling monoliths into FSD), while utilizing aggressive automated testing to self-heal any compilation failures caused by the mutation.
+**The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
+1. **Persona Retrieval:** Queries the local GraphRAG database to inherit the user's historical coding patterns and avoid previous anti-patterns.
+2. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
+3. **Cyclomatic Reduction:** Detects monolithic modules (e.g., >300 LOC) and algorithmically decouples them following Feature-Sliced Design (FSD)—flattening states and enforcing `eslint --fix` or typing constraints.
+4. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
+5. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
 
 ### 6. `/quick_fix` (Micro-Mutation Bypass)
-**Instantaneous Hotfix Protocol.** Circumvents all macro-planning pipelines for O(1) latency fixes (e.g. tweaking a CSS variable or catching a rogue null pointer). The cognitive load is minimized to under 240 seconds per execution.
+**Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context.
 
 ### 7. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
-**Native & Web Scaffolding Vectors.** Physical boilerplate constructors. `/mobile_init` enforces cross-platform mobile doctrines (React Native/Flutter bounds, iOS Safe-Area rules, continuous spring animations). `/marcus_init` establishes the baseline web structure and Antigravity intelligence directory injection.
+**Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 
+- `/marcus_init` acts as the Web Genesis point, establishing baseline structural integrity for Next.js systems and injecting the `.clinerules` intelligence protocol into empty workspaces.
+- `/mobile_init` initiates mobile doctrine, enforcing cross-platform physics (React Native/Flutter component boundaries, iOS Safe-Area adherence, mobile viewport limitations) to prepare the ground for the Planning phase.
 
 ---
 
