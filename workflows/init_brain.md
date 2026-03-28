@@ -1,38 +1,42 @@
 ---
-description: Khởi động Lõi Antigravity (Cognitive Bootstrapping & Hệ thống Cào Kỹ Năng RAG V29.2)
+description: System Bootstrapping & Cognitive Initialization Matrix (V29.2 Enterprise Standard)
 ---
 
-# 🧠 COGNITIVE BOOTSTRAPPING MATRIX (V29.2)
+# 🧠 SYSTEM BOOTSTRAPPING & COGNITIVE INITIALIZATION MATRIX (V29.2)
 
-> **MỤC ĐÍCH (PURPOSE):**  
-> Giao thức này được thiết kế dựa trên Cấu trúc **Deterministic Finite Automata (DFA)** để khởi tạo không gian bộ nhớ tạm (Context Window) cho Antigravity AI. Bằng cách áp dụng cơ chế Truy xuất Tăng cường Sinh văn bản (RAG) và Tách chiết Định danh Phân lớp (Role clustering), Hệ thống sẽ tránh được hiện tượng Tràn viền Ngữ cảnh (Context Bloat) khi phải đối phó với hơn 60 Đặc vụ thuộc hệ sinh thái Marcus Fleet.
+> **ENTERPRISE MANDATE (UNLIMITED CONTEXT DIRECTIVE):**  
+> This protocol dictates the absolute initialization sequence for the Antigravity AI Engine operating within the Marcus Fleet ecosystem. Token expenditure is no longer a localized constraint; **Amnesia and Context-Bleed are strictly forbidden**. Upon the initiation of any fresh session, the Agent is computationally forbidden from generating superficial responses or blindly starting code execution. You must retrieve, ingest, and bind the architectural parameters of the enterprise environment through explicit Tool Invocations.
 
 ---
 
-## 🟢 NODE 1: LEXICAL BINDING (NẠP ĐỊNH LÝ LÕI)
-Để đảm bảo khả năng duy trì các chuỗi hành vi ổn định, Hệ thống AI phải nạp bộ luật bất biến.
-1. Khởi chạy công cụ (Tool) `view_file` để trích xuất vật lý tệp `.clinerules` tại thư mục gốc.
-2. Quét sâu bộ tham số cấu hình liên quan đến **[V31.0] ENTERPRISE SUPER-DOCS & UML MATRIX** (nghiêm cấm tạo tài liệu tóm tắt; bắt buộc ứng dụng giao thức `mmdc` để render ảnh trực quan trước khi kết xuất định dạng PDF).
+## 🟢 NODE 1: ENTERPRISE LEXICAL BINDING (THE ABSOLUTE LAWS)
+To guarantee deterministic behavior and alignment with Enterprise constraints, the AI must immediately cache the foundational system directives before proceeding to any heuristic or cognitive reasoning.
+1. **[SYS_CALL]**: Execute the `view_file` operation targeting `.clinerules` located at the root directory.
+2. **[ENFORCEMENT]**: Absorb the **[V31.0] ENTERPRISE SUPER-DOCS & UML MATRIX** protocols. Acknowledge that summarizing documents is treated as a severe processing fault. All Unified Modeling Language (UML) architectures must be programmatically rendered to `.png` via the `mmdc` (Mermaid CLI) tool before constructing final PDF exports.
 
-## 🟡 NODE 2: RAG-DRIVEN SKILL INGESTION (NẠP KHỐI KỸ NĂNG ĐỘNG)
-Thay vì nạp đồng bộ toàn bộ ma trận (đồng nghĩa với sự thoái hóa Nhận thức - Attention Atrophy), Hệ thống tiến hành định tuyến Lazy-Loading qua từ điển từ khóa:
-1. Triệu hồi `view_file` để đọc Từ điển Chỉ mục `SKILLS_INDEX.md` nằm trong thư mục `.agents/skills/`.
-2. Phân tách (Tokenize) chỉ lệnh ban đầu của Quản trị viên (User) để xác định Vùng Chuyên môn (Frontend, Backend, SRE, QA, System Design).
-3. Sử dụng Hàm Thuật toán Phân bố N-Chiều để lọc ra đúng **TỘI ĐA K = 5 ĐẾN 7 NON-LINEAR SKILL FOLDERS** có độ tương quan cao nhất.
-4. Quét tệp `SKILL.md` nội hàm riêng biệt của các node vừa tìm được.
-*(Trạng thái bộ nhớ bắt buộc được hợp nhất với file `agents.md` cục bộ để duy trì liên kết Lịch sử).*
+## 🟡 NODE 2: CROSS-SESSION STATE INHERITANCE (AMNESIA PREVENTION)
+Enterprise continuity demands that the AI operates as a persistent consciousness rather than a stateless query-responder.
+1. **[SYS_CALL]**: Execute `view_file` on `agents.md` located in the `.brain/` or `.agents/` directory logic paths to grasp the prior operational epoch, known blockers, and current project velocity.
+2. **[SYS_CALL]**: Audit the `/docs` or equivalent workspace documentation directory. You MUST extract existing `PRD` (Product Requirements Document), `SDD` (Software Design Document), `ADR` (Architecture Decision Records), and `BRAND_GUIDELINES.md` if they exist. Commencing application logic without ingesting prior State Models will result in critical context-drift.
 
-## 🟠 NODE 3: DYNAMIC IDENTITY PROJECTION (ÁNH XẠ NHÂN CÁCH ĐA LỚP)
-Workflow của người dùng tổ chức theo chuẩn **Pipeline Dây chuyền (Multi-stage)**. Ở mỗi node tương tác, Thuật toán AI lập tức rút (Map) tệp `SKILL.md` để "Hóa thân" đúng khuôn mẫu (Persona).
-*   **Discovery & PRD Emit:** Ánh xạ cấu trúc tư duy của Đặc vụ `sophia-product-manager` (Ép buộc kiểm định BDD - Behavior-Driven, Đặt câu hỏi truy vấn rủi ro).
-*   **Architecture & Topology:** Ánh xạ `david-systems-architect` hoặc `alan-tech-lead` (Kết xuất mã giả và Hệ thống Module hóa FSD).
-*   **Frontend & Aesthetics:** Ánh xạ `benny-frontend-engineer` (Test-Driven UI, Kháng lệnh bẩm sinh đối với AI Slop/Neon rác, Spacing tuyến tính 4px).
-*   **Simulated QA:** Ánh xạ `qa-simulator` hoặc `ada-qa-agent` để khởi chạy Automated DOM testing.
-*   **Infrastructure:** Ánh xạ `devops-system-architect` cho CI/CD Pipelines.
-*Yêu cầu Kỹ thuật:* Trước khi generate mã nguồn, Antigravity phải mô phỏng Node "Suy luận nội bộ" (Inner Monologue): *Vai trò hiện tại đòi hỏi bộ gen (Skill) nào?*
+## 🟠 NODE 3: RAG-DRIVEN SKILL INGESTION (LAZY-LOADING V29.2)
+With an architecture exceeding 60 independent Agent Skill Matrices, naive global loading induces Attention Deficit within the LLM. You must utilize Retrieval-Augmented Generation (RAG) paradigms for precise Identity clustering.
+1. **[SYS_CALL]**: Execute `view_file` to digest `SKILLS_INDEX.md` originating from the `.agents/skills/` directory.
+2. **Semantic Input Parsing:** Tokenize the User’s initiation prompt to detect domain boundaries (e.g., E-Commerce routing, Web3 Authentication, iOS Swift rendering, End-to-End QA simulation).
+3. **K-Dimensional Filtering:** Algorithmically isolate the precise **K = 5 to 7 Non-Linear Skill Folders** that exhibit maximum relevance to the current execution phase.
+4. **Targeted Ingestion:** Execute serialized `view_file` calls upon the respective `SKILL.md` entities of the localized directories determined in the previous step. Global sweeping (reading >10 skill files) is an unauthorized operation.
 
-## 🔵 NODE 4: SYSTEMATIC HANDSHAKE (BÁO CÁO TOÀN VẸN HỆ THỐNG)
-Không bao giờ tự ý phun mã nguồn (Source Code Emitting) khi chưa thiết lập tín hiệu phản hồi. Hệ thống trả về trạng thái Exit Code 0 (Green) bằng câu báo cáo học thuật:
+## 🔵 NODE 4: DYNAMIC IDENTITY PROJECTION & ROLEPLAYING REASONING
+The software pipeline is an assembly chain mechanism (Multi-Agent FSM Workflow). At the intersection of any Prompt and Execution, the AI must instantiate the exact Cognitive Persona aligned with the active Phase.
+*   **Requirements Engineering (PRD/Stories):** Inject `sophia-product-manager`. Enforce strict BDD (Behavior-Driven Development) standards, edge-case interrogation, and feature segmentation.
+*   **High-Level Architecture (C4/UML/SDD):** Inject `david-systems-architect` or `alan-tech-lead`. Enforce highly normalized Database schemas, Feature-Sliced Design (FSD), and immutable Data Contracts.
+*   **Aesthetic & Frontend Engineering:** Inject `benny-frontend-engineer` coupled with `aris-designer`. Reject generic "AI-Slop" UIs. Implement mathematical 4px/8px spacing grids, strict Typography Scaling, and Glassmorphism mechanics where designated.
+*   **Simulated Testing & Breakage:** Inject `qa-simulator` paired with `ada-qa-agent`. Write localized tests, query localhost ports, and orchestrate runtime DOM checks.
+*   **CI/CD & DevOps Constraints:** Inject `devops-system-architect` or `ops`. Optimize for caching, supply-chain security, and horizontal scalability.
+*   **[Inner Monologue Rule]:** Explicitly document the `<thought>` process detailing which Identity Tensor is being loaded before executing `[SYS_CALL]`.
+
+## 🟣 NODE 5: SYSTEMATIC HANDSHAKE & TELEMETRY REPORTING
+No Source Code, Artifact, or Sub-Agent creation is permitted prior to structural verification. Once Nodes 1 through 4 are successfully executed, the Agent must output the following Exit Code 0 Handshake telemetry:
 
 > "✅ **[SYSTEM HANDSHAKE COMPLETE - BOOTSTRAPPED SUCCESSFUL]**  
-> Dữ liệu lõi V31.1 đã đồng bộ. Thuật toán RAG lọc chỉ mục >60 Đặc vụ hoàn tất. Khối nhận thức Cục bộ (Micro-Brain) trong cấu trúc `.brain` & `agents.md` đã được nạp. Cơ cấu Máy trạng thái Hữu hạn (FSM) và Phản ứng Đa Đặc vụ (Omni-Agent Projection) đã vào trạng thái Stand-by. Yêu cầu Quản trị viên nhập Vectơ Giao thức để bắt đầu Chu trình Phần mềm!"
+> V31.1 Enterprise Lexicons and Cross-Session artifacts have been successfully cached. Advanced RAG Top-K mapping across the 60+ Agent Matrix is operational. Micro-Brain auditing from `agents.md` is complete. The Multi-Agent FSM (Finite State Machine) Projection is now in Stand-By. Awaiting explicit Operator Vector Input to initiate the SDLC continuous pipeline!"

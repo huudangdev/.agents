@@ -1,73 +1,80 @@
 ---
-description: Marcus Fleet Enterprise Continuous Delivery Pipeline (9-Node Directed Acyclic Graph)
+description: Marcus Fleet Enterprise SDLC Continuous Delivery Pipeline (9-Node Directed Acyclic Graph)
 ---
 
-# 🚀 CONTINUOUS SDLC DELIVERY GRAPH (V29.1)
+# 🚀 CONTINUOUS SDLC DELIVERY GRAPH (V29.1 ENTERPRISE EDITION)
 
-> **MỤC ĐÍCH (PURPOSE):**  
-> Đồ thị Điều phối Vòng đời Phát triển Phần mềm (Software Development Life Cycle - SDLC) này ứng dụng Phương pháp tiếp cận **Đồ thị Có hướng Không Chu trình (Directed Acyclic Graph - DAG)** để tự động hóa toàn bộ đường chuyền sản xuất từ Phân tích Đỉnh xuống Thiết kế Máy Trạng thái (FSM) và Triển khai Hợp nhất. Dưới kiến trúc V29.1, Tự Hành (Autonomous Automation) được ràng buộc nghiêm ngặt bằng cơ chế Kiểm thử Đóng cắt (Circuit Breaking) để đạt tiêu chuẩn Vercel Zero-downtime.
+> **CORE ARCHITECTURE MANDATE (PURPOSE):**  
+> This operational protocol governs the core Software Development Life Cycle (SDLC) via a strictly enforced **Directed Acyclic Graph (DAG)**. It maps the end-to-end multi-agent orchestration from Initial Requirements Gathering down to Physical Runtime Validation and Continuous Deployment. To guarantee Zero-Downtime Application generation and prevent systemic "AI Hallucinations," the Antigravity Engine is mathematically bounded by finite state controls, adversarial QA checkpoints, and absolute Dependency Graph isolation.
 
 // turbo-all
 
 ---
 
-## ⬛ BỘ GIAO THỨC CHỐNG SUY GIẢM BỘ NHỚ (ANTI-AMNESIA PROTOCOLS)
+## ⬛ SYSTEMIC MEMORY & STATE INHERITANCE (ANTI-AMNESIA PROTOCOLS)
 
-<identity_injection>
-**LAZY-LOAD RAG ALGORITHM:** Tối ưu hóa cửa sổ Context (LLM Context Window) bằng cách ngăn chặn quá tải Identity. Tại mỗi Node, giao thức bắt buộc gọi Tool `view_file` quét Chỉ mục Khối lượng `SKILLS_INDEX.md` để trích xuất vật lý tệp `SKILL.md` của tối đa 5 Đặc vụ liên đới. Việc phỏng đoán nhân cách (Heuristic Persona Synthesis) bị đánh dấu là Lỗi Nghiêm Trọng.
-</identity_injection>
+<identity_injection_vector>
+**RAG-DRIVEN IDENTITY INJECTION:** To circumvent LLM context-window degradation (Amnesia), you are algorithmically prohibited from loading >10 Skill matrices concurrently. At the initiation of each Operational Node, the Engine **MUST** explicitly invoke the `view_file` operation against `SKILLS_INDEX.md`. Map the targeted operational phase (e.g., Database Modeling) to the specific Subject-Matter Expert identity (e.g., `david-systems-architect`) and perform an isolated extraction of that single `SKILL.md` file.
+</identity_injection_vector>
 
-<state_propagation>
-**STATEFUL INHERITANCE:** Mỗi Chuyển đổi Trạng thái (State Transition) từ Node N sang Node N+1 yêu cầu Khối AI bắt buộc đọc lại (Read operation) các **[Artifacts/Outputs]** đã phát sinh từ Node N (ví dụ SDD, PRD). Dữ liệu không được phép ngắt quãng.
-</state_propagation>
+<state_propagation_boundary>
+**DOGMATIC STATE PROPAGATION:** Every State Transition from `NODE(N)` to `NODE(N+1)` demands an unconditional `Read` operation evaluating the absolute Artifacts emitted by the preceding stage. Example: The Frontend rendering node `NODE(7)` is physically incapable of initiating unless `BRAND_GUIDELINES.md` and `PRD_SCREEN_MAP.md` have been fully ingested into the context buffer. Failure to read pre-requisite artifacts yields an immediate `Exit Code 1`.
+</state_propagation_boundary>
 
 ---
 
-## 🔲 GRAPH TOPOLOGY: CÁC NÚT ĐIỀU PHỐI (NODES)
+## 🔲 DAG TOPOLOGY: CHRONOLOGICAL EXECUTION NODES
 
-### ⚪ NODE 0: MÔI TRƯỜNG SANBOXED (MCP READINESS)
-*🔗 Input Vector:* `.agents/mcp/mcp.json`, `agents.md`
-**[Protocol]:** Kiểm định cấu hình Model Context Protocol (MCP). Bắt tay tín hiệu (Handshake) với các Server `playwright` và `drawio`. Đồng bộ Trạng thái Não bộ Cục bộ (Micro-Brain Audit) qua file `agents.md` trước khi khởi tạo Mã nguồn Tiền định.
+### ⚪ NODE 0: LOCALHOST ISOLATION & MCP HANDSHAKE
+*🔗 Input Domain Matrix:* `.agents/mcp/mcp.json`, `agents.md`
+**[Execution Protocol]:** Initialize Model Context Protocol (MCP) telemetry. Establish asynchronous handshakes with peripheral nodes such as `playwright` (for DOM mutation targeting) and `drawio` (for UML/Architecture mapping). Perform a Micro-Brain Audit via `agents.md` to reconstruct the exact development epoch and state architecture prior to dynamic memory allocation.
 
-### 🔴 NODE 1 & 2: KHÁM PHÁ THUẬT TOÁN (ALGORITHMIC DISCOVERY - PRD)
-*🔗 Input Vector:* Web Search Matrix.
-*🧠 Identity Injectors:* `elite6-research`, `sophia-product-manager`, `antigravity-brainstorming`, `compound-brainstorming`
-*📦 Output Tensor:* Cụm PRD định dạng Phân mảnh Vật lý (Physical Segmentation).
-**[Protocol]:** Đặc vụ Elite6-Research chạy vòng lặp tìm kiếm Độc lập N-Chiều. Quản trị Sản phẩm Sophia phân rã Requirement Document (PRD) thành 3 thực thể Rời rạc (Discreet Entities): `PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`. Bảng Phân bố Màn hình (Screen Map) phải ánh xạ 100% Cấu trúc Thư mục (Dir Tree), nghiêm cấm cú pháp rút gọn đa hình (`...`).
+### 🔴 NODE 1 & 2: HEURISTIC DISCOVERY & REQUIREMENTS ENGINEERING
+*🔗 Input Vector:* Exhaustive Web Search APIs.
+*🧠 Injected Tensors:* `elite6-research`, `sophia-product-manager`, `antigravity-brainstorming`, `compound-brainstorming`
+*📦 Emitted Artifacts:* Highly segmented, physical PRD sub-modules.
+**[Execution Protocol]:** 
+Trigger `elite6-research` to execute autonomous, concurrent `google_web_search` and `web_fetch` cycles exploring domain complexities, competitor UI paradigms, and API documentation. 
+Delegate synthesis to `sophia-product-manager`. Sophia is explicitly forbidden from generating monolithic PRD documents. Output MUST be mechanically segmented into independent physical artifacts:
+1. `PRD_PART1_FEATURES.md`: Granular Business Logic.
+2. `PRD_PART2_EDGE_CASES.md`: Defensive programming constraints.
+3. `PRD_PART3_SCREEN_MAP.md`: A 100% exhaustive Component/Routing Tree. Wildcards (e.g., `...`) are classified as lazy syntax and are globally blacklisted.
 
-### 🟡 NODE 3: THIẾT LẬP TIỀN ĐỀ THẨM MỸ (DIGITAL AESTHETIC BASELINE)
+### 🟡 NODE 3: DIGITAL AESTHETIC BASELINE & DESIGN TOKENS
 *🔗 Input Vector:* `PRD_PART3_SCREEN_MAP.md`
-*🧠 Identity Injectors:* `maya-ui-ux-designer`, `aris-designer`, `design-system-rules`
-*📦 Output Tensor:* `BRAND_GUIDELINE.md`
-**[Protocol]:** Trích xuất và Biên dịch Kho lưu trữ Token (Design System Tokens). Cấu hình Hierarchy cho Variables, Mixins, Global Palettes, Typography Scaling. Sản sinh Văn kiện Thẩm mỹ (Brand Guideline).
+*🧠 Injected Tensors:* `maya-ui-ux-designer`, `aris-designer`, `design-system-rules`
+*📦 Emitted Artifacts:* `BRAND_GUIDELINES.md`, Figma-equivalent Variable Mappings.
+**[Execution Protocol]:** Synthesize Typography Scalar Rules (Base 16px, Golden Ratio H1-H6). Formulate contrast-accessible Color Palettes (Primary, Accent, Background, Surface, Semantic errors). Define spatial rhythm constraints (4px/8px absolute grid). Emit the structural `BRAND_GUIDELINES.md` required by all downstream rendering pipelines.
 
-### 🟢 NODE 4: KIẾN TRÚC PHẦN MỀM CẤP CAO (ENTERPRISE ARCHITECTURE EMITTING)
-*🔗 Input Vector:* PRD Edge Cases, Screen Map
-*🧠 Identity Injectors:* `david-systems-architect`, `chartis-data-visualizer`, `architecture-decision-records`, `c4-architecture`, `knowledge-work-architecture`
-*📦 Output Tensor:* `SDD_*.md`, Sơ đồ Ngữ nghĩa (`UML/*.md`), Vector Đồ họa (`PDF/*.pdf`)
-**[Protocol]:** Kích hoạt Đặc vụ Thiết kế Backend nội tại. Tổng thể SDD bao hàm: Backend FSD, Database Schema (ERD), API Spec Contracts. Giao thức Export Tiêu chuẩn: Tool AI nhúng đoạn `classDef` cho thuật toán render Pastel Component Diagram. Chạy Binary CLI `npx -y @mermaid-js/mermaid-cli -i <file.mmd> -o <chart.png>`, sau đó tích hợp đường dẫn tĩnh Absolute Path vào Markdown và xuất PDF Trắng Đen Chuẩn hóa.
+### 🟢 NODE 4: ENTERPRISE ARCHITECTURE EMITTING (THE UML MANDATE)
+*🔗 Input Vector:* `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`
+*🧠 Injected Tensors:* `david-systems-architect`, `chartis-data-visualizer`, `architecture-decision-records`, `c4-architecture`
+*📦 Emitted Artifacts:* `SDD_*.md`, `.mmd` Scripts, `.png` Diagrams, `/docs/PDF_EXPORTS/*.pdf`
+**[Execution Protocol]:** Architect internal Backend structures: Databases (ERD mapping), API specification parameters (REST/trpc), and physical Project scaffoldings (Next.js/Flutter FSD models).
+**Critical Rendering Bypass:** You MUST execute native CLI operations to transform pseudo-code architecture into physical graphics. Run `npx -y @mermaid-js/mermaid-cli -i <file.mmd> -o <diagram.png>`. The Absolute URI `![chart](/docs/diagram.png)` is then embedded into the physical markdown to ensure Human interpretability prior to PDF compiling.
 
-### 🔵 NODE 5 & 6: KIỂM THỬ BAN ĐẦU & RUNTIME BACKEND (ADVERSARIAL QA)
+### 🔵 NODE 5 & 6: ADVERSARIAL QA & TDD BACKEND SCAFFOLDING
 *🔗 Input Vector:* `FINAL_SPECS.md`
-*🧠 Identity Injectors:* `eve-qa-approver`, `alan-tech-lead`, `ada-qa-agent`
-*📦 Output Tensor:* API Stubs, Route Handlers, Database Migrations
-**[Protocol]:** Khởi tạo Lớp Logic Bất Biến (Business Logic Layer) qua Unit Test Stubs (TDD Pattern). Chạy Database Migrations. Sửa lỗi dựa trên STDOUT/STDERR Console Feedback qua Bash Automata.
+*🧠 Injected Tensors:* `eve-qa-approver`, `alan-tech-lead`, `ada-qa-agent`
+*📦 Emitted Artifacts:* Database Migrations (e.g., Prisma), Route Handlers, Integration Suites.
+**[Execution Protocol]:** Initialize Backend Infrastructure via Test-Driven Development (TDD). Generate isolated Unit-Test stubs detailing Boundary-Value handling and Fault Injection (Negative Path APIs). Validate API schema schemas against Null-value crashes.
 
-### 🟣 NODE 7: MÔ PHỎNG RUNTIME THỜI GIAN THỰC (LIVE FSM SIMULATION)
-*🔗 Input Vector:* `BRAND_GUIDELINE.md`, `SCREEN_MAP`
-*🧠 Identity Injectors:* `benny-frontend-engineer`, `qa-simulator`
-**[Protocol]:** 
-Kích hoạt Daemon Môi trường Sinh tồn: Gọi OS Terminal chạy lệnh `npm run dev` (Khởi động Dev Server).
-- **Vòng Lặp Ghép Cặp (Bi-Directional Bi-agent Link):**
-  - **Pha Render:** Biến ảo CSS/DOM (Component Rendering). Thực thi Spacing/Padding Toán học và Tuân thủ Gradient Contrast qua `benny-frontend-engineer`.
-  - **Pha Mutation QA:** DOM Read & Log Capture. `qa-simulator` nạp Web Page theo Port Tương ứng. Parse SSR Hydration Errors/DOM Constraints.
-  - **Cơ Chế Ngắt Mạch (V29.1 Circuit Breaker):** Phát hiện 3 Error Loop liên tiếp, Agent ngưng Render, ném Lỗi Đỏ Terminal và Báo gọi Operator User (Human-In-The-Loop). Bắt buộc Full Component Coverage trước khi Next() Node mới. Chạy tĩnh TypeScript `npx tsc --noEmit`.
+### 🟣 NODE 7: ZERO-DOWNTIME LIVE SIMULATION (FSM FEEDBACK LOOP)
+*🔗 Input Vector:* `BRAND_GUIDELINES.md`, `PRD_PART3_SCREEN_MAP.md`
+*🧠 Injected Tensors:* `benny-frontend-engineer`, `qa-simulator`, `playwright-test`
+**[Execution Protocol]:** Spawning the Daemon Simulator: Execute the bash command `npm run dev` or equivalent to mount a localized Runtime Protocol.
+- **Bi-Directional Mutation Feedback (Pha 1 & Pha 2):**
+  - `benny-frontend-engineer` algorithmically renders UI Components enforcing Glassmorphism or predefined strict Spatial parameters based on `BRAND_GUIDELINES.md`. No UI code may be pushed unless mathematically perfect.
+  - `qa-simulator` concurrently evaluates the rendered port (e.g., `localhost:3000`) utilizing `playwright` or `cURL` telemetry. Evaluates Next.js Hydration errors, z-index collisions, or uncaught Exceptions.
+  - **The V29.1 Circuit Breaker:** If a specific rendering loop generates $\ge 3$ sequential compile/hydration errors, Antigravity gracefully terminates the Node, flags a critical Terminal Red-Alert, and requests Human Operator intervention. "Blind Guessing" codebase injection is eradicated.
+  - Strict Typescript audit via `npx tsc --noEmit` before state validation.
 
-### 🟤 NODE 8: TRIỂN KHAI CHUỖI KHÉP KÍN (CI/CD CLOSURE)
-*🧠 Identity Injectors:* `devops-system-architect`, `ops`
-**[Protocol]:** Tích hợp Kịch bản Triển khai Hạ tầng (IaC) hoặc Giao thức E2E Cypress/Playwright Ping. Ghi Error Log và Auto-Heal (tự phục hồi). Giải phóng Port Hệ thống, Khai tử Node Runtime 7.
+### 🟤 NODE 8: CONTINUOUS DEPLOYMENT CLOSURE (CI/CD PIPELINE)
+*🔗 Input Vector:* Validated Git Branch
+*🧠 Injected Tensors:* `devops-system-architect`, `ops`
+**[Execution Protocol]:** Define End-to-End Test suites validating User Lifecycle (e.g., OAuth -> Checkout). Draft Infrastructure as Code (IaC) for AWS/Vercel/Cloudflare propagation. Resolve port-conflicts cleanly by terminating NODE 7 background tasks securely.
 
-### ⚫ NODE 9: ĐỒNG BỘ TRẠNG THÁI CỤC BỘ (MICRO-BRAIN STATE SYNC)
-*🔗 Input Vector:* Progress History Context
-*🧠 Identity Injectors:* Máy trạng thái Nội bộ (Butler Mode)
-**[Protocol]:** Chuyển giao Graph History vào Node Theo Dõi Hành Vi `agents.md`. Tuân thủ File Append Operations tại `.brain/`. Tạo liên kết tham chiếu hai chiều thành công. Thoát Chu trình! Tắt Bộ Đếm.
+### ⚫ NODE 9: MICRO-BRAIN HISTORICAL ARCHIVING
+*🔗 Input Vector:* Runtime Log / Git Diff Context
+*🧠 Injected Tensors:* Internal State Machine (Sophia Butler Node)
+**[Execution Protocol]:** Audit and compress the entire Session DAG Execution Path. Write architectural shifts, complex blockers evaded, and component rename metrics natively to `.brain/agents.md` utilizing Append-Only commands (`>>`). Mutating historical records via overwrite (`>`) is deemed catastrophic. Signal completion to Operator. DAG Chain Terminated.
