@@ -1,33 +1,33 @@
 # 🚀 Marcus Fleet Enterprise Matrix (.agents)
-**Phiên bản:** Antigravity V29.1 - The Dynamic Lazy-Loading Epoch
+**Version:** Antigravity V29.1 - The Dynamic Lazy-Loading Epoch
 
 **The Ultimate AGI Core for Software Architecture, FSD/DDD Coding, Pixel-perfect UI/UX, and Autonomous DevOps.**
 
-Đây là bộ Lõi Phân tán (Distributed Brain) mạnh mẽ nhất. Khác với các mô hình prompt tĩnh truyền thống, **V29.1** đã tiến hóa thành một "Sandbox Động": Chạy tác vụ Tĩnh/Động xen kẽ, tự động RAG nạp kỹ năng, có Circuit Breaker bảo vệ API và sở hữu kho tàng **64 Đặc Vụ Tinh Anh**. 
+This repository contains the most advanced Distributed AI Agent Core. Moving beyond traditional static prompt models, **V29.1** operates as a "Dynamic Sandbox": it seamlessly transitions between macro workflows and micro-tasks, utilizes dynamic RAG (Retrieval-Augmented Generation) for on-the-fly skill configuration, employs a Circuit Breaker system for API budget protection, and orchestrates a matrix of **64 Specialized Elite Agents**.
 
-Hệ thống chạy 100% tự động, KHÔNG viết tắt code (Zero-Truncation) và KHÔNG bắt user tự gõ lệnh CLI.
+The system natively operates with 100% autonomy, enforcing Zero-Truncation (full file rewrites) and eliminating the need for users to manually execute CLI instructions.
 
 ---
 
-## 🏗️ KIẾN TRÚC HOẠT ĐỘNG V29.1 (Visual Workflow)
+## 🏗️ V29.1 ARCHITECTURAL WORKFLOW
 
 ```mermaid
 graph TD
-    User([Sếp / Con Người]) --> |Nhập Slash Command| AgentCore{Antigravity Core}
+    User([Operator / Human]) --> |Inputs Slash Command| AgentCore{Antigravity Core}
     
-    subgraph "Federal Brain Matrix (Core Lõi)"
+    subgraph "Federal Brain Matrix (Core Engine)"
     AgentCore --> |1. Lazy-Loading| RAG[🧠 SKILLS_INDEX.md]
-    RAG --> |2. Lấy 5-7 Skills / 64| Context[LLM Context Window]
+    RAG --> |2. Retrieve 5-7 Relevant Skills| Context[LLM Context Window]
     end
     
-    subgraph "System Tools & Guards"
-    Context --> |3. Thực thi| Code[Code Editor / Terminal]
-    Code --> |Lỗi Limit 3 Tự Ngắt| CircuitBreaker[Cầu Dao Bảo Vệ]
-    CircuitBreaker -.-> |Human-in-the-Loop| User
-    Context --> |4. Tool Lỗi?| Fallback[Fallback Tools - Mermaid / Grep]
+    subgraph "System Guards & Execution"
+    Context --> |3. Autonomous Execution| Code[Code Editor / Terminal]
+    Code --> |Limit Exceeded 3x| CircuitBreaker[Circuit Breaker]
+    CircuitBreaker -.-> |Human-in-the-Loop required| User
+    Context --> |4. Service Unavailable?| Fallback[Native Fallback: Mermaid / Shell Grep]
     end
     
-    subgraph "Workflows"
+    subgraph "Macro Workflows"
     Context --> W1[/quick_fix]
     Context --> W2[/auto_software_factory]
     Context --> W3[/refactor_project]
@@ -36,64 +36,63 @@ graph TD
 
 ---
 
-## 🌟 TÍNH NĂNG ĐỘT PHÁ TỪ V29.1
-1. **Semantic RAG Lazy-Loading:** Không tải toàn bộ 64 thư mục vào Memory làm tràn RAM và gây ảo giác (Hallucination). Antigravity tự đọc `SKILLS_INDEX.md`, tìm Tag `[Frontend]`, `[QA]`, `[Architecture]` và Nạp đúng người đúng việc. Gíup tăng 80% tốc độ khởi chạy.
-2. **Circuit Breaker (Mạch ngắt 3 Try):** Nếu AI vấp bug Terminal và cố fix lỗi tới lần thứ 3 mà vẫn thất bại -> Hệ thống TỰ ĐỘNG CÚP ĐIỆN, giương Cờ Đỏ (🚩) gọi Sếp vào xử lý. Bảo vệ Tuyệt Đối số dư tài khoản Token của bạn.
-3. **Mạng lưới Nhớ Cục Bộ (Micro-Brain):** Hệ thống không bao giờ bị mất trí nhớ. Mọi quyết định đều được ghi chép vào `agents.md` và `.brain/` của dự án.
-4. **Hệ Thống Phản Ứng Phụ (Tool Fallback):** Khi Server vẽ Graph (Draw.io, Understand-Anything) bị sập -> AI tự lùi về code Mermaid Markdown tĩnh hoặc Grep Shell native. Cương quyết không nói "Tôi không làm được".
+## 🌟 BREAKTHROUGH FEATURES (V29.1)
+1. **Semantic RAG Lazy-Loading:** Prevents context window fragmentation and AI hallucination caused by mass-loading 64 skill folders. Antigravity dynamically parses `SKILLS_INDEX.md`, identifies semantic tags (e.g., `[Frontend]`, `[QA]`, `[Architecture]`), and injects only the necessary personas. This reduces initial load times and token consumption by 80%.
+2. **The 3-Strike Circuit Breaker:** If an AI agent attempts to fix a build compilation or terminal error and fails 3 consecutive times, the system will **autonomously halt execution** and raise a Red Flag (🚩) requiring human intervention. This entirely eliminates infinite error-loop billing anomalies.
+3. **Micro-Brain Local Memory:** The system maintains persistent state preservation. Architectural decisions and bug fixes are continuously logged into `agents.md` and component-level `.brain/` directories, completely bypassing the memory limitations of isolated chat sessions.
+4. **Resilient Fallback Protocols:** If external MCP (Model Context Protocol) servers like *Draw.io* or *Understand-Anything* experience downtime, the AI seamlessly degrades to native Markdown Mermaid diagramming and local `grep` shell searches to maintain momentum without throwing fatal errors.
 
 ---
 
-## 📦 CÁCH CÀI ĐẶT
-Để sử dụng bộ Não này cho các dự án của bạn, chỉ cần tạo một Workspace tổng, sau đó clone kho chứa AI Core về máy.
+## 📦 INSTALLATION
+To utilize this AGI core, simply construct a master workspace and clone the `.agents` engine into your project.
 
 ```bash
-# 1. Tạo một thư mục Workspace tổng cho công ty/cá nhân
+# 1. Create a primary workspace directory
 mkdir marcus-workspace && cd marcus-workspace
 
-# 2. Clone "Lõi AI" Marcus Fleet về (dưới Tên thư mục ẩn .agents)
+# 2. Clone the Marcus Fleet AI Core (as a hidden `.agents` directory)
 git clone https://github.com/huudangdev/.agents.git .agents
 
-# 3. Mở mã nguồn bằng Cursor / OpenClaw / Antigravity và trải nghiệm.
+# 3. Open the codebase in your AI IDE (Cursor / Antigravity / OpenClaw) and begin.
 ```
 
-> **📖 ĐỌC NGAY:** Trước khi bắt tay vào code, BẮT BUỘC đọc [HƯỚNG DẪN HÀNG HẢI TỐI THƯỢNG (USAGE_GUIDE.md)](./USAGE_GUIDE.md) để biết chính xác khi nào dùng Lệnh Tổng (`/commands`), khi nào dùng Combo Chỉ Huy (`@skills`).
+> **📖 ESSENTIAL READING:** Before initializing development, review the [OPERATING MANUAL (USAGE_GUIDE.md)](./USAGE_GUIDE.md) to comprehend when to utilize Macro Commands (`/commands`) versus Targeted Agent Swarms (`@skills`).
 
 ---
 
-## ⚡ CÁC LỆNH TỐI THƯỢNG (SLASH COMMANDS)
-Hệ thống được thiết kế để tự động hóa vật lý mọi thao tác tay của lập trình viên. Bạn CHỈ CẦN GÕ COMMAND vào khung chat của AI như một Terminal Console thực thụ:
+## ⚡ CORE SLASH COMMANDS
+The system is engineered to mechanically automate developer interactions. Initiate tasks by typing the following commands directly into the AI prompt console:
 
-### 1. 🟢 Lệnh Bắt Buộc: Cấp Nguồn Não Bộ
-> Gõ: `/init_brain`
-- **Mục đích:** Đánh thức 64 Đặc vụ. Nạp Bách khoa toàn thư Nghữ nghĩa (Semantic Index) và Đạo luật `.clinerules`. 
-- **Khi nào dùng:** MỌI KHI BẠN BẮT ĐẦU MỘT ĐOẠN CHAT MỚI. Khởi động Lạnh để tránh Trí tuệ ảo bị ảo giác.
+### 1. 🟢 System Initialization (Required for New Sessions)
+> Type: `/init_brain`
+- **Objective:** Awakens the 64-Agent Matrix. Ingests the Semantic RAG Index and enforces the overarching `.clinerules` constitution.
+- **Usage Context:** **MANDATORY** at the start of any new chat thread or operating session. Prevents Cold Start hallucination.
 
-### 2. 🟡 Nhảy Cóc Tốc Độ: Luồng Fix Bug Siêu Nhanh (Ninja Bypass)
-> Gõ: `/quick_fix`
-- **Mục đích:** Bỏ qua hoàn toàn bộ máy phân tích, vẽ sơ đồ, viết PRD. Nhảy thẳng vào Bug. Áp dụng sửa giao diện (Đổi màu Nút, Sửa Border, Thêm API field).
-- **Quy trình:** AI RAG đúng duy nhất 1 Đặc vụ ➔ Sửa Tĩnh ➔ Run Terminal Test ➔ Lưu History ➔ End. Quá trình xử lý: ~ 4 Phút.
+### 2. 🟡 The Lightweight Bypass: Rapid Bug Fixes
+> Type: `/quick_fix`
+- **Objective:** Bypasses all heavyweight PRD, UML, and System Design phases. Designed strictly for rapid, localized modifications (e.g., updating UI typography, modifying button states, appending an API field).
+- **Process:** AI dynamically retrieves 1 specific agent ➔ Alters the code ➔ Executes Terminal Verification ➔ Records History ➔ Terminates. Average completion: < 4 Minutes.
 
-### 3. 🔴 Cỗ Máy Công Nghiệp Nặng: Auto Software Factory
-> Gõ: `/auto_software_factory`
-- **Mục đích:** Setup một khung sườn (Monorepo, Web, Backend) hoàn toàn mới hoặc viết một Tính năng Fullstack siêu lớn.
-- **Quy trình 9 Bước Nặng Đô:** 
-  Dựng Architecture (FSD/DDD) -> Giao việc cho PM viết PRD -> Vẽ Diagram C4 -> Dev Code TDD -> Chạy Playwright E2E -> Push DB. 
+### 3. 🔴 The Heavyweight Engine: Auto Software Factory
+> Type: `/auto_software_factory`
+- **Objective:** Scaffolds entirely new enterprise-grade repositories (Monorepos, Web Apps, Backend Systems) or engineers massive Fullstack feature branches.
+- **Process (9 Sequential Phases):** 
+  Establishes Architecture (FSD/DDD) -> Generates PRDs & Scenarios -> Constructs C4 Diagrams -> Executes TDD Backend -> Synthesizes E2E Playwright Tests -> Migrates Databases. 
 
-### 4. 🔵 Tân Trang Mã Nguồn (Refactoring)
-> Gõ: `/refactor_project`
-- **Mục đích:** Dành cho dự án Cũ kĩ, bừa bộn rác (Brownfield).
-- **Quy trình:** Bắt buộc AI chạy `npx understand-anything` để vẽ Knowledge Graph 100% kho Source code, tính toán mức độ Complexity, rồi mới được quyền băm đập Code để đập đi xây lại.
+### 4. 🔵 Legacy Codebase Modernization (Refactoring)
+> Type: `/refactor_project`
+- **Objective:** Engineered for deep-cleaning technical debt in brownfield projects.
+- **Process:** Strictly mandates the execution of the `npx understand-anything` tool to map a 100% coverage Knowledge Graph of the existing codebase. Audits cyclomatic complexity before applying structural refactoring.
 
-### 5. 🟣 Đặc Vụ Mobile Thần Thánh
-> Gõ: `/mobile_init`
-- **Mục đích:** Giao toàn quyền sinh sát cho học thuyết **Mobile Design Doctrine**.
-- **Quy trình:** Ép UI/UX phải theo chuẩn iOS/Tailwind, bọc Safe-area toàn app, cấy các hiệu ứng Touchable-Spring-Animations (Phản ứng lò xo khi chạm vào nút).
+### 5. 🟣 The Mobile Application Framework
+> Type: `/mobile_init`
+- **Objective:** Delegates full authority to the **Mobile Design Doctrine**.
+- **Process:** Enforces React Native / Flutter Boilerplates customized with strict safe-area wrapping, iOS/Tailwind compliance, and touch-responsive spring animations.
 
 ---
 
-## 🔒 LUẬT THÉP TỰ TRỊ (ZERO SUGGESTION POLICY)
-Bất kỳ LLM nào được nhúng vào `.agents` này đều bị TƯỚC ĐOẠT quyền năng **"Gợi ý lệnh (Suggestion)"**. 
+## 🔒 ZERO SUGGESTION POLICY
+Any LLM interfacing with the `.agents` ecosystem is permanently **revoked of its ability to offer manual commands ("Suggestions")**.
 
-Nó KHÔNG BAO GIỜ được phép Copy/Paste đoạn code Bash ra khung Chat rồi bảo *"Bạn hãy dán lệnh này vào terminal nhé"*. 
-Nó **BẮT BUỘC** phải dùng Core Tools của máy chủ để tự ấn phím, tự Build, tự Debug và chỉ trả cái Gật Đầu Hoàn Thiện cho Bạn!
+The AI is **STRICTLY PROHIBITED** from generating bash code inside markdown blocks and instructing the user to "Copy and paste this into your terminal". It **MUST** utilize native OS terminal tools to type, build, and debug autonomously, returning control to the user only upon successful validation!
