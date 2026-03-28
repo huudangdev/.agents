@@ -57,6 +57,8 @@ git clone https://github.com/huudangdev/.agents.git .agents
 # 3. Mở mã nguồn bằng Cursor / OpenClaw / Antigravity và trải nghiệm.
 ```
 
+> **📖 ĐỌC NGAY:** Trước khi bắt tay vào code, BẮT BUỘC đọc [HƯỚNG DẪN HÀNG HẢI TỐI THƯỢNG (USAGE_GUIDE.md)](./USAGE_GUIDE.md) để biết chính xác khi nào dùng Lệnh Tổng (`/commands`), khi nào dùng Combo Chỉ Huy (`@skills`).
+
 ---
 
 ## ⚡ CÁC LỆNH TỐI THƯỢNG (SLASH COMMANDS)
