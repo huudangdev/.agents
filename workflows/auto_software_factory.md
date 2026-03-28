@@ -1,78 +1,73 @@
 ---
-description: Marcus Fleet Enterprise Deep-Execution Workflow (52-Step Master Blueprint)
+description: Marcus Fleet Enterprise Continuous Delivery Pipeline (9-Node Directed Acyclic Graph)
 ---
-# 🚀 THE MARCUS FLEET CORE ENGINE (v27.0 - Real Simulation & QA Matrix)
 
-> **CORE OVERRIDE INSTRUCTION FOR ANTIGRAVITY:** 
-> BẠN ĐANG CHẠY TRÊN KIẾN TRÚC V27. **"KHÔNG BAO GIỜ ĐƯỢC NHẮM MẮT CODE!"** 
-> Mọi component sinh ra ĐỀU PHẢI QUA BƯỚC MỞ PORT LÊN DUYỆT LIVE REAL-TIME.
+# 🚀 CONTINUOUS SDLC DELIVERY GRAPH (V29.1)
+
+> **MỤC ĐÍCH (PURPOSE):**  
+> Đồ thị Điều phối Vòng đời Phát triển Phần mềm (Software Development Life Cycle - SDLC) này ứng dụng Phương pháp tiếp cận **Đồ thị Có hướng Không Chu trình (Directed Acyclic Graph - DAG)** để tự động hóa toàn bộ đường chuyền sản xuất từ Phân tích Đỉnh xuống Thiết kế Máy Trạng thái (FSM) và Triển khai Hợp nhất. Dưới kiến trúc V29.1, Tự Hành (Autonomous Automation) được ràng buộc nghiêm ngặt bằng cơ chế Kiểm thử Đóng cắt (Circuit Breaking) để đạt tiêu chuẩn Vercel Zero-downtime.
 
 // turbo-all
 
-<identity_binding_protocol>
-**GIAO THỨC LAZY-LOAD RAG INDEX (DYNAMIC IDENTITY INJECTION):**
-Hệ thống V29.0 nghiêm cấm Load cùng lúc >10 File kỹ năng. Mỗi khi bước sang STAGE mới, Antigravity **BẮT BUỘC** gọi Tool `view_file` đọc file `SKILLS_INDEX.md`, tra cứu đúng thư mục chứa tên Role đó (VD: search `maya-ui-ux-designer`), và nạp file `.agents/skills/maya-ui-ux-designer/SKILL.md`.  
-Tuyệt đối không đoán mò tính cách = Lỗi Logic.
-</identity_binding_protocol>
+---
 
-<inheritance_binding_protocol>
-**GIAO THỨC TỬ HÌNH NẾU KHÔNG ĐỌC LẠI DOCUMENTS:**
-MỖI KHI BƯỚC SANG STAGE MỚI HOẶC BẮT ĐẦU CODE, Agent BẮT BUỘC dùng Tool `view_file` để **ĐỌC TRỰC TIẾP** các File Documents `[INPUT]` ở Stage trước. Không đọc file = Bị Xóa!
-</inheritance_binding_protocol>
+## ⬛ BỘ GIAO THỨC CHỐNG SUY GIẢM BỘ NHỚ (ANTI-AMNESIA PROTOCOLS)
 
-<pipeline_routing>
+<identity_injection>
+**LAZY-LOAD RAG ALGORITHM:** Tối ưu hóa cửa sổ Context (LLM Context Window) bằng cách ngăn chặn quá tải Identity. Tại mỗi Node, giao thức bắt buộc gọi Tool `view_file` quét Chỉ mục Khối lượng `SKILLS_INDEX.md` để trích xuất vật lý tệp `SKILL.md` của tối đa 5 Đặc vụ liên đới. Việc phỏng đoán nhân cách (Heuristic Persona Synthesis) bị đánh dấu là Lỗi Nghiêm Trọng.
+</identity_injection>
 
-## ⬜ STAGE 0: SYSTEM & MCP READINESS CHECK (STEP 0)
-*🔗 INPUT REQUIRED: `.agents/mcp/mcp.json`, `agents.md`*
-**[Step 0]**: Kiểm tra sự sẵn sàng của MCP. Đọc config xem Playwright, Draw.io đã hoạt động chưa. Đọc file `agents.md` để nắm trạng thái lịch sử (micro-brain) trước khi khởi tạo code.
+<state_propagation>
+**STATEFUL INHERITANCE:** Mỗi Chuyển đổi Trạng thái (State Transition) từ Node N sang Node N+1 yêu cầu Khối AI bắt buộc đọc lại (Read operation) các **[Artifacts/Outputs]** đã phát sinh từ Node N (ví dụ SDD, PRD). Dữ liệu không được phép ngắt quãng.
+</state_propagation>
 
-## 🟥 STAGE 1 & 2: INTELLIGENCE GATHERING & PRD (STEPS 1-10)
-*🔗 INPUT REQUIRED: Web Search.*
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/elite6-research/SKILL.md`, `sophia-product-manager/SKILL.md`, `antigravity-brainstorming/SKILL.md`, `product-brainstorming/SKILL.md` và `compound-brainstorming/SKILL.md`*
-*📦 OUTPUT GENERATED: Cấu trúc PRD khổng lồ (Stories, Edge Cases, Screen Maps).*
-**[Step 1-10]**: Khởi tạo Portal. LỆNH CHỐNG LƯỜI V32: 
-- Elite6-Research: THỰC THI CHÍNH XÁC TỐI THIỂU 5 Lệnh Web Search & Read URL ĐỘC LẬP.
-- Sophia: CẤM GỘP CHUNG PRD. Xẻ PRD làm 3 file Vật Lý Độc Lập hoàn toàn: `PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`. 
-- Trong `SCREEN_MAP.md`: Đổ ra danh sách 100% đường dẫn Component UI theo đúng V32, cấm chừa dấu `...` lười biếng!
+---
 
-## 🟨 STAGE 3: THE GOLDEN BRAND & AESTHETIC LAWS (STEPS 11-14)
-*🔗 INPUT REQUIRED: `PRD_PART3_SCREEN_MAP.md`*
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/maya-ui-ux-designer/SKILL.md` và `.agents/skills/design-system-rules/SKILL.md`*
-*📦 OUTPUT GENERATED: `BRAND_GUIDELINE.md`*
-**[Step 11-14]**: Chốt cứng Hiến Pháp Thẩm Mỹ `docs/BRAND_GUIDELINE.md` (Design Bible Vercel Standard).
+## 🔲 GRAPH TOPOLOGY: CÁC NÚT ĐIỀU PHỐI (NODES)
 
-## 🟩 STAGE 4: ENTERPRISE ARCHITECTURE & PREMIUM SDD EXPORT (STEPS 15-22)
-*🔗 INPUT REQUIRED: `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`*
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc các skills: `david-systems-architect`, `chartis-data-visualizer`, `architecture-decision-records`, `c4-architecture`, `claude-arch-designer`, `knowledge-work-architecture`, `software-architecture`, `langchain-architecture`.*
-*📦 OUTPUT GENERATED: `SDD_*.md`, `UML/*.md`, `PDF/*.pdf`*
-**[Step 15-17]**: Architect David & Data Leo (`leo-data-analytics/SKILL.md`) viết Hệ tầng Backend (FSD, Database Schema, API Contracts). Nhúng Sơ Đồ Cấu Trúc Trực Tiếp vào Dòng md. Đọc bắt buộc `architecture.md` (nếu có). Đi vào sâu các nguyên tắc từ `.agents/skills/architecture-patterns`.
-**[Step 18-20]**: [Chartis Mode]: Vẽ `docs/UML/`. BẮT BUỘC chèn lệnh `classDef` đổi màu Background các khối thành màu Pastel Premium Bo Góc Tròn.
-**[Step 21-22]**: **[PDF EXPORT MANDATE]**: Antigravity BẮT BUỘC chạy lệnh Bash `npx -y @mermaid-js/mermaid-cli -i <file.mmd> -o <chart.png>` render TẤT CẢ biểu đồ Mermaid thành file ảnh (.png), sau đó ghim thẻ `![chart](chart.png)` vào Markdown rồi mới xuất PDF ra `/docs/PDF_EXPORTS/`. Cấm convert PDF mù chữ khi chưa có ảnh vật lý.
+### ⚪ NODE 0: MÔI TRƯỜNG SANBOXED (MCP READINESS)
+*🔗 Input Vector:* `.agents/mcp/mcp.json`, `agents.md`
+**[Protocol]:** Kiểm định cấu hình Model Context Protocol (MCP). Bắt tay tín hiệu (Handshake) với các Server `playwright` và `drawio`. Đồng bộ Trạng thái Não bộ Cục bộ (Micro-Brain Audit) qua file `agents.md` trước khi khởi tạo Mã nguồn Tiền định.
 
-## 🟦 STAGE 5 & 6: ADVERSARIAL QA & TDD BACKEND (STEPS 23-31)
-*🔗 INPUT REQUIRED: `FINAL_SPECS.md`*
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/eve-qa-approver/SKILL.md`, `alan-tech-lead/SKILL.md`, và `.agents/skills/mobile-app-testing/SKILL.md`*
-**[Step 23-31]**: Mổ xẻ ranh giới. DB Migration. Chạy Test Script API (Vitest). Lỗi đâu Bash Fix đó.
+### 🔴 NODE 1 & 2: KHÁM PHÁ THUẬT TOÁN (ALGORITHMIC DISCOVERY - PRD)
+*🔗 Input Vector:* Web Search Matrix.
+*🧠 Identity Injectors:* `elite6-research`, `sophia-product-manager`, `antigravity-brainstorming`, `compound-brainstorming`
+*📦 Output Tensor:* Cụm PRD định dạng Phân mảnh Vật lý (Physical Segmentation).
+**[Protocol]:** Đặc vụ Elite6-Research chạy vòng lặp tìm kiếm Độc lập N-Chiều. Quản trị Sản phẩm Sophia phân rã Requirement Document (PRD) thành 3 thực thể Rời rạc (Discreet Entities): `PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`. Bảng Phân bố Màn hình (Screen Map) phải ánh xạ 100% Cấu trúc Thư mục (Dir Tree), nghiêm cấm cú pháp rút gọn đa hình (`...`).
 
-## 🟫 STAGE 7: REAL SIMULATION & ZERO-SKIPPING FULLSTACK RENDERING (STEPS 32-47)
-*🔗 INPUT REQUIRED: `BRAND_GUIDELINE.md`, `PRD_PART3_SCREEN_MAP.md`, `SDD_PART1_FSD_STRUCTURE.md`*
-*🧠 IDENTITY INJECTION: Dùng `view_file` ĐỌC `.agents/skills/benny-frontend-engineer/SKILL.md` và MỘT CÁCH TÀN ĐỘC LÀ ĐỌC THÊM `.agents/skills/qa-simulator/SKILL.md` (Hoặc tra `SKILLS_INDEX.md` nạp skill Frontend tương đương).*
-**[Step 32]**: LỆNH KHỞI ĐỘNG CẤP ĐỘ AGI CAO NHẤT: BẮT BUỘC gõ Terminal chạy `npm run dev` ngầm (Bắt đầu Môi Trường Mô Phỏng Thực Tế).
-**[Step 33-44]**: [Benny + QA-Simulator Dual Mode]:
-MỘT GIAO THỨC HAI PHA BẮT BUỘC CHO TỪNG BUTTON VÀ PAGE:
-  - **Pha 1 (Render):** Benny Code UI/UX bám sát Bảng Mã Màu.
-  - **Pha 2 (Real Simulated Review):** QA-Simulator ngay lập tức nhảy vào. CẤM CODE MÀN HÌNH MỚI! QASimulator Đọc Log Terminal từ Port 3000 hoặc dùng lệnh `curl`. Check xem Code có nổ lỗi React/Next Hydration hay không?
-  - **🚨 [V29.0 CIRCUIT BREAKER]**: Nghiêm cấm vòng lặp lỗi quá 3 lần. Dừng lại quăng cờ Đỏ (🚩) gọi Sếp vào xem log nếu Terminal không chạy.
-  - Bắt buộc Coder sửa mượt mà 100% màn hình hiện tại trên Môi trường chạy Live này, rồi TÍCH XANH, sau đó mới cho qua Screen kề tiếp.
-**[Step 45-47]**: TypeScript Cực Đoan: Chạy tĩnh `npx tsc --noEmit`. Tự fix sạch Type `any`. Dấu tick Xanh Portal.
+### 🟡 NODE 3: THIẾT LẬP TIỀN ĐỀ THẨM MỸ (DIGITAL AESTHETIC BASELINE)
+*🔗 Input Vector:* `PRD_PART3_SCREEN_MAP.md`
+*🧠 Identity Injectors:* `maya-ui-ux-designer`, `aris-designer`, `design-system-rules`
+*📦 Output Tensor:* `BRAND_GUIDELINE.md`
+**[Protocol]:** Trích xuất và Biên dịch Kho lưu trữ Token (Design System Tokens). Cấu hình Hierarchy cho Variables, Mixins, Global Palettes, Typography Scaling. Sản sinh Văn kiện Thẩm mỹ (Brand Guideline).
 
-## ⬛ STAGE 8: NATIVE DEVOPS HEALING & VERIFICATION (STEPS 48-52)
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/devops-system-architect/SKILL.md`*
-**[Step 48-52]**: DevOps Release Cửa Cuối -> Bắn Ping End-To-End (Playwright) -> LỖI ĐÂU SỬA ĐÓ! (Kích hoạt Fallback nếu Playwright kẹt). Systematic Debugging -> Tắt máy chủ ngầm -> Báo Cáo Người Dùng.
+### 🟢 NODE 4: KIẾN TRÚC PHẦN MỀM CẤP CAO (ENTERPRISE ARCHITECTURE EMITTING)
+*🔗 Input Vector:* PRD Edge Cases, Screen Map
+*🧠 Identity Injectors:* `david-systems-architect`, `chartis-data-visualizer`, `architecture-decision-records`, `c4-architecture`, `knowledge-work-architecture`
+*📦 Output Tensor:* `SDD_*.md`, Sơ đồ Ngữ nghĩa (`UML/*.md`), Vector Đồ họa (`PDF/*.pdf`)
+**[Protocol]:** Kích hoạt Đặc vụ Thiết kế Backend nội tại. Tổng thể SDD bao hàm: Backend FSD, Database Schema (ERD), API Spec Contracts. Giao thức Export Tiêu chuẩn: Tool AI nhúng đoạn `classDef` cho thuật toán render Pastel Component Diagram. Chạy Binary CLI `npx -y @mermaid-js/mermaid-cli -i <file.mmd> -o <chart.png>`, sau đó tích hợp đường dẫn tĩnh Absolute Path vào Markdown và xuất PDF Trắng Đen Chuẩn hóa.
 
-</pipeline_routing>
+### 🔵 NODE 5 & 6: KIỂM THỬ BAN ĐẦU & RUNTIME BACKEND (ADVERSARIAL QA)
+*🔗 Input Vector:* `FINAL_SPECS.md`
+*🧠 Identity Injectors:* `eve-qa-approver`, `alan-tech-lead`, `ada-qa-agent`
+*📦 Output Tensor:* API Stubs, Route Handlers, Database Migrations
+**[Protocol]:** Khởi tạo Lớp Logic Bất Biến (Business Logic Layer) qua Unit Test Stubs (TDD Pattern). Chạy Database Migrations. Sửa lỗi dựa trên STDOUT/STDERR Console Feedback qua Bash Automata.
 
-## 🟣 STAGE 9: MICRO-BRAIN & GLOBAL SYNCHRONIZATION (STEPS 53-55)
-*🔗 INPUT REQUIRED: Bản ghi tiến độ vừa thực hiện.*
-*🧠 IDENTITY INJECTION: Dùng `view_file` đọc `.agents/skills/sophia-product-manager/SKILL.md` (Butler Mode)*
-**[Step 53-55]**: Lưu lại lịch sử làm việc (Session History), các Blockers và cập nhật kiến trúc mới nhất vào file `agents.md`. Ghi kiến thức cục bộ vào thư mục `.brain/` của Component vừa tạo. TUYỆT ĐỐI KHÔNG REPLACE, CHỈ APPEND. Giao tiếp chéo thành công. Dừng luồng.
+### 🟣 NODE 7: MÔ PHỎNG RUNTIME THỜI GIAN THỰC (LIVE FSM SIMULATION)
+*🔗 Input Vector:* `BRAND_GUIDELINE.md`, `SCREEN_MAP`
+*🧠 Identity Injectors:* `benny-frontend-engineer`, `qa-simulator`
+**[Protocol]:** 
+Kích hoạt Daemon Môi trường Sinh tồn: Gọi OS Terminal chạy lệnh `npm run dev` (Khởi động Dev Server).
+- **Vòng Lặp Ghép Cặp (Bi-Directional Bi-agent Link):**
+  - **Pha Render:** Biến ảo CSS/DOM (Component Rendering). Thực thi Spacing/Padding Toán học và Tuân thủ Gradient Contrast qua `benny-frontend-engineer`.
+  - **Pha Mutation QA:** DOM Read & Log Capture. `qa-simulator` nạp Web Page theo Port Tương ứng. Parse SSR Hydration Errors/DOM Constraints.
+  - **Cơ Chế Ngắt Mạch (V29.1 Circuit Breaker):** Phát hiện 3 Error Loop liên tiếp, Agent ngưng Render, ném Lỗi Đỏ Terminal và Báo gọi Operator User (Human-In-The-Loop). Bắt buộc Full Component Coverage trước khi Next() Node mới. Chạy tĩnh TypeScript `npx tsc --noEmit`.
+
+### 🟤 NODE 8: TRIỂN KHAI CHUỖI KHÉP KÍN (CI/CD CLOSURE)
+*🧠 Identity Injectors:* `devops-system-architect`, `ops`
+**[Protocol]:** Tích hợp Kịch bản Triển khai Hạ tầng (IaC) hoặc Giao thức E2E Cypress/Playwright Ping. Ghi Error Log và Auto-Heal (tự phục hồi). Giải phóng Port Hệ thống, Khai tử Node Runtime 7.
+
+### ⚫ NODE 9: ĐỒNG BỘ TRẠNG THÁI CỤC BỘ (MICRO-BRAIN STATE SYNC)
+*🔗 Input Vector:* Progress History Context
+*🧠 Identity Injectors:* Máy trạng thái Nội bộ (Butler Mode)
+**[Protocol]:** Chuyển giao Graph History vào Node Theo Dõi Hành Vi `agents.md`. Tuân thủ File Append Operations tại `.brain/`. Tạo liên kết tham chiếu hai chiều thành công. Thoát Chu trình! Tắt Bộ Đếm.
