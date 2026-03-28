@@ -36,21 +36,21 @@ The following C4-styled data-flow layout outlines the cognitive processing, lexi
 
 ```mermaid
 graph TD
-    subgraph Human Operator Context
+    subgraph "Human Operator Context"
         U([User Entity]) -->|Stochastic Heuristic Requests| OS{Antigravity Dispatcher}
     end
     
-    subgraph Semantic Retrieval Matrix
+    subgraph "Semantic Retrieval Matrix"
         OS -->|Regex / Keyword Scanning| Index[(SKILLS_INDEX Dictionary)]
         Index -->|N-Dimensional Selection| Router[Agent Routing Algorithm]
     end
     
-    subgraph Cognitive Attention Layer
-        Router -->|Lazy-load Context (Top-K Nodes)| Context[LLM Context Window]
+    subgraph "Cognitive Attention Layer"
+        Router -->|Lazy-load Context - Top-K Nodes| Context[LLM Context Window]
         Context <-->|Chronological File Append| LocalMemory[(.brain Local State Memory)]
     end
     
-    subgraph Execution Automata (Sandboxed I/O)
+    subgraph "Execution Automata - Sandboxed IO"
         Context -->|Native OS Shell Execution| Terminal[Terminal Environment]
         Terminal -->|Status 0 (Green)| Validate[TDD Assertion Passed]
         Terminal -->|Status != 0 (Exception)| Tripper{FSM Circuit Breaker}
