@@ -163,7 +163,7 @@ The AI is computationally restricted from generating code until this node return
 .agents/
 ├── README.md                      # Foundational system topology
 ├── USAGE_GUIDE.md                 # Heuristic routing and dispatch instructions
-├── V29.1_RELEASE_NOTES.md         # Advanced academic paper / changelogs
+├── V29.2_RELEASE_NOTES.md         # Advanced academic paper / changelogs
 ├── .clinerules                    # Foundational Constitution Protocol (FSM Limits)
 ├── install.sh                     # Directory genesis installer
 ├── update.sh                      # OTA non-destructive Rsync patcher
