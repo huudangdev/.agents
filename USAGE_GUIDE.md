@@ -12,13 +12,13 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 
 | Macro Command | Ideal Invocation Context | Core Objective |
 |:---|:---|:---|
-| `/init_brain` | **MANDATORY first command** triggered at the genesis of any new chat tab/session. | Boots the AI matrix, enforces constitutional rules, and stages the Semantic RAG SKILLS_INDEX. |
-| `/marcus_init` | Project inception from scratch (Empty Directory). | Generates the foundational PRD, creates directory scaffolding, and injects the Antigravity OS state files. |
-| `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing Safe Area Contexts and Spring Animation standards. |
-| `/planning` | Launching new features requiring System Design (FSD, DDD) and Schema modeling. | Orchestrates Phase 1 of the SDLC pipeline: Requirements, PRD generation, and C4 Architecture drawings. Halts for user review. |
-| `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2 of the SDLC pipeline. Prevents redundant planning executions when tweaking visuals. Halts for user review. |
-| `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3 of the SDLC pipeline: Backend TDD, Frontend integration, and continuous Playwright testing based off generated docs. |
-| `/refactor_project` | Targeting established legacy repositories (Brownfield). Requires dependency trimming and component isolation. | Forces the AI to generate a Knowledge Graph via `Understand-Anything` before executing destructive refactoring. |
+| `/init_brain` | **MANDATORY first command** triggered at the genesis of any new session. | Boots the AI matrix, spins up the TrustGraph Docker stack automatically, enforces `.clinerules`, and stages the Semantic RAG SKILLS_INDEX. |
+| `/marcus_init` | Project inception from scratch (Empty Directory). | Generates the foundational PRD, creates directory scaffolding, and injects the Antigravity OS state files into a clean workspace. |
+| `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing cross-platform physical constraints (Safe Area contexts, Spring Animation standards). |
+| `/planning` | Launching new features requiring System Design (FSD, DDD) and Schema modeling. | Orchestrates Phase 1: Requirements, PRD generation, and C4 Architecture drawings. Pure Left-Brain synthesis. Halts for user review. |
+| `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2: Prevents redundant planning executions. Emits Figma-logic variables, Hex codes, and Golden ratios. Pure Right-Brain synthesis. Halts for user review. |
+| `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code and executes self-healing TDD loops via dev servers (npm, xcodebuild, flutter run) until compile output is green. |
+| `/refactor` | Targeting established legacy repositories (Brownfield). Requires structural decoupling. | Forces the AI to extract an AST Knowledge Graph via `Understand-Anything` before executing surgical Cyclomatic Complexity reductions safely. |
 
 ---
 

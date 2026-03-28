@@ -97,15 +97,26 @@ curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | 
 
 Command execution is handled algorithmically via direct prompts.
 
-| Operational Command | Sphere of Action | Technical Intent |
-|---|---|---|
-| `/init_brain` | **Global Boot** | **MANDATORY for cold-start environments.** Ingests constitutional guardrails and provisions the lexical `SKILLS_INDEX` mapping. |
-| `/planning` | **Architecture (Phase 1)** | Initiates Phase 1 of the SDLC. Blueprints Feature-Sliced Architecture (C4), synthesizes Business Logic & PRD into `/docs`. Halts for User Approval. |
-| `/design` | **UI/UX & Branding (Phase 2)** | Initiates Phase 2 of the SDLC. Consumes PRD to emit strict Figma-equivalent CSS variables, Typography rules, and Color palettes. Halts for iterative reviews. |
-| `/develop` | **Code Generation (Phase 3)** | Initiates Phase 3 of the SDLC. Ingests all `/docs` and rigorously executes TDD Backend scaffolding, Frontend UI rendering, and E2E QA simulation. |
-| `/refactor_project` | **Legacy Mutaion**| Computes Cyclomatic Complexity and drafts deterministic Knowledge Graphs (`npx understand-anything`) before breaking down monolithic spaghetti networks. |
-| `/quick_fix` | **Surgical Injection** | Circumvents macro-planning. Target isolates 1 specific sub-component for variable adjustments in O(1) latency under 240 seconds. |
-| `/mobile_init` | **IOS/Android Core**| Bootstraps rigorous iOS and React Native/Flutter design constraints (e.g., Tailwind boundaries, continuous spring animations, Safe-Area strict adherence). |
+### 1. `/init_brain` (Global Ignition & Context Alignment)
+**MANDATORY for cold-start environments.** This command serves as the critical bootstrap sequence. It autonomously boots the local TrustGraph memory stack (Neo4j, Chroma, Postgres) via Docker Compose, loads the global constitution (`.clinerules`), and provisions the `SKILLS_INDEX.md` mapping. The AI is physically prohibited from executing code until this semantic ingestion is complete.
+
+### 2. `/planning` (Architecture & Requirements Phase)
+**The Genesis of Software.** Triggers Phase 1 of the SDLC. The AI acts as a pure Systems Architect (Left Brain). It maps Feature-Sliced Architectures, synthesizes complete Product Requirement Documents (PRD), and constructs C4 PlantUML/Mermaid diagrams. Code generation is blocked; the system writes output strictly to `/docs` and triggers a **Hard Halt** for human review.
+
+### 3. `/design` (UI/UX Aesthetic Matrix)
+**The Visual Tokenization Phase.** Initiates Phase 2 of the SDLC. The AI acts exclusively as an Art Director (Right Brain). It consumes the PRD and emits strict Figma-equivalent CSS variables, Typography scalar rules (Golden Ratio), Spacing constraints (4px/8px grid), and Brand Color Palettes into `BRAND_GUIDELINES.md`. This prevents token exhaustion by decoupling design logic from backend schemas. Halts for human review.
+
+### 4. `/develop` (Execution & QA Simulation)
+**The deterministic Software Factory.** Initiates Phase 3 of the SDLC. A highly rigorous operational flow where the AI merges the Architectural Schemas (`/planning`) and the Design Matrix (`/design`) to physically structure the source code. It features **Cross-Platform Adaptability**—intelligently scanning the root directory to determine the exact execution framework (e.g. Next.js, Go, iOS Swift, Flutter) and launching the corresponding environment (`npm run dev`, `xcodebuild test`, etc.) to execute continuous TDD and Adversarial Playwright/XCTest simulations until all Exit Codes yield Green.
+
+### 5. `/refactor` (Spaghetti Code Decoupling)
+**The Surgical Cleanse.** Designed strictly for "Brownfield" or legacy repositories. Before touching any logic, it executes Node commands (e.g. `npx understand-anything`) to extract the full Abstract Syntax Tree (AST) and generate an N-dimensional Knowledge Graph. It then strategically reduces Cyclomatic Complexity (e.g. flattening prop-drilling, decoupling monoliths into FSD), while utilizing aggressive automated testing to self-heal any compilation failures caused by the mutation.
+
+### 6. `/quick_fix` (Micro-Mutation Bypass)
+**Instantaneous Hotfix Protocol.** Circumvents all macro-planning pipelines for O(1) latency fixes (e.g. tweaking a CSS variable or catching a rogue null pointer). The cognitive load is minimized to under 240 seconds per execution.
+
+### 7. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
+**Native & Web Scaffolding Vectors.** Physical boilerplate constructors. `/mobile_init` enforces cross-platform mobile doctrines (React Native/Flutter bounds, iOS Safe-Area rules, continuous spring animations). `/marcus_init` establishes the baseline web structure and Antigravity intelligence directory injection.
 
 ---
 
@@ -123,6 +134,7 @@ Command execution is handled algorithmically via direct prompts.
 │   ├── planning.md
 │   ├── design.md
 │   ├── develop.md
+│   ├── refactor.md
 │   └── quick_fix.md
 └── skills/                        # 64-Agent Cognitive Swarm Directory
     ├── SKILLS_INDEX.md            # Auto-compiled Semantic Pre-Index
