@@ -100,8 +100,9 @@ Command execution is handled algorithmically via direct prompts.
 | Operational Command | Sphere of Action | Technical Intent |
 |---|---|---|
 | `/init_brain` | **Global Boot** | **MANDATORY for cold-start environments.** Ingests constitutional guardrails and provisions the lexical `SKILLS_INDEX` mapping. |
-| `/planning` | **Planning & Documentation** | Initiates Phase 1 of the SDLC. Blueprints Feature-Sliced Architecture (C4), synthesizes Business Logic, and emits strict UI/UX guidelines to `/docs`. Halts for User Approval. |
-| `/develop` | **Code Generation & TDD** | Initiates Phase 2 of the SDLC. Ingests the approved `/docs` and rigorously executes TDD Backend scaffolding, Frontend UI rendering, and E2E QA simulation. |
+| `/planning` | **Architecture (Phase 1)** | Initiates Phase 1 of the SDLC. Blueprints Feature-Sliced Architecture (C4), synthesizes Business Logic & PRD into `/docs`. Halts for User Approval. |
+| `/design` | **UI/UX & Branding (Phase 2)** | Initiates Phase 2 of the SDLC. Consumes PRD to emit strict Figma-equivalent CSS variables, Typography rules, and Color palettes. Halts for iterative reviews. |
+| `/develop` | **Code Generation (Phase 3)** | Initiates Phase 3 of the SDLC. Ingests all `/docs` and rigorously executes TDD Backend scaffolding, Frontend UI rendering, and E2E QA simulation. |
 | `/refactor_project` | **Legacy Mutaion**| Computes Cyclomatic Complexity and drafts deterministic Knowledge Graphs (`npx understand-anything`) before breaking down monolithic spaghetti networks. |
 | `/quick_fix` | **Surgical Injection** | Circumvents macro-planning. Target isolates 1 specific sub-component for variable adjustments in O(1) latency under 240 seconds. |
 | `/mobile_init` | **IOS/Android Core**| Bootstraps rigorous iOS and React Native/Flutter design constraints (e.g., Tailwind boundaries, continuous spring animations, Safe-Area strict adherence). |
@@ -120,6 +121,7 @@ Command execution is handled algorithmically via direct prompts.
 ├── workflows/                     # Declarative Workflow subroutines
 │   ├── init_brain.md 
 │   ├── planning.md
+│   ├── design.md
 │   ├── develop.md
 │   └── quick_fix.md
 └── skills/                        # 64-Agent Cognitive Swarm Directory

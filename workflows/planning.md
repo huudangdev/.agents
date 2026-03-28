@@ -31,13 +31,7 @@ description: Marcus Fleet Enterprise SDLC Phase 1 (Planning, Architecture, & PRD
 *📦 Emitted Artifacts:* `/docs/PRD_PART1_FEATURES.md`, `/docs/PRD_PART2_EDGE_CASES.md`, `/docs/PRD_PART3_SCREEN_MAP.md`
 **[Execution Protocol]:** Trigger `elite6-research` to explore domain complexities. Delegate synthesis to `sophia-product-manager`. Output MUST be mechanically segmented into independent physical markdown artifacts within the `/docs` directory. A 100% exhaustive Component/Routing Tree must be mapped.
 
-### 🟡 NODE 3: DIGITAL AESTHETIC BASELINE & DESIGN TOKENS
-*🔗 Input Vector:* `/docs/PRD_PART3_SCREEN_MAP.md`
-*🧠 Injected Tensors:* `maya-ui-ux-designer`, `aris-designer`
-*📦 Emitted Artifacts:* `/docs/BRAND_GUIDELINES.md`
-**[Execution Protocol]:** Formulate Figma-equivalent Variable Mappings, Typography Scalar Rules (Base 16px, Golden Ratio), contrast-accessible Color Palettes, and spatial rhythm constraints (4px/8px grid). Emit the structural `BRAND_GUIDELINES.md`.
-
-### 🟢 NODE 4: ENTERPRISE ARCHITECTURE EMITTING (THE UML MANDATE)
+### 🟢 NODE 3: ENTERPRISE ARCHITECTURE EMITTING (THE UML MANDATE)
 *🔗 Input Vector:* `/docs/PRD_PART2_EDGE_CASES.md`, `/docs/PRD_PART3_SCREEN_MAP.md`
 *🧠 Injected Tensors:* `david-systems-architect`, `c4-architecture`
 *📦 Emitted Artifacts:* `/docs/SDD_ARCHITECTURE.md`, `.mmd` Scripts, `.png` Diagrams.
@@ -49,4 +43,4 @@ description: Marcus Fleet Enterprise SDLC Phase 1 (Planning, Architecture, & PRD
 
 > **[HALT COMMAND INITIATED]**
 > You have reached the termination of the Phase 1 DAG Sequence. You are strictly prohibited from proceeding to source code generation.
-> **ACTION REQUIRED:** Present the output files in the `/docs` folder to the Human Operator. Ask them to verify the PRD, the Screen Maps, and the SDD. Instruct them to invoke `/develop` ONLY WHEN they are 100% satisfied with the architecture.
+> **ACTION REQUIRED:** Present the output files in the `/docs` folder to the Human Operator. Ask them to verify the PRD, the Screen Maps, and the SDD. Instruct them to invoke `/design` ONLY WHEN they are 100% satisfied with the architecture.
