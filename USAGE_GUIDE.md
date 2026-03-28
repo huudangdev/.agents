@@ -15,8 +15,8 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | `/init_brain` | **MANDATORY first command** triggered at the genesis of any new chat tab/session. | Boots the AI matrix, enforces constitutional rules, and stages the Semantic RAG SKILLS_INDEX. |
 | `/marcus_init` | Project inception from scratch (Empty Directory). | Generates the foundational PRD, creates directory scaffolding, and injects the Antigravity OS state files. |
 | `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing Safe Area Contexts and Spring Animation standards. |
-| `/macro_architect` | Launching new features requiring System Design (FSD, DDD) and Schema modeling. | Orchestrates Phase 1 of the SDLC pipeline: Requirements, PRD generation, and C4 Architecture drawings. Halts for user review. |
-| `/execute_factory` | Translating approved architectural mockups & PRDs into physical source-code. | Orchestrates Phase 2 of the SDLC pipeline: Backend TDD, Frontend integration, and continuous Playwright testing based off generated docs. |
+| `/planning` | Launching new features requiring System Design (FSD, DDD) and Schema modeling. | Orchestrates Phase 1 of the SDLC pipeline: Requirements, PRD generation, and C4 Architecture drawings. Halts for user review. |
+| `/develop` | Translating approved architectural mockups & PRDs into physical source-code. | Orchestrates Phase 2 of the SDLC pipeline: Backend TDD, Frontend integration, and continuous Playwright testing based off generated docs. |
 | `/refactor_project` | Targeting established legacy repositories (Brownfield). Requires dependency trimming and component isolation. | Forces the AI to generate a Knowledge Graph via `Understand-Anything` before executing destructive refactoring. |
 
 ---

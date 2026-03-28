@@ -49,4 +49,4 @@ description: Marcus Fleet Enterprise SDLC Phase 1 (Planning, Architecture, & PRD
 
 > **[HALT COMMAND INITIATED]**
 > You have reached the termination of the Phase 1 DAG Sequence. You are strictly prohibited from proceeding to source code generation.
-> **ACTION REQUIRED:** Present the output files in the `/docs` folder to the Human Operator. Ask them to verify the PRD, the Screen Maps, and the SDD. Instruct them to invoke `/execute_factory` ONLY WHEN they are 100% satisfied with the architecture.
+> **ACTION REQUIRED:** Present the output files in the `/docs` folder to the Human Operator. Ask them to verify the PRD, the Screen Maps, and the SDD. Instruct them to invoke `/develop` ONLY WHEN they are 100% satisfied with the architecture.
