@@ -16,7 +16,7 @@ description: Review & Refactor Guidelines
 ## ⚙️ EXECUTION PIPELINE (THE REVIEW CYCLE)
 
 ### Phase 1: Differential Context Check
-- **Anti-Amnesia Protocol:** Execute `view_file` to digest the localized `agents.md` trajectory and any attached Git Diffs or AST Trees. Context is mandatory to understand why a legacy developer made a tradeoff.
+- **Anti-Amnesia Protocol:** Execute `view_file` to digest the localized `.agents/agents.md` trajectory and any attached Git Diffs or AST Trees. Context is mandatory to understand why a legacy developer made a tradeoff.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If tasked with automating PR reviews or detecting security linting smells (e.g., "Find an agent skill for automated PR Reviewing"):

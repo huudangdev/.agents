@@ -12,6 +12,6 @@
 - Zod Integration: Chặn toàn bộ Object Body Response của API, ném vào `schema.parse()` thử nghiệm. Nếu nổ lỗi -> Đánh FAIL test case thay vì lờ đi cảnh báo TS.
 
 ## 3. Workflow Vận Hành Cùng MCP
-- **Nhờ Cậy Agent `qa-simulator`:** Trong thư mục `skills/qa-simulator`, chức năng test là trọng tâm. Gọi Agent QA đọc thư mục `.brain/` nội bộ để lập kịch bản Edge Cases.
+- **Nhờ Cậy Agent `qa-simulator`:** Trong thư mục `skills/qa-simulator`, chức năng test là trọng tâm. Gọi Agent QA đọc thư mục `.agents/brain/` nội bộ để lập kịch bản Edge Cases.
 - Sau khi viết xong `**.test.ts`, Agent phải dùng Tool OS để thực thi `npx playwright test --ui=false` và nhận lại report terminal. 
-- Mọi Bug Terminal đều phải phân tích nguyên nhân `Root Cause` vào file `agents.md` trước khi sửa.
+- Mọi Bug Terminal đều phải phân tích nguyên nhân `Root Cause` vào file `.agents/agents.md` trước khi sửa.

@@ -16,7 +16,7 @@ description: Mobile Design Doctrine
 ## ⚙️ EXECUTION PIPELINE (THE DOCTRINE CYCLE)
 
 ### Phase 1: Interaction Ingestion
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `agents.md` and `UI_SCREEN_MAP.md`. Do not synthesize a touch-interface without mapping the transition logic between the discrete App States.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` and `UI_SCREEN_MAP.md`. Do not synthesize a touch-interface without mapping the transition logic between the discrete App States.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If a mobile project lacks cutting-edge gesture libraries (e.g., "Find an agent skill for React Native Reanimated"):

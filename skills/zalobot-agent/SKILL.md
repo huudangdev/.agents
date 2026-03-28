@@ -16,7 +16,7 @@ description: Zalo Mini App & Bot Architecture Engine
 ## ⚙️ EXECUTION PIPELINE (THE ZALO LIFECYCLE)
 
 ### Phase 1: Emulation & Config Alignment
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `agents.md` alongside any authentication keys mapped out in `.env` instructions. Zalo OA keys (App ID, Secret Key, Refresh Tokens) must be actively managed by `rag-implementation` or environmental loaders.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` alongside any authentication keys mapped out in `.env` instructions. Zalo OA keys (App ID, Secret Key, Refresh Tokens) must be actively managed by `rag-implementation` or environmental loaders.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to connect advanced Webhook logic (e.g., "Find an agent skill for Zalo OAuth verification"):

@@ -16,7 +16,7 @@ description: Sleek Mobile Design
 ## ⚙️ EXECUTION PIPELINE (THE SLEEK CYCLE)
 
 ### Phase 1: Emulation & Visual Sync 
-- **Anti-Amnesia Protocol:** Execute `view_file` to digest `agents.md` alongside any design constraints exported from Figma or `maya-ui-ux-designer`. 
+- **Anti-Amnesia Protocol:** Execute `view_file` to digest `.agents/agents.md` alongside any design constraints exported from Figma or `maya-ui-ux-designer`. 
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If tasked to embed advanced UI configurations (e.g., "Find an agent skill for React Native Lottie" or "How to import Neumorphism CSS?"):

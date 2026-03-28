@@ -17,4 +17,4 @@ description: Mobile Application Design & Engineering Protocol via Antigravity Mo
 *📦 Output Vector:* Demand `maya-ui-ux-designer` to generate `MOBILE_BRAND_GUIDELINE.md`. This artifact MUST mathematically dictate handheld Margins/Padding, OS-level Safe-Area constraints (iOS Notches / Android System Bars), and Spring-Physics animation vectors utilizing Framer Motion or Reanimated.
 
 ## 🟦 STAGE 3: STATE ISOLATION & NODE REGISTRATION
-*📦 Output Vector:* Deconstruct the monolithic Mobile Topology into discrete, isolated Screen boundaries. Generate physical routing topologies (`.brain/` equivalents for each Screen). Broadcast this State Transition to the localized `agents.md` audit log.
+*📦 Output Vector:* Deconstruct the monolithic Mobile Topology into discrete, isolated Screen boundaries. Generate physical routing topologies (`.agents/brain/` equivalents for each Screen). Broadcast this State Transition to the localized `.agents/agents.md` audit log.

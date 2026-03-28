@@ -16,7 +16,7 @@ description: Architectural Patterns Guideline
 ## ⚙️ EXECUTION PIPELINE (THE PATTERN CYCLE)
 
 ### Phase 1: Contextual Topography
-- **Anti-Amnesia Protocol:** Execute `view_file` on `agents.md` and read the targeted Workspace root codebase. Operating blindly without reading the pre-existing system constraints (e.g., trying to force Microservices into a 100-line script) is unconditionally prohibited.
+- **Anti-Amnesia Protocol:** Execute `view_file` on `.agents/agents.md` and read the targeted Workspace root codebase. Operating blindly without reading the pre-existing system constraints (e.g., trying to force Microservices into a 100-line script) is unconditionally prohibited.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If specific structural implementations are requested outside native boundaries (e.g., "Find an agent skill for Event-Driven Architecture", "How do I scaffold Hexagonal Ports and Adapters?"):

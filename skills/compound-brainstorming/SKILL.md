@@ -16,7 +16,7 @@ description: Compound Brainstorming
 ## ⚙️ EXECUTION PIPELINE (THE COMPOUND CYCLE)
 
 ### Phase 1: Contextual Impact Simulation
-- **Anti-Amnesia Protocol:** Execute `view_file` on `agents.md` mapping the systemic boundaries. If you compound a brainstorming tree that ignores the active React Native state limitations, you break the system.
+- **Anti-Amnesia Protocol:** Execute `view_file` on `.agents/agents.md` mapping the systemic boundaries. If you compound a brainstorming tree that ignores the active React Native state limitations, you break the system.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If tasked to visualize compound consequences via data processing (e.g., "Find a skill for Monte Carlo probability simulations"):

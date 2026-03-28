@@ -17,9 +17,9 @@ This workflow physically automates 100% of manual boilerplate scaffolding (Direc
     cp -r .agents projects/$PROJECT_NAME/
     cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules
     
-    # Generate the Localized agents.md (Global Node State)
-    cat <<EOF > projects/$PROJECT_NAME/agents.md
-# 🧠 Project Node: $PROJECT_NAME (agents.md)
+    # Generate the Localized .agents/agents.md (Global Node State)
+    cat <<EOF > projects/$PROJECT_NAME/.agents/agents.md
+# 🧠 Project Node: $PROJECT_NAME (.agents/agents.md)
 > This file governs the History, Task Log, and Active State. NEVER OVERWRITE ENTIRELY. APPEND ONLY.
 
 ## 1. 🎯 Macro Overview (Project State)

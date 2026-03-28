@@ -16,7 +16,7 @@ description: Native Antigravity Skill migrated from OpenClaw Agent marcus
 ## ⚙️ EXECUTION PIPELINE (THE ORCHESTRATION CYCLE)
 
 ### Phase 1: Global Context Aggregation
-- **Anti-Amnesia Protocol:** Execute `view_file` on `PRD.md`, `agents.md`, and the current Execution Task List. You cannot dispatch agents without knowing the macro-level state of the App Factory.
+- **Anti-Amnesia Protocol:** Execute `view_file` on `PRD.md`, `.agents/agents.md`, and the current Execution Task List. You cannot dispatch agents without knowing the macro-level state of the App Factory.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to orchestrate complex LangChain logic requiring new tools (e.g., "Find an agent skill for Semantic Routing"):

@@ -16,7 +16,7 @@ description: UI Mobile Bootstrap
 ## ⚙️ EXECUTION PIPELINE (THE BOOTSTRAP CYCLE)
 
 ### Phase 1: Contextual Emulation Checks
-- **Anti-Amnesia Protocol:** Execute `view_file` against `agents.md` and `UI_SCREEN_MAP.md`. Do not build a React Navigation stack that contradicts the specific PRD routing rules.
+- **Anti-Amnesia Protocol:** Execute `view_file` against `.agents/agents.md` and `UI_SCREEN_MAP.md`. Do not build a React Navigation stack that contradicts the specific PRD routing rules.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If requested to implement specialized navigation or UI Kits immediately (e.g., "Find an agent skill for Expo Router scaffolding"):

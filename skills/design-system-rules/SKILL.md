@@ -16,7 +16,7 @@ description: Figma Design System Rules
 ## ⚙️ EXECUTION PIPELINE (THE TOKENS CYCLE)
 
 ### Phase 1: Contextual Constraint Extraction
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `agents.md` and read any existing `globals.css` or `tailwind.config.ts`. Modifying UI components without absorbing the global design tokens is treated as an illegal operation.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` and read any existing `globals.css` or `tailwind.config.ts`. Modifying UI components without absorbing the global design tokens is treated as an illegal operation.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to implement an external Design System (e.g., "Find an agent skill for Figma to Code," or "How do I scaffold Shadcn natively?"):

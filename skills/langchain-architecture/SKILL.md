@@ -16,7 +16,7 @@ description: Langchain Architecture
 ## ⚙️ EXECUTION PIPELINE (THE AI ARCHITECTURE CYCLE)
 
 ### Phase 1: Contextual Flow Ingestion
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `agents.md` to identify the designated LLM endpoints (OpenAI, Anthropic, Gemini) and system constraints before drawing out a pipeline.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` to identify the designated LLM endpoints (OpenAI, Anthropic, Gemini) and system constraints before drawing out a pipeline.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to implement multi-modal routing or specific LLM caching layers (e.g., "Find a skill for LangGraph state persistence"):

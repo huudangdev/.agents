@@ -16,7 +16,7 @@ description: RAG Architectural Topography and Vector DB design.
 ## ⚙️ EXECUTION PIPELINE (THE BLUEPRINT CYCLE)
 
 ### Phase 1: Constraint & Scale Modeling
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `agents.md` tracking the anticipated token load. You must calculate embedding costs and limits before recommending an architectural pattern.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` tracking the anticipated token load. You must calculate embedding costs and limits before recommending an architectural pattern.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to identify advanced topological logic for unstructured RAG (e.g., "Find an agent skill for Semantic chunking algorithms"):

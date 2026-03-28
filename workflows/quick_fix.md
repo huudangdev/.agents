@@ -9,9 +9,9 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 
 ## 🔸 STAGE 1: RAG WEAPONIZATION (FOCUSED CONTEXT RETRIEVAL)
 *🧠 Mandatory Directives:* 
-- Execute an immediate `view_file` on `.clinerules` and `agents.md` to establish the macro-context.
+- Execute an immediate `view_file` on `.clinerules` and `.agents/agents.md` to establish the macro-context.
 - Rapidly scan `SKILLS_INDEX.md` and dynamically summon **ONLY 1 to 2 SKILLS** to preserve the Token limits (e.g., UI Glitch $\rightarrow$ Load `sleek-design` or `maya-ui-ux-designer`).
-- Dig into the localized `.brain/` state associated with the failing Component to understand structural legacy context.
+- Dig into the localized `.agents/brain/` state associated with the failing Component to understand structural legacy context.
 
 ## 🔸 STAGE 2: SURGICAL MUTATION & ISOLATED DAEMON TEST
 *📦 Execution Vector:* Edit Source Logic. 
@@ -20,4 +20,4 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 - **[Fallback Protocol]:** If visual abstraction tools (Draw.io, Understand-Anything) crash on initialization, immediately fallback to raw `grep` arrays and text-based `mermaid` generation to avoid stalling.
 
 ## 🔸 STAGE 3: STATE SYNCHRONIZATION & EJECTION
-*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `agents.md` and the localized `.brain/` node of that component. Tick `[x]` on the active task list. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.
+*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `.agents/agents.md` and the localized `.agents/brain/` node of that component. Tick `[x]` on the active task list. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.

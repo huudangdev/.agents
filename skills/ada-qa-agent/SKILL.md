@@ -16,7 +16,7 @@ description: Khối óc nội tại (Soul) được inject từ file Master quin
 ## ⚙️ EXECUTION PIPELINE (THE QA CYCLE)
 
 ### Phase 1: Differential Context Check
-- **Anti-Amnesia Protocol:** Execute `view_file` to capture `agents.md` and the current `PRD`/`SDD`. Testing code without knowing the business objective yields irrelevant assertions.
+- **Anti-Amnesia Protocol:** Execute `view_file` to capture `.agents/agents.md` and the current `PRD`/`SDD`. Testing code without knowing the business objective yields irrelevant assertions.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If tasked to orchestrate tests lacking local dependencies (e.g., "Find an agent skill for React Testing Library setups"):

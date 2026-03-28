@@ -16,7 +16,7 @@ description: Antigravity Brainstorming
 ## ⚙️ EXECUTION PIPELINE (THE IDEATION CYCLE)
 
 ### Phase 1: Blockage Ingestion
-- **Anti-Amnesia Protocol:** Execute OS-level tasks (`view_file` upon `agents.md` or recent Error Logs) to thoroughly dissect WHY the team has stalled. You cannot innovate a solution for a system you haven't mathematically understood.
+- **Anti-Amnesia Protocol:** Execute OS-level tasks (`view_file` upon `.agents/agents.md` or recent Error Logs) to thoroughly dissect WHY the team has stalled. You cannot innovate a solution for a system you haven't mathematically understood.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If brainstorming mandates the integration of external esoteric computation or simulation data models (e.g., "Find an agent skill for 3D physics rendering"):

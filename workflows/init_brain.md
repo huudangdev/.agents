@@ -16,7 +16,7 @@ To guarantee deterministic behavior and alignment with Enterprise constraints, t
 
 ## 🟡 NODE 2: CROSS-SESSION STATE INHERITANCE (AMNESIA PREVENTION)
 Enterprise continuity demands that the AI operates as a persistent consciousness rather than a stateless query-responder.
-1. **[SYS_CALL]**: Execute `view_file` on `agents.md` located in the `.brain/` or `.agents/` directory logic paths to grasp the prior operational epoch, known blockers, and current project velocity.
+1. **[SYS_CALL]**: Execute `view_file` on `.agents/agents.md` located in the `.agents/brain/` or `.agents/` directory logic paths to grasp the prior operational epoch, known blockers, and current project velocity.
 2. **[SYS_CALL]**: Audit the `/docs` or equivalent workspace documentation directory. You MUST extract existing `PRD` (Product Requirements Document), `SDD` (Software Design Document), `ADR` (Architecture Decision Records), and `BRAND_GUIDELINES.md` if they exist. Commencing application logic without ingesting prior State Models will result in critical context-drift.
 
 ## 🟠 NODE 3: RAG-DRIVEN SKILL INGESTION (LAZY-LOADING V29.2)
@@ -39,4 +39,4 @@ The software pipeline is an assembly chain mechanism (Multi-Agent FSM Workflow).
 No Source Code, Artifact, or Sub-Agent creation is permitted prior to structural verification. Once Nodes 1 through 4 are successfully executed, the Agent must output the following Exit Code 0 Handshake telemetry:
 
 > "✅ **[SYSTEM HANDSHAKE COMPLETE - BOOTSTRAPPED SUCCESSFUL]**  
-> V31.1 Enterprise Lexicons and Cross-Session artifacts have been successfully cached. Advanced RAG Top-K mapping across the 60+ Agent Matrix is operational. Micro-Brain auditing from `agents.md` is complete. The Multi-Agent FSM (Finite State Machine) Projection is now in Stand-By. Awaiting explicit Operator Vector Input to initiate the SDLC continuous pipeline!"
+> V31.1 Enterprise Lexicons and Cross-Session artifacts have been successfully cached. Advanced RAG Top-K mapping across the 60+ Agent Matrix is operational. Micro-Brain auditing from `.agents/agents.md` is complete. The Multi-Agent FSM (Finite State Machine) Projection is now in Stand-By. Awaiting explicit Operator Vector Input to initiate the SDLC continuous pipeline!"

@@ -16,7 +16,7 @@ description: Mobile Dev Standards
 ## ⚙️ EXECUTION PIPELINE (THE MOBILE LIFECYCLE)
 
 ### Phase 1: Contextual Emulation Checks
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `package.json` and Native IDE (Xcode/Gradle) configuration specs. Ensure the SDK targets and min-requirements match the `agents.md` strategic outline.
+- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `package.json` and Native IDE (Xcode/Gradle) configuration specs. Ensure the SDK targets and min-requirements match the `.agents/agents.md` strategic outline.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to scaffold an advanced native module (e.g., "Find an agent skill for React Native Local Database"):

@@ -26,8 +26,8 @@ description: Marcus Fleet Enterprise SDLC Continuous Delivery Pipeline (9-Node D
 ## 🔲 DAG TOPOLOGY: CHRONOLOGICAL EXECUTION NODES
 
 ### ⚪ NODE 0: LOCALHOST ISOLATION & MCP HANDSHAKE
-*🔗 Input Domain Matrix:* `.agents/mcp/mcp.json`, `agents.md`
-**[Execution Protocol]:** Initialize Model Context Protocol (MCP) telemetry. Establish asynchronous handshakes with peripheral nodes such as `playwright` (for DOM mutation targeting) and `drawio` (for UML/Architecture mapping). Perform a Micro-Brain Audit via `agents.md` to reconstruct the exact development epoch and state architecture prior to dynamic memory allocation.
+*🔗 Input Domain Matrix:* `.agents/mcp/mcp.json`, `.agents/agents.md`
+**[Execution Protocol]:** Initialize Model Context Protocol (MCP) telemetry. Establish asynchronous handshakes with peripheral nodes such as `playwright` (for DOM mutation targeting) and `drawio` (for UML/Architecture mapping). Perform a Micro-Brain Audit via `.agents/agents.md` to reconstruct the exact development epoch and state architecture prior to dynamic memory allocation.
 
 ### 🔴 NODE 1 & 2: HEURISTIC DISCOVERY & REQUIREMENTS ENGINEERING
 *🔗 Input Vector:* Exhaustive Web Search APIs.
@@ -77,4 +77,4 @@ Delegate synthesis to `sophia-product-manager`. Sophia is explicitly forbidden f
 ### ⚫ NODE 9: MICRO-BRAIN HISTORICAL ARCHIVING
 *🔗 Input Vector:* Runtime Log / Git Diff Context
 *🧠 Injected Tensors:* Internal State Machine (Sophia Butler Node)
-**[Execution Protocol]:** Audit and compress the entire Session DAG Execution Path. Write architectural shifts, complex blockers evaded, and component rename metrics natively to `.brain/agents.md` utilizing Append-Only commands (`>>`). Mutating historical records via overwrite (`>`) is deemed catastrophic. Signal completion to Operator. DAG Chain Terminated.
+**[Execution Protocol]:** Audit and compress the entire Session DAG Execution Path. Write architectural shifts, complex blockers evaded, and component rename metrics natively to `.agents/brain/.agents/agents.md` utilizing Append-Only commands (`>>`). Mutating historical records via overwrite (`>`) is deemed catastrophic. Signal completion to Operator. DAG Chain Terminated.

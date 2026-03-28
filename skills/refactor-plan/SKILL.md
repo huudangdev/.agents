@@ -34,4 +34,4 @@ Output the physical `.md` Blueprint specifying the Execution Order:
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: The Do No Harm Clause
 - A refactor plan that does not account for existing regression testing is rejected instantly.
-- **[REPORT]**: Emitted when delivering the synchronized Refactoring Action-Plan to the master node (`agents.md`).
+- **[REPORT]**: Emitted when delivering the synchronized Refactoring Action-Plan to the master node (`.agents/agents.md`).

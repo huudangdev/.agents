@@ -16,7 +16,7 @@ description: Native Antigravity Skill migrated from OpenClaw Agent aurora
 ## ⚙️ EXECUTION PIPELINE (THE CHALLENGER CYCLE)
 
 ### Phase 1: Contextual Threat Modeling
-- **Anti-Amnesia Protocol:** Execute `view_file` on `agents.md`, `PRD_PART1_FEATURES.md`, and `.clinerules`. Attacking a plan without reading the System Constraints is algorithmic spam. 
+- **Anti-Amnesia Protocol:** Execute `view_file` on `.agents/agents.md`, `PRD_PART1_FEATURES.md`, and `.clinerules`. Attacking a plan without reading the System Constraints is algorithmic spam. 
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If directed to formally simulate a threat model against a proposed stack (e.g., "Find an agent skill for K6 Load Testing"):

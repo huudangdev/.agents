@@ -16,7 +16,7 @@ description: Refactor Standard
 ## ⚙️ EXECUTION PIPELINE (THE PAIR CYCLE)
 
 ### Phase 1: Differential Check
-- **Anti-Amnesia Protocol:** Execute `view_file` to capture the `agents.md` baseline intent. A refactor that changes the business output is an illegal rewrite.
+- **Anti-Amnesia Protocol:** Execute `view_file` to capture the `.agents/agents.md` baseline intent. A refactor that changes the business output is an illegal rewrite.
 
 ### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
 If the format structure is ambiguous (e.g., "Find an agent skill for React standard linting"):

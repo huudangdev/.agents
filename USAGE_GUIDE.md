@@ -60,6 +60,6 @@ When the Operator assigns a macro-level objective (e.g., *"Fix the checkout cart
 3. Transition state to the Frontend Agent to refactor the UI component.
 4. Transition state to the QA Agent to automatically execute the Terminal test suites.
 5. Code Error Encountered? Activate the V29.2 Circuit Breaker protocol.
-6. Execution Successful? Log the transaction securely into `agents.md` and the localized `.brain/` component history.
+6. Execution Successful? Log the transaction securely into `.agents/agents.md` and the localized `.agents/brain/` component history.
 
 Final Doctrine: **A true General AI (Antigravity) does not blindly generate code; it routes specialized capability sets (Skills) to conquer complex objectives with surgical precision.**
