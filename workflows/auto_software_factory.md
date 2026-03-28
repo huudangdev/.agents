@@ -9,6 +9,8 @@ description: Marcus Fleet Enterprise SDLC Continuous Delivery Pipeline (9-Node D
 
 // turbo-all
 
+> 🛑 **HARD BARRIER RULE (ANTI-SKIP):** You must operate sequentially. You are STRICTLY FORBIDDEN from generating or editing any source code (Nodes 5-7) until you have physically created the documentation artifacts for Nodes 1-4 (PRD, Architecture, Branding) in a `/docs` folder. You MUST stop and ask for the User's explicit approval after completing Node 4.
+
 ---
 
 ## ⬛ SYSTEMIC MEMORY & STATE INHERITANCE (ANTI-AMNESIA PROTOCOLS)
