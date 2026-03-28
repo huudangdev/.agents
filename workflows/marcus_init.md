@@ -17,6 +17,9 @@ This workflow physically automates 100% of manual boilerplate scaffolding (Direc
     cp -r .agents projects/$PROJECT_NAME/
     cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules
     
+    # Boot the TrustGraph localized DB clusters (Neo4j, Postgres, Chroma)
+    cd projects/$PROJECT_NAME/.agents/trustgraph && docker-compose up -d && cd ../../../
+    
     # Generate the Localized .agents/agents.md (Global Node State)
     cat <<EOF > projects/$PROJECT_NAME/.agents/agents.md
 # 🧠 Project Node: $PROJECT_NAME (.agents/agents.md)

@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # 1. Neo4j - Graph Database (Stores Code Nodes, Dependency Edges, Author History)
+  neo4j:
+    image: neo4j:5.23.0
+    restart: always
+    ports:
+      - "7474:7474" # Browser GUI
+      - "7687:7687" # Bolt Protocol (Python adapter connects here)
+    environment:
+      NEO4J_AUTH: neo4j/trustgraph_secret
+      # APOC (Awesome Procedures On Cypher) for advanced GraphRAG algorithms
+      NEO4J_apoc_export_file_enabled: "true"
+      NEO4J_apoc_import_file_enabled: "true"
+      NEO4J_apoc_import_file_use__neo4j__config: "true"
+      NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/var/lib/neo4j/import
+
+  # 2. Postgres - Metadata & Versioning Database (Stores PRD states, Run Logs)
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: trustgraph
+      POSTGRES_PASSWORD: trustgraph_secret
+      POSTGRES_DB: trustgraph_memory
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 3. ChromaDB - Vector Database (Semantic Retrieval for Code/Issues)
+  chromadb:
+    image: chromadb/chroma:latest
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - CHROMA_SERVER_HOST=0.0.0.0
+      - CHROMA_SERVER_PORT=8000
+    volumes:
+      - chromadb_data:/chroma/chroma
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  postgres_data:
+  chromadb_data:

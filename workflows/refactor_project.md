@@ -11,13 +11,16 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 
 ---
 
+## 🟣 STAGE 0: TRUSTGRAPH CONTEXT RETRIEVAL (PRE-FLIGHT)
+*🧠 Mandatory Action:* Before parsing ASTs or reading any files, execute `python3 .agents/adapters/trustgraph_query.py --task "refactor"` to retrieve the User's preferred coding style, anti-patterns, and historical bug graphs. Inject this GraphRAG context into your active memory. Failure to retrieve User Persona context via TrustGraph leads to execution termination.
+
 ## 🟢 STAGE 1: KNOWLEDGE GRAPH INGESTION & OMNI-AST PARSING
 *🧠 Prerequisite Skill Injection:* Enforce the instantiation of analytical nodes: `understand-anything`, `understand-chat`, and `understand-diff` (if operating on a Git Diff or Pull Request context).
 1. **[OS_CALL - AST Extraction]:** Initiate the `run_command` via OS Terminal to execute `npx understand-anything`. This binary parses the complete scope of the legacy project, traversing `.ts`/`.js`/`.py`/`.go` dependencies to construct a mathematical, N-dimensional Knowledge Graph.
 2. **Read-Only Lock (Phase 1 Bound):** The LLM must not alter a single configuration or logic string while this spatial map is constructed. The intelligence must internally map components, API services, database ORMs, side-effects, and React hooks. Operating without the Knowledge Graph yields an immediate `Exit Code 1`.
 
 ## 🟡 STAGE 2: ADAPTIVE ARCHITECTURE & CYCLOMATIC REDUCTION
-*🧠 Prerequisite Skill Injection:* Trigger the dynamic identity protocol to digest `.agents/brain/.agents/agents.md` and `docs/architecture.md`. Inject structural reform plugins: `improve-codebase-architecture`, `refactor-copilot`, `refactor-plan`, `refactor-complexity` and `refactor-review`.
+*🧠 Prerequisite Skill Injection:* Trigger the dynamic identity protocol to digest `.agents/agents.md` and `docs/architecture.md`. Inject structural reform plugins: `improve-codebase-architecture`, `refactor-copilot`, `refactor-plan`, `refactor-complexity` and `refactor-review`.
 1. **[Complexity Measurement]:** Run localized heuristics targeting modules exceeding structural boundaries (e.g., Classes or Functions spanning $> 300$ L.O.C, Prop-drilling depths $> 4$ parameters).
 2. **[Feature-Sliced Design (FSD) Decoupling]:** Enforce spatial separation. Segregate User Interface components (Dumb UI) from State Management Hooks (Custom Hooks). Extricate Pure Business Logic (Mathematical functions, DTO transformers) into independent Service Layers.
 3. **Typing & Linting Standardization:** Ruthlessly delete arbitrary `any` declarations in TypeScript. Run strict `npx tsc --noEmit` and `eslint --fix` to ensure structural alignment prior to compilation logic.
@@ -29,7 +32,8 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 3. Evaluate the output. If the response indicates HTTP `500` faults, React Hydration mismatches, or Missing Property crashes: Execute immediate Auto-Healing routines. No Module may be classified as "Successfully Refactored" until the Daemon Simulator returns a green `[OK/0]` validation trace.
 
 ## 🔵 STAGE 4: STATE SYNCHRONIZATION & MUTATION AUDITING
-*📦 Affected Artifacts:* Execution localized at `.agents/brain/.agents/agents.md` & `/docs/ADR_REFACTOR_LOG.md`
+*📦 Affected Artifacts:* Execution localized at `.agents/agents.md` & `/docs/ADR_REFACTOR_LOG.md`
 1. **[Differential Recording]:** Reconstruct the specific modifications performed (e.g., "Decoupled monolithic `AuthService` into `JwtService` and `OAuthController`"). Map updated routing dependencies.
-2. **[Cross-Session State Injection]:** Utilize the `echo >>` or standard File Appending protocol to archive these changes into `.agents/agents.md`. This is critical: Future intelligence nodes in subsequent sessions must understand that the previous monolithic architecture has been replaced by the new decentralized structure.
+2. **[TrustGraph Commit]:** Execute `python3 .agents/adapters/trustgraph_write.py --run_id "Auto" --status "success" --target "Refactored Component" --skills "refactor, improve-codebase"` to securely lock the new architectural shifts, blockers evaded, and dependencies into the GraphRAG Database.
+3. **[Cross-Session State Injection]:** Utilize the `echo >>` or standard File Appending protocol to archive high-level summary into `.agents/agents.md`. Future intelligence nodes must understand that the architecture has been decentralized.
 3. Emit a Green Terminal status and generate the Final Output payload, indicating to the Operator that the Complexity Graph has been significantly alleviated.
