@@ -100,7 +100,8 @@ Command execution is handled algorithmically via direct prompts.
 | Operational Command | Sphere of Action | Technical Intent |
 |---|---|---|
 | `/init_brain` | **Global Boot** | **MANDATORY for cold-start environments.** Ingests constitutional guardrails and provisions the lexical `SKILLS_INDEX` mapping. |
-| `/auto_software_factory` | **Monolithic Generation** | Initiates a comprehensive 9-Step Pipeline. Blueprints Feature-Sliced Architecture (C4), synthesizes full-stack entity relationships, runs TDD Backend, and executes Playwright Verification. |
+| `/macro_architect` | **Planning & Documentation** | Initiates Phase 1 of the SDLC. Blueprints Feature-Sliced Architecture (C4), synthesizes Business Logic, and emits strict UI/UX guidelines to `/docs`. Halts for User Approval. |
+| `/execute_factory` | **Code Generation & TDD** | Initiates Phase 2 of the SDLC. Ingests the approved `/docs` and rigorously executes TDD Backend scaffolding, Frontend UI rendering, and E2E QA simulation. |
 | `/refactor_project` | **Legacy Mutaion**| Computes Cyclomatic Complexity and drafts deterministic Knowledge Graphs (`npx understand-anything`) before breaking down monolithic spaghetti networks. |
 | `/quick_fix` | **Surgical Injection** | Circumvents macro-planning. Target isolates 1 specific sub-component for variable adjustments in O(1) latency under 240 seconds. |
 | `/mobile_init` | **IOS/Android Core**| Bootstraps rigorous iOS and React Native/Flutter design constraints (e.g., Tailwind boundaries, continuous spring animations, Safe-Area strict adherence). |
@@ -118,7 +119,8 @@ Command execution is handled algorithmically via direct prompts.
 ├── mcp/                           # Model Context Protocol constraints
 ├── workflows/                     # Declarative Workflow subroutines
 │   ├── init_brain.md 
-│   ├── auto_software_factory.md
+│   ├── macro_architect.md
+│   ├── execute_factory.md
 │   └── quick_fix.md
 └── skills/                        # 64-Agent Cognitive Swarm Directory
     ├── SKILLS_INDEX.md            # Auto-compiled Semantic Pre-Index
