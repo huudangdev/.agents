@@ -135,7 +135,7 @@ The AI is computationally restricted from generating code until this node return
 3. **Component Interpolation:** Melds the PRD logic schemas and the UI/UX `BRAND_GUIDELINES.md` to output the component files into the active workspace.
 4. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
 
-### 5. `/refactor` (Spaghetti Code Decoupling)
+### 5. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
 1. **Persona Retrieval:** Queries the local GraphRAG database to inherit the user's historical coding patterns and avoid previous anti-patterns.
 2. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
@@ -172,7 +172,7 @@ The AI is computationally restricted from generating code until this node return
 │   ├── planning.md
 │   ├── design.md
 │   ├── develop.md
-│   ├── refactor.md
+│   ├── refactor-planning.md
 │   ├── update_brain.md
 │   └── quick_fix.md
 └── skills/                        # 64-Agent Cognitive Swarm Directory
