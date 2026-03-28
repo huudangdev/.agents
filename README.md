@@ -82,16 +82,11 @@ graph TD
 
 ## 📦 Installation Provisioning
 
-Integrate the matrix framework into your localized corporate topologies with standard `git` protocols.
+Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
 ```bash
-# 1. Provision target directory space
-mkdir enterprise-workspace && cd enterprise-workspace
-
-# 2. Inject the Distributed LLM Core (Hidden Mode)
-git clone https://github.com/huudangdev/.agents.git .agents
-
-# 3. Mount repository inside your AI-Integrated IDE
+# Execute this native pipeline to scaffold the AI cognitive engine
+curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
 
 > ⚠️ **CRITICAL DEPENDENCY:** Read the [ROUTING & OPERATIONAL MANUAL](./USAGE_GUIDE.md) to understand multi-agent parallel dispatch paradigms before transmitting commands.
