@@ -142,6 +142,9 @@ The AI is computationally restricted from generating code until this node return
 - `/marcus_init` acts as the Web Genesis point, establishing baseline structural integrity for Next.js systems and injecting the `.clinerules` intelligence protocol into empty workspaces.
 - `/mobile_init` initiates mobile doctrine, enforcing cross-platform physics (React Native/Flutter component boundaries, iOS Safe-Area adherence, mobile viewport limitations) to prepare the ground for the Planning phase.
 
+### 8. `/update_brain` (OTA Intelligence Upgrade)
+**Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `.agents/agents.md` memory matrix or TrustGraph database.
+
 ---
 
 ## 🔬 Repository Architecture
@@ -152,6 +155,8 @@ The AI is computationally restricted from generating code until this node return
 ├── USAGE_GUIDE.md                 # Heuristic routing and dispatch instructions
 ├── V29.1_RELEASE_NOTES.md         # Advanced academic paper / changelogs
 ├── .clinerules                    # Foundational Constitution Protocol (FSM Limits)
+├── install.sh                     # Directory genesis installer
+├── update.sh                      # OTA non-destructive Rsync patcher
 ├── mcp/                           # Model Context Protocol constraints
 ├── workflows/                     # Declarative Workflow subroutines
 │   ├── init_brain.md 
@@ -159,6 +164,7 @@ The AI is computationally restricted from generating code until this node return
 │   ├── design.md
 │   ├── develop.md
 │   ├── refactor.md
+│   ├── update_brain.md
 │   └── quick_fix.md
 └── skills/                        # 64-Agent Cognitive Swarm Directory
     ├── SKILLS_INDEX.md            # Auto-compiled Semantic Pre-Index

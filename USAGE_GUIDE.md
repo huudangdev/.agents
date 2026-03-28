@@ -19,6 +19,7 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2: Prevents redundant planning executions. Emits Figma-logic variables, Hex codes, and Golden ratios. Pure Right-Brain synthesis. Halts for user review. |
 | `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code and executes self-healing TDD loops via dev servers (npm, xcodebuild, flutter run) until compile output is green. |
 | `/refactor` | Targeting established legacy repositories (Brownfield). Requires structural decoupling. | Forces the AI to extract an AST Knowledge Graph via `Understand-Anything` before executing surgical Cyclomatic Complexity reductions safely. |
+| `/update_brain`| Pulling upstream system changes to an active ongoing project. | Downloads the latest `.agents` capabilities via `update.sh` and merges them non-destructively (ignoring local Project Memory `agents.md`). |
 
 ---
 
