@@ -1,0 +1,28 @@
+{
+  "name": "create-antigravity-engine",
+  "version": "29.2.0",
+  "description": "Enterprise Supreme Manifesto - Autonomous Engineering Scaffold Matrix V29.2",
+  "type": "module",
+  "main": "bin/cli.js",
+  "bin": {
+    "create-antigravity": "./bin/cli.js",
+    "antigravity-init": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node ./bin/cli.js"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "scaffold",
+    "builder",
+    "antigravity",
+    "marcus-fleet"
+  ],
+  "author": "Antigravity Engineering",
+  "license": "MIT",
+  "dependencies": {
+    "ora": "^8.0.1",
+    "picocolors": "^1.0.0"
+  }
+}
