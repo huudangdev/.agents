@@ -58,12 +58,41 @@ chmod +x "$TARGET_DIR/adapters/trustgraph_write.py" 2>/dev/null
 
 echo -e "\n${GREEN}✔ Neural Matrix successfully grafted into local repository!${NC}\n"
 
-echo -e "⚡ ${MAGENTA}NEXT STEPS FOR OPERATOR:${NC}"
-echo -e " 1. ${CYAN}Boot the TrustGraph Memory Core:${NC}"
-echo -e "    $ cd .agents/trustgraph && docker-compose up -d"
-echo -e " 2. ${CYAN}Acknowledge the Constitutional Directive:${NC}"
+# ==========================================
+# AUTO-BOOT TRUSTGRAPH (DOCKER)
+# ==========================================
+echo -e "🐳 ${CYAN}Checking Local Docker Environment...${NC}"
+
+if command -v docker &> /dev/null; then
+    echo -e "   Docker found. Igniting TrustGraph Memory Core (Neo4j, Postgres, ChromaDB)..."
+    
+    # Check for docker compose or docker-compose
+    if docker compose version &> /dev/null; then
+        DOCKER_CMD="docker compose"
+    elif command -v docker-compose &> /dev/null; then
+        DOCKER_CMD="docker-compose"
+    else
+        DOCKER_CMD=""
+    fi
+
+    if [ -n "$DOCKER_CMD" ]; then
+        cd "$TARGET_DIR/trustgraph" || exit
+        $DOCKER_CMD up -d
+        cd ../../
+        echo -e "   ${GREEN}✔ TrustGraph Subsystems are online!${NC}"
+    else
+        echo -e "   ${YELLOW}⚠️ Docker Compose was not found. Please start the TrustGraph manually:${NC}"
+        echo -e "   $ cd .agents/trustgraph && docker-compose up -d"
+    fi
+else
+    echo -e "   ${YELLOW}⚠️ Docker is not installed on this system. TrustGraph Memory Core will be constrained.${NC}"
+    echo -e "   Please install Docker (https://docs.docker.com/get-docker/) to enable Long-Term Memory."
+fi
+
+echo -e "\n⚡ ${MAGENTA}NEXT STEPS FOR OPERATOR:${NC}"
+echo -e " 1. ${CYAN}Acknowledge the Constitutional Directive:${NC}"
 echo -e "    Review ${GREEN}.agents/.clinerules${NC} to understand your Multi-Agent ecosystem."
-echo -e " 3. ${CYAN}Spawn the Fleet:${NC}"
+echo -e " 2. ${CYAN}Spawn the Fleet:${NC}"
 echo -e "    Load the project in your favorite LLM Code Editor to natively inter-op with the agents.\n"
 
 echo -e "Enjoy your Autonomous Engineering Engine!\n"
