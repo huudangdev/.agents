@@ -52,12 +52,12 @@ graph TD
     
     subgraph "Execution Automata - Sandboxed IO"
         Context -->|Native OS Shell Execution| Terminal[Terminal Environment]
-        Terminal -->|Status 0 (Green)| Validate[TDD Assertion Passed]
-        Terminal -->|Status != 0 (Exception)| Tripper{FSM Circuit Breaker}
+        Terminal -->|Status 0 - Green| Validate[TDD Assertion Passed]
+        Terminal -->|Status Not 0 - Exception| Tripper{FSM Circuit Breaker}
         Tripper -->|Failures < 3| HeuristicFeedback[Internal Self-Correction Loop]
         HeuristicFeedback --> Context
         Tripper -->|Failures >= 3| HardBlock[Execution Halting State]
-        HardBlock -.->|Red Flag Ping / Terminate| U
+        HardBlock -.->|Red Flag Ping or Terminate| U
     end
 
     classDef blue fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#fff;
