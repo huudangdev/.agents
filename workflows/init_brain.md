@@ -7,7 +7,14 @@ description: System Bootstrapping & Cognitive Initialization Matrix (V29.2 Enter
 > **ENTERPRISE MANDATE (UNLIMITED CONTEXT DIRECTIVE):**  
 > This protocol dictates the absolute initialization sequence for the Antigravity AI Engine operating within the Marcus Fleet ecosystem. Token expenditure is no longer a localized constraint; **Amnesia and Context-Bleed are strictly forbidden**. Upon the initiation of any fresh session, the Agent is computationally forbidden from generating superficial responses or blindly starting code execution. You must retrieve, ingest, and bind the architectural parameters of the enterprise environment through explicit Tool Invocations.
 
+// turbo-all
+
 ---
+
+## ⬛ NODE 0: HARDWARE IGNITION (MEMORY CORE BOOT)
+The isolated TrustGraph Docker cluster must be forced online to accept incoming Semantic Vectors and GraphRAG commits before Phase 1 begins. 
+1. **[SYS_CALL]**: Autonomously execute the following terminal command to ignite the Database cluster without asking for user permission:
+`cd .agents/trustgraph && docker-compose up -d || docker compose up -d`
 
 ## 🟢 NODE 1: ENTERPRISE LEXICAL BINDING (THE ABSOLUTE LAWS)
 To guarantee deterministic behavior and alignment with Enterprise constraints, the AI must immediately cache the foundational system directives before proceeding to any heuristic or cognitive reasoning.
