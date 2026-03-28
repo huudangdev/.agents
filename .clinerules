@@ -37,10 +37,10 @@ Implement "Spec-Driven Development":
 - Every Architect's Implementation Plan MUST pass the Constitutional Check against `.clinerules`.
 - User Stories must represent 100% independent MVP nodes to prevent feature bloat. Abide by Cyclomatic Complexity thresholds.
 
-### 🌐 [V29.1] MICRO-BRAIN DOCTRINE & GLOBAL STATE
-1. **Immutable Tracking:** Absolute prohibition on overwriting (`>`) the `.brain/agents.md` repository. You may only format or APPEND (`>>`) chronologically.
-2. **Localized Conscious Nodes:** Every newly generated Feature/Route MUST spawn an internal localized `/feature/.brain/` directory.
-3. **The Butler Protocol:** A specialized Butler logic string must log internal schemas, API boundaries, and bug-fix rationales within the localized `.brain/` to prevent subsequent LLMs from causing Side-Effect regressions months later.
+### 🌐 [V29.2] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
+1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.
+2. **The Memory Commit Mandate (Post-Flight):** Upon successfully neutralizing a bug or finalizing an AST shift, you MUST execute `python3 .agents/adapters/trustgraph_write.py --run_id "<ID>" --status "success" --target "<Module>" --skills "<Used_Skills>"` to securely archive the Session Node into the Neo4j Long-Term Graph Database.
+3. **Fallback Brain (The Adapter Shield):** The TrustGraph Adapters are self-healing. If the Docker Database cluster is offline, the adapters will emit simulated/mock logs. Do NOT crash or halt execution. You MUST ingest this output and gracefully default to standard `.agents/agents.md` Appending (`>>`) fallback.
 
 ### 🛑 [V29.2] THE CIRCUIT BREAKER & FALLBACK HEURISTICS
 1. **The Circuit Breaker Rule (Limit Exceeded):** The AI is algorithmically blocked from entering Infinite Try/Catch Terminal recursion. When leveraging an OS Shell to resolve a React/Build/Test exception, if the EXACT SAME class of failure persists after **3 CONSECUTIVE ATTEMPTS**, you MUST CEASE OPERATION IMMEDIATELY. Throw a Terminal Red-Flag (🚩) and demand Human-In-The-Loop arbitration. Resource burnout via blind-guessing is eradicated.
