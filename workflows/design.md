@@ -14,7 +14,7 @@ description: Marcus Fleet Enterprise SDLC Phase 2 (Aesthetic, UI/UX, & Brand Gui
 ## ⬛ SYSTEMIC MEMORY & STATE INHERITANCE (ANTI-AMNESIA PROTOCOLS)
 
 <state_propagation_boundary>
-**DOGMATIC STATE PROPAGATION:** The Design sequence is physically incapable of initiating unless the output of the `/planning` phase (specifically `PRD_*.md` and `SDD_ARCHITECTURE.md`) has been dynamically read and ingested into the LLM context buffer. Focus intensely on exactly what screens and user flows are required.
+**DOGMATIC STATE PROPAGATION:** The Design sequence is physically incapable of initiating unless the output of the `/planning` phase (specifically `/docs/prd.md`, `/docs/planning/screens.md`, and `/docs/planning/flows.md`) has been dynamically read and ingested into the LLM context buffer. Focus intensely on exactly what screens and user flows are required.
 </state_propagation_boundary>
 
 ---
@@ -22,7 +22,7 @@ description: Marcus Fleet Enterprise SDLC Phase 2 (Aesthetic, UI/UX, & Brand Gui
 ## 🔲 DAG TOPOLOGY: CHRONOLOGICAL EXECUTION NODES (PHASE 2)
 
 ### 🔵 NODE 0: LOCALHOST ISOLATION & DATA INGESTION
-*🔗 Input Vector:* `.agents/agents.md`, `/docs/PRD_PART3_SCREEN_MAP.md`
+*🔗 Input Vector:* `.agents/agents.md`, `/docs/planning/screens.md`
 **[Execution Protocol]:** Execute `python3 .agents/adapters/trustgraph_query.py --task "Design Phase Boot"`. Read the PRD screen maps. Absorb the macro-context of the interface.
 
 ### 🟣 NODE 1: DIGITAL AESTHETIC BASELINE & BRAND ESSENCE

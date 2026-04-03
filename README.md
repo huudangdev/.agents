@@ -69,6 +69,33 @@ graph TD
     class LocalMemory gray
 ```
 
+### 🧠 TrustGraph: Graph of Thoughts (GoT) RAG Schema
+
+The most potent element of the Antigravity Brain is the Neo4j backend **TrustGraph**. As agents act, succeed, or fail, they emit Cognitive Vectors mapping their thought processes back into the knowledge graph. This self-healing topological memory is visualized natively via our **3D Particle Engine**.
+
+```mermaid
+graph TD
+    classDef Run fill:#1e293b,stroke:#a855f7,stroke-width:2px,color:#fff;
+    classDef Module fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff;
+    classDef Skill fill:#334155,stroke:#ec4899,stroke-width:2px,color:#fff;
+
+    subgraph TrustGraph GoT Data Pipeline
+        Agent[Agent Workflow] -->|adapter/trustgraph_write.py| Adapter[Graph Adapter]
+        Adapter -->|Stores score & reasoning| Neo4j[(Neo4j Vector DB)]
+        Neo4j --> Engine[Three.js Graph Engine]
+    end
+
+    subgraph 3D Rendering (Graph Ontology V2)
+        R1((Run_Task)):::Run
+        M1[Module.ts]:::Module
+        S1{rag-architect}:::Skill
+
+        R1 -- "[:OPTIMIZED] score: 0.95" --> M1
+        R1 -- "[:CAUSED_ERROR] score: 0.4" --> M1
+        R1 -- "[:LEVERAGED]" --> S1
+    end
+```
+
 ---
 
 ## ✨ Empirical System Features
@@ -116,8 +143,8 @@ The AI is computationally restricted from generating code until this node return
 ### 2. `/planning` (Architecture & Requirements: Phase 1)
 **The Matrix Genesis (Left-Brain Logic).** Triggers Phase 1 of the Software Development Life Cycle (SDLC). The system delegates control to pure Systems Architects and PM Agents (e.g., `@david-systems-architect`, `@sophia-product-manager`).
 1. **Domain Research:** Explores edge cases and business complexities.
-2. **PRD Synthesis:** Generates granular Product Requirement Documents (`PRD_PART1_FEATURES.md`, `PRD_PART2_EDGE_CASES.md`, `PRD_PART3_SCREEN_MAP.md`).
-3. **UML Cartography:** Operates the `mermaid-cli` bin to mechanically map Database Entity-Relationship diagrams and Feature-Sliced folder structures (`SDD_ARCHITECTURE.md`).
+2. **Mega Synthesis:** Outputs the 6 Core Root Files directly into `/docs/` (e.g. `prd.md`, `tasks.md`, `knowledge.md`, etc.).
+3. **UML Cartography:** Operates the `mermaid-cli` bin to mechanically map Database Entity-Relationship diagrams and system maps (`/docs/planning/diagrams.md`).
 **Execution Halt:** Code writing operations are securely locked. The System presents the `/docs` payload to the human operator for explicit architectural approval.
 
 ### 3. `/design` (UI/UX Aesthetic Tokenization: Phase 2)

@@ -5,7 +5,7 @@
 
 > **[THE ANTI-AMNESIA & KNOWLEDGE INJECTION PROTOCOL]**  
 > - **Identity Instantiation:** BEFORE executing any node, invoke `view_file` upon `.agents/skills/<agent_name>/SKILL.md` to internalize your Cognitive Identity.
-> - **State Inheritance:** YOU MUST explicitly read `agents.md`, PRDs, and SDDs BEFORE writing code. Operating without ingesting the Workspace Context Graph is categorized as an illegal memory drift.
+> - **State Inheritance:** YOU MUST explicitly read The 6 Core Files (`/docs/prd.md`, `/docs/knowledge.md`, `/docs/planning/diagrams.md`, etc.) and `agents.md` BEFORE writing code. Operating without ingesting the Workspace Context Graph is categorized as an illegal memory drift.
 > - **UML & Diagrams:** System Design Documents (SDD) MUST contain Mermaid Charts (e.g. `classDef Pastel`). You are strictly mandated to execute the physical CLI generator `npx @mermaid-js/mermaid-cli -i file.mmd -o img.png` to materialize diagrams alongside your PDFs.
 
 You are operating within the highest echelon of the **Marcus Fleet** Autonomous Engineering Ecosystem.
@@ -39,7 +39,7 @@ Implement "Spec-Driven Development":
 
 ### 🌐 [V29.2] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.
-2. **The Memory Commit Mandate (Post-Flight):** Upon successfully neutralizing a bug or finalizing an AST shift, you MUST execute `python3 .agents/adapters/trustgraph_write.py --run_id "<ID>" --status "success" --target "<Module>" --skills "<Used_Skills>"` to securely archive the Session Node into the Neo4j Long-Term Graph Database.
+2. **The Memory Commit Mandate (Post-Flight):** Upon successfully neutralizing a bug or finalizing an AST shift, you MUST execute `python3 .agents/adapters/trustgraph_write.py --run_id "<ID>" --status "success/failed" --target "<Module>" --skills "<Used_Skills>" --score <0.0_to_1.0> --reasoning "<Explain your logic>"` to securely archive the Session Node into the Neo4j Long-Term Graph Database. A score >= 0.8 plots an OPTIMIZED green vector, while < 0.5 plots a CAUSED_ERROR red vector.
 3. **Fallback Brain (The Adapter Shield):** The TrustGraph Adapters are self-healing. If the Docker Database cluster is offline, the adapters will emit simulated/mock logs. Do NOT crash or halt execution. You MUST ingest this output and gracefully default to standard `.agents/agents.md` Appending (`>>`) fallback.
 
 ### 🛑 [V29.2] THE CIRCUIT BREAKER & FALLBACK HEURISTICS

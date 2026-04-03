@@ -15,6 +15,8 @@ description: System Bootstrapping & Cognitive Initialization Matrix (V29.2 Enter
 The isolated TrustGraph Docker cluster must be forced online to accept incoming Semantic Vectors and GraphRAG commits before Phase 1 begins. 
 1. **[SYS_CALL]**: Autonomously execute the following terminal command to ignite the Database cluster without asking for user permission:
 `cd .agents/trustgraph && docker-compose up -d || docker compose up -d`
+2. **[GRAPH_INGESTION]**: Run the automated codebase graph ingestor to fully populate the Neo4j Graph with valid architectural nodes of the active repository:
+`python3 .agents/adapters/trustgraph_ingest_all.py --root .`
 
 ## 🟢 NODE 1: ENTERPRISE LEXICAL BINDING (THE ABSOLUTE LAWS)
 To guarantee deterministic behavior and alignment with Enterprise constraints, the AI must immediately cache the foundational system directives before proceeding to any heuristic or cognitive reasoning.

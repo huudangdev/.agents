@@ -34,6 +34,6 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 ## 🔵 STAGE 4: STATE SYNCHRONIZATION & MUTATION AUDITING
 *📦 Affected Artifacts:* Execution localized at `.agents/agents.md` & `/docs/ADR_REFACTOR_LOG.md`
 1. **[Differential Recording]:** Reconstruct the specific modifications performed (e.g., "Decoupled monolithic `AuthService` into `JwtService` and `OAuthController`"). Map updated routing dependencies.
-2. **[TrustGraph Commit]:** Execute `python3 .agents/adapters/trustgraph_write.py --run_id "Auto" --status "success" --target "Refactored Component" --skills "refactor, improve-codebase"` to securely lock the new architectural shifts, blockers evaded, and dependencies into the GraphRAG Database.
+2. **[TrustGraph Commit]:** Execute `python3 .agents/adapters/trustgraph_write.py --run_id "Refactor_Target" --status "success" --target "Refactored Component" --skills "refactor, improve-codebase" --score 0.95 --reasoning "Decoupled logic to reduce Cyclomatic Complexity"` to securely lock the new architectural shifts, blockers evaded, and dependencies into the GraphRAG Database.
 3. **[Cross-Session State Injection]:** Utilize the `echo >>` or standard File Appending protocol to archive high-level summary into `.agents/agents.md`. Future intelligence nodes must understand that the architecture has been decentralized.
 3. Emit a Green Terminal status and generate the Final Output payload, indicating to the Operator that the Complexity Graph has been significantly alleviated.

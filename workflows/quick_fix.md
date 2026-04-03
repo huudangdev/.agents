@@ -20,4 +20,4 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 - **[Fallback Protocol]:** If visual abstraction tools (Draw.io, Understand-Anything) crash on initialization, immediately fallback to raw `grep` arrays and text-based `mermaid` generation to avoid stalling.
 
 ## 🔸 STAGE 3: STATE SYNCHRONIZATION & EJECTION
-*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `.agents/agents.md` and the localized `.agents/brain/` node of that component. Tick `[x]` on the active task list. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.
+*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `.agents/agents.md` and the localized `.agents/brain/` node of that component. Tick `[x]` on the active task list. Execute `python3 .agents/adapters/trustgraph_write.py --run_id "QuickFix" --status "success" --target "Patched_File" --skills "quick-fix" --score 0.85 --reasoning "Patched localized bug"` to save the RAG context. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.

@@ -1,0 +1,24 @@
+graph TD
+    classDef Run fill:#1e293b,stroke:#a855f7,stroke-width:2px,color:#fff;
+    classDef Module fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff;
+    classDef Skill fill:#334155,stroke:#ec4899,stroke-width:2px,color:#fff;
+    classDef Action fill:#475569,stroke:#fbbf24,stroke-width:2px,color:#fff;
+
+    subgraph TrustGraph GoT Data Pipeline
+        Agent[Agent Workflow] -->|trustgraph_write.py| Adapter[Graph Adapter]
+        Adapter --> Neo4j[(Neo4j Vector RAG)]
+        Neo4j --> Engine[Three.js Graph Engine]
+    end
+
+    subgraph Graph Ontology V2
+        R1((Run_AutoFact)):::Run
+        M1[GraphVisualizer.tsx]:::Module
+        M2[route.ts]:::Module
+        S1{rag-architect}:::Skill
+        S2{rag-implementation}:::Skill
+
+        R1 -- "[:OPTIMIZED] score: 0.95" --> M1
+        R1 -- "[:CAUSED_ERROR] score: 0.4" --> M2
+        R1 -- "[:LEVERAGED]" --> S1
+        R1 -- "[:LEVERAGED]" --> S2
+    end
