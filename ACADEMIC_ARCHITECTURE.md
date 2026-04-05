@@ -93,48 +93,120 @@ sequenceDiagram
 
 Granting Non-Deterministic Generative Models unilateral execution rights over physical Host computer systems creates massive stability risk profiles. To mitigate arbitrary destructive processes, Antigravity enforces a strict, draconian **Zero-Suggestion Doctrine** bounded by Execution Finite State Machines.
 
-### 4.1 The Zero-Suggestion Command Pattern
-LLM Agents operating inside the matrix are computationally barred from yielding manual suggestions to humans (e.g., *"Please run `npm cache clean` to see if that works"*). They exist as Sovereign Cybernetic Operators. If a command must be triggered, the AI formulates the `.sh` script intrinsically and dispatches it into the OS Terminal sandbox autonomously to determine success or failure.
+### 4.1 The Zero-Suggestion Command Pattern (Cybernetic Autonomy)
+Legacy LLM architectures frequently devolve into "Conversational Paralysis", wherein the Agent outputs instructions (e.g., *"Please run `npm cache clean` to see if that works"*) and passively waits for Biological User input. 
 
-### 4.2 The "Ralph Wiggum" Circuit Breaker Theory (Autonomous Lockout)
-A severe, fatal flaw in unconstrained agentic loops is standard "Iterative Retry Recursion". If an AI fractures a `vitest` unit-test, analyzes the error, attempts a patch, fails, and repeats—it will loop infinitely until it drains financial API quotas.
+In Antigravity, LLM Agents operating inside the matrix exist as Autonomous Cybernetic Operators. They are computationally barred from yielding manual suggestions. If a computational verification requires executing a physical OS command, the AI is structurally mandated to formulate the `.sh` script intrinsically, dispatch it into the OS Terminal Sandbox autonomously, and parse the stdout/stderr stream without human hand-holding.
 
-Antigravity executes the **"3-Strikes FSM Lockout"**. Any compilation module tracking an execution failure count $E_n \ge 3$ violently trips the structural Circuit Breaker algorithm. 
+### 4.2 The "Circuit Breaker" Mathematical Limit (Autonomous Lockout)
+A severe, fatal flaw in unconstrained agentic methodologies is "Iterative Retry Recursion." Consider an AI that breaks a `vitest` unit-test; it reads the error, hallucinates a patch, fails again, and repeats. This recursively burns financial API quotas infinitely.
+
+Antigravity mathematically executes the **"3-Strikes FSM Lockout"**. Any module tracking an execution failure count $E_n \ge 3$ violently trips the structural Circuit Breaker algorithm. 
 - The automation engine halts code generation immediately.
 - The AI's systemic state shifts exclusively into **"Reflection Mode"**.
 - A `Red Flag Error` logs sequentially to the Human-In-The-Loop. Infinite automated burning is thus mathematically impossible.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Idle: Awaits Dispatch
+    
+    state "Cognitive Pre-Fetch" as PreFetch
+    state "AST Code Mutation" as Mutating
+    state "Terminal OS Verification" as OSCheck
+    state "Reflection (Self-Correction)" as Reflection
+    state "FSM Circuit Breaker Halt" as Lockout
+    
+    Idle --> PreFetch: Biological Prompt Trigger
+    PreFetch --> Mutating: Context Assembled
+    Mutating --> OSCheck: Sandboxed Execution
+    
+    OSCheck --> [*]: Exit 0 [Pass] -> Write to Neo4j
+    
+    OSCheck --> Reflection: Exit > 0 [Fail] (n = 1, 2)
+    Reflection --> Mutating: Formulate Patch Hypothesis
+    
+    OSCheck --> Lockout: Exit > 0 [Fail] (n >= 3)
+    Lockout --> [*]: Yield Error to Human Operator
+```
 
 ---
 
 ## 5. Phase-Gated SDLC Orchestration (The 6-File Core Assembly Line)
 
-Because unrestricted, multi-file Code Generation is intrinsically chaotic, Antigravity forces all architectural maneuvers through the **GitHub Spec-Kit Governance Matrix**. The system rejects any request to "just build the application" in one monolithic prompt block. Operations are rigorously and sequentially phased.
+Historically, unrestricted Multi-file Code Generation is intrinsically chaotic. Allowing an LLM to simultaneously design a UI, write backend SQL, and map a frontend state tree guarantees logical fragmentation. Antigravity mitigates this by forcing all architectural maneuvers through the **GitHub Spec-Kit Governance Matrix**. 
+
+The Cognitive System mathematically rejects overarching prompts like "build me a CRM." Operations are sequentially, rigidly phased through strict unidirectional gates.
 
 ### 5.1 Phase 1: Planning (`/planning`)
-Operated strictly by abstract systems architects (`david-systems-architect`). Focuses exclusively on Mega-Synthesis and boundary logic. The AI writes 6 foundational Markdown nodes (e.g., `prd.md`, `tasks.md`, `architecture.md`). It leverages `mermaid-cli` bin clusters to map Database ERDs and system bounds mathematically. 
-**Lockout State:** Under Phase 1 execution bounds, active code-writing algorithms are locked.
+Operated strictly by abstract systems architects (e.g., `@david-systems-architect`). Focuses exclusively on Mega-Synthesis. The AI writes 6 foundational Markdown nodes (e.g., `prd.md`, `tasks.md`, `architecture.md`). It leverages `mermaid-cli` bin clusters to establish Boundary Logic structurally before writing physical code.
+**Lockout Penalty:** Attempting to write executable Code during Phase 1 triggers an automatic FSM Halt.
 
 ### 5.2 Phase 2: Design Tokenization (`/design`)
-Operated by UI/UX agents (`maya-ui-ux-designer`). Translates abstract layout theories into rigid mathematical CSS physics. Generates absolute spacing rhythms ($4px \times N$), Framer Motion physics constants (`stiffness:400, damping:30`), and Semantic Color boundary variables in a systemic `BRAND_GUIDELINES.md` index. This guarantees an application that is mathematically aesthetic rather than subjectively random.
+Operated by UI/UX structural agents. Translates abstract design theories into rigid mathematical CSS physics. Generates absolute spacing rhythms ($4px \times N$), Framer Motion physics constants (`stiffness:400, damping:30`), and Semantic Color boundary variables mapping precisely to HSL schemas. 
 
 ### 5.3 Phase 3: The Assembly Line (`/develop`)
-The deterministic physical translation phase driven strictly by Test-Driven Development (TDD). The AI mechanism scaffolds physical testing suites matching edge-cases detailed in the PRD *prior* to generating component logic. It loops Terminal OS evaluations asynchronously until compilation yields Green `[Pass]`.
+The deterministic physical translation phase. Driven strictly by Test-Driven Development (TDD) mechanics. The AI mechanisms scaffold physical testing suites matching edge-cases detailed in the Phase 1 PRD *prior* to generating component logic. It loops Terminal OS evaluations asynchronously until compilation validation.
 
 ### 5.4 Phase 4: Surgical Decoupling (`/refactor-planning` & `/quick_fix`)
-Spaghetti code decryption mechanisms developed for existing, disorganized Brownfield architectures. Utilizing "Spatial Component Flattening", the Agent zeroes in on legacy modules maintaining Cyclomatic Complexity ratings $> 15$. It surgically flattens and decapitates deeply nested nodes utilizing the overarching Neo4j Graph topology to act as a fail-safe boundary net.
+Spaghetti code decryption mechanisms developed for existing, disorganized Brownfield architectures. Utilizing "Spatial Component Flattening", the Agent isolates legacy modules maintaining Cyclomatic Complexity ratings $> 15$. It surgically flattens and decapitates deeply nested sub-nodes utilizing the overarching Neo4j Graph topology as a fail-safe boundary net.
+
+```mermaid
+graph LR
+    classDef Gate fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff;
+    classDef Process fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#fff;
+
+    subgraph The Uni-directional Execution Pipeline
+        P1[Phase 1:<br/>Architecture Setup]:::Process --> G1{Gate 1:<br/>Human Approval}:::Gate
+        G1 -->|Authorized| P2[Phase 2:<br/>Design Tokenization]:::Process
+        P2 --> G2{Gate 2:<br/>Aesthetic Freeze}:::Gate
+        G2 -->|Authorized| P3[Phase 3:<br/>TDD Assembly Line]:::Process
+        P3 --> G3{Gate 3:<br/>Terminal Verification}:::Gate
+        G3 -->|Passed| P4[Phase 4:<br/>GoT Topology Commit]:::Process
+    end
+```
 
 ---
 
 ## 6. The Parasitic Isolation Paradigm (Universal Portability V29.3)
 
-A core philosophical tenet of Antigravity's physical manifestation mechanism is **Zero-Pollution Host Integration**. The AI Matrix must be biologically mobile across project landscapes. If porting the `.agents` ecosystem into a legacy Java Backend repository necessitates installing gigabytes of global Python NLP pipelines directly onto the laptop host OS, the methodology fails natively.
+A profound conceptual hurdle in deploying advanced LLM frameworks across disparate corporate networks is **Host System Pollution** (commonly labeled "Dependency Hell"). If deploying an AI Matrix into a legacy Java Backend requires the manual installation of gigabytes of global Python NLP pipelines onto the developer's raw underlying Mach-O or Linux Kernel... the methodology fails natively.
 
 ### 6.1 The Turn-key Bootstrap (`/bootstrap`)
-The `.agents` environment implements a parasitic, highly contained symbiotic layer through its Bootstrap mechanism:
+The Antigravity ecosystem implements a Parasitic, highly-contained Localized Symbiotic layer. The `.agents` directory acts as a quarantined Cybernetic Seed:
 
-1. **Database Containerization (C1):** The Heavy Cognitive Engines (Neo4j Graph Clusters, Postgres State Tables, ChromaDB Vector DBs) are natively abstracted into isolated local Docker instances. They never mechanically entangle with the Host OS dependency layer.
-2. **Execution Virtualization (C2):** Python-centric logic processors, sentence-transformers, and API libraries (`trustgraph_vectorize.py`) execute purely within an invisible `.agents/venv` scope. The Global OS physical binary (`/usr/bin/python`) remains utterly untouched.
-3. **Plug-and-Play Reanimation:** This isolated architecture guarantees that the AI matrix functions as a "Cybernetic Cognitive Seed". When dropped into any foreign environment, the execution of `.agents/bootstrap.sh` ignites the Engine, maps the host’s semantic data, builds its virtual environments, and launches the UI Visualizer without mutating the Host’s native operating environment dependencies or paths.
+1. **Database Containerization (C1 - The Heavy Metal):** The massive Cognitive Engines (Neo4j Graph Clusters, Postgres State Tables, ChromaDB Vector DBs) are natively abstracted into isolated Docker instances spanning Ports `7474`, `5432`, and `8800`. They never mechanically entangle with the Host OS registry or global PATH paths.
+2. **Execution Virtualization (C2 - The Python Nerve Center):** Python-centric heuristic processors, sentence-transformers, and Local API interfaces (`trustgraph_vectorize.py`) execute purely within an invisible `.agents/venv` scope. The Global physical OS binary (`/usr/bin/python`) remains utterly untouched.
+3. **Plug-and-Play Reanimation:** This isolated structural model guarantees that the matrix functions cleanly. When cloned into any foreign environment, executing `.agents/bootstrap.sh` ignites the Engine, mechanically maps the host’s semantic data, builds virtual boundaries, and launches the Structural UI Visualizer without polluting the developer's native machine.
+
+```mermaid
+graph TD
+    classDef Host fill:#374151,stroke:#1f2937,stroke-width:2px,color:#fff;
+    classDef Docker fill:#0ea5e9,stroke:#0369a1,stroke-width:2px,color:#fff;
+    classDef Sandbox fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
+
+    subgraph Host_Machine ["The Physical Host OS (Untouched Global Environment)"]
+        H_Node[NodeJS / Java / Legacy App]:::Host
+        H_Bin[/usr/bin/python: Clean]:::Host
+        
+        subgraph Parasitic_Seed ["The .agents Cognitive Seed (Symbiotic Matrix)"]
+            subgraph Docker_Engine ["Docker Containerization"]
+                Neo[Neo4j: AST Data]:::Docker
+                Chroma[ChromaDB: Vector Data]:::Docker
+            end
+            
+            subgraph Venv_Sandbox ["Python Virtual Environment"]
+                V_Py[.agents/venv/bin/python]:::Sandbox
+                Adapt[HuggingFace NLP Models]:::Sandbox
+                V_Py --> Adapt
+            end
+            
+            V_Py <-->|API Calls over Localhost| Neo
+            V_Py <-->|Vector Embedding Sync| Chroma
+        end
+        
+        Adapt -.->|Read-Only Semantic Extraction| H_Node
+    end
+
 
 ---
 
