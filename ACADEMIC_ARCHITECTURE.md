@@ -155,13 +155,13 @@ graph LR
     classDef Gate fill:#8b5cf6,stroke:#5b21b6,stroke-width:2px,color:#fff;
     classDef Process fill:#2563eb,stroke:#1d4ed8,stroke-width:2px,color:#fff;
 
-    subgraph The Uni-directional Execution Pipeline
-        P1[Phase 1:<br/>Architecture Setup]:::Process --> G1{Gate 1:<br/>Human Approval}:::Gate
-        G1 -->|Authorized| P2[Phase 2:<br/>Design Tokenization]:::Process
-        P2 --> G2{Gate 2:<br/>Aesthetic Freeze}:::Gate
-        G2 -->|Authorized| P3[Phase 3:<br/>TDD Assembly Line]:::Process
-        P3 --> G3{Gate 3:<br/>Terminal Verification}:::Gate
-        G3 -->|Passed| P4[Phase 4:<br/>GoT Topology Commit]:::Process
+    subgraph "The Uni-directional Execution Pipeline"
+        P1["Phase 1:<br/>Architecture Setup"]:::Process --> G1{"Gate 1:<br/>Human Approval"}:::Gate
+        G1 -->|Authorized| P2["Phase 2:<br/>Design Tokenization"]:::Process
+        P2 --> G2{"Gate 2:<br/>Aesthetic Freeze"}:::Gate
+        G2 -->|Authorized| P3["Phase 3:<br/>TDD Assembly Line"]:::Process
+        P3 --> G3{"Gate 3:<br/>Terminal Verification"}:::Gate
+        G3 -->|Passed| P4["Phase 4:<br/>GoT Topology Commit"]:::Process
     end
 ```
 
@@ -169,12 +169,12 @@ graph LR
 
 ## 6. The Parasitic Isolation Paradigm (Universal Portability V29.3)
 
-A profound conceptual hurdle in deploying advanced LLM frameworks across disparate corporate networks is **Host System Pollution** (commonly labeled "Dependency Hell"). If deploying an AI Matrix into a legacy Java Backend requires the manual installation of gigabytes of global Python NLP pipelines onto the developer's raw underlying Mach-O or Linux Kernel... the methodology fails natively.
+A profound conceptual hurdle in deploying advanced LLM frameworks across disparate corporate networks is **Host System Pollution** (commonly labeled "Dependency Hell"). If deploying an AI Matrix into a legacy Java Backend requires the manual installation of gigabytes of global Python NLP pipelines onto the developer's raw underlying Linux kernel... the methodology fails natively.
 
 ### 6.1 The Turn-key Bootstrap (`/bootstrap`)
 The Antigravity ecosystem implements a Parasitic, highly-contained Localized Symbiotic layer. The `.agents` directory acts as a quarantined Cybernetic Seed:
 
-1. **Database Containerization (C1 - The Heavy Metal):** The massive Cognitive Engines (Neo4j Graph Clusters, Postgres State Tables, ChromaDB Vector DBs) are natively abstracted into isolated Docker instances spanning Ports `7474`, `5432`, and `8800`. They never mechanically entangle with the Host OS registry or global PATH paths.
+1. **Database Containerization (C1 - The Heavy Metal):** The massive Cognitive Engines (Neo4j Graph Clusters, Postgres State Tables, ChromaDB Vector DBs) are natively abstracted into isolated Docker instances spanning Ports `7474`, `5432`, and `8800`. They never mechanically entangle with the Host OS registry or global PATH variables.
 2. **Execution Virtualization (C2 - The Python Nerve Center):** Python-centric heuristic processors, sentence-transformers, and Local API interfaces (`trustgraph_vectorize.py`) execute purely within an invisible `.agents/venv` scope. The Global physical OS binary (`/usr/bin/python`) remains utterly untouched.
 3. **Plug-and-Play Reanimation:** This isolated structural model guarantees that the matrix functions cleanly. When cloned into any foreign environment, executing `.agents/bootstrap.sh` ignites the Engine, mechanically maps the host’s semantic data, builds virtual boundaries, and launches the Structural UI Visualizer without polluting the developer's native machine.
 
@@ -185,28 +185,28 @@ graph TD
     classDef Sandbox fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
 
     subgraph Host_Machine ["The Physical Host OS (Untouched Global Environment)"]
-        H_Node[NodeJS / Java / Legacy App]:::Host
-        H_Bin[/usr/bin/python: Clean]:::Host
+        H_Node["NodeJS / Java / Legacy App"]:::Host
+        H_Bin["/usr/bin/python: Clean"]:::Host
         
         subgraph Parasitic_Seed ["The .agents Cognitive Seed (Symbiotic Matrix)"]
             subgraph Docker_Engine ["Docker Containerization"]
-                Neo[Neo4j: AST Data]:::Docker
-                Chroma[ChromaDB: Vector Data]:::Docker
+                Neo["Neo4j: AST Data"]:::Docker
+                Chroma["ChromaDB: Vector Data"]:::Docker
             end
             
             subgraph Venv_Sandbox ["Python Virtual Environment"]
-                V_Py[.agents/venv/bin/python]:::Sandbox
-                Adapt[HuggingFace NLP Models]:::Sandbox
+                V_Py[".agents/venv/bin/python"]:::Sandbox
+                Adapt["HuggingFace NLP Models"]:::Sandbox
                 V_Py --> Adapt
             end
             
-            V_Py <-->|API Calls over Localhost| Neo
-            V_Py <-->|Vector Embedding Sync| Chroma
+            V_Py <-->|"API Calls over Localhost"| Neo
+            V_Py <-->|"Vector Embedding Sync"| Chroma
         end
         
-        Adapt -.->|Read-Only Semantic Extraction| H_Node
+        Adapt -.->|"Read-Only Semantic Extraction"| H_Node
     end
-
+```
 
 ---
 
@@ -224,29 +224,29 @@ flowchart TD
     classDef Logic fill:#f59e0b,stroke:#b45309,stroke-width:2px,color:#fff;
 
     %% Human Entry Node
-    Operator([Human Tech Lead]):::Human -->|"Physical Prompt Invocation: /quick_fix 'Cart Bug'"| Parser{Dispatch Orchestrator}:::System
+    Operator(["Human Tech Lead"]):::Human -->|"Physical Prompt Invocation: /quick_fix 'Cart Bug'"| Parser{"Dispatch Orchestrator"}:::System
     
     %% Semantic Query Expansion Mechanism
     subgraph S1 ["Cognitive Pre-Fetch Mechanism (Dimensional RAG)"]
-        Parser --> VectorDBCall[ChromaDB NLP: Cosine Calculation]:::Backend
-        Parser --> Neo4jDBCall[Neo4j AST: Path Discovery]:::Backend
-        VectorDBCall -->|"Top K Precise Context Vectors"| ContextEngine{Memory Aggregation Unit}:::Logic
+        Parser --> VectorDBCall["ChromaDB NLP: Cosine Calculation"]:::Backend
+        Parser --> Neo4jDBCall["Neo4j AST: Path Discovery"]:::Backend
+        VectorDBCall -->|"Top K Precise Context Vectors"| ContextEngine{"Memory Aggregation Unit"}:::Logic
         Neo4jDBCall -->|"[:DEPENDS_ON] Blast-radius Sub-trees"| ContextEngine
     end
 
     %% Execution and FSM Control Matrix
     subgraph S2 ["Multi-Agent Autonomous Control Loop (FSM)"]
-        ContextEngine --> SwarmProtocol[Sub-Agent Specialization Routing]:::System
-        SwarmProtocol -->|"Creates Physical Code Mutation"| SandBox[Terminal OS Sandbox Compiler]:::System
+        ContextEngine --> SwarmProtocol["Sub-Agent Specialization Routing"]:::System
+        SwarmProtocol -->|"Creates Physical Code Mutation"| SandBox["Terminal OS Sandbox Compiler"]:::System
         SandBox -->|"Compilation Error Status: 1"| FSMCount{"Failure Sequence Count >= 3?"}:::Logic
         FSMCount -->|"No (Retry Iteration)"| SwarmProtocol
-        FSMCount -->|"Yes (Limit Reached)"| HardLock[FSM Circuit Breaker Absolute Halt]:::System
+        FSMCount -->|"Yes (Limit Reached)"| HardLock["FSM Circuit Breaker Absolute Halt"]:::System
     end
 
     %% Topological Output Encoding
     subgraph S3 ["GoT Feedback Persistence Matrix"]
-        SandBox -->|"Compilation Success Exit: 0"| WriteAdapter{trustgraph_write.py}:::Logic
-        WriteAdapter -->|"Commit Graph Schema Vector"| UpdateState[Neo4j Edge Injection]:::Graph
+        SandBox -->|"Compilation Success Exit: 0"| WriteAdapter{"trustgraph_write.py"}:::Logic
+        WriteAdapter -->|"Commit Graph Schema Vector"| UpdateState["Neo4j Edge Injection"]:::Graph
     end
     
     %% System Exits
@@ -260,7 +260,7 @@ flowchart TD
 
 The **Marcus Fleet Antigravity Matrix** structurally annihilates the simplistic "Chatbot" LLM paradigm utilizing purely mechanical engineering and proven Computer Science state mechanics.
 
-By unifying Distributed Topological Knowledge Graphs, High-Dimensional Vector Spatial RAGs, impenetrable Circuit Breaking Finite State Machines, Sandboxed Dependency Virtualization, and Multi-Agent procedural phase-gating... the software platform bandons the chaotic concept of "Unpredictable AI Generation" in favor of absolute **Deterministic Spatial Architecture Scaling**. 
+By unifying Distributed Topological Knowledge Graphs, High-Dimensional Vector Spatial RAGs, impenetrable Circuit Breaking Finite State Machines, Sandboxed Dependency Virtualization, and Multi-Agent procedural phase-gating... the software platform abandons the chaotic concept of "Unpredictable AI Generation" in favor of absolute **Deterministic Spatial Architecture Scaling**. 
 
 The Cognitive Software evolves beyond toolset utility, manifesting as an independent Spatial Architecture Entity engineered to mathematically dissect, maintain, and upgrade enterprise repositories securely across indefinite generational timelines.
 
