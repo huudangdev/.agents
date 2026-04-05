@@ -3,12 +3,41 @@
 import { useState } from "react";
 import GraphVisualizer from "../components/GraphVisualizer";
 import Inspector from "../components/Inspector";
-import { BrainCircuit, Search, Filter, BoxSelect, Trash2, Library, GitMerge, AlertTriangle } from "lucide-react";
+import { BrainCircuit, Search, Filter, BoxSelect, Trash2, Library, GitMerge, AlertTriangle, Fingerprint, Loader2 } from "lucide-react";
 
 export default function Home() {
   const [selectedNode, setSelectedNode] = useState<any>(null);
   const [filterMode, setFilterMode] = useState<'all' | 'core' | 'coupling' | 'external' | 'edge' | 'isolated' | 'logic'>('all');
   const [searchQuery, setSearchQuery] = useState("");
+
+  const [vectorQuery, setVectorQuery] = useState("");
+  const [vectorResults, setVectorResults] = useState<any[]>([]);
+  const [isVectorSearching, setIsVectorSearching] = useState(false);
+  const [showVectorPanel, setShowVectorPanel] = useState(false);
+
+  const handleVectorSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!vectorQuery) return;
+    setIsVectorSearching(true);
+    setShowVectorPanel(true);
+    try {
+      const res = await fetch("/api/chroma", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: vectorQuery })
+      });
+      const data = await res.json();
+      if (data.results) {
+        setVectorResults(data.results);
+      } else {
+        setVectorResults([]);
+      }
+    } catch(err) {
+      console.error(err);
+    }
+    setIsVectorSearching(false);
+  };
+
 
   const handleNodeClick = (node: any) => {
     setSelectedNode(node);
@@ -54,10 +83,29 @@ export default function Home() {
               type="text" 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search nodes or libs..." 
-              className="block w-48 p-2 pl-9 text-sm text-gray-200 bg-gray-900/80 border border-gray-600/50 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 backdrop-blur-md transition-all focus:w-64 focus:bg-gray-800"
+              placeholder="Search AST node..." 
+              className="block w-36 p-2 pl-9 text-sm text-gray-200 bg-gray-900/80 border border-gray-600/50 rounded-lg focus:ring-cyan-500 focus:border-cyan-500 backdrop-blur-md transition-all focus:w-48 focus:bg-gray-800"
             />
           </div>
+
+          {/* VECTOR RAG SEARCH */}
+          <form onSubmit={handleVectorSearch} className="relative group shrink-0 ml-2 pointer-events-auto">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none z-10">
+              <Fingerprint className="w-4 h-4 text-fuchsia-400 group-focus-within:text-fuchsia-300 transition-colors" />
+            </div>
+            <input 
+              type="text" 
+              value={vectorQuery}
+              onChange={(e) => setVectorQuery(e.target.value)}
+              placeholder="Vector AI Search (e.g. 'auth logic')..." 
+              className="block w-56 p-2 pl-9 pr-10 text-sm text-gray-200 bg-fuchsia-950/40 border border-fuchsia-700/50 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 backdrop-blur-md transition-all focus:w-80 focus:bg-fuchsia-950/60 placeholder-fuchsia-400/50"
+            />
+            {isVectorSearching && (
+              <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <Loader2 className="w-4 h-4 text-fuchsia-400 animate-spin" />
+              </div>
+            )}
+          </form>
         </div>
       </header>
 
@@ -76,6 +124,43 @@ export default function Home() {
         node={selectedNode} 
         onClose={handleCloseInspector} 
       />
+
+      {/* Vector RAG Search Results Panel */}
+      {showVectorPanel && (
+        <div className="absolute top-20 right-6 w-96 max-h-[80vh] bg-gray-950/95 border border-fuchsia-500/30 rounded-xl shadow-2xl backdrop-blur-xl flex flex-col z-20 pointer-events-auto overflow-hidden">
+          <div className="flex items-center justify-between p-4 border-b border-gray-800/80 bg-fuchsia-900/10">
+            <div className="flex items-center gap-2">
+              <Fingerprint className="text-fuchsia-400 w-5 h-5"/>
+              <h2 className="font-bold text-gray-100">Vector RAG Results</h2>
+            </div>
+            <button onClick={() => setShowVectorPanel(false)} className="text-gray-400 hover:text-white transition-colors">
+              ✕
+            </button>
+          </div>
+          <div className="p-4 overflow-y-auto flex-1 space-y-4">
+            {isVectorSearching ? (
+              <div className="flex flex-col items-center justify-center py-10 gap-3">
+                <Loader2 className="w-8 h-8 text-fuchsia-500 animate-spin" />
+                <p className="text-sm text-fuchsia-400 animate-pulse">Running Cosine Similarity Search...</p>
+              </div>
+            ) : vectorResults.length === 0 ? (
+              <p className="text-sm text-gray-500 text-center py-10">No strict matches found. Did you run the vectorize script?</p>
+            ) : (
+              vectorResults.map((res, i) => (
+                <div key={i} className="bg-gray-900/60 rounded-lg border border-gray-800 p-3 hover:border-fuchsia-500/50 transition-colors cursor-pointer" onClick={() => setSearchQuery(res.source.split('/').pop() || '')}>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-xs font-mono text-cyan-400 font-bold truncate max-w-[200px]">{res.source}</span>
+                    <span className="text-[10px] bg-fuchsia-500/20 text-fuchsia-300 px-2 py-0.5 rounded-full border border-fuchsia-500/30 font-mono">{(res.distance).toFixed(3)}</span>
+                  </div>
+                  <pre className="text-[11px] text-gray-400 whitespace-pre-wrap font-mono line-clamp-6 bg-black/50 p-2 rounded border border-gray-800/80 overflow-hidden">
+                    {res.content}
+                  </pre>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Bottom Status Bar */}
       <footer className="absolute bottom-0 left-0 right-0 z-10 flex h-10 items-center justify-between px-6 bg-gradient-to-t from-gray-950/90 to-transparent pointer-events-none">

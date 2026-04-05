@@ -107,7 +107,7 @@ graph TD
 
 ---
 
-## 📦 Installation Provisioning
+## 📦 Installation Provisioning & Universal Portability (V29.3)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
@@ -115,6 +115,17 @@ Integrate the matrix framework into any local project directory securely via our
 # Execute this native pipeline to scaffold the AI cognitive engine
 curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
+
+### ⚡ The V29.3 Turn-Key Bootstrap
+Once the repository is cloned, you must awaken the Cognitive Brain. From your AI chat window, simply command:
+> `/bootstrap`
+*(Or manually execute `./.agents/bootstrap.sh`)*
+
+This Universal Portability script will:
+1. Autonomously spin up Neo4j and ChromaDB Vector clusters via Docker.
+2. Synthesize an isolated Python `venv` preventing host pollution.
+3. Ingest and Vectorize your entire codebase for O(1) Semantic RAG retrieval.
+4. Ignite the Next.js `trustgraph-viewer` automatically.
 
 ### 🔄 Upgrading Existing Environments (OTA Sync)
 
