@@ -36,10 +36,12 @@ description: Marcus Fleet Enterprise SDLC Phase 3 (Code Execution, TDD, & Contin
   - `qa-simulator` evaluates the rendered port utilizing `playwright` telemetry or `cURL`. Evaluates UI Hydration errors, layout shifts, or Exceptions.
   - **The V29.1 Circuit Breaker:** If a specific rendering loop generates $\ge 3$ sequential compile errors, gracefully terminate the Node, flag a Terminal Red-Alert, and request Human Operator intervention.
 
-### 🟤 NODE 8: CONTINUOUS DEPLOYMENT CLOSURE (CI/CD PIPELINE)
+### 🟤 NODE 8: CONTINUOUS DEPLOYMENT CLOSURE (CI/CD PIPELINE & CAB CABIN)
 *🔗 Input Vector:* Validated Git Branch
 *🧠 Injected Tensors:* `devops-system-architect`, `ops`
-**[Execution Protocol]:** Define End-to-End Test suites validating User Lifecycle. Draft Infrastructure as Code (IaC) for AWS/Vercel/Cloudflare propagation. Resolve port-conflicts cleanly by terminating NODE 7 background tasks securely.
+**[Execution Protocol]:** Define End-to-End Test suites validating User Lifecycle (SDLC). 
+- **Feature Flag Containment:** Wrap all new Agent-generated logic inside physical LaunchDarkly feature flags (or equivalent `if (ENABLED)` switches) to satisfy CAB Rollback protocols.
+- **Enterprise Webhook:** Resolve port-conflicts cleanly by terminating NODE 7 background tasks securely. Append Git Commit Hashes directly relating to the Jira Ticket payload. Draft Infrastructure as Code (IaC) for AWS/Vercel/Cloudflare propagation.
 
 ### ⚫ NODE 9: MICRO-BRAIN HISTORICAL ARCHIVING
 *🔗 Input Vector:* Runtime Log / Git Diff Context

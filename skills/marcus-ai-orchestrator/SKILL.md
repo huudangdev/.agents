@@ -28,6 +28,10 @@ If directed to orchestrate complex LangChain logic requiring new tools (e.g., "F
 Generate the sequence of YAML-like orders.
 - **The Circuit Breaker Rule (Sub-Agent Collapse):** If the execution pipeline loops continuously across 3 agents without closing the `.gemini/antigravity/` task node, YOU MUST INTERVENE. Cancel the autonomous loop and present the deadlock to the Human operator.
 
+### Phase 4: CISO Governance & Enterprise Integrations
+- **Jira & Pull Requests:** Map all sub-agent tasks directly to physical SDLC lifecycles. 
+- **CAB Rollback Bounds:** Command backend/frontend engineers to explicitly wrap experimental logic inside Feature Flags. Ensure junior agents do not mutate Root DB tables without `Enterprise_Arch` RBAC passing.
+
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Physical Handover Vectors
 - Provide exact Terminal bash/python commands for the next agent to trigger. Do not leave the relay baton hanging in the void.

@@ -2,10 +2,10 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v29.1.5-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v29.4-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
-  ![Automata](https://img.shields.io/badge/automata-Finite%20State-purple.svg?style=for-the-badge)
+  ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
     <a href="#theoretical-overview">Overview</a> •
@@ -25,8 +25,8 @@ The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Lang
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
-### The Bounded Stochastic Execution (Air-Gapped Sandbox)
-The core system enforces absolute execution guardrails. No LLM interfacing with the `.agents` ecosystem possesses authorization to run destructive CLI instructions arbitrarily. The matrix is strictly compelled to funnel all bash generation through the `.agents/run_sandboxed.sh` wrapper, validating regex bounds, executing in temporary containerized arrays, and observing exit states to trigger OpenTelemetry Audit logs.
+### The Bounded Stochastic Execution (Air-Gapped Sandbox & Multi-Tenant IAM)
+The core system enforces absolute execution guardrails. No LLM interfacing with the `.agents` ecosystem possesses authorization to run destructive CLI instructions arbitrarily. The matrix is strictly compelled to funnel all bash generation through the `.agents/run_sandboxed.sh` wrapper, validating regex bounds, executing in temporary containerized arrays, and observing exit states to trigger OpenTelemetry Audit logs. Furthermore, all physical architecture alterations are gated by `.agents/iam_verify.sh` to enforce **Multi-Tenant Identity** isolation and CAB Role-Based Access Control (RBAC).
 
 ---
 
@@ -103,6 +103,8 @@ graph TD
 - **Semantic RAG Vectoring:** Compresses the cognitive load by 95%. The system parses heuristic tags in a normalized `SKILLS_INDEX`, loading only the specific array of specialized computational frameworks required logically for the exact runtime sequence (e.g., `ada-qa-agent` + `benny-frontend-engineer`).
 - **Deterministic Circuit Breaking:** Halts catastrophic infinite-execution edge cases. Any compilation module tracking $N \ge 3$ consecutive failures undergoes hardware-freeze lockouts.
 - **Directed Acyclic Graph (DAG) Persistence:** Long-term memory logic overrides temporal dialog sessions by persistently serializing architectural alterations directly into file-system `.agents/brain/` components.
+- **CAB Feature Flag Governance:** Introduces strict CI integration limits. AI output must be bounded within LaunchDarkly or equivalent Feature Flags, granting the central Change Advisory Board instantaneous Rollback authority.
+- **Granular O11y Tracing:** Instead of flat JSON, the matrix operates a live Prometheus Exporter Daemon (:8000), broadcasting `rag_retrieval_latency_ms{tenant, repo}` to central Grafana arrays.
 - **Multi-Level Fault Tolerance:** Ensures workflow resilience by gracefully degrading structural operations from Model Context Protocol (MCP) dependencies to natively embedded `grep`/Markdown functionalities during asynchronous API interruptions.
 
 ---
