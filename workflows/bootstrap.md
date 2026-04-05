@@ -12,8 +12,9 @@ description: Universal Portability Bootstrap Protocol (Init V29.3)
 
 // turbo
 ```bash
-chmod +x .agents/bootstrap.sh
+chmod +x .agents/bootstrap.sh .agents/setup_git_hooks.sh
 ./.agents/bootstrap.sh
+./.agents/setup_git_hooks.sh
 ```
 
 ## 2. Báo Cáo Ký Sinh Thành Công

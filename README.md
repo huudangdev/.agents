@@ -19,14 +19,14 @@
 
 ---
 
-## 🔬 Theoretical Overview
+## 🔬 Enterprise Overview (V29.4)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks. Distancing itself from monolithic static-prompt environments, **Version 29.1** operates as an intelligent computational hive-mind composed of **64 Specialized Elite Agents**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 29.4** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
 
-Through the implementation of **Semantic Retrieval-Augmented Generation (RAG)** and **Finite State Machine (FSM) Failure Limitations**, the Antigravity operating system mitigates critical flaws present in contemporary autonomous systems: context window atrophy, algorithmic hallucination, and runaway API expenditure loops.
+By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
-### The Zero-Suggestion Doctrine
-The core system enforces absolute autonomic determinism. No LLM interfacing with the `.agents` ecosystem possesses authorization to output manual CLI instructions (e.g., "Copy this terminal command"). The matrix is strictly compelled to autonomously instantiate native terminal processes, validate I/O streams, and resolve unit-test failures symmetrically prior to returning Human-In-The-Loop feedback vectors.
+### The Bounded Stochastic Execution (Air-Gapped Sandbox)
+The core system enforces absolute execution guardrails. No LLM interfacing with the `.agents` ecosystem possesses authorization to run destructive CLI instructions arbitrarily. The matrix is strictly compelled to funnel all bash generation through the `.agents/run_sandboxed.sh` wrapper, validating regex bounds, executing in temporary containerized arrays, and observing exit states to trigger OpenTelemetry Audit logs.
 
 ---
 
