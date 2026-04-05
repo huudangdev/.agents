@@ -125,7 +125,7 @@ graph LR
     classDef Secure fill:#14532d,stroke:#22c55e,stroke-width:2px,color:#fff;
     classDef External fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#fff;
     
-    subgraph Enterprise "Air-Gapped Intranet (VPC)"
+    subgraph Enterprise ["Air-Gapped Intranet (VPC)"]
         Code[Source Code / PII]:::Secure
         Agent[Agent OS]:::Secure
         Emb[all-MiniLM-L6-v2 Model]:::Secure
@@ -133,7 +133,7 @@ graph LR
         Emb --> Agent
     end
     
-    subgraph Cloud "Public Cloud Network"
+    subgraph Cloud ["Public Cloud Network"]
         OpenAI[External API]:::External
         Pinecone[Cloud Vector DB]:::External
     end
