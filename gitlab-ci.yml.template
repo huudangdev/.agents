@@ -1,0 +1,43 @@
+# Enterprise GitLab CI/CD for Marcus Fleet Antigravity Engine
+# V29.4: Offloads execution to isolated docker runners, performs delta RAG.
+
+stages:
+  - analyze
+  - sandboxed-execute
+
+image: python:3.10-slim
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+    - .agents/venv/
+
+before_script:
+  - python -V
+  - pip install virtualenv
+  - virtualenv .agents/venv
+  - source .agents/venv/bin/activate
+  - pip install requests prometheus_client tree-sitter tree-sitter-typescript
+
+cognitive-delta-sync:
+  stage: analyze
+  script:
+    - echo "Calculating Delta context bounds..."
+    - apt-get update && apt-get install -y git
+    - git diff --name-only HEAD~1 HEAD > .agents/changed_files.txt
+    - python .agents/adapters/trustgraph_incremental.py
+  only:
+    - merge_requests
+    - main
+
+agent-safety-check:
+  stage: sandboxed-execute
+  script:
+    - chmod +x .agents/run_sandboxed.sh
+    - .agents/run_sandboxed.sh "npm config list"
+    - python .agents/adapters/telemetry_export.py --agent_id "gitlab_runner" --action "Execution_Pass"
+  only:
+    - merge_requests
