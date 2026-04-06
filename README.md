@@ -36,21 +36,21 @@ The following C4-styled data-flow layout outlines the cognitive processing, lexi
 
 ```mermaid
 graph TD
-    subgraph "Human Operator Context"
+    subgraph HumanOperator ["Human Operator Context"]
         U([User Entity]) -->|Stochastic Heuristic Requests| OS{Antigravity Dispatcher}
     end
     
-    subgraph "Semantic Retrieval Matrix"
+    subgraph SemanticRetrieval ["Semantic Retrieval Matrix"]
         OS -->|Regex / Keyword Scanning| Index[(SKILLS_INDEX Dictionary)]
         Index -->|N-Dimensional Selection| Router[Agent Routing Algorithm]
     end
     
-    subgraph "Cognitive Attention Layer"
+    subgraph CognitiveAttention ["Cognitive Attention Layer"]
         Router -->|Lazy-load Context - Top-K Nodes| Context[LLM Context Window]
         Context <-->|Chronological File Append| LocalMemory[(.brain Local State Memory)]
     end
     
-    subgraph "Execution Automata - Sandboxed IO"
+    subgraph ExecutionAutomata ["Execution Automata - Sandboxed IO"]
         Context -->|Native OS Shell Execution| Terminal[Terminal Environment]
         Terminal -->|Status 0 - Green| Validate[TDD Assertion Passed]
         Terminal -->|Status Not 0 - Exception| Tripper{FSM Circuit Breaker}
@@ -79,13 +79,13 @@ graph TD
     classDef Module fill:#0f172a,stroke:#3b82f6,stroke-width:2px,color:#fff;
     classDef Skill fill:#334155,stroke:#ec4899,stroke-width:2px,color:#fff;
 
-    subgraph TrustGraph GoT Data Pipeline
+    subgraph Pipeline ["TrustGraph GoT Data Pipeline"]
         Agent[Agent Workflow] -->|adapter/trustgraph_write.py| Adapter[Graph Adapter]
         Adapter -->|Stores score & reasoning| Neo4j[(Neo4j Vector DB)]
         Neo4j --> Engine[Three.js Graph Engine]
     end
 
-    subgraph 3D Rendering (Graph Ontology V2)
+    subgraph Render ["3D Rendering (Graph Ontology V2)"]
         R1((Run_Task)):::Run
         M1[Module.ts]:::Module
         S1{rag-architect}:::Skill
