@@ -21,6 +21,12 @@ echo ""
 AGENTS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_DIR="$(dirname "$AGENTS_DIR")"
 
+if [ -f "$AGENTS_DIR/trustgraph.env" ]; then
+    set -a
+    source "$AGENTS_DIR/trustgraph.env"
+    set +a
+fi
+
 # 1. 🐳 DOCKER CHECK & STARTUP
 echo -e "${YELLOW}[1/5] Initiating Docker Core (TrustGraph Containers)...${NC}"
 if ! command -v docker &> /dev/null; then
@@ -29,7 +35,7 @@ if ! command -v docker &> /dev/null; then
 fi
 
 cd "$AGENTS_DIR/trustgraph"
-docker-compose up -d
+docker-compose --env-file "$AGENTS_DIR/trustgraph.env" up -d 2>/dev/null || docker-compose up -d
 echo -e "${GREEN}✔ Docker services online (Neo4j, Postgres, ChromaDB).${NC}"
 
 # 2. 🐍 PYTHON VIRTUAL ENVIRONMENT

@@ -2,15 +2,16 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v29.4-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v30.0-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
-    <a href="#theoretical-overview">Overview</a> •
-    <a href="#system-architecture">Architecture</a> •
-    <a href="#installation-provisioning">Provisioning</a> •
+    <a href="#-enterprise-overview-v300">Overview</a> •
+    <a href="#-system-architecture-topology">Architecture</a> •
+    <a href="#-spec-driven-governance-layer">Spec Governance</a> •
+    <a href="#-installation-provisioning--universal-portability-v300">Provisioning</a> •
     <a href="#execution-commands">Execution</a> •
     <a href="#academic-contributions">Contributions</a> •
     <a href="#sponsorship--support">Support/Donate</a>
@@ -19,14 +20,14 @@
 
 ---
 
-## 🔬 Enterprise Overview (V29.4)
+## 🔬 Enterprise Overview (V30.0)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 29.4** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 30.0** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
 ### The Bounded Stochastic Execution (Air-Gapped Sandbox & Multi-Tenant IAM)
-The core system enforces absolute execution guardrails. No LLM interfacing with the `.agents` ecosystem possesses authorization to run destructive CLI instructions arbitrarily. The matrix is strictly compelled to funnel all bash generation through the `.agents/run_sandboxed.sh` wrapper, validating regex bounds, executing in temporary containerized arrays, and observing exit states to trigger OpenTelemetry Audit logs. Furthermore, all physical architecture alterations are gated by `.agents/iam_verify.sh` to enforce **Multi-Tenant Identity** isolation and CAB Role-Based Access Control (RBAC).
+The core system enforces execution guardrails. No LLM interfacing with the `.agents` ecosystem possesses authorization to run destructive CLI instructions arbitrarily. The matrix is strictly compelled to funnel high-risk bash generation through the `.agents/run_sandboxed.sh` wrapper, which rejects shell metacharacter chaining, applies an explicit command allow-list, and observes exit states to trigger OpenTelemetry Audit logs. Furthermore, all physical architecture alterations are gated by `.agents/iam_verify.sh` to enforce **Multi-Tenant Identity** isolation and CAB Role-Based Access Control (RBAC).
 
 ---
 
@@ -98,6 +99,58 @@ graph TD
 
 ---
 
+## 🧾 Spec-Driven Governance Layer
+
+Marcus Fleet now includes a local Spec Kit-inspired lifecycle for non-trivial
+agent work. This layer is additive: it does not replace the skill swarm,
+TrustGraph, O11y, sandboxing, or legacy `/planning` workflow.
+
+Core artifacts:
+
+```text
+.agents/
+├── memory/
+│   └── constitution.md              # Stable principles and governance gates
+├── templates/                       # Feature artifact templates
+├── scripts/
+│   ├── create_feature_spec.py        # Creates .agents/specs/NNN-slug/
+│   ├── validate_specs.py             # Validates required files and gates
+│   └── validate_planning_research.py # Validates deep research ledgers
+└── specs/
+    └── 001-marcus-spec-foundation/   # First validated feature workspace
+```
+
+Typical usage:
+
+```bash
+python3 .agents/scripts/create_feature_spec.py "Feature Name" --prompt "Operator goal"
+python3 .agents/scripts/validate_specs.py --feature .agents/specs/001-feature-name
+```
+
+The workflow sequence is:
+
+```text
+/marcus.specify -> /marcus.clarify -> /marcus.plan -> /marcus.tasks -> /marcus.verify
+```
+
+This gives agents a concrete contract before code changes: `spec.md` captures
+what and why, `plan.md` captures how, `tasks.md` captures ownership, and
+`verification.md` captures evidence.
+
+### Backward Compatibility Contract
+
+V30 is additive. The historical slash-command surface remains valid:
+
+- `/planning` still emits the legacy `/docs` planning files.
+- `/design` still consumes `/docs/planning/*` and emits visual guidance.
+- `/develop` still consumes approved `/docs` artifacts before code generation.
+- `/quick_fix` remains the low-latency path for localized fixes.
+
+The new spec lifecycle and research ledgers strengthen acceptance criteria,
+evidence tracking, and implementation readiness without replacing these flows.
+
+---
+
 ## ✨ Empirical System Features
 
 - **Semantic RAG Vectoring:** Compresses the cognitive load by 95%. The system parses heuristic tags in a normalized `SKILLS_INDEX`, loading only the specific array of specialized computational frameworks required logically for the exact runtime sequence (e.g., `ada-qa-agent` + `benny-frontend-engineer`).
@@ -109,7 +162,7 @@ graph TD
 
 ---
 
-## 📦 Installation Provisioning & Universal Portability (V29.3)
+## 📦 Installation Provisioning & Universal Portability (V30.0)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
@@ -118,7 +171,7 @@ Integrate the matrix framework into any local project directory securely via our
 curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
 
-### ⚡ The V29.3 Turn-Key Bootstrap
+### ⚡ The V30.0 Turn-Key Bootstrap
 Once the repository is cloned, you must awaken the Cognitive Brain. From your AI chat window, simply command:
 > `/bootstrap`
 *(Or manually execute `./.agents/bootstrap.sh`)*
@@ -154,10 +207,12 @@ Command execution is handled algorithmically via direct prompts.
 The AI is computationally restricted from generating code until this node returns a green success status.
 
 ### 2. `/planning` (Architecture & Requirements: Phase 1)
-**The Matrix Genesis (Left-Brain Logic).** Triggers Phase 1 of the Software Development Life Cycle (SDLC). The system delegates control to pure Systems Architects and PM Agents (e.g., `@david-systems-architect`, `@sophia-product-manager`).
-1. **Domain Research:** Explores edge cases and business complexities.
-2. **Mega Synthesis:** Outputs the 6 Core Root Files directly into `/docs/` (e.g. `prd.md`, `tasks.md`, `knowledge.md`, etc.).
-3. **UML Cartography:** Operates the `mermaid-cli` bin to mechanically map Database Entity-Relationship diagrams and system maps (`/docs/planning/diagrams.md`).
+**The Matrix Genesis (Left-Brain Logic).** Triggers Phase 1 of the Software Development Life Cycle (SDLC). The system delegates control to Systems Architects, PM Agents, research critics, and synthesis agents.
+1. **Deep Research Map-Reduce:** Splits discovery into product, security, architecture, data, operations, UX, and risk lanes with source and evidence ledgers.
+2. **Legacy Output Preservation:** Still outputs the approved `/docs` set: `prd.md`, `tasks.md`, `knowledge.md`, `decisions.md`, `memory.md`, `planning/flows.md`, `planning/screens.md`, and `planning/diagrams.md`.
+3. **Evidence Ledger Upgrade:** Adds `/docs/research/sources.jsonl`, `evidence.jsonl`, `claims.jsonl`, `contradictions.md`, and `research_manifest.json` for traceable claims.
+4. **UML Cartography:** Uses Mermaid/Draw.io-ready diagrams for architecture, data flow, state flow, rollback/CAB path, and observability signals.
+5. **Validation Gates:** Runs `.agents/scripts/validate_planning_research.py` when research ledgers exist and `.agents/scripts/validate_specs.py` when a feature workspace is attached.
 **Execution Halt:** Code writing operations are securely locked. The System presents the `/docs` payload to the human operator for explicit architectural approval.
 
 ### 3. `/design` (UI/UX Aesthetic Tokenization: Phase 2)
@@ -203,19 +258,42 @@ The AI is computationally restricted from generating code until this node return
 .agents/
 ├── README.md                      # Foundational system topology
 ├── USAGE_GUIDE.md                 # Heuristic routing and dispatch instructions
-├── V29.2_RELEASE_NOTES.md         # Advanced academic paper / changelogs
+├── V30.0_RELEASE_NOTES.md         # Current governance and planning changelog
 ├── .clinerules                    # Foundational Constitution Protocol (FSM Limits)
+├── trustgraph.env.example         # Shared Neo4j/Chroma runtime config template
 ├── install.sh                     # Directory genesis installer
 ├── update.sh                      # OTA non-destructive Rsync patcher
+├── memory/                        # Constitution and durable governance
+│   └── constitution.md
+├── templates/                     # Spec-driven feature templates
+│   ├── spec-template.md
+│   ├── plan-template.md
+│   ├── tasks-template.md
+│   └── planning-*-template.*
+├── scripts/                       # Local creation and validation tools
+│   ├── create_feature_spec.py
+│   ├── validate_specs.py
+│   └── validate_planning_research.py
+├── specs/                         # Feature-scoped source-of-truth artifacts
 ├── mcp/                           # Model Context Protocol constraints
 ├── workflows/                     # Declarative Workflow subroutines
 │   ├── init_brain.md 
+│   ├── marcus_specify.md
+│   ├── marcus_clarify.md
+│   ├── marcus_plan.md
+│   ├── marcus_tasks.md
+│   ├── marcus_verify.md
 │   ├── planning.md
 │   ├── design.md
 │   ├── develop.md
 │   ├── refactor-planning.md
 │   ├── update_brain.md
 │   └── quick_fix.md
+├── trustgraph-viewer/
+│   ├── app/api/health/route.ts    # Runtime health endpoint
+│   ├── app/api/chroma/route.ts    # Shell-safe Chroma search bridge
+│   ├── components/RuntimeStatus.tsx
+│   └── lib/trustgraphConfig.ts    # Shared config reader
 └── skills/                        # 64-Agent Cognitive Swarm Directory
     ├── SKILLS_INDEX.md            # Auto-compiled Semantic Pre-Index
     ├── ada-qa-agent/

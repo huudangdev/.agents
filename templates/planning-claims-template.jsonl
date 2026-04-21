@@ -1,0 +1,1 @@
+{"claim_id":"C001","claim":"Atomic claim that will appear in an output file.","output_file":"docs/prd.md|docs/knowledge.md|docs/decisions.md|docs/planning/diagrams.md","evidence_ids":["E001"],"status":"supported|contested|assumption","risk":"low|medium|high","notes":"Replace this row. Keep one JSON object per line."}

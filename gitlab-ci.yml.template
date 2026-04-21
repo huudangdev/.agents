@@ -1,7 +1,8 @@
 # Enterprise GitLab CI/CD for Marcus Fleet Antigravity Engine
-# V29.4: Offloads execution to isolated docker runners, performs delta RAG.
+# V30.0: Validates specs, syncs delta RAG, and executes bounded sandbox checks.
 
 stages:
+  - validate
   - analyze
   - sandboxed-execute
 
@@ -20,7 +21,21 @@ before_script:
   - pip install virtualenv
   - virtualenv .agents/venv
   - source .agents/venv/bin/activate
-  - pip install requests prometheus_client tree-sitter tree-sitter-typescript
+  - pip install -r .agents/requirements.txt
+
+spec-governance-validation:
+  stage: validate
+  script:
+    - python .agents/scripts/validate_specs.py
+    - |
+      if [ -d docs/research ]; then
+        python .agents/scripts/validate_planning_research.py --docs docs
+      else
+        echo "No docs/research directory found; skipping planning research validation."
+      fi
+  only:
+    - merge_requests
+    - main
 
 cognitive-delta-sync:
   stage: analyze
@@ -28,7 +43,12 @@ cognitive-delta-sync:
     - echo "Calculating Delta context bounds..."
     - apt-get update && apt-get install -y git
     - git diff --name-only HEAD~1 HEAD > .agents/changed_files.txt
-    - python .agents/adapters/trustgraph_incremental.py
+    - |
+      if [ -s .agents/changed_files.txt ]; then
+        python .agents/adapters/trustgraph_incremental.py --files $(cat .agents/changed_files.txt)
+      else
+        echo "No changed files detected; skipping TrustGraph incremental sync."
+      fi
   only:
     - merge_requests
     - main

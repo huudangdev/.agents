@@ -15,11 +15,19 @@ cd .agents/trustgraph
 docker-compose up -d
 ```
 
+For non-default credentials, copy `.agents/trustgraph.env.example` to `.agents/trustgraph.env`,
+edit the values, then run `.agents/bootstrap.sh` or pass the env file to Docker Compose.
+
 ### 2. Service Endpoints
 Once booted, the infrastructure listens natively:
 - **Neo4j (The Graph Router):** `http://localhost:7474` (Bolt: `7687`) - *Credential: neo4j / trustgraph_secret*
 - **Postgres (The State Indexer):** `http://localhost:5432` - *Credential: trustgraph / trustgraph_secret*
-- **ChromaDB (The Vector RAG):** `http://localhost:8000`
+- **ChromaDB (The Vector RAG):** `http://localhost:8800`
+
+The Python adapters share one runtime configuration module:
+- `NEO4J_USER`, `NEO4J_PASSWORD`, `NEO4J_URI`
+- `TRUSTGRAPH_NEO4J_HTTP_ENDPOINT`
+- `CHROMA_HOST`, `CHROMA_PORT`, `CHROMA_COLLECTION`
 
 ### 3. How Antigravity Agents Use It
 You do NOT interact with this raw database manually. The Antigravity Agents will automatically leverage two compiled Python adapters located in `.agents/adapters/`:

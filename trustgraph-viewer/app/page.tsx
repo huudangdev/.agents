@@ -3,15 +3,17 @@
 import { useState } from "react";
 import GraphVisualizer from "../components/GraphVisualizer";
 import Inspector from "../components/Inspector";
+import RuntimeStatus from "../components/RuntimeStatus";
 import { BrainCircuit, Search, Filter, BoxSelect, Trash2, Library, GitMerge, AlertTriangle, Fingerprint, Loader2 } from "lucide-react";
+import type { FilterMode, GraphNode, VectorSearchResponse, VectorSearchResult } from "../lib/graphTypes";
 
 export default function Home() {
-  const [selectedNode, setSelectedNode] = useState<any>(null);
-  const [filterMode, setFilterMode] = useState<'all' | 'core' | 'coupling' | 'external' | 'edge' | 'isolated' | 'logic'>('all');
+  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
+  const [filterMode, setFilterMode] = useState<FilterMode>('all');
   const [searchQuery, setSearchQuery] = useState("");
 
   const [vectorQuery, setVectorQuery] = useState("");
-  const [vectorResults, setVectorResults] = useState<any[]>([]);
+  const [vectorResults, setVectorResults] = useState<VectorSearchResult[]>([]);
   const [isVectorSearching, setIsVectorSearching] = useState(false);
   const [showVectorPanel, setShowVectorPanel] = useState(false);
 
@@ -26,7 +28,7 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: vectorQuery })
       });
-      const data = await res.json();
+      const data = (await res.json()) as Partial<VectorSearchResponse>;
       if (data.results) {
         setVectorResults(data.results);
       } else {
@@ -39,7 +41,7 @@ export default function Home() {
   };
 
 
-  const handleNodeClick = (node: any) => {
+  const handleNodeClick = (node: GraphNode | null) => {
     setSelectedNode(node);
   };
 
@@ -165,13 +167,7 @@ export default function Home() {
       {/* Bottom Status Bar */}
       <footer className="absolute bottom-0 left-0 right-0 z-10 flex h-10 items-center justify-between px-6 bg-gradient-to-t from-gray-950/90 to-transparent pointer-events-none">
         <div className="flex items-center gap-4 pointer-events-auto">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
-            </span>
-            <span className="text-xs text-gray-400 font-mono">NEO4J CONNECTED</span>
-          </div>
+          <RuntimeStatus />
         </div>
         <div className="pointer-events-auto">
            <p className="text-xs text-gray-500 font-mono">
@@ -184,11 +180,21 @@ export default function Home() {
 }
 
 // Sub-component for Tabs
-function TabButton({ icon, label, val, current, set, color }: any) {
+type TabButtonColor = "cyan" | "purple" | "orange" | "blue" | "green" | "red" | "yellow";
+
+type TabButtonProps = {
+  icon: React.ReactNode;
+  label: string;
+  val: FilterMode;
+  current: FilterMode;
+  set: (value: FilterMode) => void;
+  color: TabButtonColor;
+};
+
+function TabButton({ icon, label, val, current, set, color }: TabButtonProps) {
   const isActive = current === val;
   
-  // Custom Tailwind colors mapping based on string
-  const colorMap: any = {
+  const colorMap: Record<TabButtonColor, string> = {
     cyan: "bg-cyan-500/20 text-cyan-400 border-cyan-500/30",
     purple: "bg-purple-500/20 text-purple-400 border-purple-500/30",
     orange: "bg-orange-500/20 text-orange-400 border-orange-500/30",

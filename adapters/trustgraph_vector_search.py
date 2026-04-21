@@ -15,10 +15,11 @@ import sys
 import json
 import chromadb
 from chromadb.utils import embedding_functions
+from trustgraph_config import CHROMA_COLLECTION, CHROMA_HOST, CHROMA_PORT
 
 def initialize_chroma_client():
     try:
-        client = chromadb.HttpClient(host="localhost", port=8800)
+        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
         client.heartbeat()
         return client
     except Exception as e:
@@ -28,9 +29,9 @@ def initialize_chroma_client():
 def search_codebase(query, top_k):
     client = initialize_chroma_client()
     try:
-        collection = client.get_collection("codebase")
+        collection = client.get_collection(CHROMA_COLLECTION)
     except ValueError:
-        print(json.dumps({"error": "Collection 'codebase' does not exist. Run vectorize script first."}))
+        print(json.dumps({"error": f"Collection '{CHROMA_COLLECTION}' does not exist. Run vectorize script first."}))
         sys.exit(1)
         
     emb_fn = embedding_functions.DefaultEmbeddingFunction()

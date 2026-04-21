@@ -13,9 +13,8 @@ Description:
 import os
 import argparse
 import sys
-import uuid
 import chromadb
-from chromadb.config import Settings
+from trustgraph_config import CHROMA_COLLECTION, CHROMA_HOST, CHROMA_PORT
 
 # Default embedding model inside Chroma Python SDK uses sentence-transformers
 from chromadb.utils import embedding_functions
@@ -32,14 +31,13 @@ OVERLAP = 200
 
 def initialize_chroma_client():
     try:
-        # ChromaDB HTTP Client mapped to docker-compose port 8800
-        client = chromadb.HttpClient(host="localhost", port=8800)
+        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
         # Ping
         client.heartbeat()
         return client
     except Exception as e:
         print("\n=== 🔴 [VECTOR RAG OFFLINE] ===")
-        print("ChromaDB Cluster on localhost:8800 is not responding.")
+        print(f"ChromaDB Cluster on {CHROMA_HOST}:{CHROMA_PORT} is not responding.")
         print(f"Error: {e}")
         sys.exit(1)
 
@@ -61,12 +59,12 @@ def vectorize_codebase(root_path):
     
     # Reset collection to prevent duplication on multiple scans
     try:
-        client.delete_collection("codebase")
+        client.delete_collection(CHROMA_COLLECTION)
     except Exception:
         pass
         
     collection = client.create_collection(
-        name="codebase",
+        name=CHROMA_COLLECTION,
         embedding_function=emb_fn,
         metadata={"hnsw:space": "cosine"}
     )

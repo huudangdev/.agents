@@ -1,0 +1,31 @@
+{
+  "run_id": "planning-YYYYMMDD-HHMM",
+  "created_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "operator_prompt": "Replace with original prompt",
+  "current_date": "YYYY-MM-DD",
+  "research_mode": "standard|deep|ultradeep",
+  "required_output_files": [
+    "docs/prd.md",
+    "docs/tasks.md",
+    "docs/knowledge.md",
+    "docs/decisions.md",
+    "docs/memory.md",
+    "docs/planning/flows.md",
+    "docs/planning/screens.md",
+    "docs/planning/diagrams.md"
+  ],
+  "optional_output_files": [
+    "docs/research/sources.jsonl",
+    "docs/research/evidence.jsonl",
+    "docs/research/claims.jsonl",
+    "docs/research/contradictions.md",
+    "docs/research/research_manifest.json"
+  ],
+  "quality_gates": {
+    "minimum_sources": 10,
+    "minimum_primary_sources": 3,
+    "minimum_evidence_items": 15,
+    "major_claims_need_evidence": true,
+    "diagram_claims_need_evidence": true
+  }
+}

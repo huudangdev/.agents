@@ -1,0 +1,3 @@
+trustgraph.env
+venv/
+chroma_db/

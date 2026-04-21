@@ -19,9 +19,9 @@ import urllib.error
 import argparse
 import sys
 import time
+from trustgraph_config import NEO4J_HTTP_ENDPOINT, neo4j_auth_header
 
-NEO4J_HTTP_ENDPOINT = "http://localhost:7474/db/neo4j/tx/commit"
-AUTH_HEADER = "Basic bmVvNGo6dHJ1c3RncmFwaF9zZWNyZXQ=" # neo4j:trustgraph_secret
+AUTH_HEADER = neo4j_auth_header()
 
 IGNORE_DIRS = {
     'node_modules', '.next', 'build', 'dist', 'out', '.git', '.agents', 

@@ -2,9 +2,45 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useMemo, useState } from "react";
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 import * as THREE from "three";
+import type { FilterMode, GraphData, GraphLink, GraphNode } from "../lib/graphTypes";
 
-const ForceGraph3D = dynamic(() => import("react-force-graph-3d"), { ssr: false });
+type ForceGraphHandle = {
+  cameraPosition: (
+    position: { x: number; y: number; z: number },
+    lookAt: GraphNode,
+    transitionMs: number
+  ) => void;
+};
+
+type ForceGraph3DProps = {
+  graphData: GraphData;
+  nodeLabel: (node: GraphNode) => string;
+  nodeVal: (node: GraphNode) => number;
+  nodeThreeObject: (node: GraphNode) => THREE.Object3D | undefined;
+  nodeColor: (node: GraphNode) => string;
+  nodeOpacity: number;
+  nodeResolution: number;
+  linkWidth: (link: GraphLink) => number;
+  linkColor: (link: GraphLink) => string;
+  linkDirectionalParticles: (link: GraphLink) => number;
+  linkDirectionalParticleWidth: (link: GraphLink) => number;
+  linkDirectionalParticleColor: (link: GraphLink) => string;
+  linkDirectionalParticleSpeed: number;
+  onNodeClick: (node: GraphNode) => void;
+  onBackgroundClick: () => void;
+  backgroundColor: string;
+  controlType: "orbit";
+};
+
+const ForceGraph3D = dynamic(() => import("react-force-graph-3d"), { ssr: false }) as unknown as ForwardRefExoticComponent<
+  ForceGraph3DProps & RefAttributes<ForceGraphHandle>
+>;
+
+function endpointId(endpoint: string | GraphNode): string {
+  return typeof endpoint === "object" ? endpoint.id : endpoint;
+}
 
 export default function GraphVisualizer({ 
   onNodeClick, 
@@ -12,24 +48,21 @@ export default function GraphVisualizer({
   filterMode,
   searchQuery
 }: { 
-  onNodeClick?: (node: any) => void; 
+  onNodeClick?: (node: GraphNode | null) => void; 
   selectedNodeId?: string;
-  filterMode: 'all' | 'core' | 'isolated' | 'coupling' | 'external' | 'edge' | 'logic';
+  filterMode: FilterMode;
   searchQuery?: string;
 }) {
-  const [originalData, setOriginalData] = useState<{ nodes: any[]; links: any[] } | null>(null);
+  const [originalData, setOriginalData] = useState<GraphData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const fgRef = useRef<any>(null);
-
-  const [highlightNodes, setHighlightNodes] = useState(new Set());
-  const [highlightLinks, setHighlightLinks] = useState(new Set());
+  const fgRef = useRef<ForceGraphHandle | null>(null);
 
   useEffect(() => {
     fetch("/api/graph")
       .then((res) => res.json())
       .then((d) => {
         if (d.nodes) {
-          setOriginalData(d);
+          setOriginalData(d as GraphData);
         }
         setIsLoading(false);
       })
@@ -45,63 +78,59 @@ export default function GraphVisualizer({
     let links = originalData.links;
 
     if (filterMode === 'core') {
-      nodes = nodes.filter((n: any) => n.incomingCount > 3);
+      nodes = nodes.filter((n) => n.incomingCount > 3);
     } else if (filterMode === 'isolated') {
-      nodes = nodes.filter((n: any) => n.incomingCount === 0 && n.outgoingCount === 0);
+      nodes = nodes.filter((n) => n.incomingCount === 0 && n.outgoingCount === 0);
     } else if (filterMode === 'coupling') {
-      nodes = nodes.filter((n: any) => n.outgoingCount > 7);
+      nodes = nodes.filter((n) => n.outgoingCount > 7);
     } else if (filterMode === 'external') {
-      nodes = nodes.filter((n: any) => {
+      nodes = nodes.filter((n) => {
         const name = n.properties?.name || n.id;
-        return !name.includes('.') && !name.includes('/') && !name.includes('\\');
+        return String(name).includes('.') === false && String(name).includes('/') === false && String(name).includes('\\') === false;
       });
     } else if (filterMode === 'edge') {
-      nodes = nodes.filter((n: any) => n.incomingCount === 0 && n.outgoingCount > 0);
+      nodes = nodes.filter((n) => n.incomingCount === 0 && n.outgoingCount > 0);
     } else if (filterMode === 'logic') {
-      const allowedNodes = new Set();
-      nodes.forEach((n:any) => {
+      const allowedNodes = new Set<string>();
+      nodes.forEach((n) => {
         if (n.type === 'Run' || n.type === 'Skill') allowedNodes.add(n.id);
       });
-      links.forEach((l:any) => {
+      links.forEach((l) => {
          if (l.type === 'MODIFIED' || l.type === 'OPTIMIZED' || l.type === 'CAUSED_ERROR') {
-           allowedNodes.add(typeof l.source === 'object' ? l.source.id : l.source);
-           allowedNodes.add(typeof l.target === 'object' ? l.target.id : l.target);
+           allowedNodes.add(endpointId(l.source));
+           allowedNodes.add(endpointId(l.target));
          }
       });
-      nodes = nodes.filter((n:any) => allowedNodes.has(n.id));
+      nodes = nodes.filter((n) => allowedNodes.has(n.id));
     }
 
     if (filterMode !== 'all') {
-      const nodeIds = new Set(nodes.map((n: any) => n.id));
-      links = links.filter((l: any) => {
-        const sid = typeof l.source === 'object' ? l.source.id : l.source;
-        const tid = typeof l.target === 'object' ? l.target.id : l.target;
-        return nodeIds.has(sid) && nodeIds.has(tid);
-      });
+      const nodeIds = new Set(nodes.map((n) => n.id));
+      links = links.filter((l) => nodeIds.has(endpointId(l.source)) && nodeIds.has(endpointId(l.target)));
     }
 
     return { nodes, links };
   }, [originalData, filterMode]);
 
-  useEffect(() => {
-    const hNodes = new Set();
-    const hLinks = new Set();
+  const { highlightNodes, highlightLinks } = useMemo(() => {
+    const hNodes = new Set<string>();
+    const hLinks = new Set<GraphLink>();
 
     if (searchQuery && data.nodes.length > 0) {
       const sq = searchQuery.toLowerCase();
-      const matchedNodeIds = new Set();
+      const matchedNodeIds = new Set<string>();
       
-      data.nodes.forEach((n: any) => {
-         const name = (n.properties?.name || n.group || n.id || "").toLowerCase();
+      data.nodes.forEach((n) => {
+         const name = String(n.properties?.name || n.group || n.id || "").toLowerCase();
          if (name.includes(sq)) {
              matchedNodeIds.add(n.id);
              hNodes.add(n.id);
          }
       });
 
-      data.links.forEach((link: any) => {
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+      data.links.forEach((link) => {
+        const sourceId = endpointId(link.source);
+        const targetId = endpointId(link.target);
         
         if (matchedNodeIds.has(sourceId) || matchedNodeIds.has(targetId)) {
           hLinks.add(link);
@@ -111,9 +140,9 @@ export default function GraphVisualizer({
       });
     } else if (selectedNodeId && data.nodes.length > 0) {
       hNodes.add(selectedNodeId);
-      data.links.forEach((link: any) => {
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+      data.links.forEach((link) => {
+        const sourceId = endpointId(link.source);
+        const targetId = endpointId(link.target);
         
         if (sourceId === selectedNodeId || targetId === selectedNodeId) {
           hLinks.add(link);
@@ -123,19 +152,21 @@ export default function GraphVisualizer({
       });
     }
 
-    setHighlightNodes(hNodes);
-    setHighlightLinks(hLinks);
+    return { highlightNodes: hNodes, highlightLinks: hLinks };
   }, [selectedNodeId, searchQuery, data]);
 
-  const handleClick = (node: any) => {
+  const handleClick = (node: GraphNode) => {
     if (onNodeClick) onNodeClick(node);
     
     const distance = 80;
-    const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+    const x = node.x ?? 0;
+    const y = node.y ?? 0;
+    const z = node.z ?? 0;
+    const distRatio = 1 + distance/Math.hypot(x, y, z);
     
     if (fgRef.current) {
       fgRef.current.cameraPosition(
-        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+        { x: x * distRatio, y: y * distRatio, z: z * distRatio },
         node, 
         2000
       );
@@ -166,7 +197,7 @@ export default function GraphVisualizer({
       <ForceGraph3D
         ref={fgRef}
         graphData={data}
-        nodeLabel={(node: any) => {
+        nodeLabel={(node: GraphNode) => {
           let label = `<div class="bg-gray-800 text-white px-2 py-1 rounded text-xs border border-gray-600">`;
           label += `<strong class="text-cyan-400">${node.type} | ${node.group}</strong><br/>`;
           label += `${node.properties?.name || node.id}<br/>`;
@@ -179,8 +210,8 @@ export default function GraphVisualizer({
           label += `</div>`;
           return label;
         }}
-        nodeVal={(node: any) => node.val}
-        nodeThreeObject={((node: any) => {
+        nodeVal={(node: GraphNode) => node.val}
+        nodeThreeObject={((node: GraphNode) => {
           if (node.type === 'Run') {
              const geometry = new THREE.OctahedronGeometry(node.val);
              const material = new THREE.MeshLambertMaterial({ 
@@ -194,21 +225,21 @@ export default function GraphVisualizer({
              return new THREE.Mesh(geometry, material);
           }
           return undefined; // fallback to sphere for modules
-        }) as any}
-        nodeColor={(node: any) => {
+        })}
+        nodeColor={(node: GraphNode) => {
           if (highlightNodes.size > 0 && !highlightNodes.has(node.id)) {
             return "rgba(255,255,255,0.02)";
           }
           if (node.id === selectedNodeId) return "#FFFFFF";
           if (node.type === 'Run' || node.type === 'Skill') return "rgba(0,0,0,0)"; // hide sphere
           
-          const index = Math.abs(node.group.split("").reduce((a: any, b: any) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0)) % nodeColorByGroup.length;
+          const index = Math.abs(node.group.split("").reduce((a, b) => { a = ((a << 5) - a) + b.charCodeAt(0); return a & a }, 0)) % nodeColorByGroup.length;
           return nodeColorByGroup[index];
         }}
         nodeOpacity={0.9}
         nodeResolution={16}
-        linkWidth={(link: any) => highlightLinks.has(link) ? 2 : 0.5}
-        linkColor={(link: any) => {
+        linkWidth={(link: GraphLink) => highlightLinks.has(link) ? 2 : 0.5}
+        linkColor={(link: GraphLink) => {
           if (link.type === 'OPTIMIZED') return '#00FFAA';
           if (link.type === 'CAUSED_ERROR') return '#FF3333';
           if (link.type === 'RETRY_OF') return '#E100FF';
@@ -219,16 +250,16 @@ export default function GraphVisualizer({
           }
           return "rgba(255,255,255,0.08)";
         }}
-        linkDirectionalParticles={(link: any) => {
+        linkDirectionalParticles={(link: GraphLink) => {
            if (link.type === 'OPTIMIZED' || link.type === 'CAUSED_ERROR' || link.type === 'RETRY_OF') return 5;
            return highlightLinks.has(link) ? 3 : 1;
         }}
-        linkDirectionalParticleWidth={(link: any) => {
+        linkDirectionalParticleWidth={(link: GraphLink) => {
            if (link.type === 'OPTIMIZED' || link.type === 'CAUSED_ERROR') return 3;
            if (link.type === 'RETRY_OF') return 2;
            return highlightLinks.has(link) ? 3 : 1;
         }}
-        linkDirectionalParticleColor={(link: any) => {
+        linkDirectionalParticleColor={(link: GraphLink) => {
           if (link.type === 'OPTIMIZED') return '#00FFAA';
           if (link.type === 'CAUSED_ERROR') return '#FF3333';
           if (link.type === 'RETRY_OF') return '#E100FF';

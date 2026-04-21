@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 import os
-import sys
 import argparse
 from neo4j import GraphDatabase
 import chromadb
 from chromadb.utils import embedding_functions
-
-# --- Enterprise Configuration ---
-NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
-NEO4J_PASS = os.getenv("NEO4J_PASS", "trustgraph")
-CHROMA_PATH = os.path.join(os.path.dirname(__file__), "../chroma_db")
+from trustgraph_config import (
+    CHROMA_COLLECTION,
+    CHROMA_HOST,
+    CHROMA_PORT,
+    NEO4J_BOLT_URI,
+    NEO4J_PASSWORD,
+    NEO4J_USER,
+)
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Incremental Graph & Vector Synchronization Engine (V29.4 Enterprise)")
@@ -64,10 +65,10 @@ def main():
     args = parse_args()
     
     # Initialize Clients
-    driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASS))
-    chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
+    driver = GraphDatabase.driver(NEO4J_BOLT_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
+    chroma_client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
     sentence_transformer_ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-MiniLM-L6-v2")
-    collection = chroma_client.get_or_create_collection(name="antigravity_trustgraph", embedding_function=sentence_transformer_ef)
+    collection = chroma_client.get_or_create_collection(name=CHROMA_COLLECTION, embedding_function=sentence_transformer_ef)
 
     print(f"--- [Antigravity Incremental Sync Triggered] ---")
     print(f"Detected Delta Set ($D_{{changes}}$): {len(args.files)} files.")

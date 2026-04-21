@@ -15,10 +15,9 @@ import json
 import urllib.request
 import urllib.error
 import sys
+from trustgraph_config import NEO4J_HTTP_ENDPOINT, neo4j_auth_header
 
-# TrustGraph Neo4j HTTP Endpoint (Default)
-NEO4J_HTTP_ENDPOINT = "http://localhost:7474/db/neo4j/tx/commit"
-AUTH_HEADER = "Basic bmVvNGo6dHJ1c3RncmFwaF9zZWNyZXQ=" # Base64 for neo4j:trustgraph_secret
+AUTH_HEADER = neo4j_auth_header()
 
 def query_graph(task, target):
     # This is the Cypher payload to extract context

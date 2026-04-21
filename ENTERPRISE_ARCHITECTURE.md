@@ -1,7 +1,7 @@
-# 🏢 Enterprise Architecture Mapping: Marcus Fleet Antigravity (V29.4)
+# 🏢 Enterprise Architecture Mapping: Marcus Fleet Antigravity (V30.0)
 
 > **Document Classification:** INTERNAL ENGINEERING ARCHITECTURE & THEORETICAL FRAMEWORK  
-> **Topic:** Multi-Agent Orchestration, Continuous RAG Indexing, FSM Sandboxing, and Empirical Rollout Strategies.  
+> **Topic:** Multi-Agent Orchestration, Continuous RAG Indexing, Spec-Driven Governance, Deep Research Planning, FSM Sandboxing, and Empirical Rollout Strategies.  
 > **Target Audience:** CIOs, Principal Engineers, System Architects, DevOps Leads, and SecOps Teams.
 
 ---
@@ -15,7 +15,7 @@ We observe three critical vulnerabilities in unstructured agentic flows:
 2. **"Lost-in-the-Middle" Amnesia:** Extended context prompts dilute the localized instructions. The AI model selectively forgets parameters stored in the middle of the payload.
 3. **Execution Anarchy:** Providing Generative Models with unchecked structural and terminal privileges produces disastrous "Out of Bounds" physical mutations on the Host OS.
 
-The **Marcus Fleet Antigravity Engine (V29.4)** was architected explicitly to solve this via **Bounded Stochastic Execution**. We constrain the AI's "Creative Degrees of Freedom" physically across 4 pillars: RAG, O11y, Sandboxing, and IAM.
+The **Marcus Fleet Antigravity Engine (V30.0)** was architected explicitly to solve this via **Bounded Stochastic Execution** and **Spec-Driven Governance**. We constrain the AI's "Creative Degrees of Freedom" physically across 6 pillars: RAG, Spec Lifecycle, Deep Research Ledgers, O11y, Sandboxing, and IAM.
 
 ### 1.1 Macro Architecture Topology
 
@@ -39,6 +39,41 @@ graph TD
     R2 --> O11y[OpenTelemetry Exporter]:::Logic
     O11y --> Prom[Prometheus Dashboard]:::Data
 ```
+
+### 1.2 V30 Governance Addendum: Spec Lifecycle + Deep Planning
+
+V30 adds a control plane before implementation. The goal is not to replace the
+existing `/planning`, `/design`, `/develop`, or `/quick_fix` flow. The goal is to
+make the handoff more auditable and less shallow.
+
+```mermaid
+flowchart TD
+    classDef Gate fill:#7c2d12,stroke:#fb923c,stroke-width:2px,color:#fff;
+    classDef Doc fill:#1e3a8a,stroke:#60a5fa,stroke-width:2px,color:#fff;
+    classDef Exec fill:#166534,stroke:#22c55e,stroke-width:2px,color:#fff;
+
+    Request[Operator Goal] --> Spec[.agents/specs/<feature>/spec.md]:::Doc
+    Spec --> Clarify{Clarification Gate}:::Gate
+    Clarify -->|Resolved| Plan[plan.md + tasks.md + verification.md]:::Doc
+    Plan --> Research[/docs/research ledgers]:::Doc
+    Research --> LegacyDocs[Legacy /docs planning outputs]:::Doc
+    LegacyDocs --> Validate{Spec + Research Validators}:::Gate
+    Validate -->|Pass| HumanApproval[Human Architecture Approval]:::Gate
+    HumanApproval --> Design[/design]:::Exec
+    Design --> Develop[/develop]:::Exec
+```
+
+Operational rules:
+
+- `/planning` must still emit the legacy eight `/docs` files. V30 adds
+  `/docs/research/*` ledgers beside those files, not instead of them.
+- `.agents/scripts/validate_specs.py` validates durable feature workspaces.
+- `.agents/scripts/validate_planning_research.py` validates source, evidence,
+  claim, contradiction, and manifest depth when `/docs/research/` exists.
+- `/develop` may consume `.agents/specs/<feature-id>/` as extra context, but the
+  approved `/docs` package remains the default SDLC handoff.
+- TrustGraph write failures degrade to deferred commits; they must not block
+  local documentation integrity.
 
 ---
 
@@ -70,7 +105,7 @@ graph TD
 
 ### 2.2 Incremental Delta Sync (Vector ChromaDB)
 
-In previous iterations, the matrix re-indexed the entire 1M LOC directory (taking 45 minutes). In **V29.4**, via `.agents/adapters/trustgraph_incremental.py` and `.agents/setup_git_hooks.sh`, the system hooks directly into the Git Delta stream.
+In previous iterations, the matrix re-indexed the entire 1M LOC directory (taking 45 minutes). In **V30.0**, via `.agents/adapters/trustgraph_incremental.py`, shared TrustGraph configuration, and `.agents/setup_git_hooks.sh`, the system hooks directly into the Git Delta stream.
 
 ```mermaid
 sequenceDiagram
@@ -236,7 +271,7 @@ sequenceDiagram
     activate SB
     alt Tests Pass
         SB-->>GH: Exit 0 (Green)
-    else Regex Threat Detected
+    else Sandbox Policy Threat Detected
         SB-->>GH: Exit 1 (Violation Blocked)
     end
     deactivate SB
@@ -283,13 +318,13 @@ stateDiagram-v2
     [*] --> Invocation: AI Wants to Run bash
     
     state "run_sandboxed.sh Proxy" as Proxy
-    state "Regex Malware Validation" as Validate
-    state "Execution Container" as Exec
+    state "Allow-list + Metacharacter Validation" as Validate
+    state "Bounded Host Command Execution" as Exec
     state "System Halt Circuit Breaker" as Lockout
     
     Invocation --> Proxy
     Proxy --> Validate
-    Validate --> Lockout: Detected (rm -rf, sudo) - ALERT!
+    Validate --> Lockout: Detected (rm -rf, sudo, shell chaining) - ALERT!
     Validate --> Exec: Clean Command Passed
     
     Exec --> [*]: Compile Exit 0 (Pass)
@@ -365,7 +400,7 @@ Deploying to legacy arrays requires step-by-step phased insertion. Below illustr
 
 ```mermaid
 gantt
-    title Enterprise Rollout Sequence (V29.4 Edge)
+    title Enterprise Rollout Sequence (V30.0 Edge)
     dateFormat  YYYY-MM-DD
     section Phase 1: Ingestion
     Bootstrapping & Network Isolation :a1, 2026-05-01, 7d
@@ -386,4 +421,4 @@ The **Marcus Fleet Antigravity** Ecosystem has moved definitively beyond localiz
 
 Automation natively bound to `.agents/` physically embodies **Computational Intelligence Calculus**—guaranteeing strict adherence to SOC2 Compliance standards and delivering unparalleled pipeline throughput without surrendering human agency.
 
-*(Architected & Compiled by the Marcus Fleet Principal Engineering Directorate - Build V29.4)*
+*(Architected & Compiled by the Marcus Fleet Principal Engineering Directorate - Build V30.0)*

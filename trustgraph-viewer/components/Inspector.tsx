@@ -1,9 +1,12 @@
 "use client";
 
 import { X } from "lucide-react";
+import type { GraphNode } from "../lib/graphTypes";
 
-export default function Inspector({ node, onClose }: { node: any, onClose: () => void }) {
+export default function Inspector({ node, onClose }: { node: GraphNode | null, onClose: () => void }) {
   if (!node) return null;
+
+  const nodeName = String(node.properties?.name || node.id);
 
   return (
     <div className="absolute top-4 right-4 w-80 bg-gray-900/80 backdrop-blur-md border border-gray-700/50 rounded-xl shadow-2xl p-5 text-gray-200 z-10 transition-all">
@@ -12,8 +15,8 @@ export default function Inspector({ node, onClose }: { node: any, onClose: () =>
           <h2 className="text-sm font-semibold tracking-wide text-cyan-400 uppercase">
             {node.group}
           </h2>
-          <p className="text-xl font-bold truncate text-white" title={node.properties?.name || node.id}>
-            {node.properties?.name || node.id}
+          <p className="text-xl font-bold truncate text-white" title={nodeName}>
+            {nodeName}
           </p>
         </div>
         <button 

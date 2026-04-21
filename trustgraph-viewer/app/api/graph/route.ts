@@ -1,10 +1,9 @@
 import neo4j from "neo4j-driver";
+import { getTrustGraphConfig } from "../../../lib/trustgraphConfig";
 
-const URI = process.env.NEO4J_URI || "bolt://localhost:7687";
-const USER = process.env.NEO4J_USER || "neo4j";
-const PASSWORD = process.env.NEO4J_PASSWORD || "trustgraph_secret";
+const { neo4jUri, neo4jUser, neo4jPassword } = getTrustGraphConfig();
 
-const driver = neo4j.driver(URI, neo4j.auth.basic(USER, PASSWORD));
+const driver = neo4j.driver(neo4jUri, neo4j.auth.basic(neo4jUser, neo4jPassword));
 
 export async function GET() {
   const session = driver.session();

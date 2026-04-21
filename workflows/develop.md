@@ -14,7 +14,7 @@ description: Marcus Fleet Enterprise SDLC Phase 3 (Code Execution, TDD, & Contin
 ## ⬛ SYSTEMIC MEMORY & STATE INHERITANCE (ANTI-AMNESIA PROTOCOLS)
 
 <state_propagation_boundary>
-**DOGMATIC STATE PROPAGATION:** The Physical Construction sequence is physically incapable of initiating unless `/docs/BRAND_GUIDELINES.md`, `/docs/planning/diagrams.md`, `/docs/knowledge.md`, and `/docs/prd.md` files have been dynamically read and ingested into the LLM context buffer. Failure to read pre-requisite artifacts yields an immediate `Exit Code 1`.
+**DOGMATIC STATE PROPAGATION:** The Physical Construction sequence is physically incapable of initiating unless `/docs/BRAND_GUIDELINES.md`, `/docs/planning/diagrams.md`, `/docs/knowledge.md`, `/docs/prd.md`, `/docs/tasks.md`, `/docs/decisions.md`, and `/docs/memory.md` files have been dynamically read and ingested into the LLM context buffer. If `/docs/research/` or a relevant `.agents/specs/<feature-id>/` workspace exists, those artifacts must be read as supplemental source-of-truth context before implementation. Failure to read pre-requisite artifacts yields an immediate `Exit Code 1`.
 </state_propagation_boundary>
 
 ---

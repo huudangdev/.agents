@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 echo -e "\n${CYAN}"
 echo "================================================================="
 echo "  🔄 ANTIGRAVITY OTA UPDATE PROTOCOL                             "
-echo "  Synchronizing Cognitive Fleet & TrustGraph Schemas             "
+echo "  Synchronizing Cognitive Fleet, Specs, and TrustGraph Schemas   "
 echo "================================================================="
 echo -e "${NC}\n"
 
@@ -51,10 +51,11 @@ if ! command -v rsync &> /dev/null; then
     echo -e "${YELLOW}⚠️ rsync not found! Falling back to standard copy. WARNING: This may overwrite local config files!${NC}"
     cp -R "$TMP_DIR/.agents-main/"* "$TARGET_DIR/"
 else
-    # Core OTA Rsync Logic
+    # Core OTA Rsync Logic. Preserve local memory, runtime data, and operator secrets.
     rsync -av --exclude='agents.md' \
               --exclude='trustgraph/data/' \
               --exclude='trustgraph/.env' \
+              --exclude='trustgraph.env' \
               "$TMP_DIR/.agents-main/" "$TARGET_DIR/" > /dev/null
 fi
 

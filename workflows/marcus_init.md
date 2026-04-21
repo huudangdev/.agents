@@ -39,9 +39,9 @@ This workflow physically automates 100% of manual boilerplate scaffolding (Direc
 EOF
     ```
 
-4. **Cognitive Seeding (The 6-File Genesis):** Utilize the `write_to_file` tool to initialize the Master Specification:
+4. **Cognitive Seeding (V30 Planning Genesis):** Utilize the `write_to_file` tool to initialize the Master Specification:
     - **Target Path:** `projects/<Project_Name>/docs/prd_draft.md`
-    - **Payload:** Extrapolate the User's raw ideas into an enterprise-grade PRD. This document MUST be thousands of words in density, featuring exhaustive structural logic. This serves as the seed node before `/planning` performs deep research to generate the full 6 Core Files.
+    - **Payload:** Extrapolate the User's raw ideas into an enterprise-grade PRD. This document MUST be thousands of words in density, featuring exhaustive structural logic. This serves as the seed node before `/planning` performs deep research to generate the full legacy `/docs` output contract and V30 research ledgers.
 
 4. **Handoff & Ignition:** Upon successful scaffolding, report the deployment triumph. Instruct (or autonomously route) the User into the new Workspace context:
     > "Project Matrix has been successfully scaffolded. Traverse into the isolated node via `cd projects/<Project_Name>` and invoke `/planning` to authorize the AI Supreme Court to begin logical execution!"

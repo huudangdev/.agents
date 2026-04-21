@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 echo -e "\n${CYAN}"
 echo "================================================================="
-echo "  🚀 ANTIGRAVITY COGNITIVE ENGINE V29.2 (MARCUS FLEET)           "
+echo "  🚀 ANTIGRAVITY COGNITIVE ENGINE V30.0 (MARCUS FLEET)           "
 echo "  Enterprise Neural Scaffolder (Direct from Github)              "
 echo "================================================================="
 echo -e "${NC}\n"
@@ -94,5 +94,7 @@ echo -e " 1. ${CYAN}Acknowledge the Constitutional Directive:${NC}"
 echo -e "    Review ${GREEN}.agents/.clinerules${NC} to understand your Multi-Agent ecosystem."
 echo -e " 2. ${CYAN}Spawn the Fleet:${NC}"
 echo -e "    Load the project in your favorite LLM Code Editor to natively inter-op with the agents.\n"
+echo -e " 3. ${CYAN}Validate the governance layer:${NC}"
+echo -e "    Run ${GREEN}python3 .agents/scripts/validate_specs.py${NC} after creating feature specs."
 
 echo -e "Enjoy your Autonomous Engineering Engine!\n"

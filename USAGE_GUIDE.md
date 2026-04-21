@@ -13,13 +13,76 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | Macro Command | Ideal Invocation Context | Core Objective |
 |:---|:---|:---|
 | `/init_brain` | **MANDATORY first command** triggered at the genesis of any new session. | Boots the AI matrix, spins up the TrustGraph Docker stack automatically, enforces `.clinerules`, and stages the Semantic RAG SKILLS_INDEX. |
+| `/marcus.specify` | Any non-trivial feature or governance change that needs durable intent. | Creates `.agents/specs/<feature-id>/spec.md` from the operator goal and records explicit clarification markers. |
+| `/marcus.clarify` | A feature spec contains unresolved `[NEEDS CLARIFICATION]` markers. | Resolves ambiguity before technical planning and blocks silent assumptions. |
+| `/marcus.plan` | A feature spec is accepted and needs technical translation. | Produces `plan.md`, contracts, data model, quickstart, and agent routing under the feature folder. |
+| `/marcus.tasks` | A plan exists and work needs agent-owned execution units. | Derives `tasks.md` with owners, verification methods, and parallel-safe `[P]` groups. |
+| `/marcus.verify` | A feature is implemented or ready to close. | Checks acceptance criteria, task evidence, `agents.md` memory, and TrustGraph write attempt. |
 | `/marcus_init` | Project inception from scratch (Empty Directory). | Generates the foundational PRD, creates directory scaffolding, and injects the Antigravity OS state files into a clean workspace. |
 | `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing cross-platform physical constraints (Safe Area contexts, Spring Animation standards). |
-| `/planning` | Launching new features requiring System Design (FSD, DDD) and Schema modeling. | Orchestrates Phase 1: Generates the 6 Core Files (`prd.md`, `tasks.md`, etc.) inside `/docs/`. Pure Left-Brain synthesis. Halts for user review. |
+| `/planning` | Project genesis or major feature planning requiring deep research, architecture, diagrams, and durable `/docs` outputs. | Orchestrates Phase 1 V30: preserves the legacy `/docs` output set, adds evidence ledgers under `/docs/research/`, validates claims/sources, strengthens diagrams, and halts for user review. |
 | `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2: Prevents redundant planning executions. Emits Figma-logic variables, Hex codes, and Golden ratios. Pure Right-Brain synthesis. Halts for user review. |
 | `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code and executes self-healing TDD loops via dev servers (npm, xcodebuild, flutter run) until compile output is green. |
 | `/refactor-planning` | Targeting established legacy repositories (Brownfield). Requires structural decoupling. | Forces the AI to extract an AST Knowledge Graph via `Understand-Anything` before executing surgical Cyclomatic Complexity reductions safely. |
 | `/update_brain`| Pulling upstream system changes to an active ongoing project. | Downloads the latest `.agents` capabilities via `update.sh`. **MUST be followed by `/init_brain`** to Soft Reboot the environment and prevent stale context. |
+
+---
+
+## 🧾 PHASE 1B: SPEC-DRIVEN FEATURE LIFECYCLE
+
+Marcus Fleet now supports a Spec Kit-inspired feature lifecycle without replacing
+the existing `.agents` skills, TrustGraph, or legacy `/planning` flow.
+
+Use this lifecycle for meaningful changes:
+
+```bash
+python3 .agents/scripts/create_feature_spec.py "Feature Name" --prompt "Original operator prompt"
+python3 .agents/scripts/validate_specs.py --feature .agents/specs/001-feature-name
+```
+
+Feature workspaces live under:
+
+```text
+.agents/specs/<feature-id>/
+  spec.md
+  plan.md
+  tasks.md
+  verification.md
+  agent-routing.md
+  research.md
+  data-model.md
+  quickstart.md
+  contracts/
+```
+
+Routing rule:
+
+- Use `/quick_fix` for a tiny localized change that can be verified in one loop.
+- Use `/marcus.specify` -> `/marcus.verify` for non-trivial behavior,
+  architecture, governance, security, multi-agent, or user-facing changes.
+- Use legacy `/planning` when creating broad global `/docs` artifacts for an
+  entire new project or a major planning package. V30 still produces the legacy
+  files (`prd.md`, `tasks.md`, `knowledge.md`, `decisions.md`, `memory.md`,
+  `planning/flows.md`, `planning/screens.md`, `planning/diagrams.md`) and adds
+  `/docs/research/` ledgers for sources, evidence, claims, contradictions, and
+  manifest. Migrate accepted outputs into feature specs when implementation starts.
+
+Validation rule:
+
+```bash
+python3 .agents/scripts/validate_specs.py
+python3 .agents/scripts/validate_planning_research.py --docs docs
+```
+
+Run the research validator only when `/docs/research/` exists. It is designed to
+catch shallow planning outputs before `/design` or `/develop` consumes them.
+
+Compatibility rule:
+
+- Do not rename or collapse the legacy `/planning` outputs.
+- Add research ledgers beside the old files, not instead of them.
+- `/design` and `/develop` may use `.agents/specs/<feature-id>/` as extra
+  context, but approved `/docs` artifacts remain the default handoff contract.
 
 ---
 
@@ -62,7 +125,7 @@ When the Operator assigns a macro-level objective (e.g., *"Fix the checkout cart
 2. Dynamically Lazy-Load the most relevant agents (e.g., **[Frontend] (Benny)** + **[QA/Test] (Ada)**) into the Context Window.
 3. Transition state to the Frontend Agent to refactor the UI component.
 4. Transition state to the QA Agent to automatically execute the Terminal test suites.
-5. Code Error Encountered? Activate the V29.2 Circuit Breaker protocol.
+5. Code Error Encountered? Activate the V30 Circuit Breaker protocol.
 6. Execution Successful? Log the transaction securely into `.agents/agents.md` and the localized `.agents/brain/` component history.
 
 Final Doctrine: **A true General AI (Antigravity) does not blindly generate code; it routes specialized capability sets (Skills) to conquer complex objectives with surgical precision.**
