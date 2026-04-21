@@ -33,7 +33,8 @@ ledger under:
 ├── modules/
 ├── features/
 ├── pages/
-└── tasks/
+├── tasks/
+└── sync/
 ```
 
 Minimum artifact rules:
@@ -61,11 +62,51 @@ Validate the ledger before reporting completion:
 
 ```bash
 python3 .agents/scripts/validate_development_docs.py --strict-counts
+python3 .agents/scripts/validate_doc_sync.py --strict
 ```
 
 The code phase docs are not a replacement for `/planning` outputs. They are a
 fine-grained implementation memory layer that keeps each epic, module, task,
 feature, and page inspectable after code is generated.
+
+---
+
+## 🔁 CONTINUOUS DOCUMENTATION SYNC LOOP (MANDATORY)
+
+During POC execution, `/develop` is a repeated loop: code, test, inspect,
+adjust, and continue. Documentation must move with that loop.
+
+After every material code slice, the active agent MUST run a documentation sync
+cycle before proceeding to the next slice:
+
+```bash
+python3 .agents/scripts/create_doc_sync_note.py --name "<code-slice-name>" --changed-files "<comma-separated-files>"
+```
+
+Then the agent must update only the affected documents:
+
+1. **Append missing facts** to legacy planning docs when new behavior, scope,
+   acceptance criteria, risks, flows, screens, diagrams, or decisions emerge.
+2. **Patch changed facts** where implementation behavior supersedes a previous
+   statement.
+3. **Preserve historical decisions** by adding superseding notes instead of
+   deleting prior reasoning.
+4. **Update development ledger notes** for affected epic/module/feature/page/task.
+5. **Mark unchanged docs intentionally** in the sync note with a reason.
+
+The agent MUST NOT replace whole documents just to keep them fresh. Full-file
+replacement is allowed only when the operator explicitly asks for a rewrite or
+the file is a generated artifact with no useful history.
+
+Before the agent reports completion or continues to the next major code slice,
+run:
+
+```bash
+python3 .agents/scripts/validate_doc_sync.py --strict
+```
+
+If validation fails, code work pauses until the missing documentation trace is
+added.
 
 ---
 
@@ -82,6 +123,12 @@ feature, and page inspectable after code is generated.
 *🧠 Injected Tensors:* `eve-qa-approver`, `alan-tech-lead`, `ada-qa-agent`
 *📦 Emitted Artifacts:* Database migrations, route handlers, integration suites, updated module/feature/task notes.
 **[Execution Protocol]:** Initialize Backend Infrastructure via Test-Driven Development (TDD). Generate isolated Unit-Test stubs detailing Boundary-Value handling and Fault Injection (Negative Path APIs). Validate API schemas against Null-value crashes before writing business logic. Update the relevant module, feature, and task notes with code paths, public contracts, and command evidence.
+
+### 🔁 NODE 6.5: DOC SYNC CHECKPOINT
+*🔗 Input Vector:* Git diff, changed source files, `/docs`, `/docs/development/`
+*🧠 Injected Tensors:* `knowledge-work-architecture`, `sophia-product-manager`, `ada-qa-agent`
+*📦 Emitted Artifacts:* `/docs/development/sync/*.md`, targeted updates to affected docs.
+**[Execution Protocol]:** After each code slice, create a sync note, map changed source files to affected legacy planning docs and development ledger notes, apply targeted append/patch updates, then run `validate_doc_sync.py --strict`. This node is a continuation gate: the next code slice is blocked when source files changed but documentation trace is missing.
 
 ### 🟣 NODE 7: ZERO-DOWNTIME LIVE SIMULATION (FSM FEEDBACK LOOP)
 *🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/planning/screens.md`, `/docs/development/pages/*.md`
@@ -100,6 +147,7 @@ feature, and page inspectable after code is generated.
 - **Feature Flag Containment:** Wrap all new Agent-generated logic inside physical LaunchDarkly feature flags (or equivalent `if (ENABLED)` switches) to satisfy CAB Rollback protocols.
 - **Enterprise Webhook:** Resolve port-conflicts cleanly by terminating NODE 7 background tasks securely. Append Git Commit Hashes directly relating to the Jira Ticket payload. Draft Infrastructure as Code (IaC) for AWS/Vercel/Cloudflare propagation.
 - **Documentation Gate:** Execute `python3 .agents/scripts/validate_development_docs.py --strict-counts` when `/docs/development/` exists. Completion is blocked until the implementation notes and verification evidence are coherent.
+- **Continuous Sync Gate:** Execute `python3 .agents/scripts/validate_doc_sync.py --strict` when source files changed. Completion is blocked until changed code is referenced by a sync note and affected docs have been reviewed.
 
 ### ⚫ NODE 9: MICRO-BRAIN HISTORICAL ARCHIVING
 *🔗 Input Vector:* Runtime Log / Git Diff Context

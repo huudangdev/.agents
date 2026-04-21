@@ -1,4 +1,4 @@
-# 🏢 Enterprise Architecture Mapping: Marcus Fleet Antigravity (V30.1)
+# 🏢 Enterprise Architecture Mapping: Marcus Fleet Antigravity (V30.2)
 
 > **Document Classification:** INTERNAL ENGINEERING ARCHITECTURE & THEORETICAL FRAMEWORK  
 > **Topic:** Multi-Agent Orchestration, Continuous RAG Indexing, Spec-Driven Governance, Deep Research Planning, FSM Sandboxing, and Empirical Rollout Strategies.  
@@ -15,7 +15,7 @@ We observe three critical vulnerabilities in unstructured agentic flows:
 2. **"Lost-in-the-Middle" Amnesia:** Extended context prompts dilute the localized instructions. The AI model selectively forgets parameters stored in the middle of the payload.
 3. **Execution Anarchy:** Providing Generative Models with unchecked structural and terminal privileges produces disastrous "Out of Bounds" physical mutations on the Host OS.
 
-The **Marcus Fleet Antigravity Engine (V30.1)** was architected explicitly to solve this via **Bounded Stochastic Execution** and **Spec-Driven Governance**. We constrain the AI's "Creative Degrees of Freedom" physically across 7 pillars: RAG, Spec Lifecycle, Deep Research Ledgers, Develop Knowledge Ledgers, O11y, Sandboxing, and IAM.
+The **Marcus Fleet Antigravity Engine (V30.2)** was architected explicitly to solve this via **Bounded Stochastic Execution** and **Spec-Driven Governance**. We constrain the AI's "Creative Degrees of Freedom" physically across 8 pillars: RAG, Spec Lifecycle, Deep Research Ledgers, Develop Knowledge Ledgers, Continuous Documentation Sync, O11y, Sandboxing, and IAM.
 
 ### 1.1 Macro Architecture Topology
 
@@ -78,6 +78,10 @@ Operational rules:
   queryable after implementation.
 - `.agents/scripts/validate_development_docs.py` validates the code-phase ledger
   when `/docs/development/` exists.
+- `.agents/scripts/create_doc_sync_note.py` and
+  `.agents/scripts/validate_doc_sync.py` enforce continuous documentation sync
+  after each material code slice. Agents append missing facts and patch changed
+  facts instead of replacing the planning package wholesale.
 - TrustGraph write failures degrade to deferred commits; they must not block
   local documentation integrity.
 
@@ -111,7 +115,7 @@ graph TD
 
 ### 2.2 Incremental Delta Sync (Vector ChromaDB)
 
-In previous iterations, the matrix re-indexed the entire 1M LOC directory (taking 45 minutes). In **V30.1**, via `.agents/adapters/trustgraph_incremental.py`, shared TrustGraph configuration, and `.agents/setup_git_hooks.sh`, the system hooks directly into the Git Delta stream.
+In previous iterations, the matrix re-indexed the entire 1M LOC directory (taking 45 minutes). In **V30.2**, via `.agents/adapters/trustgraph_incremental.py`, shared TrustGraph configuration, and `.agents/setup_git_hooks.sh`, the system hooks directly into the Git Delta stream.
 
 ```mermaid
 sequenceDiagram
@@ -406,7 +410,7 @@ Deploying to legacy arrays requires step-by-step phased insertion. Below illustr
 
 ```mermaid
 gantt
-    title Enterprise Rollout Sequence (V30.1 Edge)
+    title Enterprise Rollout Sequence (V30.2 Edge)
     dateFormat  YYYY-MM-DD
     section Phase 1: Ingestion
     Bootstrapping & Network Isolation :a1, 2026-05-01, 7d
@@ -427,4 +431,4 @@ The **Marcus Fleet Antigravity** Ecosystem has moved definitively beyond localiz
 
 Automation natively bound to `.agents/` physically embodies **Computational Intelligence Calculus**—guaranteeing strict adherence to SOC2 Compliance standards and delivering unparalleled pipeline throughput without surrendering human agency.
 
-*(Architected & Compiled by the Marcus Fleet Principal Engineering Directorate - Build V30.1)*
+*(Architected & Compiled by the Marcus Fleet Principal Engineering Directorate - Build V30.2)*

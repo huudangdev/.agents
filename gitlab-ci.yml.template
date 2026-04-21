@@ -1,5 +1,5 @@
 # Enterprise GitLab CI/CD for Marcus Fleet Antigravity Engine
-# V30.1: Validates specs, development ledgers, delta RAG, and sandbox checks.
+# V30.2: Validates specs, development ledgers, doc sync, delta RAG, and sandbox checks.
 
 stages:
   - validate
@@ -36,6 +36,7 @@ spec-governance-validation:
     - |
       if [ -d docs/development ]; then
         python .agents/scripts/validate_development_docs.py --strict-counts
+        python .agents/scripts/validate_doc_sync.py --strict
       else
         echo "No docs/development directory found; skipping development docs validation."
       fi
