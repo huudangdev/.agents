@@ -36,7 +36,7 @@ spec-governance-validation:
     - |
       if [ -d docs/development ]; then
         python .agents/scripts/validate_development_docs.py --strict-counts
-        python .agents/scripts/validate_doc_sync.py --strict
+        python .agents/scripts/validate_doc_sync.py --base-ref HEAD~1 --strict
       else
         echo "No docs/development directory found; skipping development docs validation."
       fi

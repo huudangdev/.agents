@@ -16,10 +16,15 @@ Use this workflow after `/marcus.plan`.
    - Owner skill
    - Write scope
    - Verification method
+   - Documentation targets under `/docs/development/`
+   - Doc sync expectation when source files change
 4. Mark `[P]` only when write scopes are disjoint.
-5. Run `validate_specs.py`.
+5. For implementation tasks, include the expected epic/module/feature/page/task
+   note and the legacy docs likely to need append/targeted patch updates.
+6. Run `validate_specs.py`.
 
 ## Output
 
 - Executable `tasks.md`
 - Parallel groups and sequencing
+- Documentation target matrix

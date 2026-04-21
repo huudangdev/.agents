@@ -84,6 +84,8 @@ epic/module/feature/page/task implementation memory.
 Run the doc-sync validator when source files changed during `/develop`. It is
 designed to catch code progress that did not update or intentionally review the
 corresponding planning and development docs.
+For `/quick_fix`, run doc-sync validation when the hotfix changes behavior, UI,
+API contracts, data, tests, or user flows.
 
 Compatibility rule:
 
@@ -131,6 +133,13 @@ python3 .agents/scripts/validate_doc_sync.py --strict
 The sync note must say which legacy docs changed, which development ledger notes
 changed, and which docs were intentionally left unchanged. This gives a PM a
 living POC package instead of stale planning documents.
+
+Quick fix documentation rule:
+
+- If `/quick_fix` only changes comments, formatting, or a non-behavioral typo,
+  record the session in `agents.md` and TrustGraph as usual.
+- If `/quick_fix` changes behavior, UI, API contracts, data, tests, or user
+  flows, it must also create a doc sync note and run `validate_doc_sync.py`.
 
 ---
 

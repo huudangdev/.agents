@@ -1,8 +1,8 @@
 ---
-description: Universal Portability Bootstrap Protocol (Init V30.0)
+description: Universal Portability Bootstrap Protocol (Init V30.2)
 ---
 
-# 🛸 BOOSTSTRAP COGNITIVE ENGINE (V30.0)
+# 🛸 BOOSTSTRAP COGNITIVE ENGINE (V30.2)
 
 > Lệnh Dành Cho AI: BẤT KỲ khi nào Người dùng gọi lệnh `/bootstrap`, BẠN BẮT BUỘC phải thực thi file bash tự động này để cài đặt nền tảng trí tuệ nhân tạo (TrustGraph/Vector RAG/Venv) cho dự án, vì đây là môi trường khởi dựng ban đầu.
 
@@ -19,9 +19,10 @@ chmod +x .agents/bootstrap.sh .agents/setup_git_hooks.sh
 
 ## 2. Báo Cáo Ký Sinh Thành Công
 
-Sau khi chạy xong, hãy xác nhận với người dùng rằng "Khối óc Antigravity V30.0" đã được nhập thành công vào dự án:
+Sau khi chạy xong, hãy xác nhận với người dùng rằng "Khối óc Antigravity V30.2" đã được nhập thành công vào dự án:
 - Database Vector ChromaDB (Cổng 8800) đã quét ngữ nghĩa toàn bộ file hiện hành.
 - Thư viện Cấu trúc AST Neo4j (Cổng 7474) đã sẵn sàng.
 - Bất kỳ Agent tiếp theo nào (Quick Fix, Refactor) cần đọc Code, được quyền sử dụng tệp `.agents/adapters/trustgraph_vector_search.py` qua `.agents/venv/bin/python` cục bộ.
+- Khi vào `/develop`, Agent phải duy trì `/docs/development/` và `/docs/development/sync/` song song với code để tài liệu POC không bị stale.
 
 Mời Nhóm Trưởng (Tech Lead) ra quyết định bằng lệnh `/planning` hoặc `/refactor-planning`!

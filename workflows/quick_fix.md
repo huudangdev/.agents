@@ -1,7 +1,7 @@
 ---
-description: Bypass Protocol for rapid bug patching or micro-feature insertion without triggering the massive 9-node continuous execution chain.
+description: Bypass Protocol for rapid bug patching or micro-feature insertion without triggering the massive continuous execution chain.
 ---
-# ⚡ THE RAPID PATCH CYCLE (QUICK FIX V29.0)
+# ⚡ THE RAPID PATCH CYCLE (QUICK FIX V30.2)
 
 > **CORE MANDATE:** Unlock pure velocity. Only invoke this protocol when the User explicitly requests the neutralization of a localized Bug, a trivial UI color mutation, or a single functional logic block on an ALREADY EXISTING architecture.
 
@@ -20,4 +20,14 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 - **[Fallback Protocol]:** If visual abstraction tools (Draw.io, Understand-Anything) crash on initialization, immediately fallback to raw `grep` arrays and text-based `mermaid` generation to avoid stalling.
 
 ## 🔸 STAGE 3: STATE SYNCHRONIZATION & EJECTION
-*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `.agents/agents.md` and the localized `.agents/brain/` node of that component. Tick `[x]` on the active task list. Execute `python3 .agents/adapters/trustgraph_write.py --run_id "QuickFix" --status "success" --target "Patched_File" --skills "quick-fix" --score 0.85 --reasoning "Patched localized bug"` to save the RAG context. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.
+*📦 Execution Vector:* Document the specific Bug Patch or Bypass vector directly into the global `agents.md` and the localized `.agents/brain/` node of that component. Tick `[x]` on the active task list.
+
+If the quick fix changes source behavior, it must still preserve PM continuity:
+
+```bash
+python3 .agents/scripts/create_doc_sync_note.py --name "QuickFix <scope>" --changed-files "<changed-source-and-doc-files>"
+python3 .agents/scripts/validate_doc_sync.py --strict
+```
+
+Use targeted append/patch updates only. Do not replace planning or development
+docs wholesale. Execute `python3 .agents/adapters/trustgraph_write.py --run_id "QuickFix" --status "success" --target "Patched_File" --skills "quick-fix" --score 0.85 --reasoning "Patched localized bug and synchronized docs"` to save the RAG context. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.

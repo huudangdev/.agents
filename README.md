@@ -287,7 +287,7 @@ The AI is computationally restricted from generating code until this node return
 5. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
 
 ### 6. `/quick_fix` (Micro-Mutation Bypass)
-**Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context.
+**Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. Behavior-changing hotfixes still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
 
 ### 7. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
 **Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 

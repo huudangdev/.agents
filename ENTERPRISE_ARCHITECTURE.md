@@ -61,6 +61,10 @@ flowchart TD
     Validate -->|Pass| HumanApproval[Human Architecture Approval]:::Gate
     HumanApproval --> Design[/design]:::Exec
     Design --> Develop[/develop]:::Exec
+    Develop --> DevLedger[/docs/development ledger]:::Doc
+    DevLedger --> DocSync[/docs/development/sync notes]:::Doc
+    DocSync --> Continue{Continue or close feature}:::Gate
+    Continue -->|More code| Develop
 ```
 
 Operational rules:
@@ -82,6 +86,8 @@ Operational rules:
   `.agents/scripts/validate_doc_sync.py` enforce continuous documentation sync
   after each material code slice. Agents append missing facts and patch changed
   facts instead of replacing the planning package wholesale.
+- `/quick_fix` may bypass the full factory, but behavior-changing fixes still
+  create a sync note and run doc-sync validation.
 - TrustGraph write failures degrade to deferred commits; they must not block
   local documentation integrity.
 

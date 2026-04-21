@@ -81,7 +81,7 @@ Summarize ownership from `agent-routing.md`.
 
 - Migration steps: add docs contract and validator; future projects opt in when
   `/develop` runs and creates `/docs/development/`.
-- Rollback steps: remove the V30.1 docs gate and templates if it blocks a
+- Rollback steps: remove the V30.2 docs gate and templates if it blocks a
   workflow unexpectedly; source code generation remains unaffected.
 - Compatibility notes: page notes can be optional for non-UI tasks through
   manifest minimum counts.

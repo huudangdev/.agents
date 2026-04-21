@@ -1,8 +1,8 @@
 ---
-description: System Bootstrapping & Cognitive Initialization Matrix (V30.0 Enterprise Standard)
+description: System Bootstrapping & Cognitive Initialization Matrix (V30.2 Enterprise Standard)
 ---
 
-# 🧠 SYSTEM BOOTSTRAPPING & COGNITIVE INITIALIZATION MATRIX (V30.0)
+# 🧠 SYSTEM BOOTSTRAPPING & COGNITIVE INITIALIZATION MATRIX (V30.2)
 
 > **ENTERPRISE MANDATE (UNLIMITED CONTEXT DIRECTIVE):**  
 > This protocol dictates the absolute initialization sequence for the Antigravity AI Engine operating within the Marcus Fleet ecosystem. Token expenditure is no longer a localized constraint; **Amnesia and Context-Bleed are strictly forbidden**. Upon the initiation of any fresh session, the Agent is computationally forbidden from generating superficial responses or blindly starting code execution. You must retrieve, ingest, and bind the architectural parameters of the enterprise environment through explicit Tool Invocations.
@@ -28,7 +28,7 @@ Enterprise continuity demands that the AI operates as a persistent consciousness
 1. **[SYS_CALL]**: Execute `view_file` on the project root `agents.md` first, then fall back to `.agents/agents.md` or `.agents/brain/` local memory if present, to grasp the prior operational epoch, known blockers, and current project velocity.
 2. **[SYS_CALL]**: Audit the `/docs` or equivalent workspace documentation directory. You MUST extract existing `PRD` (Product Requirements Document), `SDD` (Software Design Document), `ADR` (Architecture Decision Records), and `BRAND_GUIDELINES.md` if they exist. Commencing application logic without ingesting prior State Models will result in critical context-drift.
 
-## 🟠 NODE 3: RAG-DRIVEN SKILL INGESTION (LAZY-LOADING V30.0)
+## 🟠 NODE 3: RAG-DRIVEN SKILL INGESTION (LAZY-LOADING V30.2)
 With an architecture exceeding 60 independent Agent Skill Matrices, naive global loading induces Attention Deficit within the LLM. You must utilize Retrieval-Augmented Generation (RAG) paradigms for precise Identity clustering.
 1. **[SYS_CALL]**: Execute `view_file` to digest `SKILLS_INDEX.md` originating from the `.agents/skills/` directory.
 2. **Semantic Input Parsing:** Tokenize the User’s initiation prompt to detect domain boundaries (e.g., E-Commerce routing, Web3 Authentication, iOS Swift rendering, End-to-End QA simulation).

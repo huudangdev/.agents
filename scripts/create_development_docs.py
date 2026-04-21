@@ -21,7 +21,6 @@ TEMPLATE_MAP = {
     "pages/page-000.md": "development-page-template.md",
     "tasks/task-000.md": "development-task-template.md",
     "sync/sync_manifest.json": "development-sync-manifest-template.json",
-    "sync/sync-000.md": "development-sync-note-template.md",
 }
 
 

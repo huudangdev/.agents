@@ -36,10 +36,10 @@ SOURCE_SUFFIXES = {
 DOC_PREFIXES = ("docs/", ".agents/specs/")
 
 
-def git_changed_files(root: Path) -> list[str]:
+def run_git_diff(root: Path, args: list[str]) -> list[str]:
     try:
         result = subprocess.run(
-            ["git", "diff", "--name-only", "HEAD"],
+            ["git", "diff", "--name-only", *args],
             cwd=root,
             check=False,
             capture_output=True,
@@ -52,10 +52,31 @@ def git_changed_files(root: Path) -> list[str]:
     return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
 
-def parse_changed_files(value: str, root: Path) -> list[str]:
+def git_changed_files(root: Path, base_ref: str) -> list[str]:
+    if base_ref:
+        return run_git_diff(root, [base_ref, "HEAD"])
+
+    working_tree = run_git_diff(root, ["HEAD"])
+    if working_tree:
+        return working_tree
+
+    previous_commit = subprocess.run(
+        ["git", "rev-parse", "--verify", "HEAD~1"],
+        cwd=root,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if previous_commit.returncode == 0:
+        return run_git_diff(root, ["HEAD~1", "HEAD"])
+
+    return []
+
+
+def parse_changed_files(value: str, root: Path, base_ref: str) -> list[str]:
     if value:
         return [item.strip() for item in value.split(",") if item.strip()]
-    return git_changed_files(root)
+    return git_changed_files(root, base_ref)
 
 
 def is_source_file(path: str) -> bool:
@@ -97,9 +118,6 @@ def validate(root: Path, changed_files: list[str], strict: bool) -> list[str]:
     source_files = [path for path in changed_files if is_source_file(path)]
     doc_files = [path for path in changed_files if is_doc_file(path)]
     gates = manifest.get("quality_gates", {}) if manifest else {}
-
-    if gates.get("require_changed_files", True) and strict and not changed_files:
-        errors.append("No changed files supplied or detected")
 
     notes = sync_notes(root)
     if source_files and not notes:
@@ -145,11 +163,16 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Validate documentation sync for changed code.")
     parser.add_argument("--root", default=".", help="Workspace root.")
     parser.add_argument("--changed-files", default="", help="Comma-separated changed files.")
+    parser.add_argument(
+        "--base-ref",
+        default="",
+        help="Optional git base ref for committed diffs, e.g. HEAD~1 or origin/main.",
+    )
     parser.add_argument("--strict", action="store_true", help="Require docs changed and checklist completed.")
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    changed_files = parse_changed_files(args.changed_files, root)
+    changed_files = parse_changed_files(args.changed_files, root, args.base_ref)
     errors = validate(root, changed_files, args.strict)
     if errors:
         print("DOC SYNC VALIDATION FAILED")
