@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "phase": "develop",
+  "feature_id": "",
+  "source_artifacts": [
+    "docs/prd.md",
+    "docs/tasks.md",
+    "docs/knowledge.md",
+    "docs/decisions.md",
+    "docs/memory.md",
+    "docs/planning/flows.md",
+    "docs/planning/screens.md",
+    "docs/planning/diagrams.md"
+  ],
+  "buckets": {
+    "epics": {
+      "path": "docs/development/epics",
+      "minimum_count": 1
+    },
+    "modules": {
+      "path": "docs/development/modules",
+      "minimum_count": 1
+    },
+    "features": {
+      "path": "docs/development/features",
+      "minimum_count": 1
+    },
+    "pages": {
+      "path": "docs/development/pages",
+      "minimum_count": 0
+    },
+    "tasks": {
+      "path": "docs/development/tasks",
+      "minimum_count": 1
+    }
+  },
+  "quality_gates": {
+    "require_frontmatter": true,
+    "require_owner_skill": true,
+    "require_verification": true,
+    "require_source_trace": true,
+    "require_code_scope": true
+  }
+}

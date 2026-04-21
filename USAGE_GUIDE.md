@@ -22,7 +22,7 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing cross-platform physical constraints (Safe Area contexts, Spring Animation standards). |
 | `/planning` | Project genesis or major feature planning requiring deep research, architecture, diagrams, and durable `/docs` outputs. | Orchestrates Phase 1 V30: preserves the legacy `/docs` output set, adds evidence ledgers under `/docs/research/`, validates claims/sources, strengthens diagrams, and halts for user review. |
 | `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2: Prevents redundant planning executions. Emits Figma-logic variables, Hex codes, and Golden ratios. Pure Right-Brain synthesis. Halts for user review. |
-| `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code and executes self-healing TDD loops via dev servers (npm, xcodebuild, flutter run) until compile output is green. |
+| `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code, creates `/docs/development/` notes per epic/module/feature/page/task, and executes self-healing TDD loops via dev servers until compile output is green. |
 | `/refactor-planning` | Targeting established legacy repositories (Brownfield). Requires structural decoupling. | Forces the AI to extract an AST Knowledge Graph via `Understand-Anything` before executing surgical Cyclomatic Complexity reductions safely. |
 | `/update_brain`| Pulling upstream system changes to an active ongoing project. | Downloads the latest `.agents` capabilities via `update.sh`. **MUST be followed by `/init_brain`** to Soft Reboot the environment and prevent stale context. |
 
@@ -71,11 +71,15 @@ Validation rule:
 
 ```bash
 python3 .agents/scripts/validate_specs.py
-python3 .agents/scripts/validate_planning_research.py --docs docs
+python3 .agents/scripts/validate_planning_research.py --root .
+python3 .agents/scripts/validate_development_docs.py --strict-counts
 ```
 
 Run the research validator only when `/docs/research/` exists. It is designed to
 catch shallow planning outputs before `/design` or `/develop` consumes them.
+Run the development-docs validator only when `/docs/development/` exists. It is
+designed to catch code-phase work that changes behavior without preserving
+epic/module/feature/page/task implementation memory.
 
 Compatibility rule:
 
@@ -83,6 +87,31 @@ Compatibility rule:
 - Add research ledgers beside the old files, not instead of them.
 - `/design` and `/develop` may use `.agents/specs/<feature-id>/` as extra
   context, but approved `/docs` artifacts remain the default handoff contract.
+- `/develop` may add `/docs/development/` artifacts, but must not rewrite or
+  collapse the approved planning package.
+
+Code phase documentation rule:
+
+```bash
+python3 .agents/scripts/create_development_docs.py --name "Checkout Flow" --feature-id "005-checkout-flow"
+python3 .agents/scripts/validate_development_docs.py --strict-counts
+```
+
+Expected structure:
+
+```text
+docs/development/
+  development_manifest.json
+  index.md
+  epics/
+  modules/
+  features/
+  pages/
+  tasks/
+```
+
+Each Markdown artifact must identify its owner skill, source planning/spec
+trace, write or code scope, and verification evidence.
 
 ---
 

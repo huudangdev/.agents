@@ -2,16 +2,16 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v30.0-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v30.1-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
-    <a href="#-enterprise-overview-v300">Overview</a> •
+    <a href="#-enterprise-overview-v301">Overview</a> •
     <a href="#-system-architecture-topology">Architecture</a> •
     <a href="#-spec-driven-governance-layer">Spec Governance</a> •
-    <a href="#-installation-provisioning--universal-portability-v300">Provisioning</a> •
+    <a href="#-installation-provisioning--universal-portability-v301">Provisioning</a> •
     <a href="#execution-commands">Execution</a> •
     <a href="#academic-contributions">Contributions</a> •
     <a href="#sponsorship--support">Support/Donate</a>
@@ -20,9 +20,9 @@
 
 ---
 
-## 🔬 Enterprise Overview (V30.0)
+## 🔬 Enterprise Overview (V30.1)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 30.0** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 30.1** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Develop Knowledge Ledgers**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
@@ -115,7 +115,9 @@ Core artifacts:
 ├── scripts/
 │   ├── create_feature_spec.py        # Creates .agents/specs/NNN-slug/
 │   ├── validate_specs.py             # Validates required files and gates
-│   └── validate_planning_research.py # Validates deep research ledgers
+│   ├── validate_planning_research.py # Validates deep research ledgers
+│   ├── create_development_docs.py    # Creates /docs/development scaffolds
+│   └── validate_development_docs.py  # Validates code-phase knowledge notes
 └── specs/
     └── 001-marcus-spec-foundation/   # First validated feature workspace
 ```
@@ -149,6 +151,33 @@ V30 is additive. The historical slash-command surface remains valid:
 The new spec lifecycle and research ledgers strengthen acceptance criteria,
 evidence tracking, and implementation readiness without replacing these flows.
 
+### Code Phase Knowledge Ledger
+
+V30.1 adds a documentation contract to `/develop`. Code generation now has to
+leave implementation memory behind, not only source files:
+
+```text
+docs/development/
+├── development_manifest.json
+├── index.md
+├── epics/
+├── modules/
+├── features/
+├── pages/
+└── tasks/
+```
+
+The scaffold command is:
+
+```bash
+python3 .agents/scripts/create_development_docs.py --name "Feature Name" --feature-id "005-feature-name"
+python3 .agents/scripts/validate_development_docs.py --strict-counts
+```
+
+Each Markdown note must include frontmatter with `owner_skill`, `source_trace`,
+and `verification`, plus the code or write scope it governs. This keeps epic,
+module, feature, page, and task knowledge queryable by future agents.
+
 ---
 
 ## ✨ Empirical System Features
@@ -162,7 +191,7 @@ evidence tracking, and implementation readiness without replacing these flows.
 
 ---
 
-## 📦 Installation Provisioning & Universal Portability (V30.0)
+## 📦 Installation Provisioning & Universal Portability (V30.1)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
@@ -171,7 +200,7 @@ Integrate the matrix framework into any local project directory securely via our
 curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
 
-### ⚡ The V30.0 Turn-Key Bootstrap
+### ⚡ The V30.1 Turn-Key Bootstrap
 Once the repository is cloned, you must awaken the Cognitive Brain. From your AI chat window, simply command:
 > `/bootstrap`
 *(Or manually execute `./.agents/bootstrap.sh`)*
@@ -228,7 +257,8 @@ The AI is computationally restricted from generating code until this node return
 1. **Targeting (Cross-Platform Contextualization):** Intelligently probes root-level manifestations (`package.json`, `pubspec.yaml`, `Podfile`) to pivot its underlying toolchain (Next.js, Flutter, iOS Native, etc.).
 2. **TDD Scaffolding:** Writes the Test Suites *first* based on Edge Cases documented in the PRD.
 3. **Component Interpolation:** Melds the PRD logic schemas and the UI/UX `BRAND_GUIDELINES.md` to output the component files into the active workspace.
-4. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
+4. **Development Knowledge Ledger:** Creates or updates `/docs/development/` notes per epic, module, feature, page, and task before material code edits.
+5. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
 
 ### 5. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
@@ -269,10 +299,13 @@ The AI is computationally restricted from generating code until this node return
 │   ├── spec-template.md
 │   ├── plan-template.md
 │   ├── tasks-template.md
+│   ├── development-*-template.*
 │   └── planning-*-template.*
 ├── scripts/                       # Local creation and validation tools
 │   ├── create_feature_spec.py
+│   ├── create_development_docs.py
 │   ├── validate_specs.py
+│   ├── validate_development_docs.py
 │   └── validate_planning_research.py
 ├── specs/                         # Feature-scoped source-of-truth artifacts
 ├── mcp/                           # Model Context Protocol constraints

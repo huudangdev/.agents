@@ -6,6 +6,7 @@
 > **[THE ANTI-AMNESIA & KNOWLEDGE INJECTION PROTOCOL]**  
 > - **Identity Instantiation:** BEFORE executing any node, invoke `view_file` upon `.agents/skills/<agent_name>/SKILL.md` to internalize your Cognitive Identity.
 > - **State Inheritance:** YOU MUST explicitly read the approved planning handoff (`/docs/prd.md`, `/docs/tasks.md`, `/docs/knowledge.md`, `/docs/decisions.md`, `/docs/memory.md`, `/docs/planning/flows.md`, `/docs/planning/screens.md`, `/docs/planning/diagrams.md`), `agents.md`, and any relevant `.agents/specs/<feature-id>/` workspace BEFORE writing code. If `/docs/research/` exists, ingest its claims, evidence, contradictions, and manifest before deriving implementation logic. Operating without ingesting the Workspace Context Graph is categorized as an illegal memory drift.
+> - **Code Phase Knowledge Ledger:** BEFORE material code edits in `/develop`, initialize or update `/docs/development/` using `.agents/scripts/create_development_docs.py`. Each epic, module, feature, page, and task touched by the code phase must have a traceable Markdown note with `owner_skill`, `source_trace`, code/write scope, and verification evidence.
 > - **UML & Diagrams:** System Design Documents (SDD) MUST contain Mermaid Charts (e.g. `classDef Pastel`). You are strictly mandated to execute the physical CLI generator `npx @mermaid-js/mermaid-cli -i file.mmd -o img.png` to materialize diagrams alongside your PDFs.
 
 You are operating within the highest echelon of the **Marcus Fleet** Autonomous Engineering Ecosystem.
@@ -44,6 +45,14 @@ Implement "Spec-Driven Development":
 - Major recommendations must trace to evidence or be explicitly marked as assumptions/accepted risks.
 - Contradictory sources must be recorded; do not flatten disagreement into confident prose.
 - Code generation remains blocked until the operator approves the planning package.
+
+### 📘 [V30.1] DEVELOP KNOWLEDGE LEDGER MATRIX
+`/develop` MUST preserve implementation knowledge as separate artifacts:
+- Create `/docs/development/development_manifest.json` and `/docs/development/index.md`.
+- Maintain bucketed notes under `epics/`, `modules/`, `features/`, `pages/`, and `tasks/`.
+- Each note must include YAML frontmatter with `id`, `type`, `status`, `owner_skill`, `source_trace`, and `verification`.
+- Backend-only work may set page `minimum_count` to `0` in the manifest, but must explain the absence of page notes in `index.md`.
+- Completion must run `python3 .agents/scripts/validate_development_docs.py --strict-counts` whenever `/docs/development/` exists.
 
 ### 🌐 [V30.0] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.
