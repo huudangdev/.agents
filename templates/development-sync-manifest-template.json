@@ -35,6 +35,15 @@
     "require_docs_reviewed": true,
     "require_no_unchecked_items": true,
     "require_legacy_docs_decision": true,
-    "require_development_docs_decision": true
+    "require_development_docs_decision": true,
+    "forbid_placeholders": true,
+    "minimum_words": 180,
+    "require_rationale_markers": [
+      "because",
+      "impact",
+      "evidence",
+      "risk",
+      "decision"
+    ]
   }
 }

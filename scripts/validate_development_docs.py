@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -28,12 +29,47 @@ REQUIRED_FRONTMATTER_FIELDS = [
 ]
 
 REQUIRED_BODY_SECTIONS = {
-    "epics": ["## Outcome", "## Acceptance Criteria", "## Evidence"],
-    "modules": ["## Responsibility", "## Code Scope", "## Verification"],
-    "features": ["## User Value", "## Requirements Trace", "## Code Scope", "## Verification"],
-    "pages": ["## Route / Surface", "## States", "## Verification"],
-    "tasks": ["## Objective", "## Write Scope", "## Verification", "## Handoff"],
+    "epics": ["## Outcome", "## PM Notes", "## Acceptance Criteria", "## Evidence", "## Change Log"],
+    "modules": ["## Responsibility", "## Implementation Commentary", "## Code Scope", "## Verification", "## Change Log"],
+    "features": ["## User Value", "## PM Notes", "## Requirements Trace", "## Code Scope", "## Verification", "## Change Log"],
+    "pages": ["## Route / Surface", "## PM Notes", "## States", "## Verification", "## Change Log"],
+    "tasks": ["## Objective", "## Implementation Commentary", "## Write Scope", "## Verification", "## Handoff", "## Change Log"],
 }
+
+MIN_WORDS_BY_BUCKET = {
+    "epics": 180,
+    "modules": 220,
+    "features": 220,
+    "pages": 180,
+    "tasks": 160,
+}
+
+PLACEHOLDER_PATTERNS = [
+    r"<[^>\n]+>",
+    r"\bTBD\b",
+    r"\bpending\b",
+    r"Describe the ",
+    r"State the ",
+    r"Define the ",
+    r"no change needed / updated because",
+    r"Changed file:",
+    r"Criterion:",
+    r"Allowed files:\s*$",
+    r"Disallowed files:\s*$",
+    r"Expected output:\s*$",
+    r"Actual output:\s*$",
+]
+
+COMMENTARY_MARKERS = [
+    "because",
+    "so that",
+    "tradeoff",
+    "risk",
+    "decision",
+    "rationale",
+    "evidence",
+    "impact",
+]
 
 
 def load_manifest(root: Path) -> tuple[dict[str, Any] | None, list[str]]:
@@ -53,6 +89,43 @@ def load_manifest(root: Path) -> tuple[dict[str, Any] | None, list[str]]:
 
 def has_frontmatter(text: str) -> bool:
     return text.startswith("---\n") and "\n---\n" in text[4:]
+
+
+def word_count(text: str) -> int:
+    body = text.split("\n---\n", 1)[-1] if has_frontmatter(text) else text
+    return len(re.findall(r"\b[\w/-]+\b", body))
+
+
+def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    rel = path.as_posix()
+
+    if gates.get("forbid_placeholders", True):
+        for pattern in PLACEHOLDER_PATTERNS:
+            if re.search(pattern, text, flags=re.IGNORECASE | re.MULTILINE):
+                errors.append(f"{rel}: contains template placeholder or unfinished text matching `{pattern}`")
+
+    if gates.get("require_completed_checklists", True) and "- [ ]" in text:
+        errors.append(f"{rel}: contains unchecked checklist item")
+
+    minimum_words = int(gates.get("minimum_words", {}).get(bucket_name, MIN_WORDS_BY_BUCKET.get(bucket_name, 150)))
+    actual_words = word_count(text)
+    if actual_words < minimum_words:
+        errors.append(f"{rel}: too shallow ({actual_words} words, expected at least {minimum_words})")
+
+    if gates.get("require_commentary", True):
+        lower_text = text.lower()
+        if not any(marker in lower_text for marker in COMMENTARY_MARKERS):
+            errors.append(
+                f"{rel}: missing implementation commentary/rationale markers "
+                "(because, tradeoff, risk, decision, evidence, impact)"
+            )
+
+    if gates.get("require_specific_code_paths", True) and bucket_name in {"modules", "features", "tasks"}:
+        if not re.search(r"`[^`\n]+\.(ts|tsx|js|jsx|py|go|rs|java|kt|swift|dart|cs|php|rb|vue|svelte|css|scss|sql)`", text):
+            errors.append(f"{rel}: missing specific code path in backticks")
+
+    return errors
 
 
 def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> list[str]:
@@ -89,6 +162,9 @@ def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> li
         if section not in text:
             errors.append(f"{rel}: missing section {section}")
 
+    if gates.get("require_substantive_content", True):
+        errors.extend(validate_content_quality(path, bucket_name, text, gates))
+
     return errors
 
 
@@ -110,6 +186,12 @@ def validate(root: Path, strict_counts: bool) -> list[str]:
         "require_verification": True,
         "require_source_trace": True,
         "require_code_scope": True,
+        "require_substantive_content": True,
+        "forbid_placeholders": True,
+        "require_completed_checklists": True,
+        "require_commentary": True,
+        "require_specific_code_paths": True,
+        "minimum_words": MIN_WORDS_BY_BUCKET,
     }
 
     if manifest:

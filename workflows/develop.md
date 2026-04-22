@@ -69,6 +69,19 @@ The code phase docs are not a replacement for `/planning` outputs. They are a
 fine-grained implementation memory layer that keeps each epic, module, task,
 feature, and page inspectable after code is generated.
 
+### Documentation Quality Gate
+
+Before closing any code slice, read:
+
+```text
+.agents/DEVELOPMENT_DOCS_QUALITY_RUBRIC.md
+```
+
+Generated templates are only scaffolds. They are invalid until every placeholder,
+`TBD`, `pending`, unchecked checklist item, and generic bullet is replaced with
+project-specific facts. Each note must include PM-visible impact, exact code
+paths, rationale, tradeoffs, verification evidence, and residual risk.
+
 ---
 
 ## 🔁 CONTINUOUS DOCUMENTATION SYNC LOOP (MANDATORY)
@@ -129,6 +142,7 @@ added.
 *🧠 Injected Tensors:* `knowledge-work-architecture`, `sophia-product-manager`, `ada-qa-agent`
 *📦 Emitted Artifacts:* `/docs/development/sync/*.md`, targeted updates to affected docs.
 **[Execution Protocol]:** After each code slice, create a sync note, map changed source files to affected legacy planning docs and development ledger notes, apply targeted append/patch updates, then run `validate_doc_sync.py --strict`. This node is a continuation gate: the next code slice is blocked when source files changed but documentation trace is missing.
+Strict validation also rejects shallow or template-only sync notes.
 
 ### 🟣 NODE 7: ZERO-DOWNTIME LIVE SIMULATION (FSM FEEDBACK LOOP)
 *🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/planning/screens.md`, `/docs/development/pages/*.md`

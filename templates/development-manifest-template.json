@@ -39,6 +39,18 @@
     "require_owner_skill": true,
     "require_verification": true,
     "require_source_trace": true,
-    "require_code_scope": true
+    "require_code_scope": true,
+    "require_substantive_content": true,
+    "forbid_placeholders": true,
+    "require_completed_checklists": true,
+    "require_commentary": true,
+    "require_specific_code_paths": true,
+    "minimum_words": {
+      "epics": 180,
+      "modules": 220,
+      "features": 220,
+      "pages": 180,
+      "tasks": 160
+    }
   }
 }

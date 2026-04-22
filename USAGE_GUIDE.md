@@ -123,6 +123,14 @@ docs/development/
 Each Markdown artifact must identify its owner skill, source planning/spec
 trace, write or code scope, and verification evidence.
 
+Substantive quality rule:
+
+- Generated development templates are scaffolds, not acceptable deliverables.
+- Before closing `/develop`, read `.agents/DEVELOPMENT_DOCS_QUALITY_RUBRIC.md`.
+- Strict validation rejects `TBD`, `pending`, `<Name>`, unchecked boxes, generic
+  bullets, missing code paths, missing rationale, and shallow notes.
+- PM-facing notes must explain impact, tradeoff, evidence, and risk.
+
 Continuous documentation sync rule:
 
 ```bash

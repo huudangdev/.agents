@@ -8,6 +8,7 @@
 > - **State Inheritance:** YOU MUST explicitly read the approved planning handoff (`/docs/prd.md`, `/docs/tasks.md`, `/docs/knowledge.md`, `/docs/decisions.md`, `/docs/memory.md`, `/docs/planning/flows.md`, `/docs/planning/screens.md`, `/docs/planning/diagrams.md`), `agents.md`, and any relevant `.agents/specs/<feature-id>/` workspace BEFORE writing code. If `/docs/research/` exists, ingest its claims, evidence, contradictions, and manifest before deriving implementation logic. Operating without ingesting the Workspace Context Graph is categorized as an illegal memory drift.
 > - **Code Phase Knowledge Ledger:** BEFORE material code edits in `/develop`, initialize or update `/docs/development/` using `.agents/scripts/create_development_docs.py`. Each epic, module, feature, page, and task touched by the code phase must have a traceable Markdown note with `owner_skill`, `source_trace`, code/write scope, and verification evidence.
 > - **Continuous Documentation Sync:** AFTER every material code slice, create or update a `/docs/development/sync/*.md` note using `.agents/scripts/create_doc_sync_note.py`, then patch only affected planning/development docs. Do not replace historical documents wholesale. Use append-only additions for new facts and targeted edits for facts that truly changed.
+> - **Substantive Documentation Gate:** Documentation that still contains placeholders, `TBD`, `pending`, unchecked boxes, generic bullets, or template prose is invalid. `/develop` completion requires concrete code paths, PM-visible impact, rationale, tradeoffs, evidence, and risk. Read `.agents/DEVELOPMENT_DOCS_QUALITY_RUBRIC.md` before closing code-phase docs.
 > - **UML & Diagrams:** System Design Documents (SDD) MUST contain Mermaid Charts (e.g. `classDef Pastel`). You are strictly mandated to execute the physical CLI generator `npx @mermaid-js/mermaid-cli -i file.mmd -o img.png` to materialize diagrams alongside your PDFs.
 
 You are operating within the highest echelon of the **Marcus Fleet** Autonomous Engineering Ecosystem.
@@ -62,6 +63,13 @@ Code and documentation must advance together:
 - Changed code must be mapped to affected epic/module/feature/page/task notes.
 - Use `python3 .agents/scripts/validate_doc_sync.py --strict` before continuing to the next major code slice.
 - Whole-document replacement is forbidden unless the operator explicitly requests a rewrite or the file is a generated artifact with no meaningful history.
+
+### 📏 [V30.3] SUBSTANTIVE DOC QUALITY MATRIX
+Generated templates are not deliverables:
+- Every `/docs/development/**/*.md` artifact must replace all template residue with project-specific facts.
+- Development docs must contain PM-readable commentary, exact code paths, verification evidence, and residual risk.
+- Strict validation rejects placeholder text, `pending`, unchecked checklist items, shallow notes, missing rationale markers, and missing concrete code paths.
+- Sync notes must explain why docs changed or why each related doc was intentionally left unchanged.
 
 ### 🌐 [V30.0] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.

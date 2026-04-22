@@ -11,6 +11,11 @@ verification:
 
 # Development Doc Sync: <Name>
 
+> QUALITY BAR: this note is the audit trail between code and PM docs. It must
+> explain the changed files, why docs changed or stayed unchanged, evidence, and
+> remaining risk. Do not leave placeholders, generic decisions, or unchecked
+> policy items.
+
 ## Source Changes
 
 - Changed file:
@@ -50,3 +55,9 @@ verification:
 - Command:
 - Result:
 - Residual documentation risk:
+
+## PM Summary
+
+- What changed for the POC:
+- What the PM can demo now:
+- What remains uncertain:

@@ -181,6 +181,10 @@ Each Markdown note must include frontmatter with `owner_skill`, `source_trace`,
 and `verification`, plus the code or write scope it governs. This keeps epic,
 module, feature, page, and task knowledge queryable by future agents.
 
+Strict mode uses [DEVELOPMENT_DOCS_QUALITY_RUBRIC.md](./DEVELOPMENT_DOCS_QUALITY_RUBRIC.md)
+to reject template-only output. Docs must include concrete code paths,
+PM-visible impact, rationale, tradeoffs, evidence, and residual risk.
+
 ### Continuous Documentation Sync
 
 V30.2 adds a PM-grade continuity gate for long POC builds. After each material

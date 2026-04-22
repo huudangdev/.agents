@@ -10,6 +10,10 @@ source_trace:
 
 # Development Knowledge Index
 
+> QUALITY BAR: this index must help a PM and a future agent understand current
+> POC implementation state in under five minutes. It must link to real notes,
+> summarize progress, and call out stale or risky areas.
+
 ## Execution Scope
 
 - Feature/spec id:
@@ -40,3 +44,10 @@ source_trace:
 - Risk:
   - Owner:
   - Mitigation:
+
+## Documentation Freshness
+
+- Last code slice synced:
+- Last sync note:
+- Docs intentionally stale:
+- Next documentation action:

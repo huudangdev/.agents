@@ -11,9 +11,24 @@ verification:
 
 # Epic: <Name>
 
+> QUALITY BAR: replace every placeholder with concrete project facts before
+> closing `/develop`. This file must explain PM-visible value, decision
+> rationale, evidence, risks, and the exact implementation surface. Do not leave
+> `TBD`, `pending`, empty bullets, or unchecked boxes.
+
 ## Outcome
 
-Describe the business or user outcome this epic delivers.
+Write 2-4 paragraphs explaining the business/user outcome, why this epic matters
+for the POC, what changed compared with the original planning docs, and what PM
+decision this enables.
+
+## PM Notes
+
+- PM-visible status:
+- Demo narrative:
+- Acceptance impact:
+- Scope change since planning:
+- Risk or open decision:
 
 ## Scope
 
@@ -26,16 +41,24 @@ Describe the business or user outcome this epic delivers.
 
 ## Acceptance Criteria
 
-- [ ] Criterion:
+- [x] Criterion with evidence:
 
 ## Implementation Notes
 
-- Code paths:
+- Code paths: `src/example.ts`
 - Data/contracts:
 - Rollback or feature flag:
+- Tradeoffs and rationale:
 
 ## Evidence
 
 - Tests:
 - Build/lint:
 - Review notes:
+
+## Change Log
+
+- Date:
+  - Code change:
+  - Documentation update:
+  - Evidence:

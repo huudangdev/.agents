@@ -12,11 +12,23 @@ verification:
 
 # Page: <Name>
 
+> QUALITY BAR: document the page like a QA-ready product surface. Explain user
+> intent, states, accessibility, interaction evidence, and responsive behavior.
+> Do not leave placeholders, pending verification, or generic bullets.
+
 ## Route / Surface
 
 - Route:
 - Entry component:
 - Layout owner:
+
+## PM Notes
+
+- Demo path:
+- User promise:
+- Acceptance impact:
+- Visual or copy change:
+- Risk:
 
 ## States
 
@@ -43,3 +55,10 @@ verification:
 - UI test:
 - Screenshot/manual check:
 - Responsive check:
+
+## Change Log
+
+- Date:
+  - Code change:
+  - Documentation update:
+  - Evidence:

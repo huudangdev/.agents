@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -34,6 +35,18 @@ SOURCE_SUFFIXES = {
 }
 
 DOC_PREFIXES = ("docs/", ".agents/specs/")
+
+PLACEHOLDER_PATTERNS = [
+    r"<[^>\n]+>",
+    r"\bTBD\b",
+    r"\bpending\b",
+    r"no change needed / updated because",
+    r"Changed file:",
+    r"Reason:\s*$",
+    r"Impacted behavior:\s*$",
+    r"Command:\s*$",
+    r"Result:\s*$",
+]
 
 
 def run_git_diff(root: Path, args: list[str]) -> list[str]:
@@ -136,6 +149,19 @@ def validate(root: Path, changed_files: list[str], strict: bool) -> list[str]:
 
     if gates.get("require_no_unchecked_items", True) and "- [ ]" in latest_note:
         errors.append(f"Latest sync note still has unchecked documentation policy items: {notes[-1]}")
+
+    if strict and source_files:
+        for pattern in PLACEHOLDER_PATTERNS:
+            if re.search(pattern, latest_note, flags=re.IGNORECASE | re.MULTILINE):
+                errors.append(f"Latest sync note contains placeholder or unfinished text matching `{pattern}`")
+
+        if len(re.findall(r"\b[\w/-]+\b", latest_note)) < 180:
+            errors.append("Latest sync note is too shallow; expected at least 180 words of real rationale")
+
+        lower_note = latest_note.lower()
+        for marker in ["because", "impact", "evidence", "risk", "decision"]:
+            if marker not in lower_note:
+                errors.append(f"Latest sync note missing `{marker}` commentary")
 
     if gates.get("require_legacy_docs_decision", True) and source_files:
         for required in [

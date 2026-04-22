@@ -11,13 +11,26 @@ verification:
 
 # Module: <Name>
 
+> QUALITY BAR: explain the real module boundary, why the chosen structure is
+> correct, what contracts it exposes, and how failures are detected. Do not leave
+> placeholders, pending verification, or generic bullets.
+
 ## Responsibility
 
-Define the module boundary in one paragraph.
+Write 2-4 paragraphs defining module ownership, why this boundary exists, how it
+relates to upstream/downstream modules, and what future agents must not violate.
+
+## Implementation Commentary
+
+- Decision:
+- Rationale:
+- Tradeoff:
+- Impact:
+- Risk:
 
 ## Code Scope
 
-- Owns:
+- Owns: `src/example.ts`
 - Reads:
 - Writes:
 - Must not touch:
@@ -44,3 +57,10 @@ Define the module boundary in one paragraph.
 - Unit:
 - Integration:
 - Runtime:
+
+## Change Log
+
+- Date:
+  - Code change:
+  - Documentation update:
+  - Evidence:
