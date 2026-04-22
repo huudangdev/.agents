@@ -45,6 +45,7 @@
     "require_completed_checklists": true,
     "require_commentary": true,
     "require_specific_code_paths": true,
+    "require_mermaid_diagram": true,
     "minimum_words": {
       "epics": 180,
       "modules": 220,

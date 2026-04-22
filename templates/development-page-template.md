@@ -14,7 +14,8 @@ verification:
 
 > QUALITY BAR: document the page like a QA-ready product surface. Explain user
 > intent, states, accessibility, interaction evidence, and responsive behavior.
-> Do not leave placeholders, pending verification, or generic bullets.
+> Include Mermaid. Do not leave placeholders, pending verification, or generic
+> bullets.
 
 ## Route / Surface
 
@@ -49,6 +50,18 @@ verification:
 - Keyboard:
 - Screen reader:
 - Color/contrast:
+
+## Mermaid Diagram
+
+```mermaid
+stateDiagram-v2
+    [*] --> Loading
+    Loading --> Empty
+    Loading --> Error
+    Loading --> Success
+    Success --> PermissionDenied
+    Error --> Loading: retry
+```
 
 ## Verification
 

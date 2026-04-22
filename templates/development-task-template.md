@@ -13,7 +13,8 @@ verification:
 
 > QUALITY BAR: this note must explain exactly what was done, why it was done,
 > what files changed, what evidence exists, and what the next agent should know.
-> Do not leave placeholders, pending verification, or unchecked items.
+> Include Mermaid. Do not leave placeholders, pending verification, or unchecked
+> items.
 
 ## Objective
 
@@ -37,6 +38,16 @@ needed for the POC, and which requirement or bug it resolves.
 
 - Step:
   - Result:
+
+## Mermaid Diagram
+
+```mermaid
+flowchart TD
+    Task[Task objective] --> Edit[Code edit]
+    Edit --> Test[Verification command]
+    Test --> Docs[Docs update]
+    Docs --> Handoff[Next agent handoff]
+```
 
 ## Verification
 

@@ -183,7 +183,9 @@ module, feature, page, and task knowledge queryable by future agents.
 
 Strict mode uses [DEVELOPMENT_DOCS_QUALITY_RUBRIC.md](./DEVELOPMENT_DOCS_QUALITY_RUBRIC.md)
 to reject template-only output. Docs must include concrete code paths,
-PM-visible impact, rationale, tradeoffs, evidence, and residual risk.
+PM-visible impact, rationale, tradeoffs, evidence, residual risk, and Mermaid
+diagrams. Behavior-changing code slices must also update at least one global
+planning document under `/docs`.
 
 ### Continuous Documentation Sync
 

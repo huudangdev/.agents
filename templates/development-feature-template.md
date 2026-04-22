@@ -14,7 +14,7 @@ verification:
 
 > QUALITY BAR: this is a PM and engineering handoff, not a stub. Explain user
 > value, implementation reasoning, exact code paths, evidence, risks, and what
-> changed in docs. Do not leave placeholders or unchecked boxes.
+> changed in docs. Include Mermaid. Do not leave placeholders or unchecked boxes.
 
 ## User Value
 
@@ -47,6 +47,21 @@ the POC, which requirement it satisfies, and what observable result proves it.
 - Files to create: `src/example.ts`
 - Files to modify: `src/example.ts`
 - Files intentionally out of scope:
+
+## Mermaid Diagram
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant Page as UI/Page
+    participant Feature as Feature Logic
+    participant API as API/Data Contract
+    User->>Page: Trigger feature behavior
+    Page->>Feature: Validate and transform input
+    Feature->>API: Persist or retrieve data
+    API-->>Feature: Return result or error
+    Feature-->>Page: Render PM-visible outcome
+```
 
 ## Verification
 

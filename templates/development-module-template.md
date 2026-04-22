@@ -12,8 +12,8 @@ verification:
 # Module: <Name>
 
 > QUALITY BAR: explain the real module boundary, why the chosen structure is
-> correct, what contracts it exposes, and how failures are detected. Do not leave
-> placeholders, pending verification, or generic bullets.
+> correct, what contracts it exposes, how failures are detected, and include
+> Mermaid. Do not leave placeholders, pending verification, or generic bullets.
 
 ## Responsibility
 
@@ -51,6 +51,17 @@ relates to upstream/downstream modules, and what future agents must not violate.
 - Failure:
   - Detection:
   - Recovery:
+
+## Mermaid Diagram
+
+```mermaid
+flowchart LR
+    Caller[Caller module] --> Boundary[This module boundary]
+    Boundary --> Contract[Public contract]
+    Contract --> Dependency[Internal/external dependency]
+    Dependency --> Failure{Failure mode}
+    Failure --> Recovery[Detection and recovery path]
+```
 
 ## Verification
 

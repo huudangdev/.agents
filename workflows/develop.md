@@ -80,7 +80,8 @@ Before closing any code slice, read:
 Generated templates are only scaffolds. They are invalid until every placeholder,
 `TBD`, `pending`, unchecked checklist item, and generic bullet is replaced with
 project-specific facts. Each note must include PM-visible impact, exact code
-paths, rationale, tradeoffs, verification evidence, and residual risk.
+paths, rationale, tradeoffs, verification evidence, residual risk, and a useful
+Mermaid diagram.
 
 ---
 
@@ -106,6 +107,10 @@ Then the agent must update only the affected documents:
    deleting prior reasoning.
 4. **Update development ledger notes** for affected epic/module/feature/page/task.
 5. **Mark unchanged docs intentionally** in the sync note with a reason.
+6. **Update at least one global planning doc** under `/docs` for behavior-
+   changing code slices.
+7. **Refresh Mermaid diagrams** in feature/page/module/task docs and, when
+   architecture or flow changes, in `docs/planning/diagrams.md`.
 
 The agent MUST NOT replace whole documents just to keep them fresh. Full-file
 replacement is allowed only when the operator explicitly asks for a rewrite or
@@ -142,7 +147,8 @@ added.
 *🧠 Injected Tensors:* `knowledge-work-architecture`, `sophia-product-manager`, `ada-qa-agent`
 *📦 Emitted Artifacts:* `/docs/development/sync/*.md`, targeted updates to affected docs.
 **[Execution Protocol]:** After each code slice, create a sync note, map changed source files to affected legacy planning docs and development ledger notes, apply targeted append/patch updates, then run `validate_doc_sync.py --strict`. This node is a continuation gate: the next code slice is blocked when source files changed but documentation trace is missing.
-Strict validation also rejects shallow or template-only sync notes.
+Strict validation also rejects shallow or template-only sync notes, missing
+Mermaid diagrams, and code changes without a global `/docs` update.
 
 ### 🟣 NODE 7: ZERO-DOWNTIME LIVE SIMULATION (FSM FEEDBACK LOOP)
 *🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/planning/screens.md`, `/docs/development/pages/*.md`

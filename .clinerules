@@ -71,6 +71,14 @@ Generated templates are not deliverables:
 - Strict validation rejects placeholder text, `pending`, unchecked checklist items, shallow notes, missing rationale markers, and missing concrete code paths.
 - Sync notes must explain why docs changed or why each related doc was intentionally left unchanged.
 
+### 🗺️ [V30.4] FEATURE DOC DIAGRAM & GLOBAL DOC MATRIX
+Feature documentation must be visual and globally synchronized:
+- Every epic/module/feature/page/task note under `/docs/development/` must contain a useful Mermaid code fence.
+- Feature notes should prefer `sequenceDiagram` or `flowchart`; page notes should prefer `stateDiagram-v2`; module notes should show dependency/contract flow.
+- Every behavior-changing code slice must update at least one legacy global planning doc under `/docs`.
+- The sync note must include at least one `updated because` decision for a global doc.
+- Mermaid diagrams must explain behavior, state, data flow, dependency, or handoff. Decorative diagrams are invalid.
+
 ### 🌐 [V30.0] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.
 2. **The Memory Commit Mandate (Post-Flight):** Upon successfully neutralizing a bug or finalizing an AST shift, you MUST execute `python3 .agents/adapters/trustgraph_write.py --run_id "<ID>" --status "success/failed" --target "<Module>" --skills "<Used_Skills>" --score <0.0_to_1.0> --reasoning "<Explain your logic>"` to securely archive the Session Node into the Neo4j Long-Term Graph Database. A score >= 0.8 plots an OPTIMIZED green vector, while < 0.5 plots a CAUSED_ERROR red vector.

@@ -36,6 +36,17 @@ SOURCE_SUFFIXES = {
 
 DOC_PREFIXES = ("docs/", ".agents/specs/")
 
+GLOBAL_DOCS = {
+    "docs/prd.md",
+    "docs/tasks.md",
+    "docs/knowledge.md",
+    "docs/decisions.md",
+    "docs/memory.md",
+    "docs/planning/flows.md",
+    "docs/planning/screens.md",
+    "docs/planning/diagrams.md",
+}
+
 PLACEHOLDER_PATTERNS = [
     r"<[^>\n]+>",
     r"\bTBD\b",
@@ -147,6 +158,11 @@ def validate(root: Path, changed_files: list[str], strict: bool) -> list[str]:
     if gates.get("require_docs_reviewed", True) and source_files and not doc_files and strict:
         errors.append("Source files changed but no docs or spec files are in the changed set")
 
+    if gates.get("require_global_docs_updated", True) and source_files and strict:
+        changed_global_docs = [path for path in changed_files if path in GLOBAL_DOCS]
+        if not changed_global_docs:
+            errors.append("Source files changed but no required global /docs planning file was updated")
+
     if gates.get("require_no_unchecked_items", True) and "- [ ]" in latest_note:
         errors.append(f"Latest sync note still has unchecked documentation policy items: {notes[-1]}")
 
@@ -165,17 +181,13 @@ def validate(root: Path, changed_files: list[str], strict: bool) -> list[str]:
 
     if gates.get("require_legacy_docs_decision", True) and source_files:
         for required in [
-            "docs/prd.md",
-            "docs/tasks.md",
-            "docs/knowledge.md",
-            "docs/decisions.md",
-            "docs/memory.md",
-            "docs/planning/flows.md",
-            "docs/planning/screens.md",
-            "docs/planning/diagrams.md",
+            *sorted(GLOBAL_DOCS),
         ]:
             if required not in latest_note:
                 errors.append(f"Latest sync note missing legacy docs decision for {required}")
+
+        if "updated because" not in latest_note.lower():
+            errors.append("Latest sync note must include at least one `updated because` decision for a global doc")
 
     if gates.get("require_development_docs_decision", True) and source_files:
         for label in ["Epic notes", "Module notes", "Feature notes", "Page notes", "Task notes"]:

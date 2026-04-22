@@ -13,8 +13,8 @@ verification:
 
 > QUALITY BAR: replace every placeholder with concrete project facts before
 > closing `/develop`. This file must explain PM-visible value, decision
-> rationale, evidence, risks, and the exact implementation surface. Do not leave
-> `TBD`, `pending`, empty bullets, or unchecked boxes.
+> rationale, evidence, risks, Mermaid diagram, and the exact implementation
+> surface. Do not leave `TBD`, `pending`, empty bullets, or unchecked boxes.
 
 ## Outcome
 
@@ -42,6 +42,16 @@ decision this enables.
 ## Acceptance Criteria
 
 - [x] Criterion with evidence:
+
+## Mermaid Diagram
+
+```mermaid
+flowchart TD
+    UserOutcome[PM-visible outcome] --> Feature[Linked feature]
+    Feature --> Module[Implementation module]
+    Module --> Evidence[Test or demo evidence]
+    Evidence --> Decision[PM decision enabled]
+```
 
 ## Implementation Notes
 

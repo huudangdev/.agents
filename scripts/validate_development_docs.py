@@ -29,11 +29,11 @@ REQUIRED_FRONTMATTER_FIELDS = [
 ]
 
 REQUIRED_BODY_SECTIONS = {
-    "epics": ["## Outcome", "## PM Notes", "## Acceptance Criteria", "## Evidence", "## Change Log"],
-    "modules": ["## Responsibility", "## Implementation Commentary", "## Code Scope", "## Verification", "## Change Log"],
-    "features": ["## User Value", "## PM Notes", "## Requirements Trace", "## Code Scope", "## Verification", "## Change Log"],
-    "pages": ["## Route / Surface", "## PM Notes", "## States", "## Verification", "## Change Log"],
-    "tasks": ["## Objective", "## Implementation Commentary", "## Write Scope", "## Verification", "## Handoff", "## Change Log"],
+    "epics": ["## Outcome", "## PM Notes", "## Acceptance Criteria", "## Mermaid Diagram", "## Evidence", "## Change Log"],
+    "modules": ["## Responsibility", "## Implementation Commentary", "## Code Scope", "## Mermaid Diagram", "## Verification", "## Change Log"],
+    "features": ["## User Value", "## PM Notes", "## Requirements Trace", "## Code Scope", "## Mermaid Diagram", "## Verification", "## Change Log"],
+    "pages": ["## Route / Surface", "## PM Notes", "## States", "## Mermaid Diagram", "## Verification", "## Change Log"],
+    "tasks": ["## Objective", "## Implementation Commentary", "## Write Scope", "## Mermaid Diagram", "## Verification", "## Handoff", "## Change Log"],
 }
 
 MIN_WORDS_BY_BUCKET = {
@@ -70,6 +70,15 @@ COMMENTARY_MARKERS = [
     "evidence",
     "impact",
 ]
+
+MERMAID_PATTERN = re.compile(r"```mermaid\s+.+?```", flags=re.IGNORECASE | re.DOTALL)
+MERMAID_KEYWORDS = {
+    "epics": ["flowchart", "timeline", "journey", "sequenceDiagram"],
+    "modules": ["flowchart", "sequenceDiagram", "classDiagram", "erDiagram"],
+    "features": ["flowchart", "sequenceDiagram", "stateDiagram", "journey"],
+    "pages": ["stateDiagram", "flowchart", "journey", "sequenceDiagram"],
+    "tasks": ["flowchart", "sequenceDiagram", "stateDiagram"],
+}
 
 
 def load_manifest(root: Path) -> tuple[dict[str, Any] | None, list[str]]:
@@ -124,6 +133,17 @@ def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dic
     if gates.get("require_specific_code_paths", True) and bucket_name in {"modules", "features", "tasks"}:
         if not re.search(r"`[^`\n]+\.(ts|tsx|js|jsx|py|go|rs|java|kt|swift|dart|cs|php|rb|vue|svelte|css|scss|sql)`", text):
             errors.append(f"{rel}: missing specific code path in backticks")
+
+    if gates.get("require_mermaid_diagram", True):
+        match = MERMAID_PATTERN.search(text)
+        if not match:
+            errors.append(f"{rel}: missing Mermaid diagram code fence")
+        else:
+            diagram = match.group(0)
+            if not any(keyword in diagram for keyword in MERMAID_KEYWORDS.get(bucket_name, ["flowchart"])):
+                errors.append(
+                    f"{rel}: Mermaid diagram must use one of {', '.join(MERMAID_KEYWORDS.get(bucket_name, ['flowchart']))}"
+                )
 
     return errors
 
@@ -191,6 +211,7 @@ def validate(root: Path, strict_counts: bool) -> list[str]:
         "require_completed_checklists": True,
         "require_commentary": True,
         "require_specific_code_paths": True,
+        "require_mermaid_diagram": True,
         "minimum_words": MIN_WORDS_BY_BUCKET,
     }
 

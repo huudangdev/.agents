@@ -36,6 +36,7 @@
     "require_no_unchecked_items": true,
     "require_legacy_docs_decision": true,
     "require_development_docs_decision": true,
+    "require_global_docs_updated": true,
     "forbid_placeholders": true,
     "minimum_words": 180,
     "require_rationale_markers": [

@@ -130,6 +130,9 @@ Substantive quality rule:
 - Strict validation rejects `TBD`, `pending`, `<Name>`, unchecked boxes, generic
   bullets, missing code paths, missing rationale, and shallow notes.
 - PM-facing notes must explain impact, tradeoff, evidence, and risk.
+- Every epic/module/feature/page/task note must contain a useful Mermaid diagram.
+- Every behavior-changing code slice must update at least one global planning
+  document under `/docs`; feature docs alone are not enough.
 
 Continuous documentation sync rule:
 
