@@ -1,6 +1,7 @@
 {
   "version": "1.0",
   "phase": "develop-doc-sync",
+  "topology": "epic_first_compatible",
   "policy": "append-or-targeted-patch",
   "required_each_code_slice": true,
   "source_globs": [
@@ -24,11 +25,12 @@
     "docs/planning/screens.md",
     "docs/planning/diagrams.md",
     "docs/development/index.md",
-    "docs/development/epics/",
-    "docs/development/modules/",
-    "docs/development/features/",
-    "docs/development/pages/",
-    "docs/development/tasks/"
+    "docs/development/development_manifest.json",
+    "docs/development/E-###-*/epic.md",
+    "docs/development/E-###-*/features/",
+    "docs/development/E-###-*/modules/",
+    "docs/development/E-###-*/pages/",
+    "docs/development/E-###-*/tasks/"
   ],
   "quality_gates": {
     "require_changed_files": true,
@@ -37,6 +39,9 @@
     "require_legacy_docs_decision": true,
     "require_development_docs_decision": true,
     "require_global_docs_updated": true,
+    "require_docs_before_code": true,
+    "allow_epic_local_sync_notes": true,
+    "require_manifest_reconciled": true,
     "forbid_placeholders": true,
     "minimum_words": 180,
     "require_rationale_markers": [

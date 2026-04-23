@@ -55,6 +55,10 @@ PLACEHOLDER_PATTERNS = [
     r"Changed file:",
     r"Reason:\s*$",
     r"Impacted behavior:\s*$",
+    r"Pre-code docs read:\s*$",
+    r"Pre-code docs updated:\s*$",
+    r"Relationship map reviewed:\s*$",
+    r"Related features checked:\s*$",
     r"Command:\s*$",
     r"Result:\s*$",
 ]
@@ -113,6 +117,9 @@ def is_doc_file(path: str) -> bool:
 
 def load_manifest(root: Path) -> tuple[dict[str, Any], list[str]]:
     path = root / "docs/development/sync/sync_manifest.json"
+    development_manifest = root / "docs/development/development_manifest.json"
+    if not path.exists() and development_manifest.exists():
+        path = development_manifest
     if not path.exists():
         return {}, ["Missing doc sync manifest: docs/development/sync/sync_manifest.json"]
     try:
@@ -125,11 +132,16 @@ def load_manifest(root: Path) -> tuple[dict[str, Any], list[str]]:
 
 
 def sync_notes(root: Path) -> list[Path]:
-    path = root / "docs/development/sync"
-    if not path.exists():
+    base = root / "docs/development"
+    if not base.exists():
         return []
+    root_sync = base / "sync"
+    notes: list[Path] = []
+    if root_sync.exists():
+        notes.extend(item for item in root_sync.glob("*.md") if item.is_file())
+    notes.extend(item for item in base.glob("E-*/sync/*.md") if item.is_file())
     return sorted(
-        (item for item in path.glob("*.md") if item.is_file()),
+        notes,
         key=lambda item: (item.stat().st_mtime, item.name),
     )
 
@@ -193,6 +205,17 @@ def validate(root: Path, changed_files: list[str], strict: bool) -> list[str]:
         for label in ["Epic notes", "Module notes", "Feature notes", "Page notes", "Task notes"]:
             if label not in latest_note:
                 errors.append(f"Latest sync note missing development docs decision: {label}")
+
+    if gates.get("require_docs_before_code", True) and source_files:
+        for label in [
+            "## Docs Before Code",
+            "Pre-code docs read",
+            "Pre-code docs updated",
+            "Relationship map reviewed",
+            "Related features checked",
+        ]:
+            if label not in latest_note:
+                errors.append(f"Latest sync note missing docs-before-code evidence: {label}")
 
     return errors
 

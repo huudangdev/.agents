@@ -79,6 +79,32 @@ Feature documentation must be visual and globally synchronized:
 - The sync note must include at least one `updated because` decision for a global doc.
 - Mermaid diagrams must explain behavior, state, data flow, dependency, or handoff. Decorative diagrams are invalid.
 
+### 🧬 [V31.0] EPIC-FIRST DEVELOPMENT LEDGER MATRIX
+`/develop` uses an epic-first documentation topology for all new code-phase work:
+- New development ledgers must use `/docs/development/E-###-description/` as the source of truth.
+- Canonical filenames are `E-001-description/epic.md`, `features/F-001-001-description.md`, `modules/M-001-001-description.md`, `pages/P-001-001-description.md`, and `tasks/T-001-001-001-description.md`.
+- Child frontmatter must include `parent_epic` matching the containing `E-###-*` directory; frontmatter `id` must equal the filename stem, or the epic directory name for `epic.md`.
+- Do not create flat bucket notes, `*-000` IDs, `epic-epic-*`, `feature-epic-*`, duplicate spelling variants like `E05` vs `E-05`, or orphan files outside the manifest.
+- Existing legacy-flat ledgers remain readable only when their manifest has not opted into `topology: epic_first`; migration must archive duplicates instead of silently deleting history.
+- Manifest and index must be reconciled whenever an epic child is added, renamed, archived, or moved.
+
+### 📚 [V31.1] PRODUCT-GRADE DOCS BEFORE CODE MATRIX
+Documentation leads implementation:
+- Before material code edits, update or confirm the owning epic/feature/module/page/task docs, append a Work Log entry, and review the Relationship Map.
+- Every epic/module/feature/page/task note must include `## Jira Story`, `## Priority`, `## Relationship Map`, `## Work Log`, and concrete non-template content.
+- Every epic must include `## Issues`; issues must be QA-detected or QA-reviewed with source, priority, status, owner, evidence, and resolution.
+- Relationship maps must use explicit labels: `DEPENDS_ON`, `BLOCKS`, `ENABLES`, `IMPLEMENTS`, `USES`, `EXTENDS`, `CONFLICTS_WITH`, `SUPERSEDES`, `DUPLICATES`, `RELATES_TO`.
+- Sync notes must include `## Docs Before Code` evidence: docs read, docs updated, relationship map reviewed, and related features checked.
+- Jira-style Story and Priority are mandatory product governance fields, not optional headings.
+
+### 🧹 [V31.2] BROWNFIELD DOC RECONCILIATION MATRIX
+Use `/doc_reconcile` for in-progress projects with stale or noncompliant docs:
+- Run `python3 .agents/scripts/audit_development_docs.py --root .` before restructuring docs.
+- Review the full source inventory and map code clusters to epics/features/modules/pages/tasks.
+- Migrate/enrich docs to V31.1 epic-first structure without silently deleting history.
+- Every epic directory must contain `issues.md` with QA-detected or QA-reviewed issues.
+- Update global planning docs from code reality and run both development-docs and doc-sync validators before resuming `/develop`.
+
 ### 🌐 [V30.0] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.
 2. **The Memory Commit Mandate (Post-Flight):** Upon successfully neutralizing a bug or finalizing an AST shift, you MUST execute `python3 .agents/adapters/trustgraph_write.py --run_id "<ID>" --status "success/failed" --target "<Module>" --skills "<Used_Skills>" --score <0.0_to_1.0> --reasoning "<Explain your logic>"` to securely archive the Session Node into the Neo4j Long-Term Graph Database. A score >= 0.8 plots an OPTIMIZED green vector, while < 0.5 plots a CAUSED_ERROR red vector.

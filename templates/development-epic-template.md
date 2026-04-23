@@ -7,6 +7,12 @@ source_trace:
   - docs/prd.md
 verification:
   - pending
+jira:
+  story: "As a PM, I want this epic outcome delivered so that the POC can prove a measurable business capability."
+  priority: P1
+  labels:
+    - product-research
+    - deep-research
 ---
 
 # Epic: <Name>
@@ -21,6 +27,21 @@ verification:
 Write 2-4 paragraphs explaining the business/user outcome, why this epic matters
 for the POC, what changed compared with the original planning docs, and what PM
 decision this enables.
+
+## Jira Story
+
+- Story: As a PM, I want this epic outcome delivered so that the POC can prove a measurable business capability.
+- Jira issue type: Epic
+- Acceptance owner:
+- Product hypothesis:
+- Research evidence:
+
+## Priority
+
+- Priority: P1
+- Severity if missed:
+- Rationale:
+- Target release:
 
 ## PM Notes
 
@@ -38,6 +59,19 @@ decision this enables.
 ## Linked Features
 
 - `feature-000`
+
+## Relationship Map
+
+| Relation | Target | Label | Rationale |
+| --- | --- | --- | --- |
+| Enables | `F-001-001-example` | `ENABLES` | This epic enables the child feature because it defines the outcome boundary. |
+| Depends on | `docs/prd.md` | `DEPENDS_ON` | This epic depends on the approved PM problem statement. |
+
+## Issues
+
+| Issue ID | Source | Priority | Status | Owner | Evidence | Resolution |
+| --- | --- | --- | --- | --- | --- | --- |
+| ISSUE-E-001-001 | QA auto-detect | P1 | Open | `ada-qa-agent` | Validation/manual finding | Pending targeted fix |
 
 ## Acceptance Criteria
 
@@ -65,6 +99,14 @@ flowchart TD
 - Tests:
 - Build/lint:
 - Review notes:
+
+## Work Log
+
+- Date:
+  - Action:
+  - Agent/skill:
+  - Evidence:
+  - Docs updated before code:
 
 ## Change Log
 

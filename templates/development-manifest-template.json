@@ -1,7 +1,25 @@
 {
-  "version": "1.0",
+  "version": "31.0",
   "phase": "develop",
+  "topology": "epic_first",
+  "ledger_topology": "epic_first",
   "feature_id": "",
+  "id_convention": {
+    "epic": "E-001-description",
+    "feature": "F-001-001-description",
+    "module": "M-001-001-description",
+    "page": "P-001-001-description",
+    "task": "T-001-001-001-description"
+  },
+  "source_of_truth": "docs/development/E-###-*/",
+  "epics": {},
+  "minimum_children": {
+    "features": 1,
+    "modules": 1,
+    "pages": 0,
+    "tasks": 1,
+    "issues": 1
+  },
   "source_artifacts": [
     "docs/prd.md",
     "docs/tasks.md",
@@ -46,6 +64,17 @@
     "require_commentary": true,
     "require_specific_code_paths": true,
     "require_mermaid_diagram": true,
+    "require_jira_story": true,
+    "require_priority": true,
+    "require_relationship_labels": true,
+    "require_work_log": true,
+    "require_epic_issues": true,
+    "require_epic_issues_file": true,
+    "require_docs_before_code": true,
+    "require_epic_first_topology": true,
+    "require_canonical_ids": true,
+    "require_parent_child_trace": true,
+    "forbid_orphan_development_docs": true,
     "minimum_words": {
       "epics": 180,
       "modules": 220,

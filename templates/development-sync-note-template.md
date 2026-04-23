@@ -22,6 +22,13 @@ verification:
   - Reason:
   - Impacted behavior:
 
+## Docs Before Code
+
+- Pre-code docs read:
+- Pre-code docs updated:
+- Relationship map reviewed:
+- Related features checked:
+
 ## Documentation Updates
 
 ### Legacy Planning Docs

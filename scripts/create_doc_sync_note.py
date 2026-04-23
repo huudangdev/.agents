@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -41,6 +42,30 @@ def parse_changed_files(value: str, root: Path) -> list[str]:
     return git_changed_files(root)
 
 
+def resolve_sync_base(root: Path, epic_id: str) -> Path:
+    development = root / "docs" / "development"
+    if not epic_id:
+        return development / "sync"
+
+    epic_dir = development / epic_id
+    if epic_dir.exists() and epic_dir.is_dir():
+        return epic_dir / "sync"
+
+    manifest = development / "development_manifest.json"
+    if manifest.exists():
+        try:
+            value = json.loads(manifest.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            value = {}
+        epics = value.get("epics", {}) if isinstance(value, dict) else {}
+        if isinstance(epics, dict):
+            entry = epics.get(epic_id, {})
+            if isinstance(entry, dict) and entry.get("path"):
+                return root / str(entry["path"]) / "sync"
+
+    raise SystemExit(f"Unknown epic id for sync note: {epic_id}")
+
+
 def source_change_lines(changed_files: list[str]) -> str:
     if not changed_files:
         return "- Changed file:\n  - Reason:\n  - Impacted behavior:\n"
@@ -68,6 +93,11 @@ def main() -> None:
     )
     parser.add_argument("--owner-skill", default="marcus-ai-orchestrator")
     parser.add_argument(
+        "--epic-id",
+        default="",
+        help="Optional V31 epic id such as E-001-foundation. Writes to that epic's sync/ directory.",
+    )
+    parser.add_argument(
         "--mark-reviewed",
         action="store_true",
         help="Mark targeted patch policy checklist complete. Use only after docs were actually reviewed.",
@@ -76,7 +106,7 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    base = root / "docs" / "development" / "sync"
+    base = resolve_sync_base(root, args.epic_id)
     base.mkdir(parents=True, exist_ok=True)
 
     timestamp = dt.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -88,6 +118,8 @@ def main() -> None:
     changed_files = parse_changed_files(args.changed_files, root)
     text = TEMPLATE.read_text(encoding="utf-8")
     text = text.replace("id: sync-000", f"id: sync-{timestamp}-{slug}")
+    if args.epic_id and "parent_epic:" not in text.split("---", 2)[1]:
+        text = text.replace("type: development-sync", f"type: development-sync\nparent_epic: {args.epic_id}")
     text = text.replace("owner_skill: marcus-ai-orchestrator", f"owner_skill: {args.owner_skill}")
     text = text.replace("# Development Doc Sync: <Name>", f"# Development Doc Sync: {args.name}")
     text = text.replace(

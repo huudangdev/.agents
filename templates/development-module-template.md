@@ -2,11 +2,18 @@
 id: module-000
 type: module
 status: draft
+parent_epic: E-000-placeholder
 owner_skill: alan-tech-lead
 source_trace:
   - docs/planning/diagrams.md
 verification:
   - pending
+jira:
+  story: "As an engineer, I want this module boundary to be explicit so that dependent features can integrate safely."
+  priority: P1
+  labels:
+    - module
+    - architecture
 ---
 
 # Module: <Name>
@@ -19,6 +26,20 @@ verification:
 
 Write 2-4 paragraphs defining module ownership, why this boundary exists, how it
 relates to upstream/downstream modules, and what future agents must not violate.
+
+## Jira Story
+
+- Story: As an engineer, I want this module boundary to be explicit so that dependent features can integrate safely.
+- Jira issue type: Story
+- Architecture owner:
+- Research evidence:
+
+## Priority
+
+- Priority: P1
+- Runtime impact:
+- Risk if delayed:
+- Release target:
 
 ## Implementation Commentary
 
@@ -34,6 +55,14 @@ relates to upstream/downstream modules, and what future agents must not violate.
 - Reads:
 - Writes:
 - Must not touch:
+
+## Relationship Map
+
+| Relation | Target | Label | Rationale |
+| --- | --- | --- | --- |
+| Provides contract to | `F-001-001-example` | `ENABLES` | This module enables the feature by exposing the required data/behavior contract. |
+| Depends on | `M-001-002-example` | `DEPENDS_ON` | This module depends on upstream data or service behavior. |
+| Conflicts with | `M-001-003-example` | `CONFLICTS_WITH` | Record overlap or boundary risk when relevant. |
 
 ## Public Contracts
 
@@ -68,6 +97,14 @@ flowchart LR
 - Unit:
 - Integration:
 - Runtime:
+
+## Work Log
+
+- Date:
+  - Action:
+  - Agent/skill:
+  - Evidence:
+  - Docs updated before code:
 
 ## Change Log
 

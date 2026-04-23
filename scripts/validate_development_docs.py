@@ -19,6 +19,23 @@ DEFAULT_BUCKETS = {
     "tasks": {"path": "docs/development/tasks", "minimum_count": 1},
 }
 
+EPIC_DIR_PATTERN = re.compile(r"^E-\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$")
+CHILD_FILE_PATTERNS = {
+    "features": re.compile(r"^F-(?P<epic>\d{3})-\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$"),
+    "modules": re.compile(r"^M-(?P<epic>\d{3})-\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$"),
+    "pages": re.compile(r"^P-(?P<epic>\d{3})-\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$"),
+    "tasks": re.compile(r"^T-(?P<epic>\d{3})-\d{3}-\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$"),
+}
+LEGACY_BUCKET_NAMES = {"epics", "modules", "features", "pages", "tasks"}
+EPIC_FIRST_ALLOWED_ROOT = {
+    "development_manifest.json",
+    "index.md",
+    "sync",
+    "_archive",
+    "by-type",
+    "audits",
+}
+
 REQUIRED_FRONTMATTER_FIELDS = [
     "id:",
     "type:",
@@ -28,12 +45,85 @@ REQUIRED_FRONTMATTER_FIELDS = [
     "verification:",
 ]
 
+EPIC_FIRST_CHILD_FRONTMATTER_FIELDS = [
+    "parent_epic:",
+]
+
 REQUIRED_BODY_SECTIONS = {
-    "epics": ["## Outcome", "## PM Notes", "## Acceptance Criteria", "## Mermaid Diagram", "## Evidence", "## Change Log"],
-    "modules": ["## Responsibility", "## Implementation Commentary", "## Code Scope", "## Mermaid Diagram", "## Verification", "## Change Log"],
-    "features": ["## User Value", "## PM Notes", "## Requirements Trace", "## Code Scope", "## Mermaid Diagram", "## Verification", "## Change Log"],
-    "pages": ["## Route / Surface", "## PM Notes", "## States", "## Mermaid Diagram", "## Verification", "## Change Log"],
-    "tasks": ["## Objective", "## Implementation Commentary", "## Write Scope", "## Mermaid Diagram", "## Verification", "## Handoff", "## Change Log"],
+    "epics": [
+        "## Jira Story",
+        "## Priority",
+        "## Outcome",
+        "## PM Notes",
+        "## Relationship Map",
+        "## Issues",
+        "## Acceptance Criteria",
+        "## Mermaid Diagram",
+        "## Evidence",
+        "## Work Log",
+        "## Change Log",
+    ],
+    "modules": [
+        "## Jira Story",
+        "## Priority",
+        "## Responsibility",
+        "## Implementation Commentary",
+        "## Relationship Map",
+        "## Code Scope",
+        "## Mermaid Diagram",
+        "## Verification",
+        "## Work Log",
+        "## Change Log",
+    ],
+    "features": [
+        "## Jira Story",
+        "## Priority",
+        "## User Value",
+        "## PM Notes",
+        "## Requirements Trace",
+        "## Relationship Map",
+        "## Code Scope",
+        "## Mermaid Diagram",
+        "## Verification",
+        "## Work Log",
+        "## Change Log",
+    ],
+    "pages": [
+        "## Jira Story",
+        "## Priority",
+        "## Route / Surface",
+        "## PM Notes",
+        "## Relationship Map",
+        "## States",
+        "## Mermaid Diagram",
+        "## Verification",
+        "## Work Log",
+        "## Change Log",
+    ],
+    "tasks": [
+        "## Jira Story",
+        "## Priority",
+        "## Objective",
+        "## Implementation Commentary",
+        "## Relationship Map",
+        "## Write Scope",
+        "## Mermaid Diagram",
+        "## Verification",
+        "## Handoff",
+        "## Work Log",
+        "## Change Log",
+    ],
+    "issues": [
+        "## Jira Story",
+        "## Priority",
+        "## QA Issue Register",
+        "## Detection Method",
+        "## Open Issues",
+        "## Relationship Map",
+        "## Mermaid Diagram",
+        "## Work Log",
+        "## Change Log",
+    ],
 }
 
 MIN_WORDS_BY_BUCKET = {
@@ -42,10 +132,14 @@ MIN_WORDS_BY_BUCKET = {
     "features": 220,
     "pages": 180,
     "tasks": 160,
+    "issues": 160,
 }
 
 PLACEHOLDER_PATTERNS = [
     r"<[^>\n]+>",
+    r"\b(?:epic|module|feature|page|task)-000\b",
+    r"\bE-000-placeholder\b",
+    r"\b(?:epic-epic|feature-epic|module-epic|page-epic|task-epic)-",
     r"\bTBD\b",
     r"\bpending\b",
     r"Describe the ",
@@ -71,6 +165,22 @@ COMMENTARY_MARKERS = [
     "impact",
 ]
 
+RELATIONSHIP_LABELS = [
+    "DEPENDS_ON",
+    "BLOCKS",
+    "ENABLES",
+    "IMPLEMENTS",
+    "USES",
+    "EXTENDS",
+    "CONFLICTS_WITH",
+    "SUPERSEDES",
+    "DUPLICATES",
+    "RELATES_TO",
+]
+
+PRIORITY_PATTERN = re.compile(r"\b(P0|P1|P2|P3|P4|Critical|High|Medium|Low)\b", re.IGNORECASE)
+JIRA_STORY_PATTERN = re.compile(r"\b(Story|User Story|As a .+ I want .+ so that|Jira)\b", re.IGNORECASE)
+
 MERMAID_PATTERN = re.compile(r"```mermaid\s+.+?```", flags=re.IGNORECASE | re.DOTALL)
 MERMAID_KEYWORDS = {
     "epics": ["flowchart", "timeline", "journey", "sequenceDiagram"],
@@ -78,6 +188,7 @@ MERMAID_KEYWORDS = {
     "features": ["flowchart", "sequenceDiagram", "stateDiagram", "journey"],
     "pages": ["stateDiagram", "flowchart", "journey", "sequenceDiagram"],
     "tasks": ["flowchart", "sequenceDiagram", "stateDiagram"],
+    "issues": ["flowchart", "stateDiagram", "sequenceDiagram"],
 }
 
 
@@ -98,6 +209,18 @@ def load_manifest(root: Path) -> tuple[dict[str, Any] | None, list[str]]:
 
 def has_frontmatter(text: str) -> bool:
     return text.startswith("---\n") and "\n---\n" in text[4:]
+
+
+def frontmatter_text(text: str) -> str:
+    if not has_frontmatter(text):
+        return ""
+    return text.split("---", 2)[1]
+
+
+def frontmatter_value(text: str, field: str) -> str:
+    frontmatter = frontmatter_text(text)
+    match = re.search(rf"^{re.escape(field)}:\s*['\"]?([^'\"\n]+)['\"]?\s*$", frontmatter, re.MULTILINE)
+    return match.group(1).strip() if match else ""
 
 
 def word_count(text: str) -> int:
@@ -134,6 +257,24 @@ def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dic
         if not re.search(r"`[^`\n]+\.(ts|tsx|js|jsx|py|go|rs|java|kt|swift|dart|cs|php|rb|vue|svelte|css|scss|sql)`", text):
             errors.append(f"{rel}: missing specific code path in backticks")
 
+    if gates.get("require_jira_story", True) and not JIRA_STORY_PATTERN.search(text):
+        errors.append(f"{rel}: missing Jira-style Story/User Story")
+
+    if gates.get("require_priority", True) and not PRIORITY_PATTERN.search(text):
+        errors.append(f"{rel}: missing Jira-style Priority such as P0/P1/P2 or Critical/High/Medium/Low")
+
+    if gates.get("require_relationship_labels", True):
+        if not any(label in text for label in RELATIONSHIP_LABELS):
+            errors.append(
+                f"{rel}: missing labeled relationship map ({', '.join(RELATIONSHIP_LABELS)})"
+            )
+
+    if gates.get("require_work_log", True) and "## Work Log" not in text:
+        errors.append(f"{rel}: missing Work Log / nhật kí section")
+
+    if gates.get("require_epic_issues", True) and bucket_name == "epics" and "## Issues" not in text:
+        errors.append(f"{rel}: missing epic Issues section")
+
     if gates.get("require_mermaid_diagram", True):
         match = MERMAID_PATTERN.search(text)
         if not match:
@@ -148,7 +289,13 @@ def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dic
     return errors
 
 
-def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> list[str]:
+def validate_markdown(
+    path: Path,
+    bucket_name: str,
+    gates: dict[str, Any],
+    expected_id: str = "",
+    expected_parent_epic: str = "",
+) -> list[str]:
     errors: list[str] = []
     text = path.read_text(encoding="utf-8")
     rel = path.as_posix()
@@ -160,10 +307,15 @@ def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> li
         if not has_frontmatter(text):
             errors.append(f"{rel}: missing YAML frontmatter")
         else:
-            frontmatter = text.split("---", 2)[1]
+            frontmatter = frontmatter_text(text)
             for field in REQUIRED_FRONTMATTER_FIELDS:
                 if field not in frontmatter:
                     errors.append(f"{rel}: frontmatter missing {field}")
+
+            if expected_parent_epic:
+                for field in EPIC_FIRST_CHILD_FRONTMATTER_FIELDS:
+                    if field not in frontmatter:
+                        errors.append(f"{rel}: frontmatter missing {field}")
 
     if gates.get("require_owner_skill", True) and "owner_skill:" not in text:
         errors.append(f"{rel}: missing owner_skill")
@@ -178,6 +330,18 @@ def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> li
         if "## Code Scope" not in text and "## Write Scope" not in text:
             errors.append(f"{rel}: missing Code Scope or Write Scope")
 
+    if expected_id:
+        actual_id = frontmatter_value(text, "id")
+        if actual_id != expected_id:
+            errors.append(f"{rel}: frontmatter id `{actual_id or '<missing>'}` must match canonical id `{expected_id}`")
+
+    if expected_parent_epic:
+        actual_parent = frontmatter_value(text, "parent_epic")
+        if actual_parent != expected_parent_epic:
+            errors.append(
+                f"{rel}: parent_epic `{actual_parent or '<missing>'}` must match containing epic `{expected_parent_epic}`"
+            )
+
     for section in REQUIRED_BODY_SECTIONS.get(bucket_name, []):
         if section not in text:
             errors.append(f"{rel}: missing section {section}")
@@ -188,10 +352,154 @@ def validate_markdown(path: Path, bucket_name: str, gates: dict[str, Any]) -> li
     return errors
 
 
-def validate(root: Path, strict_counts: bool) -> list[str]:
+def manifest_topology(manifest: dict[str, Any] | None) -> str:
+    if not manifest:
+        return "legacy_flat"
+    topology = str(manifest.get("topology", manifest.get("ledger_topology", "legacy_flat")))
+    return topology.replace("-", "_")
+
+
+def validate_epic_first(root: Path, manifest: dict[str, Any] | None, strict_counts: bool) -> list[str]:
     errors: list[str] = []
-    manifest, manifest_errors = load_manifest(root)
-    errors.extend(manifest_errors)
+    base = root / "docs/development"
+    gates: dict[str, Any] = {
+        "require_frontmatter": True,
+        "require_owner_skill": True,
+        "require_verification": True,
+        "require_source_trace": True,
+        "require_code_scope": True,
+        "require_substantive_content": True,
+        "forbid_placeholders": True,
+        "require_completed_checklists": True,
+        "require_commentary": True,
+        "require_specific_code_paths": True,
+        "require_mermaid_diagram": True,
+        "require_jira_story": True,
+        "require_priority": True,
+        "require_relationship_labels": True,
+        "require_work_log": True,
+        "require_epic_issues": True,
+        "require_epic_issues_file": True,
+        "require_epic_first_topology": True,
+        "minimum_words": MIN_WORDS_BY_BUCKET,
+    }
+    minimum_children = {"features": 1, "modules": 1, "pages": 0, "tasks": 1}
+
+    if manifest:
+        raw_gates = manifest.get("quality_gates", gates)
+        if isinstance(raw_gates, dict):
+            gates.update(raw_gates)
+        raw_minimum_children = manifest.get("minimum_children", minimum_children)
+        if isinstance(raw_minimum_children, dict):
+            minimum_children.update(
+                {key: int(value) for key, value in raw_minimum_children.items() if key in minimum_children}
+            )
+
+    if not base.exists():
+        return ["Missing development directory: docs/development"]
+
+    for child in sorted(base.iterdir()):
+        if child.name in EPIC_FIRST_ALLOWED_ROOT:
+            continue
+        if child.is_dir() and EPIC_DIR_PATTERN.match(child.name):
+            continue
+        if child.is_dir() and child.name in LEGACY_BUCKET_NAMES and gates.get("require_epic_first_topology", True):
+            errors.append(
+                f"Legacy flat bucket `{child.relative_to(root)}` is not allowed when topology is epic_first; "
+                "move notes under E-###-* or archive them under docs/development/_archive"
+            )
+            continue
+        errors.append(
+            f"Unexpected development artifact `{child.relative_to(root)}`; epic_first only allows E-###-* directories, "
+            "index/manifest, sync, by-type, or _archive"
+        )
+
+    epic_dirs = sorted(item for item in base.iterdir() if item.is_dir() and EPIC_DIR_PATTERN.match(item.name))
+    if strict_counts and not epic_dirs:
+        errors.append("Epic-first topology requires at least one docs/development/E-###-* directory")
+
+    manifest_epics = manifest.get("epics", {}) if isinstance(manifest, dict) else {}
+    if manifest_epics and not isinstance(manifest_epics, dict):
+        errors.append("development_manifest.json field `epics` must be an object in epic_first topology")
+
+    for epic_dir in epic_dirs:
+        epic_id = epic_dir.name
+        epic_number = epic_id.split("-", 2)[1]
+        epic_file = epic_dir / "epic.md"
+        issues_file = epic_dir / "issues.md"
+        if not epic_file.exists():
+            errors.append(f"{epic_dir.relative_to(root)}: missing epic.md")
+        else:
+            errors.extend(validate_markdown(epic_file, "epics", gates, expected_id=epic_id))
+
+        if gates.get("require_epic_issues_file", True):
+            if not issues_file.exists():
+                errors.append(f"{epic_dir.relative_to(root)}: missing issues.md")
+            else:
+                errors.extend(
+                    validate_markdown(
+                        issues_file,
+                        "issues",
+                        gates,
+                        expected_id=f"ISSUES-{epic_id}",
+                        expected_parent_epic=epic_id,
+                    )
+                )
+
+        if isinstance(manifest_epics, dict) and manifest_epics and epic_id not in manifest_epics:
+            errors.append(f"{epic_dir.relative_to(root)}: epic directory is missing from development_manifest.json epics")
+
+        for bucket_name, pattern in CHILD_FILE_PATTERNS.items():
+            bucket_dir = epic_dir / bucket_name
+            if not bucket_dir.exists():
+                if strict_counts and minimum_children.get(bucket_name, 0) > 0:
+                    errors.append(f"{epic_dir.relative_to(root)}: missing required child bucket `{bucket_name}/`")
+                continue
+            if not bucket_dir.is_dir():
+                errors.append(f"{bucket_dir.relative_to(root)} must be a directory")
+                continue
+
+            docs = sorted(bucket_dir.glob("*.md"))
+            if strict_counts and len(docs) < minimum_children.get(bucket_name, 0):
+                errors.append(
+                    f"{bucket_dir.relative_to(root)} has {len(docs)} markdown file(s), "
+                    f"expected at least {minimum_children.get(bucket_name, 0)}"
+                )
+
+            for doc_path in docs:
+                match = pattern.match(doc_path.name)
+                if not match:
+                    errors.append(
+                        f"{doc_path.relative_to(root)}: filename must match canonical pattern `{pattern.pattern}`"
+                    )
+                    expected_id = ""
+                else:
+                    expected_id = doc_path.stem
+                    if match.group("epic") != epic_number:
+                        errors.append(
+                            f"{doc_path.relative_to(root)}: filename epic number `{match.group('epic')}` "
+                            f"must match parent epic number `{epic_number}`"
+                        )
+                errors.extend(
+                    validate_markdown(
+                        doc_path,
+                        bucket_name,
+                        gates,
+                        expected_id=expected_id,
+                        expected_parent_epic=epic_id,
+                    )
+                )
+
+        for child in sorted(epic_dir.iterdir()):
+            if child.name in {"epic.md", "issues.md"} or child.name in {"features", "modules", "pages", "tasks", "sync", "decisions.md"}:
+                continue
+            errors.append(f"{child.relative_to(root)}: unexpected file or directory inside epic-first tree")
+
+    return errors
+
+
+def validate_legacy_flat(root: Path, manifest: dict[str, Any] | None, strict_counts: bool) -> list[str]:
+    errors: list[str] = []
 
     index_path = root / "docs/development/index.md"
     if not index_path.exists():
@@ -212,6 +520,12 @@ def validate(root: Path, strict_counts: bool) -> list[str]:
         "require_commentary": True,
         "require_specific_code_paths": True,
         "require_mermaid_diagram": True,
+        "require_jira_story": True,
+        "require_priority": True,
+        "require_relationship_labels": True,
+        "require_work_log": True,
+        "require_epic_issues": True,
+        "require_epic_issues_file": False,
         "minimum_words": MIN_WORDS_BY_BUCKET,
     }
 
@@ -243,6 +557,25 @@ def validate(root: Path, strict_counts: bool) -> list[str]:
 
         for doc_path in docs:
             errors.extend(validate_markdown(doc_path, bucket_name, gates))
+
+    return errors
+
+
+def validate(root: Path, strict_counts: bool) -> list[str]:
+    errors: list[str] = []
+    manifest, manifest_errors = load_manifest(root)
+    errors.extend(manifest_errors)
+
+    index_path = root / "docs/development/index.md"
+    if not index_path.exists():
+        errors.append("Missing development index: docs/development/index.md")
+    elif not index_path.read_text(encoding="utf-8").strip():
+        errors.append("Empty development index: docs/development/index.md")
+
+    if manifest_topology(manifest) == "epic_first":
+        errors.extend(validate_epic_first(root, manifest, strict_counts))
+    else:
+        errors.extend(validate_legacy_flat(root, manifest, strict_counts))
 
     return errors
 

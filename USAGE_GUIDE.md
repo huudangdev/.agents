@@ -23,6 +23,7 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | `/planning` | Project genesis or major feature planning requiring deep research, architecture, diagrams, and durable `/docs` outputs. | Orchestrates Phase 1 V30: preserves the legacy `/docs` output set, adds evidence ledgers under `/docs/research/`, validates claims/sources, strengthens diagrams, and halts for user review. |
 | `/design` | Structuring the aesthetic logic (Colors, Typography, Layout constraints). | Orchestrates Phase 2: Prevents redundant planning executions. Emits Figma-logic variables, Hex codes, and Golden ratios. Pure Right-Brain synthesis. Halts for user review. |
 | `/develop` | Translating approved architectural mockups, PRDs, & Brands into physical code. | Orchestrates Phase 3: Language-agnostic execution. Generates code, creates `/docs/development/` notes per epic/module/feature/page/task, continuously syncs changed code back into docs, and executes self-healing TDD loops until green. |
+| `/doc_reconcile` | Active/brownfield projects whose development docs are stale, flat, shallow, duplicated, or out of sync with code. | Inventories the whole codebase, reviews existing docs, migrates/enriches `/docs/development` to V31.1 epic-first structure, creates epic `issues.md`, labels feature relationships, and updates global docs from code reality. |
 | `/refactor-planning` | Targeting established legacy repositories (Brownfield). Requires structural decoupling. | Forces the AI to extract an AST Knowledge Graph via `Understand-Anything` before executing surgical Cyclomatic Complexity reductions safely. |
 | `/update_brain`| Pulling upstream system changes to an active ongoing project. | Downloads the latest `.agents` capabilities via `update.sh`. **MUST be followed by `/init_brain`** to Soft Reboot the environment and prevent stale context. |
 
@@ -112,16 +113,23 @@ Expected structure:
 docs/development/
   development_manifest.json
   index.md
-  epics/
-  modules/
-  features/
-  pages/
-  tasks/
+  E-001-checkout-flow/
+    epic.md
+    issues.md
+    features/F-001-001-checkout-flow.md
+    modules/M-001-001-checkout-flow.md
+    pages/P-001-001-checkout-flow.md
+    tasks/T-001-001-001-checkout-flow.md
+    sync/
   sync/
 ```
 
 Each Markdown artifact must identify its owner skill, source planning/spec
 trace, write or code scope, and verification evidence.
+New ledgers use V31 epic-first topology. Child docs must include `parent_epic`
+and canonical IDs: `E-001-*`, `F-001-001-*`, `M-001-001-*`, `P-001-001-*`,
+and `T-001-001-001-*`. Existing legacy-flat ledgers remain readable, but new
+work should not create root flat bucket notes unless legacy mode is explicit.
 
 Substantive quality rule:
 
@@ -133,6 +141,13 @@ Substantive quality rule:
 - Every epic/module/feature/page/task note must contain a useful Mermaid diagram.
 - Every behavior-changing code slice must update at least one global planning
   document under `/docs`; feature docs alone are not enough.
+- Docs must be updated or confirmed before code begins.
+- Every epic/module/feature/page/task note must include Jira-style Story,
+  Priority, Relationship Map, and Work Log.
+- Every epic must include an `issues.md` file reviewed with QA skill reasoning.
+- Relationship labels must be explicit: `DEPENDS_ON`, `BLOCKS`, `ENABLES`,
+  `IMPLEMENTS`, `USES`, `EXTENDS`, `CONFLICTS_WITH`, `SUPERSEDES`,
+  `DUPLICATES`, `RELATES_TO`.
 
 Continuous documentation sync rule:
 
@@ -141,9 +156,27 @@ python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --ch
 python3 .agents/scripts/validate_doc_sync.py --strict
 ```
 
+For V31 ledgers, prefer:
+
+```bash
+python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --epic-id "E-001-checkout-flow" --changed-files "src/api/checkout.ts,tests/checkout.test.ts"
+```
+
 The sync note must say which legacy docs changed, which development ledger notes
 changed, and which docs were intentionally left unchanged. This gives a PM a
 living POC package instead of stale planning documents.
+It must also capture docs-before-code evidence and related feature review.
+
+Brownfield reconciliation rule:
+
+```bash
+python3 .agents/scripts/audit_development_docs.py --root .
+```
+
+Use `/doc_reconcile` when a project is already mid-build and docs do not match
+code. The command must review the full code inventory, map code clusters to
+epics/features/modules/pages/tasks, create or update epic `issues.md`, label all
+relationships, update global docs, and run strict validators before returning.
 
 Quick fix documentation rule:
 

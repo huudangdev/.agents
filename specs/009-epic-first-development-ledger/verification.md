@@ -1,0 +1,57 @@
+# Verification: Epic-First Development Ledger
+
+> Feature ID: `009-epic-first-development-ledger`
+
+## Verification Plan
+
+| Check | Command / Method | Expected Result | Evidence |
+| --- | --- | --- | --- |
+| Python compile | `PYTHONPYCACHEPREFIX=/tmp/marcus-pycache python3 -m py_compile ...` | Pass | Passed |
+| Spec validation | `python3 .agents/scripts/validate_specs.py` | Pass | Passed: 9 specs validated |
+| Manifest JSON validation | `python3 -m json.tool` on manifest templates | Pass | Passed |
+| V31 scaffold smoke | `create_development_docs.py --root /tmp/marcus-v31-smoke-final --name "Ledger V31 Smoke"` | Creates `E-001-ledger-v31-smoke` tree | Passed |
+| V31 flat bucket negative smoke | Add root `docs/development/features/` to V31 ledger | Fail | Failed as expected: legacy flat bucket rejected |
+| V31 parent mismatch negative smoke | Change child `parent_epic` to wrong epic | Fail | Failed as expected: parent mismatch rejected |
+| Epic-local sync smoke | `create_doc_sync_note.py --epic-id E-001-ledger-v31-smoke` | Writes to `E-001-*/sync/` | Passed |
+| Legacy compatibility smoke | `create_development_docs.py --topology legacy-flat` | Legacy mode remains reachable | Passed: no V31 topology rejection; scaffold still fails only content gates until filled |
+| Product governance gate compile | Validator includes Story/Priority/relationship/work-log/epic-issues gates | Pass | Passed |
+| Product governance scaffold smoke | Scaffold V31.1 and grep required sections | Required sections exist | Passed |
+| Docs-before-code sync smoke | Create epic-local sync note and grep `## Docs Before Code` | Required section exists | Passed |
+
+## Evidence
+
+- Python compile passed for updated validator/scaffold/sync scripts.
+- `validate_specs.py` passed with `SPEC VALIDATION PASSED: 9 feature(s)`.
+- Manifest templates parsed successfully with `python3 -m json.tool`.
+- V31 scaffold created:
+  - `docs/development/E-001-ledger-v31-smoke/epic.md`
+  - `features/F-001-001-ledger-v31-smoke.md`
+  - `modules/M-001-001-ledger-v31-smoke.md`
+  - `pages/P-001-001-ledger-v31-smoke.md`
+  - `tasks/T-001-001-001-ledger-v31-smoke.md`
+  - both root and epic-local sync manifests.
+- Strict negative smoke rejects root flat buckets in V31 ledgers with:
+  `Legacy flat bucket docs/development/features is not allowed when topology is epic_first`.
+- Strict negative smoke rejects a child note whose `parent_epic` does not match
+  its containing epic.
+- Legacy-flat scaffold remains reachable via `--topology legacy-flat`; it no
+  longer trips V31 topology gates, while content quality gates still correctly
+  reject unfinished templates.
+- V31.1 templates and validators now require Jira Story, Priority, Relationship
+  Map labels, Work Log, epic Issues, and docs-before-code sync evidence.
+- V31.1 scaffold smoke confirmed generated epic/module/feature/page/task docs
+  include `## Jira Story`, `## Priority`, `## Relationship Map`, `## Work Log`,
+  and epic `## Issues`.
+- Development docs validation still rejects unfilled scaffolds because `pending`,
+  empty scope fields, and other template residue remain. This is intentional:
+  scaffold creation is not deliverable completion.
+- Epic-local sync smoke confirmed generated sync notes include
+  `## Docs Before Code`, pre-code docs read/updated, relationship map reviewed,
+  and related features checked.
+
+## Residual Risk
+
+- V31 migration of existing downstream repos still requires operator-approved
+  archive/merge decisions.
+- Scaffolded files are intentionally not accepted deliverables until real
+  project-specific content replaces draft/pending/template text.

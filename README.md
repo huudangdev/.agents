@@ -2,16 +2,16 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v30.2-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v31.2-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
-    <a href="#-enterprise-overview-v302">Overview</a> •
+    <a href="#-enterprise-overview-v310">Overview</a> •
     <a href="#-system-architecture-topology">Architecture</a> •
     <a href="#-spec-driven-governance-layer">Spec Governance</a> •
-    <a href="#-installation-provisioning--universal-portability-v302">Provisioning</a> •
+    <a href="#-installation-provisioning--universal-portability-v310">Provisioning</a> •
     <a href="#execution-commands">Execution</a> •
     <a href="#academic-contributions">Contributions</a> •
     <a href="#sponsorship--support">Support/Donate</a>
@@ -20,9 +20,9 @@
 
 ---
 
-## 🔬 Enterprise Overview (V30.2)
+## 🔬 Enterprise Overview (V31.2)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 30.2** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Develop Knowledge Ledgers**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 31.2** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Epic-First Develop Knowledge Ledgers**, **Brownfield Doc Reconciliation**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
@@ -116,6 +116,7 @@ Core artifacts:
 │   ├── create_feature_spec.py        # Creates .agents/specs/NNN-slug/
 │   ├── validate_specs.py             # Validates required files and gates
 │   ├── validate_planning_research.py # Validates deep research ledgers
+│   ├── audit_development_docs.py     # Inventories code/docs for brownfield reconciliation
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
 │   ├── create_doc_sync_note.py       # Creates per-code-slice sync notes
@@ -155,37 +156,56 @@ evidence tracking, and implementation readiness without replacing these flows.
 
 ### Code Phase Knowledge Ledger
 
-V30.1 adds a documentation contract to `/develop`. Code generation now has to
+V31 extends the V30.1 documentation contract for `/develop`. Code generation now has to
 leave implementation memory behind, not only source files:
 
 ```text
 docs/development/
 ├── development_manifest.json
 ├── index.md
-├── epics/
-├── modules/
-├── features/
-├── pages/
-├── tasks/
-└── sync/
+├── E-001-feature-or-epic-name/
+│   ├── epic.md
+│   ├── issues.md
+│   ├── features/F-001-001-feature-or-epic-name.md
+│   ├── modules/M-001-001-feature-or-epic-name.md
+│   ├── pages/P-001-001-feature-or-epic-name.md
+│   ├── tasks/T-001-001-001-feature-or-epic-name.md
+│   └── sync/
+├── sync/
+└── _archive/
 ```
 
 The scaffold command is:
 
 ```bash
-python3 .agents/scripts/create_development_docs.py --name "Feature Name" --feature-id "005-feature-name"
+python3 .agents/scripts/create_development_docs.py --name "Feature Name" --feature-id "005-feature-name" --epic-number 001 --child-number 001 --task-number 001
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 ```
 
 Each Markdown note must include frontmatter with `owner_skill`, `source_trace`,
-and `verification`, plus the code or write scope it governs. This keeps epic,
-module, feature, page, and task knowledge queryable by future agents.
+and `verification`, plus the code or write scope it governs. Child notes must
+also include `parent_epic`, and their frontmatter `id` must match the filename
+stem exactly. This keeps epic, module, feature, page, and task knowledge
+queryable by future agents.
 
 Strict mode uses [DEVELOPMENT_DOCS_QUALITY_RUBRIC.md](./DEVELOPMENT_DOCS_QUALITY_RUBRIC.md)
 to reject template-only output. Docs must include concrete code paths,
 PM-visible impact, rationale, tradeoffs, evidence, residual risk, and Mermaid
 diagrams. Behavior-changing code slices must also update at least one global
 planning document under `/docs`.
+
+V31.1 adds product-grade governance: docs are updated before code, every
+epic/module/feature/page/task note carries Jira-style Story and Priority,
+relationship labels, and a Work Log, and every epic carries a QA-reviewed
+`issues.md` file.
+Relationship labels include `DEPENDS_ON`, `BLOCKS`, `ENABLES`, `IMPLEMENTS`,
+`USES`, `EXTENDS`, `CONFLICTS_WITH`, `SUPERSEDES`, `DUPLICATES`, and
+`RELATES_TO`.
+
+V31 uses epic-first documentation as the source of truth for new ledgers. Legacy
+flat buckets remain readable for older projects, but new files should not be
+created under root `epics/`, `modules/`, `features/`, `pages/`, or `tasks/`
+unless legacy mode is explicitly requested.
 
 ### Continuous Documentation Sync
 
@@ -197,9 +217,36 @@ python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --ch
 python3 .agents/scripts/validate_doc_sync.py --strict
 ```
 
+For V31 ledgers, prefer epic-local sync notes:
+
+```bash
+python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --epic-id "E-001-checkout" --changed-files "src/api/checkout.ts,tests/checkout.test.ts"
+```
+
+The sync note must include `## Docs Before Code` evidence: docs read, docs
+updated, relationship map reviewed, and related features checked.
+
 This keeps the original planning package, development ledger, and current code
 aligned without replacing whole documents. New facts are appended, changed facts
 are patched in place, and unchanged docs are explicitly marked as reviewed.
+
+### Brownfield Docs Reconciliation
+
+V31.2 adds `/doc_reconcile` for active projects whose docs drifted from code.
+The command first inventories the whole codebase, then rebuilds or enriches
+`/docs/development` into V31.1 epic-first docs with canonical names, real
+content, relationship labels, Jira Story/Priority, epic `issues.md`, Mermaid,
+and global docs sync.
+
+```bash
+python3 .agents/scripts/audit_development_docs.py --root .
+python3 .agents/scripts/validate_development_docs.py --strict-counts
+python3 .agents/scripts/validate_doc_sync.py --strict
+```
+
+Use `/doc_reconcile` before resuming `/develop` on a project whose development
+docs contain flat buckets, duplicate names, empty templates, missing Mermaid,
+stale planning docs, or unclear feature relationships.
 
 ---
 
@@ -214,7 +261,7 @@ are patched in place, and unchanged docs are explicitly marked as reviewed.
 
 ---
 
-## 📦 Installation Provisioning & Universal Portability (V30.2)
+## 📦 Installation Provisioning & Universal Portability (V31.0)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
@@ -284,7 +331,14 @@ The AI is computationally restricted from generating code until this node return
 5. **Continuous Documentation Sync:** After each material code slice, creates `/docs/development/sync/*.md` and patches affected planning/development docs without wholesale replacement.
 6. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
 
-### 5. `/refactor-planning` (Spaghetti Code Decoupling)
+### 5. `/doc_reconcile` (Brownfield Docs Reconciliation)
+**Product-grade documentation recovery.** Reviews the whole codebase, audits
+existing docs, migrates or enriches `/docs/development` into V31.1 epic-first
+structure, creates one `issues.md` per epic, labels feature relationships, and
+updates global planning docs based on actual implementation. Use before
+continuing `/develop` on in-progress projects.
+
+### 6. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
 1. **Persona Retrieval:** Queries the local GraphRAG database to inherit the user's historical coding patterns and avoid previous anti-patterns.
 2. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
@@ -292,15 +346,15 @@ The AI is computationally restricted from generating code until this node return
 4. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
 5. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
 
-### 6. `/quick_fix` (Micro-Mutation Bypass)
+### 7. `/quick_fix` (Micro-Mutation Bypass)
 **Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. Behavior-changing hotfixes still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
 
-### 7. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
+### 8. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
 **Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 
 - `/marcus_init` acts as the Web Genesis point, establishing baseline structural integrity for Next.js systems and injecting the `.clinerules` intelligence protocol into empty workspaces.
 - `/mobile_init` initiates mobile doctrine, enforcing cross-platform physics (React Native/Flutter component boundaries, iOS Safe-Area adherence, mobile viewport limitations) to prepare the ground for the Planning phase.
 
-### 8. `/update_brain` (OTA Intelligence Upgrade)
+### 9. `/update_brain` (OTA Intelligence Upgrade)
 **Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `.agents/agents.md` memory matrix or TrustGraph database.
 > **SOP MANDATE:** It is strictly required to follow this command natively with `/init_brain`. This performs a "Soft Reboot" to purge the LLM's stale context, load the newly downloaded `.clinerules`, and re-ignite the TrustGraph stack.
 
@@ -327,6 +381,7 @@ The AI is computationally restricted from generating code until this node return
 │   └── planning-*-template.*
 ├── scripts/                       # Local creation and validation tools
 │   ├── create_feature_spec.py
+│   ├── audit_development_docs.py
 │   ├── create_development_docs.py
 │   ├── create_doc_sync_note.py
 │   ├── validate_specs.py

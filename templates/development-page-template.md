@@ -2,12 +2,19 @@
 id: page-000
 type: page
 status: draft
+parent_epic: E-000-placeholder
 owner_skill: benny-frontend-engineer
 source_trace:
   - docs/planning/screens.md
   - docs/BRAND_GUIDELINES.md
 verification:
   - pending
+jira:
+  story: "As a user, I want this page to expose the feature clearly so that I can complete the target action."
+  priority: P1
+  labels:
+    - page
+    - ux
 ---
 
 # Page: <Name>
@@ -23,6 +30,20 @@ verification:
 - Entry component:
 - Layout owner:
 
+## Jira Story
+
+- Story: As a user, I want this page to expose the feature clearly so that I can complete the target action.
+- Jira issue type: Story
+- UX owner:
+- Research evidence:
+
+## Priority
+
+- Priority: P1
+- Demo impact:
+- Risk if delayed:
+- Release target:
+
 ## PM Notes
 
 - Demo path:
@@ -30,6 +51,14 @@ verification:
 - Acceptance impact:
 - Visual or copy change:
 - Risk:
+
+## Relationship Map
+
+| Relation | Target | Label | Rationale |
+| --- | --- | --- | --- |
+| Implements feature | `F-001-001-example` | `IMPLEMENTS` | This page renders the user-visible feature behavior. |
+| Uses module | `M-001-001-example` | `USES` | This page uses module data/contracts for state transitions. |
+| Related page | `P-001-002-example` | `RELATES_TO` | This page shares navigation or state with another page. |
 
 ## States
 
@@ -68,6 +97,14 @@ stateDiagram-v2
 - UI test:
 - Screenshot/manual check:
 - Responsive check:
+
+## Work Log
+
+- Date:
+  - Action:
+  - Agent/skill:
+  - Evidence:
+  - Docs updated before code:
 
 ## Change Log
 
