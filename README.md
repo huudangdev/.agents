@@ -118,6 +118,8 @@ Core artifacts:
 │   ├── validate_planning_research.py # Validates deep research ledgers
 │   ├── audit_development_docs.py     # Inventories code/docs for brownfield reconciliation
 │   ├── sync_project_mcp.py           # Publishes bundled MCP servers into project-root .mcp.json
+│   ├── check_mcp_health.py           # Reports core vs optional MCP readiness and missing env keys
+│   ├── print_update_brief.py         # Prints release highlights and onboarding suggestions after install/update
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
 │   ├── create_doc_sync_note.py       # Creates per-code-slice sync notes
@@ -274,6 +276,16 @@ also published into project-root `.mcp.json` during `install.sh`, `update.sh`,
 `/bootstrap`, and `/init_brain`. This makes project-scoped servers such as
 `playwright` available to MCP-compatible clients after setup instead of leaving
 the config stranded inside `.agents/`.
+
+Core vs optional MCP behavior:
+
+- `playwright` and `drawio` are treated as core MCP servers and should be ready
+  immediately after setup.
+- `figma` is optional and key-gated via `FIGMA_ACCESS_TOKEN`.
+- MCP health is checked after install, update, and bootstrap. Missing optional
+  keys produce warnings, not fatal setup failures.
+- OTA/update flow now prints release highlights and onboarding suggestions so
+  existing users discover new capabilities instead of silently receiving them.
 
 ---
 

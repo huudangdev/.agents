@@ -94,6 +94,11 @@ MCP provisioning rule:
 - `install.sh`, `update.sh`, `/bootstrap`, and `/init_brain` must sync them into
   project-root `.mcp.json` so MCP-compatible clients can actually load them.
 - If `.mcp.json` is missing after initialization, treat the setup as incomplete.
+- `check_mcp_health.py` must run after MCP sync to distinguish core readiness
+  from optional-key warnings.
+- `print_update_brief.py` should run after install/update/bootstrap so users see
+  new features, OTA highlights, and onboarding suggestions for newly published
+  MCP servers or governance flows.
 
 Compatibility rule:
 

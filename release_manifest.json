@@ -1,0 +1,20 @@
+{
+  "version": "31.2.1",
+  "headline": "Brownfield doc reconcile hard-gate plus project MCP publishing",
+  "highlights": [
+    "Brownfield /doc_reconcile is now enforced across /develop, /quick_fix, /refactor-planning, verify, CI, bootstrap, and guidance layers.",
+    "Bundled MCP servers from .agents/mcp/mcp.json are now published automatically into project-root .mcp.json.",
+    "Playwright and drawio are treated as core MCP servers; figma remains optional and key-gated.",
+    "OTA/update flow now surfaces release highlights and onboarding suggestions after upgrade."
+  ],
+  "post_update_steps": [
+    "Run /init_brain after /update_brain to reload rules, MCP registration, and skill routing.",
+    "Open project-root .mcp.json and fill FIGMA_ACCESS_TOKEN only if you want Figma MCP.",
+    "Approve new MCP servers in your client the first time they are offered.",
+    "Use /doc_reconcile before changing behavior on brownfield projects with missing or stale docs."
+  ],
+  "onboarding_prompts": [
+    "Try qa-simulator or Playwright-backed flows now that project MCP config is published.",
+    "Review README and USAGE_GUIDE sections for MCP provisioning and brownfield hard-gate behavior."
+  ]
+}

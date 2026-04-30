@@ -56,11 +56,14 @@ rm -f "$TARGET_DIR/install.sh"
 chmod +x "$TARGET_DIR/adapters/trustgraph_query.py" 2>/dev/null
 chmod +x "$TARGET_DIR/adapters/trustgraph_write.py" 2>/dev/null
 chmod +x "$TARGET_DIR/scripts/sync_project_mcp.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/check_mcp_health.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/print_update_brief.py" 2>/dev/null
 
 echo -e "🔌 ${CYAN}Publishing project MCP configuration...${NC}"
 if command -v python3 &> /dev/null; then
     python3 "$TARGET_DIR/scripts/sync_project_mcp.py" --root .
     echo -e "   ${GREEN}✔ Project MCP config synchronized to .mcp.json${NC}"
+    python3 "$TARGET_DIR/scripts/check_mcp_health.py" --root . || true
 else
     echo -e "   ${YELLOW}⚠️ python3 not found. Skipping automatic MCP config sync.${NC}"
     echo -e "   Create ${GREEN}.mcp.json${NC} from ${GREEN}.agents/mcp/mcp.json${NC} manually."
@@ -110,5 +113,9 @@ echo -e " 4. ${CYAN}During /develop:${NC}"
 echo -e "    Keep ${GREEN}docs/development/${NC} and doc sync notes current with code changes."
 echo -e " 5. ${CYAN}Use project MCP servers:${NC}"
 echo -e "    ${GREEN}.mcp.json${NC} has been synchronized from ${GREEN}.agents/mcp/mcp.json${NC}."
+echo -e " 6. ${CYAN}See what's new:${NC}"
+if command -v python3 &> /dev/null; then
+    python3 "$TARGET_DIR/scripts/print_update_brief.py" --root .
+fi
 
 echo -e "Enjoy your Autonomous Engineering Engine!\n"

@@ -66,13 +66,21 @@ rm -rf "$TMP_DIR"
 chmod +x "$TARGET_DIR/adapters/trustgraph_query.py" 2>/dev/null
 chmod +x "$TARGET_DIR/adapters/trustgraph_write.py" 2>/dev/null
 chmod +x "$TARGET_DIR/scripts/sync_project_mcp.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/check_mcp_health.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/print_update_brief.py" 2>/dev/null
 
 echo -e "🔌 ${CYAN}Syncing project MCP configuration...${NC}"
 if command -v python3 &> /dev/null; then
     python3 "$TARGET_DIR/scripts/sync_project_mcp.py" --root .
     echo -e "   ${GREEN}✔ Project MCP config synchronized to .mcp.json${NC}"
+    python3 "$TARGET_DIR/scripts/check_mcp_health.py" --root . || true
 else
     echo -e "   ${YELLOW}⚠️ python3 not found. Skipping automatic MCP config sync.${NC}"
 fi
 
 echo -e "\n${GREEN}✔ Update Complete! Fleet intelligence upgraded while preserving local memory via agents.md.${NC}\n"
+echo -e "🆕 ${CYAN}Release highlights & onboarding:${NC}"
+if command -v python3 &> /dev/null; then
+    python3 "$TARGET_DIR/scripts/print_update_brief.py" --root .
+fi
+echo -e "\n${YELLOW}SOP:${NC} Run ${GREEN}/init_brain${NC} after OTA update so the current session reloads rules, MCP registration, and new routing behavior."

@@ -1,0 +1,43 @@
+{
+  "version": "31.2.1",
+  "servers": {
+    "playwright": {
+      "tier": "core",
+      "required_env": [],
+      "purpose": "Project-scoped browser automation and UI verification for MCP-compatible clients.",
+      "onboarding": [
+        "Open the project from a client that supports project-level .mcp.json.",
+        "Trust or approve the Playwright MCP server the first time your client prompts.",
+        "Use qa-simulator or frontend workflows that rely on Playwright telemetry."
+      ]
+    },
+    "drawio": {
+      "tier": "core",
+      "required_env": [],
+      "purpose": "Diagram generation and draw.io-compatible MCP tooling for architecture and docs.",
+      "onboarding": [
+        "Approve the drawio MCP server in your client when prompted.",
+        "Use it for architecture diagrams when Mermaid-only output is not enough."
+      ]
+    },
+    "figma": {
+      "tier": "optional",
+      "required_env": ["FIGMA_ACCESS_TOKEN"],
+      "purpose": "Figma integration for design extraction and token workflows.",
+      "onboarding": [
+        "Replace the FIGMA_ACCESS_TOKEN placeholder in .mcp.json or client MCP config.",
+        "Keep the token out of git if you move it to a user-level config.",
+        "Treat Figma MCP as optional; missing token must not block the rest of the stack."
+      ]
+    },
+    "stitch": {
+      "tier": "optional",
+      "required_env": [],
+      "purpose": "Custom Stitch MCP integration when the downstream package is available in the client environment.",
+      "onboarding": [
+        "Approve the Stitch MCP server in your client if you use Stitch flows.",
+        "If the package is unavailable in your environment, leave it optional and continue with core MCP servers."
+      ]
+    }
+  }
+}

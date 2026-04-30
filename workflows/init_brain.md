@@ -31,6 +31,12 @@ they are published to the client-visible project config.
 2. **[ENFORCEMENT]**: Confirm that project-local MCP servers such as
    `playwright` become visible to MCP-compatible clients after initialization.
    Treat a missing `.mcp.json` sync as an incomplete bootstrapping sequence.
+3. **[HEALTH CHECK]**: Execute `python3 .agents/scripts/check_mcp_health.py --root .`
+   and classify results:
+   - core MCP missing -> initialization warning that must be surfaced
+   - optional MCP missing env -> yellow warning only, never block the full boot
+4. **[ONBOARDING]**: Print `python3 .agents/scripts/print_update_brief.py --root .`
+   so returning users see new features, OTA highlights, and next-step guidance.
 
 ## 🟡 NODE 2: CROSS-SESSION STATE INHERITANCE (AMNESIA PREVENTION)
 Enterprise continuity demands that the AI operates as a persistent consciousness rather than a stateless query-responder.

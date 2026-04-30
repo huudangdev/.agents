@@ -53,9 +53,13 @@ echo "Activating venv and installing requirements..."
 source venv/bin/activate
 pip install -r requirements.txt -q
 echo -e "${GREEN}✔ Python Cognitive Modules installed.${NC}"
+chmod +x "$AGENTS_DIR/scripts/sync_project_mcp.py" 2>/dev/null
+chmod +x "$AGENTS_DIR/scripts/check_mcp_health.py" 2>/dev/null
+chmod +x "$AGENTS_DIR/scripts/print_update_brief.py" 2>/dev/null
 
 echo -e "\n${YELLOW}[2.5/5] Publishing Project MCP Configuration...${NC}"
 "$ROOT_DIR/.agents/venv/bin/python" "$AGENTS_DIR/scripts/sync_project_mcp.py" --root "$ROOT_DIR"
+"$ROOT_DIR/.agents/venv/bin/python" "$AGENTS_DIR/scripts/check_mcp_health.py" --root "$ROOT_DIR" || true
 echo -e "${GREEN}✔ Project-scoped MCP config synchronized to .mcp.json.${NC}"
 
 # 3. ⚛️ NEXT.JS DEPENDENCIES
@@ -90,4 +94,6 @@ echo -e "👉 ${YELLOW}To view the Cognitive Brain, run:${NC}"
 echo -e "   cd .agents/trustgraph-viewer && npm run dev"
 echo ""
 echo -e "👉 ${FUCHSIA}AI Agents are now fully unleashed and capable of executing Vector RAG and AST Navigation.${NC}"
+echo -e "\n🆕 ${CYAN}New version highlights & onboarding:${NC}"
+"$ROOT_DIR/.agents/venv/bin/python" "$AGENTS_DIR/scripts/print_update_brief.py" --root "$ROOT_DIR"
 echo -e "${CYAN}=================================================${NC}"
