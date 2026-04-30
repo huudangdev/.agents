@@ -23,6 +23,15 @@ To guarantee deterministic behavior and alignment with Enterprise constraints, t
 1. **[SYS_CALL]**: Execute the `view_file` operation targeting `.clinerules` located at the root directory.
 2. **[ENFORCEMENT]**: Absorb the **[V31.0] ENTERPRISE SUPER-DOCS & UML MATRIX** protocols. Acknowledge that summarizing documents is treated as a severe processing fault. All Unified Modeling Language (UML) architectures must be programmatically rendered to `.png` via the `mmdc` (Mermaid CLI) tool before constructing final PDF exports.
 
+## 🟢 NODE 1.5: MCP PROJECT REGISTRATION
+Project-local MCP servers bundled in `.agents/mcp/mcp.json` are not useful until
+they are published to the client-visible project config.
+1. **[SYS_CALL]**: Execute `python3 .agents/scripts/sync_project_mcp.py --root .`
+   to merge the bundled MCP servers into project-root `.mcp.json`.
+2. **[ENFORCEMENT]**: Confirm that project-local MCP servers such as
+   `playwright` become visible to MCP-compatible clients after initialization.
+   Treat a missing `.mcp.json` sync as an incomplete bootstrapping sequence.
+
 ## 🟡 NODE 2: CROSS-SESSION STATE INHERITANCE (AMNESIA PREVENTION)
 Enterprise continuity demands that the AI operates as a persistent consciousness rather than a stateless query-responder.
 1. **[SYS_CALL]**: Execute `view_file` on the project root `agents.md` first, then fall back to `.agents/agents.md` or `.agents/brain/` local memory if present, to grasp the prior operational epoch, known blockers, and current project velocity.

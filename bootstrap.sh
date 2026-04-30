@@ -54,6 +54,10 @@ source venv/bin/activate
 pip install -r requirements.txt -q
 echo -e "${GREEN}✔ Python Cognitive Modules installed.${NC}"
 
+echo -e "\n${YELLOW}[2.5/5] Publishing Project MCP Configuration...${NC}"
+"$ROOT_DIR/.agents/venv/bin/python" "$AGENTS_DIR/scripts/sync_project_mcp.py" --root "$ROOT_DIR"
+echo -e "${GREEN}✔ Project-scoped MCP config synchronized to .mcp.json.${NC}"
+
 # 3. ⚛️ NEXT.JS DEPENDENCIES
 echo -e "\n${FUCHSIA}[3/5] Bootstrapping React/Next.js 3D Viewer...${NC}"
 if ! command -v npm &> /dev/null; then

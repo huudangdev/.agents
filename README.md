@@ -117,6 +117,7 @@ Core artifacts:
 │   ├── validate_specs.py             # Validates required files and gates
 │   ├── validate_planning_research.py # Validates deep research ledgers
 │   ├── audit_development_docs.py     # Inventories code/docs for brownfield reconciliation
+│   ├── sync_project_mcp.py           # Publishes bundled MCP servers into project-root .mcp.json
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
 │   ├── create_doc_sync_note.py       # Creates per-code-slice sync notes
@@ -265,6 +266,14 @@ The same gate now explicitly covers additional entry points:
   existing project is brownfield and its docs package is not ready.
 - CI now fails on source-changing diffs when `docs/development/` is missing and
   also when the required planning package files are missing.
+
+### MCP Provisioning
+
+Bundled MCP server definitions now live in `.agents/mcp/mcp.json`, but they are
+also published into project-root `.mcp.json` during `install.sh`, `update.sh`,
+`/bootstrap`, and `/init_brain`. This makes project-scoped servers such as
+`playwright` available to MCP-compatible clients after setup instead of leaving
+the config stranded inside `.agents/`.
 
 ---
 

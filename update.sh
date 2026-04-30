@@ -65,5 +65,14 @@ rm -rf "$TMP_DIR"
 # Ensure python adapters are executable if applicable
 chmod +x "$TARGET_DIR/adapters/trustgraph_query.py" 2>/dev/null
 chmod +x "$TARGET_DIR/adapters/trustgraph_write.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/sync_project_mcp.py" 2>/dev/null
+
+echo -e "🔌 ${CYAN}Syncing project MCP configuration...${NC}"
+if command -v python3 &> /dev/null; then
+    python3 "$TARGET_DIR/scripts/sync_project_mcp.py" --root .
+    echo -e "   ${GREEN}✔ Project MCP config synchronized to .mcp.json${NC}"
+else
+    echo -e "   ${YELLOW}⚠️ python3 not found. Skipping automatic MCP config sync.${NC}"
+fi
 
 echo -e "\n${GREEN}✔ Update Complete! Fleet intelligence upgraded while preserving local memory via agents.md.${NC}\n"

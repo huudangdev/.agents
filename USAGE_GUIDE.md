@@ -88,6 +88,13 @@ corresponding planning and development docs.
 For `/quick_fix`, run doc-sync validation when the hotfix changes behavior, UI,
 API contracts, data, tests, or user flows.
 
+MCP provisioning rule:
+
+- Bundled MCP servers are source-controlled in `.agents/mcp/mcp.json`.
+- `install.sh`, `update.sh`, `/bootstrap`, and `/init_brain` must sync them into
+  project-root `.mcp.json` so MCP-compatible clients can actually load them.
+- If `.mcp.json` is missing after initialization, treat the setup as incomplete.
+
 Compatibility rule:
 
 - Do not rename or collapse the legacy `/planning` outputs.

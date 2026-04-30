@@ -55,6 +55,16 @@ rm -f "$TARGET_DIR/install.sh"
 # Ensure python adapters are executable if applicable
 chmod +x "$TARGET_DIR/adapters/trustgraph_query.py" 2>/dev/null
 chmod +x "$TARGET_DIR/adapters/trustgraph_write.py" 2>/dev/null
+chmod +x "$TARGET_DIR/scripts/sync_project_mcp.py" 2>/dev/null
+
+echo -e "🔌 ${CYAN}Publishing project MCP configuration...${NC}"
+if command -v python3 &> /dev/null; then
+    python3 "$TARGET_DIR/scripts/sync_project_mcp.py" --root .
+    echo -e "   ${GREEN}✔ Project MCP config synchronized to .mcp.json${NC}"
+else
+    echo -e "   ${YELLOW}⚠️ python3 not found. Skipping automatic MCP config sync.${NC}"
+    echo -e "   Create ${GREEN}.mcp.json${NC} from ${GREEN}.agents/mcp/mcp.json${NC} manually."
+fi
 
 echo -e "\n${GREEN}✔ Neural Matrix successfully grafted into local repository!${NC}\n"
 
@@ -98,5 +108,7 @@ echo -e " 3. ${CYAN}Validate the governance layer:${NC}"
 echo -e "    Run ${GREEN}python3 .agents/scripts/validate_specs.py${NC} after creating feature specs."
 echo -e " 4. ${CYAN}During /develop:${NC}"
 echo -e "    Keep ${GREEN}docs/development/${NC} and doc sync notes current with code changes."
+echo -e " 5. ${CYAN}Use project MCP servers:${NC}"
+echo -e "    ${GREEN}.mcp.json${NC} has been synchronized from ${GREEN}.agents/mcp/mcp.json${NC}."
 
 echo -e "Enjoy your Autonomous Engineering Engine!\n"
