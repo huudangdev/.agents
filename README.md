@@ -248,6 +248,24 @@ Use `/doc_reconcile` before resuming `/develop` on a project whose development
 docs contain flat buckets, duplicate names, empty templates, missing Mermaid,
 stale planning docs, or unclear feature relationships.
 
+This is now a strict routing rule, not a suggestion. For brownfield work,
+missing planning docs, default boilerplate docs, stale `/docs/development/`,
+template-only ledgers, or undocumented code reality all count as reconcile
+blockers. `/develop`, `/quick_fix`, and implementation-oriented skills must
+pause and reconcile first unless the operator explicitly overrides that risk.
+
+The same gate now explicitly covers additional entry points:
+
+- `/refactor-planning` must stop and route to `/doc_reconcile` before any
+  brownfield refactor plan that would lead to material code edits when docs are
+  missing, boilerplate-only, stale, or non-substantive.
+- `/quick_fix` is only a valid bypass on a doc-ready project. Behavior-changing
+  fixes on unreconciled brownfield code must fail closed into `/doc_reconcile`.
+- `/bootstrap` guidance now points operators to `/doc_reconcile` whenever an
+  existing project is brownfield and its docs package is not ready.
+- CI now fails on source-changing diffs when `docs/development/` is missing and
+  also when the required planning package files are missing.
+
 ---
 
 ## ✨ Empirical System Features
@@ -336,23 +354,30 @@ The AI is computationally restricted from generating code until this node return
 existing docs, migrates or enriches `/docs/development` into V31.1 epic-first
 structure, creates one `issues.md` per epic, labels feature relationships, and
 updates global planning docs based on actual implementation. Use before
-continuing `/develop` on in-progress projects.
+continuing `/develop` on in-progress projects. This is the mandatory route when
+brownfield code has missing planning docs, boilerplate-only docs, absent or
+template-only `docs/development/`, or implementation reality that is not yet
+captured by the PM documentation package.
 
 ### 6. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
 1. **Persona Retrieval:** Queries the local GraphRAG database to inherit the user's historical coding patterns and avoid previous anti-patterns.
-2. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
-3. **Cyclomatic Reduction:** Detects monolithic modules (e.g., >300 LOC) and algorithmically decouples them following Feature-Sliced Design (FSD)—flattening states and enforcing `eslint --fix` or typing constraints.
-4. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
-5. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
+2. **Brownfield Readiness Gate:** Checks the project docs package before refactor planning. If the planning package is missing, `README.md` is still boilerplate, or `docs/development/` is absent or non-substantive, this flow must stop and route to `/doc_reconcile`.
+3. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
+4. **Cyclomatic Reduction:** Detects monolithic modules (e.g., >300 LOC) and algorithmically decouples them following Feature-Sliced Design (FSD)—flattening states and enforcing `eslint --fix` or typing constraints.
+5. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
+6. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
 
 ### 7. `/quick_fix` (Micro-Mutation Bypass)
-**Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. Behavior-changing hotfixes still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
+**Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely only for truly localized work on a doc-ready project. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. If a brownfield project is missing its planning package, relies on boilerplate docs, or lacks a substantive `docs/development/` ledger, `/quick_fix` must stop and route to `/doc_reconcile`. Behavior-changing hotfixes that remain in `/quick_fix` still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
 
 ### 8. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
 **Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 
 - `/marcus_init` acts as the Web Genesis point, establishing baseline structural integrity for Next.js systems and injecting the `.clinerules` intelligence protocol into empty workspaces.
 - `/mobile_init` initiates mobile doctrine, enforcing cross-platform physics (React Native/Flutter component boundaries, iOS Safe-Area adherence, mobile viewport limitations) to prepare the ground for the Planning phase.
+- After `/bootstrap` on an existing brownfield project, the next command is not
+  automatically `/planning` or `/refactor-planning`. If docs are missing,
+  boilerplate-only, or stale, operators should route to `/doc_reconcile` first.
 
 ### 9. `/update_brain` (OTA Intelligence Upgrade)
 **Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `.agents/agents.md` memory matrix or TrustGraph database.

@@ -17,6 +17,16 @@ description: Marcus Fleet Enterprise SDLC Phase 3 (Code Execution, TDD, & Contin
 **DOGMATIC STATE PROPAGATION:** The Physical Construction sequence is physically incapable of initiating unless `/docs/BRAND_GUIDELINES.md`, `/docs/planning/diagrams.md`, `/docs/knowledge.md`, `/docs/prd.md`, `/docs/tasks.md`, `/docs/decisions.md`, and `/docs/memory.md` files have been dynamically read and ingested into the LLM context buffer. If `/docs/research/` or a relevant `.agents/specs/<feature-id>/` workspace exists, those artifacts must be read as supplemental source-of-truth context before implementation. Failure to read pre-requisite artifacts yields an immediate `Exit Code 1`.
 </state_propagation_boundary>
 
+<brownfield_reconcile_gate>
+**BROWNFIELD GATE:** `/develop` MUST abort before source edits when the project
+is already in progress and any of the following are true: required planning docs
+are missing, `README.md` is still boilerplate while code has moved beyond it,
+`/docs/development/` is missing or template-only, the ledger does not match code
+reality, or quality gates would fail. In those cases the only valid next step
+is `/doc_reconcile`, followed by strict validation, then resume `/develop` from
+the reconciled docs package.
+</brownfield_reconcile_gate>
+
 ---
 
 ## 🧾 CODE PHASE KNOWLEDGE CONTRACT (MANDATORY)
@@ -93,6 +103,10 @@ Before the first source edit in any code slice:
    `BLOCKS`, `ENABLES`, `IMPLEMENTS`, `USES`, `EXTENDS`, `CONFLICTS_WITH`,
    `SUPERSEDES`, `DUPLICATES`, and `RELATES_TO`.
 5. Only then perform source code edits.
+
+If the agent cannot satisfy steps 1-4 because the docs package is absent,
+misleading, or non-substantive, it must stop and route to `/doc_reconcile`
+instead of improvising missing context.
 
 Validate the ledger before reporting completion:
 

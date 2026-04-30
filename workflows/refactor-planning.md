@@ -14,6 +14,24 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 ## 🟣 STAGE 0: TRUSTGRAPH CONTEXT RETRIEVAL (PRE-FLIGHT)
 *🧠 Mandatory Action:* Before parsing ASTs or reading any files, execute `python3 .agents/adapters/trustgraph_query.py --task "refactor"` to retrieve the User's preferred coding style, anti-patterns, and historical bug graphs. Inject this GraphRAG context into your active memory. Failure to retrieve User Persona context via TrustGraph leads to execution termination.
 
+## 🟥 STAGE 0.5: BROWNFIELD DOC READINESS GATE
+*🧠 Mandatory Action:* Before AST parsing or any refactor plan that will lead to
+material code edits, inspect the brownfield docs state.
+
+- If any of `docs/prd.md`, `docs/tasks.md`, `docs/knowledge.md`,
+  `docs/decisions.md`, `docs/memory.md`, `docs/planning/flows.md`,
+  `docs/planning/screens.md`, or `docs/planning/diagrams.md` are missing,
+  treat the project as unreconciled brownfield.
+- If `README.md` is still boilerplate while the codebase has evolved beyond it,
+  treat the project as unreconciled brownfield.
+- If `docs/development/` is missing, stale, flat/legacy without explicit legacy
+  mode, template-only, or unlikely to pass current V31 quality gates, treat the
+  project as unreconciled brownfield.
+
+When any trigger above is true, `/refactor-planning` MUST stop and route to
+`/doc_reconcile` first. Refactor planning is not allowed to create a bypass
+around the reconcile-first governance rule.
+
 ## 🟢 STAGE 1: KNOWLEDGE GRAPH INGESTION & OMNI-AST PARSING
 *🧠 Prerequisite Skill Injection:* Enforce the instantiation of analytical nodes: `understand-anything`, `understand-chat`, and `understand-diff` (if operating on a Git Diff or Pull Request context).
 1. **[OS_CALL - AST Extraction]:** Initiate the `run_command` via OS Terminal to execute `npx understand-anything`. This binary parses the complete scope of the legacy project, traversing `.ts`/`.js`/`.py`/`.go` dependencies to construct a mathematical, N-dimensional Knowledge Graph.
@@ -36,4 +54,4 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 1. **[Differential Recording]:** Reconstruct the specific modifications performed (e.g., "Decoupled monolithic `AuthService` into `JwtService` and `OAuthController`"). Map updated routing dependencies.
 2. **[TrustGraph Commit]:** Execute `python3 .agents/adapters/trustgraph_write.py --run_id "Refactor_Target" --status "success" --target "Refactored Component" --skills "refactor, improve-codebase" --score 0.95 --reasoning "Decoupled logic to reduce Cyclomatic Complexity"` to securely lock the new architectural shifts, blockers evaded, and dependencies into the GraphRAG Database.
 3. **[Cross-Session State Injection]:** Utilize the `echo >>` or standard File Appending protocol to archive high-level summary into `.agents/agents.md`. Future intelligence nodes must understand that the architecture has been decentralized.
-3. Emit a Green Terminal status and generate the Final Output payload, indicating to the Operator that the Complexity Graph has been significantly alleviated.
+4. Emit a Green Terminal status and generate the Final Output payload, indicating to the Operator that the Complexity Graph has been significantly alleviated.

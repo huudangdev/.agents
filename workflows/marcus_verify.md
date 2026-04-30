@@ -15,11 +15,15 @@ Use this workflow before closing a feature.
 5. If implementation touched source code, confirm `/docs/development/` exists
    and the changed code paths are represented in epic/module/feature/page/task
    notes.
-6. If source files changed during `/develop` or `/quick_fix`, confirm
+6. If the project is brownfield and source code changed, fail verification when
+   the planning package is missing, only boilerplate docs exist, or the
+   development ledger is stale/template-only. The required remediation is
+   `/doc_reconcile`, not manual waiver by omission.
+7. If source files changed during `/develop` or `/quick_fix`, confirm
    `/docs/development/sync/*.md` records the code slice and the append/targeted
    patch decisions for PM docs.
-7. Attempt a TrustGraph write.
-8. Run:
+8. Attempt a TrustGraph write.
+9. Run:
    ```bash
    python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>
    python3 .agents/scripts/validate_development_docs.py --strict-counts

@@ -12,6 +12,7 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 - Execute an immediate `view_file` on `.clinerules` and `.agents/agents.md` to establish the macro-context.
 - Rapidly scan `SKILLS_INDEX.md` and dynamically summon **ONLY 1 to 2 SKILLS** to preserve the Token limits (e.g., UI Glitch $\rightarrow$ Load `sleek-design` or `maya-ui-ux-designer`).
 - Dig into the localized `.agents/brain/` state associated with the failing Component to understand structural legacy context.
+- If the fix changes behavior and the brownfield project has missing planning docs, only a boilerplate `README.md`, missing `docs/development/`, or template-only/stale implementation docs, abort `/quick_fix` and route to `/doc_reconcile` first. Quick velocity never overrides doc readiness.
 
 ## 🔸 STAGE 2: SURGICAL MUTATION & ISOLATED DAEMON TEST
 *📦 Execution Vector:* Edit Source Logic. 
@@ -31,3 +32,7 @@ python3 .agents/scripts/validate_doc_sync.py --strict
 
 Use targeted append/patch updates only. Do not replace planning or development
 docs wholesale. Execute `python3 .agents/adapters/trustgraph_write.py --run_id "QuickFix" --status "success" --target "Patched_File" --skills "quick-fix" --score 0.85 --reasoning "Patched localized bug and synchronized docs"` to save the RAG context. Emit a dense, single-sentence success report to the Executive User. Terminate action sequence.
+
+If PM continuity cannot be preserved because the brownfield docs package is
+absent or misleading, `/quick_fix` must fail closed and redirect to
+`/doc_reconcile` instead of inventing context.

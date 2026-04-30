@@ -11,6 +11,12 @@ Enforce Marcus Fleet V31 development documentation as a durable PM and agent
 memory graph. Code-phase docs must be specific, visual, traceable, and organized
 under the owning epic.
 
+This skill is also the hard routing authority for brownfield doc readiness. If
+the project has missing planning docs, stale or template-only `docs/development`
+artifacts, or code reality that is not captured in `/docs`, this skill must
+route to `/doc_reconcile` and must not allow material implementation to proceed
+until reconciliation passes validation or the operator explicitly accepts risk.
+
 ## V31 Source Of Truth
 
 New development ledgers must use this topology:
@@ -97,6 +103,19 @@ Then reconcile from code reality:
 - migrate flat/duplicate docs only with archive-safe decisions;
 - update global planning docs;
 - validate before resuming `/develop`.
+
+Treat the following as mandatory brownfield reconcile triggers:
+
+- required planning docs missing;
+- boilerplate `README.md` is the only product documentation;
+- `docs/development/` missing;
+- `docs/development/` exists but is shallow, stale, flat, duplicate-heavy, or
+  validator-noncompliant;
+- behavior-changing work is requested on code that lacks an epic-first PM
+  narrative.
+
+When any trigger is present, this skill must explicitly stop implementation and
+send the workflow through `/doc_reconcile` first.
 
 ## Documentation Quality
 

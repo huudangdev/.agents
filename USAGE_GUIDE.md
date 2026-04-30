@@ -178,6 +178,17 @@ code. The command must review the full code inventory, map code clusters to
 epics/features/modules/pages/tasks, create or update epic `issues.md`, label all
 relationships, update global docs, and run strict validators before returning.
 
+Strict enforcement rule:
+
+- If a brownfield project has only boilerplate docs, no planning package, no
+  substantive `docs/development/`, or a ledger that fails current quality
+  gates, do not continue with `/develop` or behavior-changing `/quick_fix`.
+- Route to `/doc_reconcile` first, create the missing `/docs` package from code
+  reality, and treat the reconcile output as the new mandatory source of truth.
+- Skills such as frontend, backend, architecture, QA, and refactor agents must
+  inherit this gate automatically even when the operator did not explicitly name
+  `/doc_reconcile`.
+
 Quick fix documentation rule:
 
 - If `/quick_fix` only changes comments, formatting, or a non-behavioral typo,
@@ -188,7 +199,13 @@ Quick fix documentation rule:
 ---
 
 ## 🎯 PHASE 2: TARGETED MICRO-ROUTING (Executing @Skills)
-During active mid-project development, **DO NOT RE-INVOKE OVERARCHING SLASH COMMANDS**. Operators should rely on the `/quick_fix` bypass or explicitly invoke Targeted AI Agents (`@skills`) to guarantee precision execution while maximizing token economy.
+During active mid-project development, **DO NOT RE-INVOKE OVERARCHING SLASH COMMANDS** unless a governance gate forces it. Operators should rely on the `/quick_fix` bypass or explicitly invoke Targeted AI Agents (`@skills`) to guarantee precision execution while maximizing token economy.
+
+Exception:
+
+- If brownfield doc readiness fails, the correct escalation is to route back to
+  `/doc_reconcile`. The hard reconcile gate outranks the normal preference for
+  staying inside micro-routing.
 
 📌 *Directive for Antigravity AI: Upon processing a prompt containing an `@skill-name`, you MUST immediately utilize the `view_file` tool to load the corresponding `SKILL.md` file designated by that identifier.*
 

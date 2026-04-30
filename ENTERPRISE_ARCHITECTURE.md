@@ -80,6 +80,10 @@ Operational rules:
   ledger when behavior is materially changed. The ledger separates epic,
   module, feature, page, and task notes so code-phase knowledge remains
   queryable after implementation.
+- Brownfield code work must abort into `/doc_reconcile` when the approved
+  planning package is missing, only boilerplate docs exist, or
+  `/docs/development/` is absent, stale, or template-only. This gate outranks
+  convenience routing such as `/quick_fix` or direct skill invocation.
 - `.agents/scripts/validate_development_docs.py` validates the code-phase ledger
   when `/docs/development/` exists.
 - `.agents/scripts/create_doc_sync_note.py` and

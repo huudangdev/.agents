@@ -104,6 +104,9 @@ Use `/doc_reconcile` for in-progress projects with stale or noncompliant docs:
 - Migrate/enrich docs to V31.1 epic-first structure without silently deleting history.
 - Every epic directory must contain `issues.md` with QA-detected or QA-reviewed issues.
 - Update global planning docs from code reality and run both development-docs and doc-sync validators before resuming `/develop`.
+- Treat missing or misleading docs as a hard blocker, not a warning. If a brownfield project lacks any of `docs/prd.md`, `docs/tasks.md`, `docs/knowledge.md`, `docs/decisions.md`, `docs/memory.md`, `docs/planning/flows.md`, `docs/planning/screens.md`, `docs/planning/diagrams.md`, or a substantive `docs/development/` ledger, the agent MUST route to `/doc_reconcile` before any material code edits.
+- A default scaffold or boilerplate `README.md` is not accepted as a substitute for the planning package. Future workflows and skills must treat "docs missing", "docs stale", "docs template-only", and "code reality undocumented" as the same brownfield state.
+- Skills participating in implementation, QA, architecture, frontend, backend, or refactor work MUST refuse to proceed with behavior-changing edits until the brownfield reconcile gate has been satisfied or the operator explicitly accepts the risk.
 
 ### 🌐 [V30.0] THE TRUSTGRAPH GRAPH-RAG COGNITIVE CORE
 1. **The Context Injection Mandate (Pre-Flight):** Absolute prohibition on executing major modifications (Refactoring, Structuring) without pulling Context. You MUST mathematically execute `python3 .agents/adapters/trustgraph_query.py --task "<objective>"` to inherit User Persona, Anti-Patterns, and historical Graph topologies.

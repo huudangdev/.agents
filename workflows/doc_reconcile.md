@@ -30,6 +30,9 @@ description: Brownfield command to reconcile in-progress project docs with actua
    contain Story and Priority.
 8. **Global docs are authoritative.** Update legacy `/docs` planning files when
    implementation behavior differs from them.
+9. **This gate is inherited by all implementation skills.** Any workflow or
+   skill that discovers missing, boilerplate, stale, or template-only docs in a
+   brownfield project must route here before allowing material code edits.
 
 ## Required Skills
 
@@ -67,6 +70,9 @@ docs/development/index.md
 
 If some files are missing, record that in the audit and create the missing docs
 only when needed for a coherent PM handoff.
+
+If the project has only bootstrap docs such as a default framework README, that
+still counts as missing PM docs for routing purposes.
 
 ## Phase 1: Code-Derived Domain Model
 
@@ -197,6 +203,10 @@ python3 .agents/scripts/validate_doc_sync.py --strict
 
 If validation fails, continue reconciling docs until the failures are either
 fixed or explicitly documented as operator-accepted risk.
+
+No downstream `/develop`, `/quick_fix`, frontend, backend, QA, refactor, or
+architecture skill may treat this failure as non-blocking for behavior-changing
+work unless the operator explicitly accepts the risk.
 
 ## Output
 

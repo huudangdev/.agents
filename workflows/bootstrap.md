@@ -24,5 +24,6 @@ Sau khi chạy xong, hãy xác nhận với người dùng rằng "Khối óc An
 - Thư viện Cấu trúc AST Neo4j (Cổng 7474) đã sẵn sàng.
 - Bất kỳ Agent tiếp theo nào (Quick Fix, Refactor) cần đọc Code, được quyền sử dụng tệp `.agents/adapters/trustgraph_vector_search.py` qua `.agents/venv/bin/python` cục bộ.
 - Khi vào `/develop`, Agent phải duy trì `/docs/development/` và `/docs/development/sync/` song song với code để tài liệu POC không bị stale.
+- Nếu dự án là brownfield, docs còn boilerplate, thiếu planning package, hoặc chưa có ledger `docs/development/` đạt chuẩn, phải đi qua `/doc_reconcile` trước khi cho phép sửa code mang tính hành vi.
 
-Mời Nhóm Trưởng (Tech Lead) ra quyết định bằng lệnh `/planning` hoặc `/refactor-planning`!
+Mời Nhóm Trưởng (Tech Lead) ra quyết định bằng lệnh `/planning`, `/doc_reconcile`, hoặc `/refactor-planning` tùy trạng thái docs thực tế của dự án!

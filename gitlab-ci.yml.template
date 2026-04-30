@@ -26,6 +26,25 @@ before_script:
 spec-governance-validation:
   stage: validate
   script:
+    - apt-get update && apt-get install -y git
+    - |
+      CHANGED_FILES="$(git diff --name-only HEAD~1 HEAD || true)"
+      SOURCE_CHANGES="$(printf '%s\n' "$CHANGED_FILES" | grep -E '\.(ts|tsx|js|jsx|py|go|rs|java|kt|swift|dart|cs|php|rb|vue|svelte|css|scss|sql)$' || true)"
+      REQUIRED_PLANNING_DOCS="docs/prd.md docs/tasks.md docs/knowledge.md docs/decisions.md docs/memory.md docs/planning/flows.md docs/planning/screens.md docs/planning/diagrams.md"
+      if [ -n "$SOURCE_CHANGES" ] && [ ! -d docs/development ]; then
+        echo "Behavior-changing source files were detected but docs/development is missing."
+        echo "Run /doc_reconcile for brownfield projects or scaffold /docs/development before merging."
+        exit 1
+      fi
+      if [ -n "$SOURCE_CHANGES" ]; then
+        for doc in $REQUIRED_PLANNING_DOCS; do
+          if [ ! -f "$doc" ]; then
+            echo "Behavior-changing source files were detected but required planning doc is missing: $doc"
+            echo "Run /doc_reconcile for brownfield projects or restore the planning package before merging."
+            exit 1
+          fi
+        done
+      fi
     - python .agents/scripts/validate_specs.py
     - |
       if [ -d docs/research ]; then
