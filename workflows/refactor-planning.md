@@ -14,6 +14,24 @@ description: Legacy AST Homogenization & Cyclomatic Complexity Alleviation Proto
 ## 🟣 STAGE 0: TRUSTGRAPH CONTEXT RETRIEVAL (PRE-FLIGHT)
 *🧠 Mandatory Action:* Before parsing ASTs or reading any files, execute `python3 .agents/adapters/trustgraph_query.py --task "refactor"` to retrieve the User's preferred coding style, anti-patterns, and historical bug graphs. Inject this GraphRAG context into your active memory. Failure to retrieve User Persona context via TrustGraph leads to execution termination.
 
+## 🟣 STAGE 0.25: CONTEXT INDEX GATE (ANTI-TOKEN-EXHAUSTION)
+*🧠 Mandatory Action:* Before scanning docs or opening broad code areas, build a
+shallow index so refactor planning stays targeted and does not re-read the
+world.
+
+Run:
+
+```bash
+python3 .agents/scripts/build_context_index.py --root .
+python3 .agents/scripts/validate_context_index.py --root .
+```
+
+Then route reads through:
+- `.agents/index/architecture_graph.mmd`
+- `.agents/index/docs_index.md`
+- `.agents/index/code_index.md`
+- `.agents/index/skills_index.md`
+
 ## 🟥 STAGE 0.5: BROWNFIELD DOC READINESS GATE
 *🧠 Mandatory Action:* Before AST parsing or any refactor plan that will lead to
 material code edits, inspect the brownfield docs state.

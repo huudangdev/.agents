@@ -2,7 +2,7 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v32.0-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v32.0.1-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
@@ -186,6 +186,8 @@ failure as a public contract regression.
   - `validate_marcus_init_outputs.py`
   - Fails project bootstrap closeout when the scaffolded workspace is missing required root artifacts.
 - `/refactor-planning`
+  - `build_context_index.py`
+  - `validate_context_index.py`
   - `validate_refactor_planning_readiness.py`
   - `validate_refactor_planning_toolchain.py`
   - `validate_refactor_planning_outputs.py`
@@ -612,6 +614,8 @@ evidence.
 │   ├── audit_development_docs.py
 │   ├── create_development_docs.py
 │   ├── create_doc_sync_note.py
+│   ├── build_context_index.py     # Builds `.agents/index/` for docs/code/skills routing
+│   ├── validate_context_index.py  # Validates `.agents/index/` exists and is fresh enough
 │   ├── validate_specs.py
 │   ├── validate_development_docs.py
 │   ├── validate_doc_sync.py

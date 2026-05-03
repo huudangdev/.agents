@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 echo -e "\n${CYAN}"
 echo "================================================================="
-echo "  🚀 ANTIGRAVITY COGNITIVE ENGINE V32.0 (MARCUS FLEET)           "
+echo "  🚀 ANTIGRAVITY COGNITIVE ENGINE V32.0.1 (MARCUS FLEET)         "
 echo "  Enterprise Neural Scaffolder (Direct from Github)              "
 echo "================================================================="
 echo -e "${NC}\n"

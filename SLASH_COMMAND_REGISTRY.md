@@ -115,6 +115,8 @@ underspecified and do not improvise missing script calls.
 - Workflow: `.agents/workflows/develop.md`
 - Required invocations:
   - `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>`
+  - `python3 .agents/scripts/build_context_index.py --root .`
+  - `python3 .agents/scripts/validate_context_index.py --root .`
   - `python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>`
   - `python3 .agents/scripts/create_development_docs.py --name "<epic-or-feature-name>" --feature-id "<optional-feature-id>" --epic-number 001 --child-number 001 --task-number 001`
   - `python3 .agents/scripts/create_doc_sync_note.py --name "<code-slice-name>" --changed-files "<comma-separated-files>"`
@@ -131,6 +133,8 @@ underspecified and do not improvise missing script calls.
 - Workflow: `.agents/workflows/quick_fix.md`
 - Required invocations:
   - `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>`
+  - `python3 .agents/scripts/build_context_index.py --root .`
+  - `python3 .agents/scripts/validate_context_index.py --root .`
   - `python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>`
   - `python3 .agents/scripts/create_doc_sync_note.py --name "QuickFix <scope>" --changed-files "<changed-source-and-doc-files>"`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
@@ -225,6 +229,8 @@ underspecified and do not improvise missing script calls.
 - Workflow: `.agents/workflows/refactor-planning.md`
 - Required invocations:
   - `python3 .agents/adapters/trustgraph_query.py --task "refactor"`
+  - `python3 .agents/scripts/build_context_index.py --root .`
+  - `python3 .agents/scripts/validate_context_index.py --root .`
   - `python3 .agents/scripts/validate_refactor_planning_readiness.py --root .`
   - `python3 .agents/scripts/validate_refactor_planning_toolchain.py --root .`
   - `npx understand-anything`

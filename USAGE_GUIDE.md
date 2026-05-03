@@ -188,6 +188,10 @@ Use this default mapping:
   - output gate for `/design`; fails when `BRAND_GUIDELINES.md` or `UI_COMPONENTS_STATE.md` is missing or empty
 - `validate_marcus_init_outputs.py`
   - output gate for `/marcus_init`; fails when the scaffolded project root is missing required bootstrap artifacts
+- `build_context_index.py`
+  - builds `.agents/index/` (docs/code/skills + architecture graph) so agents route reads through an index instead of scanning whole trees
+- `validate_context_index.py`
+  - validates `.agents/index/` exists and is fresh enough; fails when stale or missing and instructs rebuild
 - `validate_refactor_planning_readiness.py`
   - preflight gate for `/refactor-planning`; fails when brownfield docs or development-ledger quality are not ready
 - `validate_refactor_planning_toolchain.py`

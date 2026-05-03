@@ -6,3 +6,5 @@ logs/
 .playwright-mcp/
 __pycache__/
 .pytest_cache/
+index/*
+!index/README.md

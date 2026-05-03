@@ -29,6 +29,7 @@ COMMON_README_MARKERS = (
 COMMON_USAGE_MARKERS = (
     "SLASH_COMMAND_REGISTRY.md",
     "validate_command_surface.py",
+    "build_context_index.py",
 )
 
 COMMAND_CONTRACTS = (
@@ -160,6 +161,8 @@ COMMAND_CONTRACTS = (
         command="/refactor-planning",
         workflow_relpath=".agents/workflows/refactor-planning.md",
         workflow_markers=(
+            "build_context_index.py --root .",
+            "validate_context_index.py --root .",
             "validate_refactor_planning_readiness.py --root .",
             'python3 .agents/adapters/trustgraph_query.py --task "refactor"',
             "validate_refactor_planning_toolchain.py --root .",
@@ -171,18 +174,24 @@ COMMAND_CONTRACTS = (
         ),
         usage_markers=(
             "/refactor-planning",
+            "build_context_index.py",
+            "validate_context_index.py",
             "validate_refactor_planning_readiness.py",
             "validate_refactor_planning_toolchain.py",
             "validate_refactor_planning_outputs.py",
         ),
         readme_markers=(
             "/refactor-planning",
+            "build_context_index.py",
+            "validate_context_index.py",
             "validate_refactor_planning_readiness.py",
             "validate_refactor_planning_toolchain.py",
             "validate_refactor_planning_outputs.py",
         ),
         registry_markers=(
             "/refactor-planning",
+            "build_context_index.py",
+            "validate_context_index.py",
             "validate_refactor_planning_readiness.py",
             "validate_refactor_planning_toolchain.py",
             "validate_refactor_planning_outputs.py",
@@ -193,6 +202,8 @@ COMMAND_CONTRACTS = (
         workflow_relpath=".agents/workflows/develop.md",
         workflow_markers=(
             "run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>",
+            "build_context_index.py --root .",
+            "validate_context_index.py --root .",
             "validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>",
             "create_development_docs.py --name",
             "create_doc_sync_note.py --name",
@@ -200,9 +211,14 @@ COMMAND_CONTRACTS = (
             "validate_doc_sync.py --strict",
             "run_harness_postflight.py --root . --phase execution --feature .agents/specs/<feature-id>",
         ),
-        usage_markers=("/develop", "reads `execution-brief.md` first"),
-        readme_markers=("/develop", "should run `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>` before behavior-changing edits"),
-        registry_markers=("/develop", "create_development_docs.py", "validate_doc_sync.py"),
+        usage_markers=("/develop", "reads `execution-brief.md` first", "build_context_index.py", "validate_context_index.py"),
+        readme_markers=(
+            "/develop",
+            "should run `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>` before behavior-changing edits",
+            "build_context_index.py",
+            "validate_context_index.py",
+        ),
+        registry_markers=("/develop", "build_context_index.py", "validate_context_index.py", "create_development_docs.py", "validate_doc_sync.py"),
     ),
     CommandContract(
         command="/quick_fix",
@@ -210,12 +226,14 @@ COMMAND_CONTRACTS = (
         workflow_markers=(
             "run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>",
             "validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>",
+            "build_context_index.py --root .",
+            "validate_context_index.py --root .",
             "create_doc_sync_note.py --name",
             "validate_doc_sync.py --strict",
         ),
         usage_markers=("/quick_fix", "stops if `validate_execution_readiness.py` fails for that workspace"),
-        readme_markers=("/quick_fix", "must stop if that workspace fails `validate_execution_readiness.py`"),
-        registry_markers=("/quick_fix", "run_harness_preflight.py", "create_doc_sync_note.py"),
+        readme_markers=("/quick_fix", "must stop if that workspace fails `validate_execution_readiness.py`", "build_context_index.py", "validate_context_index.py"),
+        registry_markers=("/quick_fix", "build_context_index.py", "validate_context_index.py", "run_harness_preflight.py", "create_doc_sync_note.py"),
     ),
     CommandContract(
         command="/planning",

@@ -9,6 +9,12 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 
 ## 🔸 STAGE 1: RAG WEAPONIZATION (FOCUSED CONTEXT RETRIEVAL)
 *🧠 Mandatory Directives:* 
+- Build and consult the context index first so the quick fix stays narrow and does not waste tokens:
+  ```bash
+  python3 .agents/scripts/build_context_index.py --root .
+  python3 .agents/scripts/validate_context_index.py --root .
+  ```
+- Use `.agents/index/docs_index.md`, `.agents/index/code_index.md`, and `.agents/index/skills_index.md` to pick the smallest credible read set.
 - Read `.clinerules` and root `agents.md` first (fallback: legacy `.agents/agents.md` shim) to establish the macro-context.
 - Rapidly scan `SKILLS_INDEX.md` and dynamically summon **ONLY 1 to 2 SKILLS** to preserve the Token limits (e.g., UI Glitch $\rightarrow$ Load `sleek-design` or `maya-ui-ux-designer`).
 - Dig into the localized `.agents/brain/` state associated with the failing Component to understand structural legacy context.

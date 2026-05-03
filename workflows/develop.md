@@ -14,6 +14,17 @@ description: Marcus Fleet Enterprise SDLC Phase 3 (Code Execution, TDD, & Contin
 **MINIMUM VIABLE CONTEXT:** `/develop` must not ingest the whole planning corpus by default.
 Read only the artifacts needed for the active write scope:
 
+- Always build and consult the context index first:
+  ```bash
+  python3 .agents/scripts/build_context_index.py --root .
+  python3 .agents/scripts/validate_context_index.py --root .
+  ```
+- Use these generated entrypoints to avoid "read everything" failure:
+  - `.agents/index/architecture_graph.mmd`
+  - `.agents/index/docs_index.md`
+  - `.agents/index/code_index.md`
+  - `.agents/index/skills_index.md`
+
 - Always read:
   - root `agents.md`
   - `.agents/memory/constitution.md`

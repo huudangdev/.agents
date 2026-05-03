@@ -40,6 +40,8 @@ def bootstrap_commands(root: Path) -> list[list[str]]:
 
 def execution_commands(root: Path, feature: str | None) -> list[list[str]]:
     commands = [
+        python_command(root, "build_context_index.py", "--root", str(root)),
+        python_command(root, "validate_context_index.py", "--root", str(root)),
         python_command(root, "validate_command_surface.py", "--root", str(root)),
         python_command(root, "validate_routing_regression.py", "--root", str(root)),
         python_command(root, "validate_harness_contract.py", "--root", str(root)),

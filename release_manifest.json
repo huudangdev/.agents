@@ -1,7 +1,8 @@
 {
-  "version": "32.0.0",
-  "headline": "Harness engineering upgrade: deterministic slash-command contracts + preflight/postflight wrappers",
+  "version": "32.0.1",
+  "headline": "Hotfix: Index-first routing to prevent token waste and context drift",
   "highlights": [
+    "Index-first routing: build a shallow docs/code/skills index and architecture graph under `.agents/index/` before reading large trees.",
     "Harness wrappers: added one-command preflight/postflight with structured JSONL logs (bootstrap + execution).",
     "Public slash-command contract: README, USAGE_GUIDE, registry, and workflows are enforced together by validate_command_surface.py.",
     "Dynamic context execution briefs: build_execution_brief supports changed-files + failing-evidence signals to reduce context drift.",
@@ -13,6 +14,7 @@
     "Open project-root .mcp.json and fill FIGMA_ACCESS_TOKEN only if you want Figma MCP.",
     "Approve new MCP servers in your client the first time they are offered.",
     "Run `python3 .agents/scripts/validate_command_surface.py --root .` after merging/updating `.agents` to confirm command contracts stayed aligned.",
+    "Run `python3 .agents/scripts/build_context_index.py --root .` once per session to generate `.agents/index/` before reading broad docs/code trees.",
     "Use /doc_reconcile before changing behavior on brownfield projects with missing or stale docs.",
     "If using /refactor-planning, ensure ESLint is available (global or local node_modules/.bin) so the toolchain gate passes before runtime-heavy steps."
   ],
