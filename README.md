@@ -2,16 +2,16 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v31.2-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v32.0-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
-    <a href="#-enterprise-overview-v310">Overview</a> •
+    <a href="#-enterprise-overview-v320">Overview</a> •
     <a href="#-system-architecture-topology">Architecture</a> •
     <a href="#-spec-driven-governance-layer">Spec Governance</a> •
-    <a href="#-installation-provisioning--universal-portability-v310">Provisioning</a> •
+    <a href="#-installation-provisioning--universal-portability-v320">Provisioning</a> •
     <a href="#execution-commands">Execution</a> •
     <a href="#academic-contributions">Contributions</a> •
     <a href="#sponsorship--support">Support/Donate</a>
@@ -20,9 +20,9 @@
 
 ---
 
-## 🔬 Enterprise Overview (V31.2)
+## 🔬 Enterprise Overview (V32.0)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 31.2** operates as an intelligent computational core bridging **Git-Hook Incremental RAG**, **Spec-Driven Governance**, **Deep Research Planning**, **Epic-First Develop Knowledge Ledgers**, **Brownfield Doc Reconciliation**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **OpenTelemetry CI pipelines**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 32.0** operates as a deterministic harness core bridging **Validated Slash-Command Contracts**, **Spec-Driven Governance**, **Deep Research Planning**, **Epic-First Development Ledgers**, **Brownfield Doc Reconciliation**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **CI-ready release gates**.
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
@@ -408,7 +408,7 @@ are patched in place, and unchanged docs are explicitly marked as reviewed.
 
 ### Brownfield Docs Reconciliation
 
-V31.2 adds `/doc_reconcile` for active projects whose docs drifted from code.
+V31.2 (lineage) added `/doc_reconcile` for active projects whose docs drifted from code.
 The command first inventories the whole codebase, then rebuilds or enriches
 `/docs/development` into V31.1 epic-first docs with canonical names, real
 content, relationship labels, Jira Story/Priority, epic `issues.md`, Mermaid,
@@ -473,7 +473,7 @@ Core vs optional MCP behavior:
 
 ---
 
-## 📦 Installation Provisioning & Universal Portability (V31.0)
+## 📦 Installation Provisioning & Universal Portability (V32.0)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
