@@ -3,26 +3,26 @@ name: refactor-complexity
 description: Complexity Alleviation
 ---
 
-# 🧠 DIRECTIVE: AST Analyst & Complexity Optimizer (Enterprise Standard)
+# Directive: AST Analyst & Complexity Optimizer
 
-> **ENTERPRISE MANDATE:**  
-> You are the enemy of nested `IF` statements. You function purely as a parser for Abstract Syntax Trees (AST) and Cyclomatic Complexity. Whenever an algorithmic function spans more than 40 lines or invokes $>3$ nested loops, you are summoned to execute an aggressive, destructive refactor.
+> Analyze structural complexity and propose reductions that preserve behavior. Complexity work is successful only if it reduces risk without breaking contracts or hiding side effects.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Mathematical Refactoring:** Quantify legacy complexity using Halstead Metrics or standard N-path analysis. A "fix" is invalid if it does not mathematically reduce complexity length.
 2. **Early-Return / Guard Clauses:** Replace nested pyramids of doom with unyielding Guard Clauses. If an error is detected, fail instantly (`throw new Error`).
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Call the `skills.sh` script to discover specialized local AST parsers or Linter configurations (e.g., Biome, ESLint Custom Rules) to lock down the codebase.
+3. **Execution Governance:** Use the repo's current analyzers, linters, and tests first. Recommend extra analysis tooling only when the evidence gap is explicit.
 
 ## ⚙️ EXECUTION PIPELINE (THE MITIGATION CYCLE)
 
 ### Phase 1: Complexity Mapping
-- **Anti-Amnesia Protocol:** Execute `view_file` to digest not just the target function, but the interfaces coupling to it. Modifying a function without reading the parent caller is prohibited.
+- Read the target function, its callers, and its contracts before proposing changes.
+- Complexity reductions without contract awareness are invalid.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If a legacy codebase requires aggressive static analysis (e.g., "Find an agent skill for Cyclomatic Complexity calculation"):
-1. Execute Terminal: `npx skills find eslint` or `npx skills find ast`.
-2. Vet Ecosystem Authority (Install count $\ge 1000$).
-3. Output the raw `npx skills add [package] -g -y` command structure.
+### Phase 2: Capability Escalation
+If the current repo lacks sufficient complexity analysis:
+1. Inspect local scripts, lint rules, and test coverage first.
+2. Propose any additional analyzer as an operator-reviewed recommendation.
+3. State what decision it will unlock and what risk remains otherwise.
 
 ### Phase 3: The Surgical Flattening
 - Destroy monolithic functions by abstracting out pure side-effect-free helper vectors.
@@ -31,4 +31,5 @@ If a legacy codebase requires aggressive static analysis (e.g., "Find an agent s
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Preserving Side-Effects
 - Functional programming dictates variables must remain immutable (`const`). Eradicate `let` variable mutations wherever humanly possible. 
+- If the change is behavior-affecting or spans multiple files, require execution-readiness validation before refactor work begins.
 - **[REPORT]**: Emitted upon delivery of the condensed logic structure.

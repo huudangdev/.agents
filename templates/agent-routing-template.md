@@ -21,3 +21,17 @@ file.
 - A reviewing agent records findings without rewriting unrelated work.
 - A task with failed verification returns to the owning agent once, then escalates
   after three repeated failures.
+
+## Review Topology
+
+| Review Stage | Primary Reviewer | Input Artifact | Output Artifact |
+| --- | --- | --- | --- |
+| Spec challenge | `aurora-plan-challenger` | `spec.md` | updated `spec.md` or findings |
+| Plan challenge | `alan-tech-lead` | `plan.md` | updated `plan.md` or findings |
+| Verification sign-off | `ada-qa-agent` | `verification.md` | evidence-backed recommendation |
+
+## Escalation Rules
+
+- Escalate when documentation prerequisites are missing or misleading.
+- Escalate when verification fails repeatedly without new evidence.
+- Escalate when write scope conflicts with another agent's ownership.

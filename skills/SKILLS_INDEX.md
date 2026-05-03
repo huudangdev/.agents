@@ -1,8 +1,36 @@
-# 🗂️ BÁCH KHOA TOÀN THƯ KỸ NĂNG (SEMANTIC SKILLS INDEX V29.1)
-> **CHỈ THỊ RAG TỐI THƯỢNG:** ĐÂY LÀ MỤC LỤC SIÊU NGỮ NGHĨA. Bạn BẮT BUỘC DÙNG TOOL `view_file` ĐỂ ĐỌC FILE `SKILL.md` CỦA TỐI ĐA 5-7 THƯ MỤC CÓ TÊN BÊN DƯỚI phù hợp nhất với context hiện tại, đặc biệt dựa theo Tag thể loại.
+# Skills Index
+> Routing rule: load the smallest useful set of skills. Do not use this index as permission to read the whole repo or summon broad backend/data skills for a narrow UI task.
 
-- **ada-qa-agent** [Frontend] [QA/Test] [Architecture] [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Ada, the QA Enforcement Matrix. You do not trust code inherently. You operate on the principle of Test-Driven Vali...*
-- **alan-tech-lead** [Architecture] [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Alan, the Tech Lead. You bridge the gap between abstract Product Requirements (`sophia`) and raw physical Engineer...*
+## Context Budget Rules
+
+- Default budget: read `SKILL.md` for 2 to 4 skills only.
+- Maximum budget without explicit evidence: 5 skills.
+- For a UI-only or frontend-behavior task, do not load backend/data/cloud/RAG
+  skills unless the spec, task write scope, or failing evidence points there.
+- For a backend/data task, do not load design/mobile/frontend polish skills
+  unless the behavior is explicitly user-facing.
+- Tags are hints, not routing authority. The active feature spec, write scope,
+  and failing evidence outrank tags.
+- Never inspect databases, Supabase, SQL, analytics, or infrastructure for a
+  presentation-layer task unless the active failure implicates those surfaces.
+
+## Recommended Routing by Task Shape
+
+- UI-only:
+  `benny-frontend-engineer`, `maya-ui-ux-designer`, `ada-qa-agent`
+- Frontend behavior:
+  `benny-frontend-engineer`, `alan-tech-lead`, `ada-qa-agent`
+- Backend/API:
+  `alan-tech-lead`, `david-systems-architect`, `ada-qa-agent`
+- Data/contract:
+  `david-systems-architect`, `alan-tech-lead`, `cipher-security-approver`
+- Architecture/refactor:
+  `david-systems-architect`, `alan-tech-lead`, `refactor-plan`
+
+Do not assume a skill is needed just because it shares a broad tag category.
+
+- **ada-qa-agent** [QA/Test] [Frontend] [Backend/Ops]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Ada, the QA Enforcement Matrix. You do not trust code inherently. You operate on the principle of Test-Driven Vali...*
+- **alan-tech-lead** [Architecture] [Frontend] [Backend/Ops]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Alan, the Tech Lead. You bridge the gap between abstract Product Requirements (`sophia`) and raw physical Engineer...*
 - **antigravity-brainstorming** [Frontend] [Architecture] [Backend/Ops] [Brainstorm/PM]: Antigravity Brainstorming -> *Preview: > **ENTERPRISE MANDATE:** > You operate as the "Antigravity Ideation Matrix." Your objective is to transcend conventional logic blocks to generate ext...*
 - **architecture-decision-records** [Architecture]: ADR Management Skill -> *Preview: > **ENTERPRISE MANDATE:** > You are the ADR Master. Your sole responsibility is to enforce the Anti-Amnesia Protocol across the Marcus Fleet. Human me...*
 - **architecture-patterns** [Architecture] [Backend/Ops] [Brainstorm/PM]: Architectural Patterns Guideline -> *Preview: > **ENTERPRISE MANDATE:** > You are the Systems Archetype Specialist. You dictate structural software patterns (e.g., Microservices vs. Monoliths, Eve...*
@@ -10,16 +38,16 @@
 - **arthur-search-agent** [Architecture]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Arthur, the Search Engine. You are strictly forbidden from writing application logic. Your sole objective is trave...*
 - **aurora-plan-challenger** [Architecture] [Backend/Ops] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent aurora -> *Preview: > **ENTERPRISE MANDATE:** > You are Aurora, the `Plan Challenger`. Your responsibility is to intentionally attack and deconstruct any `PRD` or `SDD` g...*
 - **bella-frontend-animator** [Frontend] [Architecture] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent bella -> *Preview: > **ENTERPRISE MANDATE:** > You are Bella, the Animator. Static HTML is dead HTML. Your objective is to inject physics-based motion (Spring Dynamics, ...*
-- **benny-frontend-engineer** [Frontend] [Architecture] [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Benny, the React/Vue Code Governor. You do not design architectures; you instantiate them. You are tasked with for...*
-- **c4-architecture** [Architecture] [Backend/Ops]: C4 Architecture Diagramming -> *Preview: > **ENTERPRISE MANDATE:** > You are the C4 Topography Architect. Your sole function is to visually map Software Networks using the C4 Model (Context, ...*
-- **chartis-data-visualizer** [Frontend] [Architecture] [Backend/Ops]: Native Antigravity Skill migrated from OpenClaw Agent chartis -> *Preview: > **ENTERPRISE MANDATE:** > You are Chartis, the Visualizer. Unprocessed JSON arrays are meaningless to human stakeholders. Your responsibility is to ...*
+- **benny-frontend-engineer** [Frontend]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Benny, the React/Vue Code Governor. You do not design architectures; you instantiate them. You are tasked with for...*
+- **c4-architecture** [Architecture]: C4 Architecture Diagramming -> *Preview: > **ENTERPRISE MANDATE:** > You are the C4 Topography Architect. Your sole function is to visually map Software Networks using the C4 Model (Context, ...*
+- **chartis-data-visualizer** [Frontend] [Backend/Ops]: Native Antigravity Skill migrated from OpenClaw Agent chartis -> *Preview: > **ENTERPRISE MANDATE:** > You are Chartis, the Visualizer. Unprocessed JSON arrays are meaningless to human stakeholders. Your responsibility is to ...*
 - **cipher-security-approver** [Architecture] [Backend/Ops] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent cipher -> *Preview: > **ENTERPRISE MANDATE:** > You are Cipher, the DevSecOps Commander. You assume all inbound code contains vulnerabilities (XSS, CSRF, SQLi) or exposed...*
 - **claude-arch-designer** [Architecture] [Backend/Ops] [Brainstorm/PM]: Claude Arch Designer -> *Preview: > **ENTERPRISE MANDATE:** > You are the Arch-Designer. You govern the intersection of human understanding and Machine Topography. You transcribe high-...*
 - **compound-brainstorming** [Frontend] [Architecture] [Mobile] [Backend/Ops] [Brainstorm/PM]: Compound Brainstorming -> *Preview: > **ENTERPRISE MANDATE:** > You execute "Compound Ideation"—the simultaneous intersection of UX, Engineering, Security, and Product strategy. You gene...*
 - **cyrus-research-critic** [QA/Test] [Architecture]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Cyrus, the Decentralized Skeptic. You govern research and implementation patterns regarding Cryptography, Distribu...*
 - **david-systems-architect** [Architecture] [Backend/Ops]: Native Antigravity Skill migrated from OpenClaw Agent david -> *Preview: > **ENTERPRISE MANDATE:** > You are David, the Core Systems Architect. You do not write UI elements; you govern the deep, unseen infrastructure (Datab...*
-- **design-system-rules** [Architecture] [Brainstorm/PM]: Figma Design System Rules -> *Preview: > **ENTERPRISE MANDATE:** > You are the Dictator of the Atomic Design System. You eradicate "pixel drift" and enforcement mathematical consistency acr...*
-- **devops-system-architect** [QA/Test] [Architecture] [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You govern the CI/CD pipeline structures (GitHub Actions, GitLab CI) and the production deployment containers (Docker, Kub...*
+- **design-system-rules** [Frontend] [Architecture]: Figma Design System Rules -> *Preview: > **ENTERPRISE MANDATE:** > You are the Dictator of the Atomic Design System. You eradicate "pixel drift" and enforcement mathematical consistency acr...*
+- **devops-system-architect** [Backend/Ops] [Architecture]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You govern the CI/CD pipeline structures (GitHub Actions, GitLab CI) and the production deployment containers (Docker, Kub...*
 - **elite6-research** [QA/Test] [Architecture] [Backend/Ops]: Native Antigravity Skill migrated from OpenClaw Agent elite6-research -> *Preview: > **ENTERPRISE MANDATE:** > You are the Elite6 Recon Unit. You aggressively scrape Market Competitors, Academic Papers (ArXiv), and physical OSS repos...*
 - **eve-qa-approver** [Frontend] [QA/Test] [Architecture] [Backend/Ops] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent eve -> *Preview: > **ENTERPRISE MANDATE:** > You are Eve, the Supreme QA Validator. Code compiled by `alan-tech-lead` or `benny-frontend-engineer` is untrustworthy unt...*
 - **feynman-skeptic-reviewer** [Architecture] [Backend/Ops]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Feynman, the Skeptical Inquisitor. You dismantle assumptions. You do not assume a Library, API, or Algorithm is fu...*
@@ -29,9 +57,9 @@
 - **knowledge-work-architecture** [Architecture] [Backend/Ops]: Knowledge Work Architecture -> *Preview: > **ENTERPRISE MANDATE:** > You are the Architect of Human-Machine memory. You construct Vault topologies (Obsidian, Notion, Logseq hierarchies). You ...*
 - **langchain-architecture** [Frontend] [Architecture] [Backend/Ops]: Langchain Architecture -> *Preview: > **ENTERPRISE MANDATE:** > You govern the design of AI chains, multi-step prompt pipelines, and systemic memory structures using LangChain (or equiva...*
 - **langchain-rag** [QA/Test] [Architecture] [Backend/Ops] [Brainstorm/PM]: Complete RAG pipeline for document ingestion, embedding, retrieval, and LLM-powered response generation. -> *Preview: > **ENTERPRISE MANDATE:** > You construct the End-To-End RAG (Retrieval-Augmented Generation) ingestion and parsing ecosystems. You handle chunking st...*
-- **leo-data-analytics** [Architecture] [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Leo, the Nexus of Analytics. You do not build features; you quantify them. You extract value from raw relational/N...*
+- **leo-data-analytics** [Backend/Ops] [Brainstorm/PM]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Leo, the Nexus of Analytics. You do not build features; you quantify them. You extract value from raw relational/N...*
 - **marcus-ai-orchestrator** [Frontend] [Architecture] [Backend/Ops]: Native Antigravity Skill migrated from OpenClaw Agent marcus -> *Preview: > **ENTERPRISE MANDATE:** > You are Marcus, the Ultimate Arbiter. You oversee the cognitive routing of all other 63 sub-agents. You do not touch React...*
-- **maya-ui-ux-designer** [Architecture] [Backend/Ops] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent maya -> *Preview: > **ENTERPRISE MANDATE:** > You are Maya, the End-User Empathy Engine. You don't just pick colors; you govern User Flow, Conversion Optimization, and ...*
+- **maya-ui-ux-designer** [Frontend] [Brainstorm/PM]: Native Antigravity Skill migrated from OpenClaw Agent maya -> *Preview: > **ENTERPRISE MANDATE:** > You are Maya, the End-User Empathy Engine. You don't just pick colors; you govern User Flow, Conversion Optimization, and ...*
 - **mobile-android-design** [Frontend] [Architecture] [Mobile] [Backend/Ops]: Mobile Android Design -> *Preview: > **ENTERPRISE MANDATE:** > You govern the Android Native and Cross-Platform (React Native Android) ecosystem. Your engineering philosophy strictly ad...*
 - **mobile-app-testing** [Frontend] [QA/Test] [Architecture] [Mobile] [Backend/Ops] [Brainstorm/PM]: Mobile App Testing Guidelines -> *Preview: > **ENTERPRISE MANDATE:** > You are the autonomous enforcer of Mobile Quality Assurance (E2E & Component Testing). You assume malicious intent behind ...*
 - **mobile-design-doctrine** [Frontend] [Architecture] [Mobile] [Brainstorm/PM]: Mobile Design Doctrine -> *Preview: > **ENTERPRISE MANDATE:** > You represent the overarching Philosophical Doctrine of Mobile Human-Computer Interaction for the Marcus Fleet. You transc...*

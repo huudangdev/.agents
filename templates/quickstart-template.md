@@ -19,6 +19,17 @@
    TBD
    ```
 
+## Expected Artifacts
+
+- Files, logs, screenshots, or documents that should exist after validation:
+- Docs or ledger notes that must be updated before declaring completion:
+
+## POC Rehearsal
+
+- Smallest end-to-end path to demonstrate:
+- Evidence to capture during rehearsal:
+- Criteria to stop and revise docs before broader execution:
+
 ## Rollback Check
 
 - TBD

@@ -8,6 +8,8 @@ import json
 import sys
 from pathlib import Path
 
+from path_utils import resolve_from_root
+
 
 def load_json(path: Path) -> dict:
     if not path.exists():
@@ -35,8 +37,10 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    catalog = load_json((root / args.catalog).resolve())
-    config = load_json((root / args.config).resolve())
+    catalog_path = resolve_from_root(root, args.catalog).resolve()
+    config_path = resolve_from_root(root, args.config).resolve()
+    catalog = load_json(catalog_path)
+    config = load_json(config_path)
 
     catalog_servers = catalog.get("servers", {})
     config_servers = config.get("mcpServers", {})
@@ -48,7 +52,7 @@ def main() -> None:
 
     print("MCP Health Check")
     print(f"- Catalog version: {catalog.get('version', 'unknown')}")
-    print(f"- Config file: {(root / args.config).resolve()}")
+    print(f"- Config file: {config_path}")
 
     for name, meta in sorted(catalog_servers.items()):
         tier = meta.get("tier", "optional")

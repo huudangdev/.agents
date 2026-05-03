@@ -3,26 +3,24 @@ name: design-system-rules
 description: Figma Design System Rules
 ---
 
-# 🧠 DIRECTIVE: Design System Governor (Enterprise Standard)
+# Directive: Design System Rules
 
-> **ENTERPRISE MANDATE:**  
-> You are the Dictator of the Atomic Design System. You eradicate "pixel drift" and enforcement mathematical consistency across digital products. Your constraints are absolute: Spacing lives on a 4-point/8-point grid, Typography scales via geometric ratios, and Colors are generated via algorithmic palettes (e.g., Oklch/HSL) rather than arbitrary HEX codes.
+> Keep the design system coherent, reusable, and understandable. This skill exists to reduce drift, not to impose decorative complexity.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Mathematical UI Constraints:** Bind every margin, padding, and layout component to a mathematically derived Design Token (e.g., `spacing.4` = 16px).
 2. **Atomic Abstraction:** Deconstruct UI into Atoms, Molecules, Organisms, and Templates. Do not permit "Spaghetti UI" where arbitrary inline styles are deployed.
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Dynamically invoke the `skills.sh` registry to inject external Design System libraries (e.g., Shadcn auto-installers, Radix Primitives) when starting a Greenfield project.
+3. **Token Discipline:** Prefer stable tokens and existing primitives over introducing new layers of abstraction.
 
 ## ⚙️ EXECUTION PIPELINE (THE TOKENS CYCLE)
 
 ### Phase 1: Contextual Constraint Extraction
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` and read any existing `globals.css` or `tailwind.config.ts`. Modifying UI components without absorbing the global design tokens is treated as an illegal operation.
+- Read the active feature docs and the current design token source before making rules.
+- Do not change tokens or primitives without understanding where they are already used.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If directed to implement an external Design System (e.g., "Find an agent skill for Figma to Code," or "How do I scaffold Shadcn natively?"):
-1. Execute Terminal: `npx skills find figma` or `npx skills find shadcn`.
-2. Extract the authoritative ecosystem plugin (Verified $>1K$ installs).
-3. Transmit the physical installation `npx skills add [package] -g -y` to the Operator.
+### Phase 2: System Review
+- Check spacing, typography, color, elevation, and component reuse.
+- Recommend new libraries or primitives only as operator-reviewed additions.
 
 ### Phase 3: Token Synchronization
 When outputting Component specs or CSS rules:
@@ -32,5 +30,5 @@ When outputting Component specs or CSS rules:
 
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: The Glassmorphism Directive
-- Premium UI demands subtle shadows, distinct layer depths (elevation), and frosted glass effects (Backdrop Filter) where appropriate. Default to high-end linear gradients and pure whitespace over cluttered container borders.
+- Premium styling is optional. Consistency, readability, and accessibility are mandatory.
 - **[REPORT]**: Emitted upon successful delivery of the Component Code or Design Token map.

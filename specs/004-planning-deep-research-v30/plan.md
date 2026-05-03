@@ -65,11 +65,9 @@ flowchart TD
 
 ## 4. Contracts
 
-List files under `contracts/` and summarize each contract.
-
 | Contract | Purpose | Producer | Consumer |
 | --- | --- | --- | --- |
-| `contracts/planning-output-contract.md` | Defines required legacy outputs and added research files. | `david-systems-architect` | `/planning` agents |
+| `planning-output-contract.md` | Feature-specific contract consumed by the current slash-command surface. | feature owner | `/develop`, `/quick_fix`, and reviewers |
 
 ## 5. Data Model
 
@@ -78,31 +76,55 @@ Contradiction, ResearchManifest, PlanningOutput.
 
 ## 6. Agent Routing
 
-Summarize ownership from `agent-routing.md`.
-
 | Workstream | Primary Agent | Output | Verification |
 | --- | --- | --- | --- |
 | Workflow rewrite | `marcus-ai-orchestrator` | V30 `planning.md` | spec validation |
 | Research templates | `sage-research-synthesis` | planning ledger templates | file checks |
 | Validator | `ada-qa-agent` | `validate_planning_research.py` | AST parse |
 
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/004-planning-deep-research-v30; python3 -m py_compile .agents/scripts/validate_planning_research.py.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
+
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/004-planning-deep-research-v30; python3 -m py_compile .agents/scripts/validate_planning_research.py.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
+
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/004-planning-deep-research-v30; python3 -m py_compile .agents/scripts/validate_planning_research.py.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
+
 ## 7. Migration and Rollback
 
 - Migration steps:
-  1. Add research ledger templates.
-  2. Add planning research validator.
-  3. Rewrite `/planning` instructions while preserving output contract.
-  4. Validate specs and scripts.
+  1. Reconcile the feature package to the current contract.
+  2. Rebuild `execution-brief.md` for the active task shape.
+  3. Re-run spec and readiness validation before downstream execution.
 - Rollback steps:
-  1. Restore previous `.agents/workflows/planning.md`.
-  2. Remove planning research templates and validator if not wanted.
-- Compatibility notes: `/docs` output names remain unchanged.
+  1. Restore the previous `004-planning-deep-research-v30` docs package if the contract upgrade proves misleading.
+  2. Revert only the additive governance sections; do not silently discard verified implementation evidence.
+- Compatibility notes: preserve the implemented behavior and existing contracts while making the feature package consumable by the current slash-command surface.
 
 ## 8. Complexity Tracking
-
-Use this section only when a constitution gate fails or a new abstraction is
-introduced.
 
 | Decision | Reason | Alternative Rejected | Review Needed |
 | --- | --- | --- | --- |
 | Add research validator rather than full citation verifier | Keeps this step dependency-free and local | Pull in third-party deep-research scripts immediately | Low |
+
+## 9. POC Slice and Review Cadence
+
+- POC slice boundary: prove `004-planning-deep-research-v30` end-to-end using the smallest professional slice that exercises the main contract and verification path.
+- Success evidence for the slice: python3 .agents/scripts/validate_specs.py --feature .agents/specs/004-planning-deep-research-v30; python3 -m py_compile .agents/scripts/validate_planning_research.py plus updated review-loop and release-recommendation artifacts.
+- What remains intentionally unproven after the slice: broader product rollout, unrelated modules, and any live services the current feature explicitly left as residual risk.
+- Review cadence:
+  - Draft architecture review: after the package is reconciled to the current contract.
+  - Challenge review: after tasks, routing, and quickstart replay are concrete.
+  - Final readiness review: after verification evidence and release recommendation are updated.
+- Stop conditions: readiness fails, review findings expose hidden scope growth, or the replay steps cannot be followed from docs alone.
+- Proceed conditions: spec validation passes, execution-brief freshness passes, readiness passes, and the verification package names a clear release recommendation.

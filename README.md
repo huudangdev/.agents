@@ -117,9 +117,18 @@ Core artifacts:
 │   ├── validate_specs.py             # Validates required files and gates
 │   ├── validate_planning_research.py # Validates deep research ledgers
 │   ├── audit_development_docs.py     # Inventories code/docs for brownfield reconciliation
+│   ├── validate_design_readiness.py  # Validates `/design` planning inputs before Phase 2
+│   ├── validate_design_outputs.py    # Validates `/design` output artifacts after Phase 2
+│   ├── validate_marcus_init_outputs.py # Validates `/marcus_init` scaffold outputs
+│   ├── validate_refactor_planning_readiness.py # Validates `/refactor-planning` brownfield readiness
+│   ├── validate_refactor_planning_toolchain.py # Validates `/refactor-planning` local toolchain prerequisites
+│   ├── validate_refactor_planning_outputs.py # Validates `/refactor-planning` closeout artifacts
 │   ├── sync_project_mcp.py           # Publishes bundled MCP servers into project-root .mcp.json
 │   ├── check_mcp_health.py           # Reports core vs optional MCP readiness and missing env keys
 │   ├── print_update_brief.py         # Prints release highlights and onboarding suggestions after install/update
+│   ├── run_harness_preflight.py      # One-command bootstrap or execution preflight
+│   ├── run_harness_postflight.py     # One-command execution closeout replay
+│   ├── validate_harness_contract.py  # Verifies docs/workflows/scripts stay aligned
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
 │   ├── create_doc_sync_note.py       # Creates per-code-slice sync notes
@@ -133,17 +142,181 @@ Typical usage:
 ```bash
 python3 .agents/scripts/create_feature_spec.py "Feature Name" --prompt "Operator goal"
 python3 .agents/scripts/validate_specs.py --feature .agents/specs/001-feature-name
+python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/001-feature-name
 ```
 
-The workflow sequence is:
+### Script Invocation Map
+
+Scripts under `.agents/scripts/` are not loaded magically. Agents understand and
+run them only when all three layers agree:
+
+- A workflow names the script and the exact phase where it must run.
+- A validator or readiness gate fails if that script's artifact is missing or stale.
+- A downstream artifact or workflow explicitly consumes the script output.
+
+Current core map:
+
+The canonical per-command mapping lives in `.agents/SLASH_COMMAND_REGISTRY.md`.
+When README, `USAGE_GUIDE.md`, workflow files, or script chains change, rerun
+`python3 .agents/scripts/validate_command_surface.py --root .` and treat any
+failure as a public contract regression.
+
+- `/marcus.specify`
+  - `create_feature_spec.py`
+  - Creates `.agents/specs/<feature-id>/` from templates.
+- `/marcus.tasks`
+  - `build_execution_brief.py`
+  - Distills `spec.md`, `plan.md`, `tasks.md`, `verification.md`,
+    `quickstart.md`, `agent-routing.md`, plus relevant `docs/development/`
+    notes into `execution-brief.md`.
+  - Optional dynamic inputs:
+    `--changed-files "<comma-separated-files>"` and
+    `--failing-evidence "<bounded-failure-summary>"` to foreground the
+    current slice without widening default reads.
+- `/marcus.review`
+  - `build_execution_brief.py`
+  - Rebuilds the brief after review findings changed scope or evidence.
+  - Reuse `--changed-files` and `--failing-evidence` when the review narrows
+    the active slice to specific files or failures.
+- `/design`
+  - `validate_design_readiness.py`
+  - `validate_design_outputs.py`
+  - Fails Phase 2 when planning inputs are missing or design artifacts are not produced.
+- `/marcus_init`
+  - `validate_marcus_init_outputs.py`
+  - Fails project bootstrap closeout when the scaffolded workspace is missing required root artifacts.
+- `/refactor-planning`
+  - `validate_refactor_planning_readiness.py`
+  - `validate_refactor_planning_toolchain.py`
+  - `validate_refactor_planning_outputs.py`
+  - Fails brownfield refactor planning when docs are unreconciled or closeout artifacts are missing.
+- Execution-brief freshness gate
+  - `validate_execution_brief_freshness.py`
+  - Fails when `execution-brief.md` is older than the feature spec artifacts or
+    the matched `docs/development/` notes.
+- Harness bootstrap preflight
+  - `run_harness_preflight.py --phase bootstrap`
+  - Replays MCP sync, MCP health, update brief, harness freshness, and setup checks in one command.
+- Harness execution preflight
+  - `run_harness_preflight.py --phase execution`
+  - Replays command-surface, routing, harness freshness, and optional feature readiness checks before edits.
+  - Appends a structured JSONL event to `.agents/logs/harness/preflight.jsonl`
+    with per-command status and the first failing command when present.
+- Harness execution postflight
+  - `run_harness_postflight.py --phase execution`
+  - Replays command-surface, routing, harness freshness, repo contract audit, and optional feature readiness checks before closeout.
+  - Appends a structured JSONL event to `.agents/logs/harness/postflight.jsonl`
+    with per-command status and the first failing command when present.
+- Repo-wide harness freshness gate
+  - `validate_harness_contract.py`
+  - Fails when README, USAGE, workflows, and wrapper scripts disagree about the supported harness chain.
+- `/develop`
+  - Consumes `execution-brief.md` first, then reads only the exact
+  `docs/development/` notes listed there for the current slice.
+- Readiness gate before `/develop`
+  - `validate_specs.py`
+  - `validate_execution_readiness.py`
+- Routing regression gate
+  - `validate_routing_regression.py`
+- Slash-command surface gate
+  - `validate_command_surface.py`
+  - Fails when README, `USAGE_GUIDE.md`, `.agents/SLASH_COMMAND_REGISTRY.md`,
+    and workflow files no longer agree about the published command chain.
+- Code-phase ledger creation and sync
+  - `create_development_docs.py`
+  - `create_doc_sync_note.py`
+  - `validate_development_docs.py`
+  - `validate_doc_sync.py`
+- Repo-wide spec contract audit
+  - `audit_feature_contracts.py`
+  - Reports which feature workspaces are current-contract vs legacy and which
+    ones still fail validation.
+
+If a new script is added but not wired into at least one workflow, one gate, and
+one consumed artifact, treat it as dormant infrastructure rather than active
+agent capability.
+
+The strict workflow sequence is:
 
 ```text
-/marcus.specify -> /marcus.clarify -> /marcus.plan -> /marcus.tasks -> /marcus.verify
+/marcus.specify -> /marcus.clarify -> /marcus.plan -> /marcus.tasks -> /marcus.review -> /marcus.rehearse -> /marcus.verify
 ```
+
+Command-surface contract:
+
+- `/marcus.specify`
+  - must create the feature workspace through `create_feature_spec.py`
+- `/marcus.plan`
+  - must end with a passing `validate_specs.py` for the target feature
+  - must not claim execution readiness yet
+- `/marcus.tasks`
+  - must build `execution-brief.md` through `build_execution_brief.py`
+  - must end with passing:
+    - `validate_specs.py`
+    - `validate_execution_brief_freshness.py`
+    - `validate_execution_readiness.py`
+- `/marcus.review`
+  - must rebuild the brief if review findings change scope, evidence, or docs-to-read
+  - must end with the same three passing gates as `/marcus.tasks`
+- `/marcus.rehearse`
+  - must refresh the brief again if rehearsal changes release signals or the active slice
+  - must preserve a passing readiness gate before `/develop`
+- `/develop`
+  - should run `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>` before behavior-changing edits
+  - must read `execution-brief.md` first
+  - must treat the brief's `Task Shape Decision`, `Required Reads`,
+    `Forbidden Default Reads`, and `Expansion Triggers` as the current routing contract
+  - must read only the `docs/development/` notes named by that brief before widening context
+  - must stop if readiness or brief freshness fails
+  - should run `python3 .agents/scripts/run_harness_postflight.py --root . --phase execution --feature .agents/specs/<feature-id>` before final closeout
+- `/quick_fix`
+  - if tied to a feature-scoped workspace, should run `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>` before edits
+  - if tied to a feature-scoped workspace, must read `execution-brief.md` first
+  - must use the same brief subsections as a binding context contract
+  - must stop if that workspace fails `validate_execution_readiness.py`
+  - if behavior changes, must still create a sync note and pass `validate_doc_sync.py`
+
+If a slash command in this public surface does not trigger its required script
+and gate chain, treat that command as incorrectly wired.
+
+Harness wrapper rule:
+
+- `run_harness_preflight.py` is the preferred replayable entrypoint for bootstrap
+  and behavior-changing execution setup.
+- `run_harness_postflight.py` is the preferred replayable entrypoint for
+  execution closeout.
+- `validate_harness_contract.py` is the repo-wide freshness gate that proves the
+  public docs and workflow chain still match the supported wrapper commands.
+- Wrapper runs write additive JSONL logs under `.agents/logs/harness/`; treat
+  those files as local observability evidence, not as a remote telemetry system.
 
 This gives agents a concrete contract before code changes: `spec.md` captures
 what and why, `plan.md` captures how, `tasks.md` captures ownership, and
-`verification.md` captures evidence.
+`verification.md` captures evidence and release disposition.
+
+Professional POC loop:
+
+- `spec.md` must record review rounds before planning proceeds.
+- `plan.md` must define the smallest credible POC slice, stop conditions, and
+  proceed conditions.
+- `tasks.md` must include review-loop tasks, not only implementation tasks.
+- `verification.md` must include independent review findings and a final
+  `GO`, `GO WITH RESIDUAL RISK`, or `NO-GO` recommendation.
+- `quickstart.md` must describe the exact rehearsal path a reviewer can replay.
+
+Execution is intentionally downstream of these artifacts. Behavior-changing work
+must stop when the feature workspace is shallow, placeholder-heavy, or fails
+validation. The `.agents` package is designed to act as a docs-first governance
+and execution-control layer, not a prompt bundle that improvises missing
+requirements at runtime.
+
+Routing regression discipline:
+
+- Use [ROUTING_REGRESSION_CHECKLIST.md](/Users/lequynhanh/marcus-fleet/.agents/ROUTING_REGRESSION_CHECKLIST.md) when changing `/develop`, `SKILLS_INDEX.md`, or routing-heavy skills.
+- A release is not trustworthy if a narrow UI task drifts into Supabase, SQL,
+  analytics, or infrastructure reads without explicit evidence.
+- Use `python3 .agents/scripts/validate_routing_regression.py --root .` as the
+  machine-checkable gate before trusting those routing changes.
 
 ### Backward Compatibility Contract
 
@@ -322,7 +495,7 @@ This Universal Portability script will:
 
 ### 🔄 Upgrading Existing Environments (OTA Sync)
 
-For teams running older versions of the Engine that do not yet have the `/update_brain` slash command integrated, execute the physical **Non-Destructive Update Protocol** directly in your terminal. This specifically protects your `.agents/agents.md` local state file while updating the system schemas around it:
+For teams running older versions of the Engine that do not yet have the `/update_brain` slash command integrated, execute the physical **Non-Destructive Update Protocol** directly in your terminal. This specifically protects the project's `agents.md` memory file (and preserves the legacy `.agents/agents.md` shim when present) while updating the system schemas around it:
 
 ```bash
 # Safely pull the newest Intelligence updates directly over your existing local repository.
@@ -389,10 +562,19 @@ captured by the PM documentation package.
 5. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
 6. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
 
-### 7. `/quick_fix` (Micro-Mutation Bypass)
+### 7. `/marcus.routecheck` (Routing Regression Replay)
+**The Narrow-Task Guardrail.** Use after changing `/develop`, `SKILLS_INDEX.md`,
+or routing-heavy skills.
+1. **Checklist Binding:** Reads `.agents/ROUTING_REGRESSION_CHECKLIST.md`.
+2. **Validator Gate:** Runs `python3 .agents/scripts/validate_routing_regression.py --root .`.
+3. **Release Discipline:** Fails the release if a narrow task drifts into broad
+database, analytics, infrastructure, or full-repo context without explicit
+evidence.
+
+### 8. `/quick_fix` (Micro-Mutation Bypass)
 **Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely only for truly localized work on a doc-ready project. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. If a brownfield project is missing its planning package, relies on boilerplate docs, or lacks a substantive `docs/development/` ledger, `/quick_fix` must stop and route to `/doc_reconcile`. Behavior-changing hotfixes that remain in `/quick_fix` still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
 
-### 8. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
+### 9. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
 **Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 
 - `/marcus_init` acts as the Web Genesis point, establishing baseline structural integrity for Next.js systems and injecting the `.clinerules` intelligence protocol into empty workspaces.
 - `/mobile_init` initiates mobile doctrine, enforcing cross-platform physics (React Native/Flutter component boundaries, iOS Safe-Area adherence, mobile viewport limitations) to prepare the ground for the Planning phase.
@@ -400,8 +582,8 @@ captured by the PM documentation package.
   automatically `/planning` or `/refactor-planning`. If docs are missing,
   boilerplate-only, or stale, operators should route to `/doc_reconcile` first.
 
-### 9. `/update_brain` (OTA Intelligence Upgrade)
-**Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `.agents/agents.md` memory matrix or TrustGraph database.
+### 10. `/update_brain` (OTA Intelligence Upgrade)
+**Non-Destructive Neural Sync.** Executes a physical `/update.sh` script to pull the latest Antigravity schemas from the remote `main` branch. Crucially, it uses differential `rsync` logic to overwrite and upgrade system prompts and agent capabilities *without* destroying the local project's `agents.md` memory matrix (or the legacy `.agents/agents.md` shim) or TrustGraph database.
 > **SOP MANDATE:** It is strictly required to follow this command natively with `/init_brain`. This performs a "Soft Reboot" to purge the LLM's stale context, load the newly downloaded `.clinerules`, and re-ignite the TrustGraph stack.
 
 ---
@@ -412,7 +594,7 @@ captured by the PM documentation package.
 .agents/
 ├── README.md                      # Foundational system topology
 ├── USAGE_GUIDE.md                 # Heuristic routing and dispatch instructions
-├── V30.0_RELEASE_NOTES.md         # Current governance and planning changelog
+├── V32.0_RELEASE_NOTES.md         # Current harness + command-contract release notes
 ├── .clinerules                    # Foundational Constitution Protocol (FSM Limits)
 ├── trustgraph.env.example         # Shared Neo4j/Chroma runtime config template
 ├── install.sh                     # Directory genesis installer

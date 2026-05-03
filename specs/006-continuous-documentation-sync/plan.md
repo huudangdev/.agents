@@ -52,35 +52,57 @@ flowchart TD
 
 ## 4. Contracts
 
-List files under `contracts/` and summarize each contract.
-
 | Contract | Purpose | Producer | Consumer |
 | --- | --- | --- | --- |
-| `contracts/doc-sync-contract.md` | Defines sync note and validation behavior | `/develop` | PM docs, CI, future agents |
+| `doc-sync-contract.md` | Feature-specific contract consumed by the current slash-command surface. | feature owner | `/develop`, `/quick_fix`, and reviewers |
 
 ## 5. Data Model
 
-Summarize entities from `data-model.md`.
+The data model remains the feature-specific entities already captured in `data-model.md`.
 
 ## 6. Agent Routing
 
-Summarize ownership from `agent-routing.md`.
+Every workstream needs one primary owner. Supporting agents may challenge, verify, or contribute evidence, but they must not rewrite unrelated scopes without updating this routing contract.
 
-| Workstream | Primary Agent | Output | Verification |
-| --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD |
+| Workstream | Primary Skill | Supporting Skills | Write Scope | Output |
+| --- | --- | --- | --- | --- |
+| Workflow gate | `marcus-ai-orchestrator` | `sophia-product-manager` | `.agents/workflows/develop.md` | Node 6.5 sync checkpoint |
+| Knowledge policy | `knowledge-work-architecture` | `architecture-decision-records` | templates and docs | Append/patch policy |
+| Script implementation | `alan-tech-lead` | `ada-qa-agent` | `.agents/scripts/create_doc_sync_note.py`, `.agents/scripts/validate_doc_sync.py` | CLI tools |
+| PM docs | `sophia-product-manager` | `marcus-ai-orchestrator` | README, USAGE, release notes | Operator guidance |
+| QA gate | `ada-qa-agent` | `eve-qa-approver` | CI template and verification | Repeatable checks |
+
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/006-continuous-documentation-sync; python3 .agents/scripts/validate_doc_sync.py --strict.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
 
 ## 7. Migration and Rollback
 
 - Migration steps:
+  1. Reconcile the feature package to the current contract.
+  2. Rebuild `execution-brief.md` for the active task shape.
+  3. Re-run spec and readiness validation before downstream execution.
 - Rollback steps:
-- Compatibility notes:
+  1. Restore the previous `006-continuous-documentation-sync` docs package if the contract upgrade proves misleading.
+  2. Revert only the additive governance sections; do not silently discard verified implementation evidence.
+- Compatibility notes: preserve the implemented behavior and existing contracts while making the feature package consumable by the current slash-command surface.
 
 ## 8. Complexity Tracking
 
-Use this section only when a constitution gate fails or a new abstraction is
-introduced.
-
 | Decision | Reason | Alternative Rejected | Review Needed |
 | --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD |
+| Upgrade `006-continuous-documentation-sync` in place instead of replacing it wholesale | Preserves existing evidence and reduces migration risk | Rewriting the entire feature package from scratch | Medium |
+
+## 9. POC Slice and Review Cadence
+
+- POC slice boundary: prove `006-continuous-documentation-sync` end-to-end using the smallest professional slice that exercises the main contract and verification path.
+- Success evidence for the slice: python3 .agents/scripts/validate_specs.py --feature .agents/specs/006-continuous-documentation-sync; python3 .agents/scripts/validate_doc_sync.py --strict plus updated review-loop and release-recommendation artifacts.
+- What remains intentionally unproven after the slice: broader product rollout, unrelated modules, and any live services the current feature explicitly left as residual risk.
+- Review cadence:
+  - Draft architecture review: after the package is reconciled to the current contract.
+  - Challenge review: after tasks, routing, and quickstart replay are concrete.
+  - Final readiness review: after verification evidence and release recommendation are updated.
+- Stop conditions: readiness fails, review findings expose hidden scope growth, or the replay steps cannot be followed from docs alone.
+- Proceed conditions: spec validation passes, execution-brief freshness passes, readiness passes, and the verification package names a clear release recommendation.

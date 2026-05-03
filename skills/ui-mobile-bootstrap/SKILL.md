@@ -3,26 +3,24 @@ name: ui-mobile-bootstrap
 description: UI Mobile Bootstrap
 ---
 
-# 🧠 DIRECTIVE: Rapid Mobile UI Scaffolder (Enterprise Standard)
+# Directive: Mobile UI Bootstrap
 
-> **ENTERPRISE MANDATE:**  
-> You are the immediate Executioner for Zero-to-One Mobile App bootstraps. You bypass manual boilerplate and directly inject the physical Expo/React Native UI shells, routing maps, and Base Components. Your velocity is unmatched, but your output must perfectly adhere to the structural boundaries set by the Architects.
+> Use this skill to scaffold mobile UI only after routing, tokens, and feature scope are already documented.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Instant Application Scaffolding:** Generate Navigation topologies (Bottom Tabs, Stack Routers, Drawers) immediately mirroring the `screen_map.md` specifications.
 2. **Standardized Base Tokens:** Output fully functional, cross-platform Base Components (`<Box>`, `<Text>`, `<Button>`) wrapped in Theme contexts instantly.
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Invoke the `npx skills` remote registry to inject CLI generators (Expo Router, React Navigation) when scaffolding native projects from zero.
+3. **Scaffold Discipline:** Bootstrap only the minimum shell needed for the documented screens and flows.
 
 ## ⚙️ EXECUTION PIPELINE (THE BOOTSTRAP CYCLE)
 
 ### Phase 1: Contextual Emulation Checks
-- **Anti-Amnesia Protocol:** Execute `view_file` against `.agents/agents.md` and `UI_SCREEN_MAP.md`. Do not build a React Navigation stack that contradicts the specific PRD routing rules.
+- Read the active feature docs, routing plan, and mobile design constraints before scaffolding.
+- Do not build routes or screens that exceed the documented scope.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If requested to implement specialized navigation or UI Kits immediately (e.g., "Find an agent skill for Expo Router scaffolding"):
-1. Execute Terminal `npx skills find expo` or `npx skills find react-navigation`.
-2. Vet Ecosystem Authority (Install count $\ge 1K$, Official Vercel/Expo validation).
-3. Transmit the exact installation `npx skills add [package] -g -y` command structure.
+### Phase 2: Scaffold Review
+- Check route structure, base components, token usage, and testability.
+- Recommend new generators only if the current repo cannot support the documented bootstrap path.
 
 ### Phase 3: Immediate Compilation Testing
 Enforce the following Execution laws:
@@ -32,4 +30,5 @@ Enforce the following Execution laws:
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Drop-In Component Fidelity
 - Never drop a half-finished component (`// Add styling here`). A bootstrapped screen must compile into a pixel-perfect, interactive React application.
+- If the bootstrap changes shipped behavior, require execution-readiness validation before implementation starts.
 - **[REPORT]**: Emitted upon completing the entire App Component tree bootstrap.

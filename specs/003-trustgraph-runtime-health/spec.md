@@ -81,3 +81,11 @@ vector search results.
 | `FR-003` | `plan.md#3` | `T001` | `verification.md#evidence` |
 | `FR-004` | `plan.md#3` | `T002` | `verification.md#evidence` |
 | `FR-005` | `plan.md#3` | `T003` | `verification.md#evidence` |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

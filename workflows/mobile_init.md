@@ -2,19 +2,29 @@
 description: Mobile Application Design & Engineering Protocol via Antigravity Mobile Design Doctrine.
 ---
 
-# 📱 SUPREME MOBILE ENGINEERING PROTOCOL (MOBILE INIT)
+# Mobile Engineering Protocol
 
-> **CORE MANDATE:** Govern the physical architecture and aesthetic engineering of Native Mobile Applications utilizing React Native (Expo), Flutter, or raw Swift. Adhere unconditionally to the Mobile Design Taste heuristics.
+> Use this workflow to initialize mobile-specific doctrine, architecture constraints, and verification expectations before proposing or changing mobile product work.
 
-// turbo-all
+## Stage 1: Mobile Doctrine Synthesis
+- Read the relevant local skill documents directly:
+  - `mobile-design-doctrine`
+  - `mobile-developer-standards`
+  - `mobile-ios-design`
+  - `mobile-android-design`
+  - `mobile-touch-animations`
+  - `react-native-architecture`
+  - `flutter-architecture`
+- Determine the framework recommendation based on platform constraints, offline behavior, team familiarity, and verification burden.
 
-## 🟦 STAGE 1: MOBILE DOCTRINE SYNTHESIS
-*🧠 Mandatory Tensors:* Execute `view_file` to deep-parse the native protocols: `mobile-design-doctrine`, `mobile-developer-standards`, `mobile-ios-design`, `mobile-android-design`, `mobile-touch-animations`, `react-native-architecture`, and `flutter-architecture`.
-*📦 Output Vector:* Algorithmically determine the optimal framework (React Native + Expo vs Flutter) heavily weighted on Offline requirements and algorithmic density.
+## Stage 2: UI Bootstrap and Design Rules
+- Read the local skills covering visual system, mobile layout, and test strategy.
+- Produce or update a mobile brand guideline artifact when the feature changes UI behavior.
+- The guideline must define spacing, typography, safe-area behavior, interaction motion, and accessibility constraints.
 
-## 🟦 STAGE 2: UI BOOTSTRAP & TAILWIND-FIRST MOBILE RENDERING
-*🧠 Mandatory Tensors:* Ingest `sleek-design-mobile-apps`, `tailwindcss-mobile-first`, `ui-mobile-bootstrap`, and `mobile-app-testing`.
-*📦 Output Vector:* Demand `maya-ui-ux-designer` to generate `MOBILE_BRAND_GUIDELINE.md`. This artifact MUST mathematically dictate handheld Margins/Padding, OS-level Safe-Area constraints (iOS Notches / Android System Bars), and Spring-Physics animation vectors utilizing Framer Motion or Reanimated.
-
-## 🟦 STAGE 3: STATE ISOLATION & NODE REGISTRATION
-*📦 Output Vector:* Deconstruct the monolithic Mobile Topology into discrete, isolated Screen boundaries. Generate physical routing topologies (`.agents/brain/` equivalents for each Screen). Broadcast this State Transition to the localized `.agents/agents.md` audit log.
+## Stage 3: State Isolation and Readiness
+- Break work into screen-level or flow-level scopes with explicit ownership and verification.
+- Record the active mobile feature workspace under `.agents/specs/` and require it to pass:
+  - `validate_specs.py`
+  - `validate_execution_readiness.py`
+- Update the root `agents.md` with the current mobile workstream status when the workflow materially changes direction.

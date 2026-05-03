@@ -85,6 +85,18 @@ be validated locally.
   TrustGraph schema migration, viewer lint cleanup.
 - Compatibility requirements: no existing workflow file may be deleted; new
   scripts must run with `python3` and no third-party packages.
+- Documentation prerequisites already reviewed: root `agents.md`,
+  `.agents/README.md`, `.agents/USAGE_GUIDE.md`, and the workflow set under
+  `.agents/workflows/`.
+- Rollback or containment expectations: this foundation must remain additive so
+  that legacy slash-command flows still operate even if feature-scoped specs are
+  not yet adopted everywhere.
+
+Out of scope:
+
+- Rewriting every legacy skill to the new tool vocabulary in the same feature.
+- Replacing the historical `/planning` package with `.agents/specs/` only.
+- Introducing network-dependent spec tooling or a hosted policy service.
 
 ## 8. Risks
 
@@ -103,3 +115,11 @@ be validated locally.
 | `FR-003` | `plan.md#3` | `T003` | `verification.md#evidence` |
 | `FR-004` | `plan.md#3` | `T004` | `verification.md#evidence` |
 | `FR-005` | `plan.md#3` | `T005` | `verification.md#evidence` |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | additive-only scope confirmed, migration fantasy removed | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and evidence obligations aligned | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to planning | spec package stable enough to create architecture artifacts | Complete |

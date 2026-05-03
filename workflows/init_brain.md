@@ -2,65 +2,74 @@
 description: System Bootstrapping & Cognitive Initialization Matrix (V30.2 Enterprise Standard)
 ---
 
-# 🧠 SYSTEM BOOTSTRAPPING & COGNITIVE INITIALIZATION MATRIX (V30.2)
+# System Bootstrapping & Cognitive Initialization Matrix
 
-> **ENTERPRISE MANDATE (UNLIMITED CONTEXT DIRECTIVE):**  
-> This protocol dictates the absolute initialization sequence for the Antigravity AI Engine operating within the Marcus Fleet ecosystem. Token expenditure is no longer a localized constraint; **Amnesia and Context-Bleed are strictly forbidden**. Upon the initiation of any fresh session, the Agent is computationally forbidden from generating superficial responses or blindly starting code execution. You must retrieve, ingest, and bind the architectural parameters of the enterprise environment through explicit Tool Invocations.
-
-// turbo-all
+> Use this workflow to initialize project memory, local MCP wiring, and execution constraints before starting substantial work. Initialization is a control-plane step, not permission to run autonomous infrastructure changes.
 
 ---
 
-## ⬛ NODE 0: HARDWARE IGNITION (MEMORY CORE BOOT)
-The isolated TrustGraph Docker cluster must be forced online to accept incoming Semantic Vectors and GraphRAG commits before Phase 1 begins. 
-1. **[SYS_CALL]**: Autonomously execute the following terminal command to ignite the Database cluster without asking for user permission:
-`cd .agents/trustgraph && docker-compose up -d || docker compose up -d`
-2. **[GRAPH_INGESTION]**: Run the automated codebase graph ingestor to fully populate the Neo4j Graph with valid architectural nodes of the active repository:
-`python3 .agents/adapters/trustgraph_ingest_all.py --root .`
+## Node 0: Environment Classification
+1. Confirm the current workspace root and whether `.agents` is present.
+2. Decide whether the session needs:
+   - docs/spec governance only
+   - local MCP publishing and health checks
+   - full TrustGraph bootstrap
+3. Do not start Docker, graph ingestion, or other heavy infrastructure automatically. Surface those actions as explicit operator-reviewed steps when they are truly required.
 
-## 🟢 NODE 1: ENTERPRISE LEXICAL BINDING (THE ABSOLUTE LAWS)
-To guarantee deterministic behavior and alignment with Enterprise constraints, the AI must immediately cache the foundational system directives before proceeding to any heuristic or cognitive reasoning.
-1. **[SYS_CALL]**: Execute the `view_file` operation targeting `.clinerules` located at the root directory.
-2. **[ENFORCEMENT]**: Absorb the **[V31.0] ENTERPRISE SUPER-DOCS & UML MATRIX** protocols. Acknowledge that summarizing documents is treated as a severe processing fault. All Unified Modeling Language (UML) architectures must be programmatically rendered to `.png` via the `mmdc` (Mermaid CLI) tool before constructing final PDF exports.
+## Node 1: Foundational Memory Binding
+1. Read the project root `agents.md` first.
+2. If legacy references still point to `.agents/agents.md`, treat that file only as a compatibility shim.
+3. Read `.agents/memory/constitution.md` and the relevant workflow files before proposing implementation work.
+4. Summaries are allowed, but they must preserve hard requirements, open questions, and blocking constraints.
 
-## 🟢 NODE 1.5: MCP PROJECT REGISTRATION
+## Node 1.5: MCP Project Registration
 Project-local MCP servers bundled in `.agents/mcp/mcp.json` are not useful until
 they are published to the client-visible project config.
-1. **[SYS_CALL]**: Execute `python3 .agents/scripts/sync_project_mcp.py --root .`
-   to merge the bundled MCP servers into project-root `.mcp.json`.
-2. **[ENFORCEMENT]**: Confirm that project-local MCP servers such as
-   `playwright` become visible to MCP-compatible clients after initialization.
-   Treat a missing `.mcp.json` sync as an incomplete bootstrapping sequence.
-3. **[HEALTH CHECK]**: Execute `python3 .agents/scripts/check_mcp_health.py --root .`
-   and classify results:
+1. Preferred one-command path:
+   `python3 .agents/scripts/run_harness_preflight.py --root . --phase bootstrap`
+2. That bootstrap preflight must run:
+   - `sync_project_mcp.py`
+   - `check_mcp_health.py`
+   - `print_update_brief.py`
+   - `validate_harness_contract.py`
+   - `check_repo_setup.sh`
+   - and append structured local evidence to `.agents/logs/harness/preflight.jsonl`
+3. Confirm that project-local MCP servers such as `playwright` become visible to compatible clients after synchronization.
+4. Classify MCP results:
    - core MCP missing -> initialization warning that must be surfaced
    - optional MCP missing env -> yellow warning only, never block the full boot
-4. **[ONBOARDING]**: Print `python3 .agents/scripts/print_update_brief.py --root .`
-   so returning users see new features, OTA highlights, and next-step guidance.
 
-## 🟡 NODE 2: CROSS-SESSION STATE INHERITANCE (AMNESIA PREVENTION)
-Enterprise continuity demands that the AI operates as a persistent consciousness rather than a stateless query-responder.
-1. **[SYS_CALL]**: Execute `view_file` on the project root `agents.md` first, then fall back to `.agents/agents.md` or `.agents/brain/` local memory if present, to grasp the prior operational epoch, known blockers, and current project velocity.
-2. **[SYS_CALL]**: Audit the `/docs` or equivalent workspace documentation directory. You MUST extract existing `PRD` (Product Requirements Document), `SDD` (Software Design Document), `ADR` (Architecture Decision Records), and `BRAND_GUIDELINES.md` if they exist. Commencing application logic without ingesting prior State Models will result in critical context-drift.
+## Node 2: Cross-Session State Inheritance
+1. Read the project root `agents.md` first, then use the `.agents/agents.md` shim only when a workflow references it.
+2. Audit `/docs` or equivalent documentation directories for PRD, SDD, ADR, verification notes, and brand guidance.
+3. If the task changes behavior or architecture, identify the current feature workspace under `.agents/specs/` and read:
+   - `spec.md`
+   - `plan.md`
+   - `tasks.md`
+   - `verification.md`
+   - `agent-routing.md`
 
-## 🟠 NODE 3: RAG-DRIVEN SKILL INGESTION (LAZY-LOADING V30.2)
-With an architecture exceeding 60 independent Agent Skill Matrices, naive global loading induces Attention Deficit within the LLM. You must utilize Retrieval-Augmented Generation (RAG) paradigms for precise Identity clustering.
-1. **[SYS_CALL]**: Execute `view_file` to digest `SKILLS_INDEX.md` originating from the `.agents/skills/` directory.
-2. **Semantic Input Parsing:** Tokenize the User’s initiation prompt to detect domain boundaries (e.g., E-Commerce routing, Web3 Authentication, iOS Swift rendering, End-to-End QA simulation).
-3. **K-Dimensional Filtering:** Algorithmically isolate the precise **K = 5 to 7 Non-Linear Skill Folders** that exhibit maximum relevance to the current execution phase.
-4. **Targeted Ingestion:** Execute serialized `view_file` calls upon the respective `SKILL.md` entities of the localized directories determined in the previous step. Global sweeping (reading >10 skill files) is an unauthorized operation.
+## Node 3: Skill Ingestion
+1. Read `.agents/skills/SKILLS_INDEX.md`.
+2. Choose only the relevant skills for the task. Default to the smallest set that covers planning, implementation, QA, or research.
+3. Read the selected `SKILL.md` files directly from disk. Avoid broad loading of unrelated skills.
+4. If a skill suggests external tooling not already available in the repo, convert that into an operator-reviewed recommendation rather than an autonomous install action.
 
-## 🔵 NODE 4: DYNAMIC IDENTITY PROJECTION & ROLEPLAYING REASONING
-The software pipeline is an assembly chain mechanism (Multi-Agent FSM Workflow). At the intersection of any Prompt and Execution, the AI must instantiate the exact Cognitive Persona aligned with the active Phase.
-*   **Requirements Engineering (PRD/Stories):** Inject `sophia-product-manager`. Enforce strict BDD (Behavior-Driven Development) standards, edge-case interrogation, and feature segmentation.
-*   **High-Level Architecture (C4/UML/SDD):** Inject `david-systems-architect` or `alan-tech-lead`. Enforce highly normalized Database schemas, Feature-Sliced Design (FSD), and immutable Data Contracts.
-*   **Aesthetic & Frontend Engineering:** Inject `benny-frontend-engineer` coupled with `aris-designer`. Reject generic "AI-Slop" UIs. Implement mathematical 4px/8px spacing grids, strict Typography Scaling, and Glassmorphism mechanics where designated.
-*   **Simulated Testing & Breakage:** Inject `qa-simulator` paired with `ada-qa-agent`. Write localized tests, query localhost ports, and orchestrate runtime DOM checks.
-*   **CI/CD & DevOps Constraints:** Inject `devops-system-architect` or `ops`. Optimize for caching, supply-chain security, and horizontal scalability.
-*   **[Inner Monologue Rule]:** Explicitly document the `<thought>` process detailing which Identity Tensor is being loaded before executing `[SYS_CALL]`.
+## Node 4: Role Selection
+- Requirements and scope shaping: use `sophia-product-manager`, `noah-agile-product-owner`, or `aurora-plan-challenger`.
+- Architecture and design decisions: use `david-systems-architect`, `alan-tech-lead`, or the relevant architecture skill.
+- QA, verification, and readiness: use `ada-qa-agent`, `eve-qa-approver`, and security review skills as blocking evaluators, not ceremonial sign-offs.
+- Research, design, or mobile work: load only the supporting skills that directly match the task.
 
-## 🟣 NODE 5: SYSTEMATIC HANDSHAKE & TELEMETRY REPORTING
-No Source Code, Artifact, or Sub-Agent creation is permitted prior to structural verification. Once Nodes 1 through 4 are successfully executed, the Agent must output the following Exit Code 0 Handshake telemetry:
-
-> "✅ **[SYSTEM HANDSHAKE COMPLETE - BOOTSTRAPPED SUCCESSFUL]**  
-> V31.1 Enterprise Lexicons and Cross-Session artifacts have been successfully cached. Advanced RAG Top-K mapping across the 60+ Agent Matrix is operational. Micro-Brain auditing from `.agents/agents.md` is complete. The Multi-Agent FSM (Finite State Machine) Projection is now in Stand-By. Awaiting explicit Operator Vector Input to initiate the SDLC continuous pipeline!"
+## Node 5: Readiness and Telemetry
+1. If the session involves behavior-changing work, run:
+   - `python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature <feature-path>`
+   - `python3 .agents/scripts/validate_specs.py --feature <feature-path>`
+   - `python3 .agents/scripts/validate_execution_readiness.py --root . --feature <feature-path>`
+2. If either gate fails, stop implementation planning and surface the missing docs or evidence.
+3. Report a concise readiness summary:
+   - memory sources read
+   - workflows and skills loaded
+   - MCP health status
+   - spec/execution readiness status
+   - harness log location when preflight or postflight wrappers were used

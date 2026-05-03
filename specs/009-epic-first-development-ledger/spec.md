@@ -101,3 +101,11 @@ keeping existing V30 flat ledgers readable.
 | `FR-006` | `plan.md#3-implementation-plan` | `T004`, `T005` | spec validation |
 | `FR-007` | `plan.md#3-implementation-plan` | `T007` | doc sync negative smoke |
 | `FR-008` | `plan.md#3-implementation-plan` | `T007` | development docs negative smoke |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

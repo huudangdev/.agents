@@ -56,11 +56,9 @@ flowchart TD
 
 ## 4. Contracts
 
-List files under `contracts/` and summarize each contract.
-
 | Contract | Purpose | Producer | Consumer |
 | --- | --- | --- | --- |
-| `contracts/development-docs-contract.md` | Defines manifest, bucket, metadata, and validation contract | `/develop` | validators and future agents |
+| `development-docs-contract.md` | Feature-specific contract consumed by the current slash-command surface. | feature owner | `/develop`, `/quick_fix`, and reviewers |
 
 ## 5. Data Model
 
@@ -69,28 +67,47 @@ Entities are `DevelopmentManifest`, `DevelopmentBucket`, and
 
 ## 6. Agent Routing
 
-Summarize ownership from `agent-routing.md`.
-
 | Workstream | Primary Agent | Output | Verification |
 | --- | --- | --- | --- |
 | Workflow contract | `marcus-ai-orchestrator` | `/develop` update | `validate_specs.py` |
 | Knowledge ontology | `knowledge-work-architecture` | templates and bucket rules | development validator |
 | QA gate | `ada-qa-agent` | validator and CI rule | positive/negative validation |
 
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/005-develop-knowledge-ledger; python3 .agents/scripts/validate_development_docs.py --strict-counts.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
+
+Execution monitoring:
+
+- Blocking gates before implementation: spec validation, execution-brief rebuild, and readiness validation must all pass.
+- Evidence checkpoints during implementation: python3 .agents/scripts/validate_specs.py --feature .agents/specs/005-develop-knowledge-ledger; python3 .agents/scripts/validate_development_docs.py --strict-counts.
+- Escalation condition after repeated failure: if the same validator or verification command fails three times without new evidence, stop widening scope and repair the package or code path that actually failed.
+
 ## 7. Migration and Rollback
 
-- Migration steps: add docs contract and validator; future projects opt in when
+add docs contract and validator; future projects opt in when
   `/develop` runs and creates `/docs/development/`.
-- Rollback steps: remove the V30.2 docs gate and templates if it blocks a
+ remove the V30.2 docs gate and templates if it blocks a
   workflow unexpectedly; source code generation remains unaffected.
-- Compatibility notes: page notes can be optional for non-UI tasks through
+ page notes can be optional for non-UI tasks through
   manifest minimum counts.
 
 ## 8. Complexity Tracking
 
-Use this section only when a constitution gate fails or a new abstraction is
-introduced.
-
 | Decision | Reason | Alternative Rejected | Review Needed |
 | --- | --- | --- | --- |
-| TBD | TBD | TBD | TBD |
+| Upgrade `005-develop-knowledge-ledger` in place instead of replacing it wholesale | Preserves existing evidence and reduces migration risk | Rewriting the entire feature package from scratch | Medium |
+
+## 9. POC Slice and Review Cadence
+
+- POC slice boundary: prove `005-develop-knowledge-ledger` end-to-end using the smallest professional slice that exercises the main contract and verification path.
+- Success evidence for the slice: python3 .agents/scripts/validate_specs.py --feature .agents/specs/005-develop-knowledge-ledger; python3 .agents/scripts/validate_development_docs.py --strict-counts plus updated review-loop and release-recommendation artifacts.
+- What remains intentionally unproven after the slice: broader product rollout, unrelated modules, and any live services the current feature explicitly left as residual risk.
+- Review cadence:
+  - Draft architecture review: after the package is reconciled to the current contract.
+  - Challenge review: after tasks, routing, and quickstart replay are concrete.
+  - Final readiness review: after verification evidence and release recommendation are updated.
+- Stop conditions: readiness fails, review findings expose hidden scope growth, or the replay steps cannot be followed from docs alone.
+- Proceed conditions: spec validation passes, execution-brief freshness passes, readiness passes, and the verification package names a clear release recommendation.

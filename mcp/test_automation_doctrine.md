@@ -14,4 +14,4 @@
 ## 3. Workflow Vận Hành Cùng MCP
 - **Nhờ Cậy Agent `qa-simulator`:** Trong thư mục `skills/qa-simulator`, chức năng test là trọng tâm. Gọi Agent QA đọc thư mục `.agents/brain/` nội bộ để lập kịch bản Edge Cases.
 - Sau khi viết xong `**.test.ts`, Agent phải dùng Tool OS để thực thi `npx playwright test --ui=false` và nhận lại report terminal. 
-- Mọi Bug Terminal đều phải phân tích nguyên nhân `Root Cause` vào file `.agents/agents.md` trước khi sửa.
+- Mọi Bug Terminal đều phải phân tích nguyên nhân `Root Cause` vào root `agents.md` trước khi sửa. Nếu workflow cũ vẫn trỏ vào `.agents/agents.md`, coi đó là compatibility shim chứ không phải source-of-truth.

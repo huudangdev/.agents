@@ -83,3 +83,11 @@ marker remains unless the operator accepts the risk.
 | --- | --- | --- | --- |
 | `FR-001` | `plan.md#3.2` | `T001` | negative validation smoke |
 | `FR-003` | `plan.md#3.2` | `T002` | doc sync validation smoke |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

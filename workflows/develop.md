@@ -2,19 +2,42 @@
 description: Marcus Fleet Enterprise SDLC Phase 3 (Code Execution, TDD, & Continuous Delivery)
 ---
 
-# ⚙️ EXECUTION FACTORY MATRIX (PHASE 3)
+# Execution Factory Matrix (Phase 3)
 
-> **CORE ARCHITECTURE MANDATE:**  
-> This operational protocol governs the Code Generation, Testing, Documentation, and Deployment phase of the SDLC. The Engine will linearly execute instructions exclusively derived from the pre-approved schemas residing in the `/docs` directory and any accepted `.agents/specs/<feature-id>/` workspace. Blind-guessing software logic without reading the PRD/SDD is a violation of the Deterministic Protocol.
-
-// turbo-all
+> This workflow governs code generation, testing, documentation, and deployment. It must use the smallest credible context set for the task at hand. Reading everything is not rigor; it is routing failure.
 
 ---
 
 ## ⬛ SYSTEMIC MEMORY & STATE INHERITANCE (ANTI-AMNESIA PROTOCOLS)
 
 <state_propagation_boundary>
-**DOGMATIC STATE PROPAGATION:** The Physical Construction sequence is physically incapable of initiating unless `/docs/BRAND_GUIDELINES.md`, `/docs/planning/diagrams.md`, `/docs/knowledge.md`, `/docs/prd.md`, `/docs/tasks.md`, `/docs/decisions.md`, and `/docs/memory.md` files have been dynamically read and ingested into the LLM context buffer. If `/docs/research/` or a relevant `.agents/specs/<feature-id>/` workspace exists, those artifacts must be read as supplemental source-of-truth context before implementation. Failure to read pre-requisite artifacts yields an immediate `Exit Code 1`.
+**MINIMUM VIABLE CONTEXT:** `/develop` must not ingest the whole planning corpus by default.
+Read only the artifacts needed for the active write scope:
+
+- Always read:
+  - root `agents.md`
+  - `.agents/memory/constitution.md`
+  - the active `.agents/specs/<feature-id>/execution-brief.md`
+- Inside `execution-brief.md`, read these subsections first and treat them as
+  the routing contract for the current slice:
+  - `### Task Shape Decision`
+  - `### Required Reads`
+  - `### Forbidden Default Reads`
+  - `### Expansion Triggers`
+- Always read the `docs/development/` notes explicitly listed under
+  `execution-brief.md#Development Ledger Context`
+- Expand into the active `.agents/specs/<feature-id>/spec.md`, `plan.md`,
+  `tasks.md`, `verification.md`, `quickstart.md`, and `agent-routing.md` only
+  when the brief shows that the write scope or failing evidence requires it
+- Read `/docs` selectively:
+  - UI-only changes: relevant brand, page, feature, and QA docs only
+  - API/data changes: relevant contracts, data-model, module, and rollback docs only
+  - architecture/refactor changes: relevant diagrams, decisions, and affected module docs only
+- Do not read unrelated `/docs` files "just in case".
+- If a document cannot materially change the implementation decision, skip it.
+- If the execution brief is missing or stale, stop and rebuild it before code work.
+- Do not read the entire `docs/development/` tree by default. Read the exact
+  epic/feature/module/page/task notes named by the brief for the current slice.
 </state_propagation_boundary>
 
 <brownfield_reconcile_gate>
@@ -26,6 +49,66 @@ reality, or quality gates would fail. In those cases the only valid next step
 is `/doc_reconcile`, followed by strict validation, then resume `/develop` from
 the reconciled docs package.
 </brownfield_reconcile_gate>
+
+<spec_execution_gate>
+**SPEC EXECUTION GATE:** `/develop` MUST abort before behavior-changing edits if
+the selected `.agents/specs/<feature-id>/` workspace fails
+`python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>`.
+The remediation path is to repair the spec, plan, tasks, and verification
+package first. This gate also fails when `execution-brief.md` is stale relative
+to the spec package or matched `docs/development/` notes. Code work is
+downstream of validated execution artifacts, not a substitute for them.
+Before behavior-changing edits, prefer the replayable wrapper:
+`python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>`.
+That wrapper appends structured local evidence under `.agents/logs/harness/`
+so the active chain and first failing command can be reviewed without scraping
+raw console output.
+</spec_execution_gate>
+
+<scope_routing_gate>
+**SCOPE ROUTING GATE:** `/develop` must classify the task before loading skills or
+files:
+
+- `UI-only`: component, page, style, accessibility, copy, animation
+- `Frontend behavior`: client state, form logic, browser interaction
+- `Backend/API`: routes, auth, services, queues, persistence
+- `Data/contract`: schema, migration, SQL, Supabase, ORM, analytics events
+- `Architecture/refactor`: boundaries, decomposition, cross-module concerns
+
+Hard rules:
+
+- A `UI-only` or `Frontend behavior` task must not inspect Supabase, database
+  schemas, SQL, migrations, or analytics tooling unless the active spec or
+  failing evidence explicitly points to a data-contract cause.
+- A `Backend/API` or `Data/contract` task does not need to ingest visual design
+  docs unless user-facing behavior or QA evidence depends on them.
+- If the task classification changes mid-run, record the reason in
+  `verification.md` before widening context.
+</scope_routing_gate>
+
+<skill_budget_gate>
+**SKILL BUDGET GATE:** `/develop` must load the smallest skill set that can
+finish the task.
+
+- Default target: 2 to 4 skills.
+- UI-only work: prefer frontend/design/QA skills only.
+- Backend/data work: prefer architecture/backend/QA/security skills only.
+- Do not summon analytics, RAG, orchestration, or cloud skills unless the spec,
+  tasks, or failing evidence names that surface explicitly.
+</skill_budget_gate>
+
+<routing_regression_gate>
+**ROUTING REGRESSION GATE:** When `/develop` behavior is changed or a new
+release is being evaluated, run the task-shape checks in:
+
+```text
+.agents/ROUTING_REGRESSION_CHECKLIST.md
+```
+
+If a narrow task drifts into unrelated database, analytics, infrastructure, or
+full-repo context without evidence, treat that as a routing regression and fix
+the workflow or skill index before trusting the release.
+</routing_regression_gate>
 
 ---
 
@@ -191,22 +274,56 @@ added.
 
 ---
 
-## 🔲 DAG TOPOLOGY: CHRONOLOGICAL EXECUTION NODES (PHASE 3)
+## Context Routing Matrix
 
-### 🟡 NODE 4: EXECUTION KNOWLEDGE LEDGER BOOTSTRAP
-*🔗 Input Vector:* `/docs/tasks.md`, `.agents/specs/<feature-id>/tasks.md`, `/docs/planning/diagrams.md`
-*🧠 Injected Tensors:* `marcus-ai-orchestrator`, `knowledge-work-architecture`, `development-ledger-architect`, `sophia-product-manager`
-*📦 Emitted Artifacts:* `/docs/development/development_manifest.json`, `/docs/development/index.md`, epic-first Markdown notes.
+Before any code read beyond the active files, choose one route:
+
+| Task Shape | Required Reads | Preferred Skills | Forbidden Default Reads |
+| --- | --- | --- | --- |
+| UI-only | feature spec package, relevant page/feature docs, target components | `benny-frontend-engineer`, `maya-ui-ux-designer`, `ada-qa-agent` | Supabase, SQL, migrations, analytics, cloud configs |
+| Frontend behavior | feature spec package, target components/hooks, relevant QA docs | `benny-frontend-engineer`, `alan-tech-lead`, `ada-qa-agent` | unrelated backend modules, data warehouse, cloud infra |
+| Backend/API | feature spec package, contracts, data-model, affected services/tests | `alan-tech-lead`, `david-systems-architect`, `ada-qa-agent` | brand/theme docs unless UI/API coupling demands it |
+| Data/contract | feature spec package, contracts, schema/model docs, rollback docs | `david-systems-architect`, `alan-tech-lead`, `cipher-security-approver` | unrelated page/component docs |
+| Architecture/refactor | feature spec package, affected modules, decisions, diagrams | `david-systems-architect`, `alan-tech-lead`, `refactor-plan` | full repo scans without a bounded module list |
+
+Escalate instead of widening context blindly when:
+
+- the active feature workspace does not identify the affected write scope
+- the failing evidence contradicts the chosen task shape
+- the same hypothesis fails 3 times without new information
+
+## Chronological Execution Nodes (Phase 3)
+
+### Node 4: Execution Knowledge Ledger Bootstrap
+*Input Vector:* active feature workspace, targeted `/docs` notes only
+*Injected Skills:* routing, documentation, PM, and only the implementation skills needed by the chosen task shape
+*Emitted Artifacts:* `/docs/development/development_manifest.json`, `/docs/development/index.md`, epic-first Markdown notes.
 **[Execution Protocol]:** Decompose approved work into durable implementation documentation before code mutation. Each agent receiving a write scope must own at least one task note and, when applicable, one module/feature/page note under the correct `E-###-*` directory. Notes must include YAML frontmatter, `owner_skill`, `parent_epic` for child notes, `source_trace`, and `verification`.
 Before code mutation, write the Story/Priority, Relationship Map, Issues, and
 Work Log entries needed to prove the agent understands parent-child and sibling
 feature relationships.
+If `execution-brief.md#Development Ledger Context` names no matching ledger
+notes for the active slice, stop and either:
 
-### 🔵 NODE 5 & 6: ADVERSARIAL QA & TDD BACKEND SCAFFOLDING
-*🔗 Input Vector:* `/docs/planning/diagrams.md`, `/docs/knowledge.md`, `/docs/prd.md`, `/docs/development/E-###-*/modules/*.md`, `/docs/development/E-###-*/features/*.md`
-*🧠 Injected Tensors:* `eve-qa-approver`, `alan-tech-lead`, `ada-qa-agent`
-*📦 Emitted Artifacts:* Database migrations, route handlers, integration suites, updated module/feature/task notes.
-**[Execution Protocol]:** Initialize Backend Infrastructure via Test-Driven Development (TDD). Generate isolated Unit-Test stubs detailing Boundary-Value handling and Fault Injection (Negative Path APIs). Validate API schemas against Null-value crashes before writing business logic. Update the relevant module, feature, and task notes with code paths, public contracts, and command evidence.
+- create them with `python3 .agents/scripts/create_development_docs.py --name "<epic-or-feature-name>" --feature-id "<feature-id>" --epic-number 001 --child-number 001 --task-number 001`, or
+- route to `/doc_reconcile` when the project is brownfield or the ledger is stale.
+
+Do not begin code edits until the required development-ledger notes exist and
+have the minimum planned write scope.
+
+### Node 5: Route-Specific Implementation
+*Input Vector:* only the docs, code, and tests needed by the chosen task shape
+*Injected Skills:* route-specific implementation and QA skills
+*Emitted Artifacts:* changed code, tests, and updated notes for the active slice.
+**[Execution Protocol]:**
+
+- UI-only/frontend work starts from target components, page notes, and verification evidence.
+- Backend/data work starts from contracts, services, models, and verification evidence.
+- Do not route all work through backend scaffolding by default.
+- If a feature-scoped workspace exists, use `execution-brief.md` as the primary
+  entrypoint and expand into full spec/docs only when the current write scope or
+  failing evidence requires it.
+- Update only the relevant module, feature, page, and task notes with code paths, public contracts, and command evidence.
 
 ### 🔁 NODE 6.5: DOC SYNC CHECKPOINT
 *🔗 Input Vector:* Git diff, changed source files, `/docs`, `/docs/development/`
@@ -217,9 +334,9 @@ Strict validation also rejects shallow or template-only sync notes, missing
 Mermaid diagrams, and code changes without a global `/docs` update.
 Strict validation also rejects missing docs-before-code evidence.
 
-### 🟣 NODE 7: ZERO-DOWNTIME LIVE SIMULATION (FSM FEEDBACK LOOP)
-*🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/planning/screens.md`, `/docs/development/E-###-*/pages/*.md`
-*🧠 Injected Tensors:* `benny-frontend-engineer`, `qa-simulator`, `playwright-test`
+### Node 6: Zero-Downtime Live Simulation
+*Input Vector:* relevant page/component docs and QA expectations only when the route is user-facing
+*Injected Skills:* frontend and QA simulation skills only when needed
 **[Execution Protocol]:** Spawning the Daemon Simulator: Execute the bash command `npm run dev` or equivalent to mount a localized Runtime Protocol.
 - **Bi-Directional Mutation Feedback:**
   - `benny-frontend-engineer` algorithmically renders UI Components enforcing predefined strict Spatial parameters based on `BRAND_GUIDELINES.md`.
@@ -227,7 +344,7 @@ Strict validation also rejects missing docs-before-code evidence.
   - Page notes must be updated with route, states, interactions, accessibility checks, screenshots/manual evidence, and responsive verification.
   - **The V30 Circuit Breaker:** If a specific rendering loop generates $\ge 3$ sequential compile errors, gracefully terminate the Node, flag a Terminal Red-Alert, and request Human Operator intervention.
 
-### 🟤 NODE 8: CONTINUOUS DEPLOYMENT CLOSURE (CI/CD PIPELINE & CAB CABIN)
+### Node 7: Continuous Deployment Closure
 *🔗 Input Vector:* Validated Git Branch
 *🧠 Injected Tensors:* `devops-system-architect`, `ops`
 **[Execution Protocol]:** Define End-to-End Test suites validating User Lifecycle (SDLC). 
@@ -235,8 +352,9 @@ Strict validation also rejects missing docs-before-code evidence.
 - **Enterprise Webhook:** Resolve port-conflicts cleanly by terminating NODE 7 background tasks securely. Append Git Commit Hashes directly relating to the Jira Ticket payload. Draft Infrastructure as Code (IaC) for AWS/Vercel/Cloudflare propagation.
 - **Documentation Gate:** Execute `python3 .agents/scripts/validate_development_docs.py --strict-counts` when `/docs/development/` exists. Completion is blocked until the implementation notes and verification evidence are coherent.
 - **Continuous Sync Gate:** Execute `python3 .agents/scripts/validate_doc_sync.py --strict` when source files changed. Completion is blocked until changed code is referenced by a sync note and affected docs have been reviewed.
+- **Harness Postflight Gate:** Before final closeout, prefer `python3 .agents/scripts/run_harness_postflight.py --root . --phase execution --feature .agents/specs/<feature-id>` so command-surface, routing, freshness, and readiness checks replay in one deterministic chain.
 
-### ⚫ NODE 9: MICRO-BRAIN HISTORICAL ARCHIVING
+### Node 8: Historical Archiving
 *🔗 Input Vector:* Runtime Log / Git Diff Context
 *🧠 Injected Tensors:* Internal State Machine (Sophia Butler Node)
 **[Execution Protocol]:** Audit and compress the entire Session DAG Execution Path. Write architectural shifts and codebase metrics natively to `agents.md` utilizing append-only updates. The final report must list changed code paths and the matching `/docs/development/` notes. Next, execute `python3 .agents/adapters/trustgraph_write.py --run_id "ExecuteRun" --status "success" --target "Project" --skills "all" --score 0.9 --reasoning "Completed backend and frontend integration with development knowledge ledger"` to commit the entire Session Object to the GraphRAG Database. Signal total completion to Operator.

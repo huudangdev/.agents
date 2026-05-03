@@ -74,10 +74,25 @@ flowchart TD
 | --- | --- | --- | --- |
 | `contracts/spec-workspace.md` | Defines required files and pass/fail gates for a feature workspace. | `david-systems-architect` | All workflow agents |
 
+Contract rules applied in this feature:
+
+- The workspace contract is filesystem-native and must remain readable without a
+  service dependency.
+- The validator is the compatibility check for the workspace contract.
+- Any future expansion must keep numbered feature directories and required file
+  names stable unless a migration note is added.
+
 ## 5. Data Model
 
 The data model is filesystem-based. Core entities: Constitution, Feature,
 SpecArtifact, Task, VerificationEvidence.
+
+Validation and lifecycle notes:
+
+- `Feature` owns one immutable feature id and one mutable documentation package.
+- `SpecArtifact` moves from draft to accepted only after validation and review.
+- `VerificationEvidence` must be append-only enough to preserve what command was
+  run, when it was run, and what residual risk remained.
 
 ## 6. Agent Routing
 
@@ -87,6 +102,16 @@ SpecArtifact, Task, VerificationEvidence.
 | Architecture | `david-systems-architect` | `plan.md`, `contracts/` | constitution gates |
 | Orchestration | `marcus-ai-orchestrator` | `agent-routing.md` | owners and write scopes |
 | QA | `ada-qa-agent` | `verification.md` | evidence table |
+
+Execution monitoring:
+
+- Blocking gates before implementation: `spec.md` clarity, contracts present,
+  verification plan named, and no placeholder-heavy artifacts in the workspace.
+- Evidence checkpoints during implementation: feature creation, validator pass,
+  workflow population, and `agents.md` memory update.
+- Escalation condition after repeated failure: if validation fails repeatedly
+  for the same unresolved artifact without new edits, stop and repair the spec
+  package before continuing.
 
 ## 7. Migration and Rollback
 
@@ -105,9 +130,29 @@ SpecArtifact, Task, VerificationEvidence.
 
 ## 8. Complexity Tracking
 
-Use this section only when a constitution gate fails or a new abstraction is
-introduced.
+This section records intentional abstraction or governance tradeoffs rather than
+acting as a placeholder for future thinking.
 
 | Decision | Reason | Alternative Rejected | Review Needed |
 | --- | --- | --- | --- |
 | Add new spec scripts instead of installing upstream Spec Kit CLI | Keep Marcus Fleet self-contained and offline-friendly | Pulling external CLI into the project | Low |
+
+## 9. POC Slice and Review Cadence
+
+- POC slice boundary: create one feature workspace, populate all required docs,
+  pass strict validators locally, and prove the workflows can reference the
+  package without legacy tool vocabulary.
+- Success evidence for the slice: validators pass, workflow docs are updated,
+  sample workspace artifacts are concrete, and readiness gate passes.
+- What remains intentionally unproven after the slice: full migration of every
+  historical skill and live execution against a real application codebase.
+- Review cadence:
+  - Draft architecture review: after templates and validator contract are
+    defined.
+  - Challenge review: after workflow docs and routing model are populated.
+  - Verification readiness review: after the sample workspace is reconciled to
+    the same stricter rules.
+- Stop conditions: repeated validator failures without new artifact edits or a
+  need to migrate the broader repo to keep this feature valid.
+- Proceed conditions: spec package complete, review loop closed, sample feature
+  passes both `validate_specs.py` and `validate_execution_readiness.py`.

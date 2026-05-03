@@ -5,7 +5,7 @@ description: Trigger OTA Upgrade from Github Repository while preserving agents.
 # 🔄 ANTIGRAVITY OTA UPGRADE PROTOCOL
 
 > **ARCHITECTURAL MANDATE:**  
-> This protocol downloads the latest Antigravity AI Engine (`.agents`) from the centralized `main` branch. It utilizes non-destructive `rsync` vectors to patch the intelligence fleet (new Slash Commands, new Prompts, updated UI protocols) while explicitly protecting the local `.agents/agents.md` memory construct and `trustgraph/data/` database.
+> This protocol downloads the latest Antigravity AI Engine (`.agents`) from the centralized `main` branch. It utilizes non-destructive `rsync` vectors to patch the intelligence fleet (new Slash Commands, new Prompts, updated UI protocols) while explicitly protecting the local `agents.md` memory construct (and preserving the legacy `.agents/agents.md` shim when present) and `trustgraph/data/` database.
 
 // turbo-all
 

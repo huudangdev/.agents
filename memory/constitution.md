@@ -48,6 +48,10 @@ written. Tests may be automated or manual, but they must be concrete and
 repeatable. A task cannot be marked complete unless `verification.md` contains
 the command, result, date, and residual risk.
 
+Implementation must remain blocked while verification only contains placeholders,
+generic prose, or evidence-free statements such as "works", "done", or "looks
+good". Evidence must be requirement-linked, not merely activity-linked.
+
 ## Article V: Security and Execution Boundaries
 
 Agent-generated terminal activity must use bounded executors and project-local
@@ -79,7 +83,49 @@ Significant work must produce durable memory:
 If TrustGraph is offline, the deferred state must be treated as acceptable only
 when the filesystem memory was updated.
 
-## Article IX: Amendment Process
+## Article IX: Execution Readiness Gate
+
+Implementation-oriented workflows must not begin behavior-changing execution
+unless the feature workspace passes spec validation and the execution package is
+ready:
+
+- `spec.md` contains explicit scope boundaries and no unresolved clarifications
+  unless explicitly accepted.
+- `plan.md` contains constitution gates, rollback, and monitoring notes.
+- `tasks.md` contains owner, write scope, verification, docs target, and sync
+  expectation for each executable item.
+- `verification.md` contains a concrete verification plan and execution gates.
+
+If any of these are shallow, placeholder-only, or contradictory, the system
+must stop and repair the documentation package before code changes continue.
+
+## Article X: Mandatory Review Loop
+
+Every non-trivial feature package must survive at least one documented review
+loop before implementation starts:
+
+- a scope or product challenge round
+- an architecture or contract challenge round
+- an evaluator-driven verification review
+
+The outcome of each round must be recorded in the feature package, not implied
+through chat history. A feature that skips review loops is not execution-ready,
+even if all required files exist.
+
+## Article XI: POC Rehearsal Before Broad Execution
+
+For non-trivial work, the package must define and rehearse the smallest credible
+professional POC slice before broader execution proceeds. The rehearsal must:
+
+- exercise a real validation path
+- capture replayable evidence
+- record stop conditions and proceed conditions
+- end in a release recommendation of `GO`, `GO WITH RESIDUAL RISK`, or `NO-GO`
+
+If the POC slice cannot be rehearsed from the docs package, the docs package is
+incomplete.
+
+## Article XII: Amendment Process
 
 Constitution changes require:
 
@@ -92,3 +138,8 @@ Constitution changes require:
 - `2026-04-20`: Initial constitution created to align Marcus Fleet with
   specification-driven development while preserving TrustGraph, skills, and
   enterprise governance workflows.
+- `2026-05-02`: Added explicit execution-readiness gate and evidence quality
+  rule to tighten spec and verification enforcement before implementation.
+- `2026-05-03`: Added mandatory review-loop and POC-rehearsal articles so
+  feature packages must survive challenge, evaluator review, and go/no-go
+  rehearsal before broad execution.

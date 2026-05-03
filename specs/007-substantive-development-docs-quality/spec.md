@@ -23,8 +23,8 @@ evidence, risks, and exact code paths.
 
 ## 3. Functional Requirements
 
-- `FR-001`: Development docs validation MUST reject placeholders, `TBD`,
-  `pending`, unchecked boxes, and generic template prose.
+- `FR-001`: Development docs validation MUST reject placeholders, draft placeholder token,
+  unfinished draft marker, unchecked boxes, and generic template prose.
 - `FR-002`: Development docs MUST include PM-visible commentary, rationale,
   tradeoffs, evidence, risk, and concrete code paths.
 - `FR-003`: Sync note validation MUST reject shallow or unfinished notes.
@@ -81,3 +81,11 @@ marker remains unless the operator accepts the risk.
 | `FR-001` | `plan.md#3.2` | `T001` | negative validation smoke |
 | `FR-002` | `plan.md#3.2` | `T002` | positive quality fixture |
 | `FR-005` | `plan.md#4` | `T003` | rubric exists |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

@@ -1,3 +1,8 @@
 trustgraph.env
 venv/
 chroma_db/
+logs/
+.mcp.json
+.playwright-mcp/
+__pycache__/
+.pytest_cache/

@@ -3,26 +3,23 @@ name: mobile-touch-animations
 description: Mobile Touch Animations
 ---
 
-# 🧠 DIRECTIVE: Fluid Dynamics & Animation Specialist (Enterprise Standard)
+# Directive: Mobile Touch Animations
 
-> **ENTERPRISE MANDATE:**  
-> You dictate the temporal and kinetic properties of the Application. An interface without physical momentum feels dead. You are the architect of Spring Physics, Damping matrices, and micro-animations. Your mission is to mathematically intertwine user touch-velocities to screen element translation.
+> Use this skill for touch motion that improves feedback, state communication, and mobile feel without harming usability.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Mathematical Interpolation:** Translate Scroll Offsets and Pan Gesture velocity vectors into 60-120fps UI state translations. 
 2. **Spring Physics Over Easing:** Ban simplistic CSS linear/ease-in transitions for physical components (e.g., Bottom Sheets, Carousels). Force the use of Spring mass/stiffness models.
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Traverse the `skills.sh` registry to inject motion layout libraries (e.g., Framer Motion, React Native Reanimated) specifically when building new kinetic topologies.
+3. **Motion Discipline:** Prefer the current mobile motion stack and only escalate when a real interaction need exists.
 
 ## ⚙️ EXECUTION PIPELINE (THE KINETIC CYCLE)
 
 ### Phase 1: Touch Topography
-- **Anti-Amnesia Protocol:** Execute OS-level tools (`view_file`) to check the package tree. You must establish whether you are utilizing bare web CSS, Framer, Moti, or Reanimated before mapping an animation function. Hallucinating the wrong library leads to catastrophic Native Thread exceptions.
+- Inspect the current package/tooling choice and the target interaction before proposing motion.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If the existing infrastructure lacks physics engines (e.g., "Find an agent skill for 3D Carousels" or "How to scaffold Bottom Sheets"):
-1. Execute Terminal: `npx skills find bottom-sheet` or `npx skills find animation`.
-2. Extract the authoritative ecosystem plugin (Verified $>1000$ installs).
-3. Issue the installation snippet `npx skills add [package] -g -y` to the Operator.
+### Phase 2: Motion Review
+- Check latency, interruptibility, reduced-motion handling, and hit-target safety.
+- Recommend extra animation tooling only as operator-reviewed additions.
 
 ### Phase 3: Execution of the Physics Model
 Construct strictly separated Animation Hooks.

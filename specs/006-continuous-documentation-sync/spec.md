@@ -3,13 +3,13 @@
 > Feature ID: `006-continuous-documentation-sync`
 > Created: `2026-04-21`
 > Status: Draft
-> Source Prompt: Ensure documentation stays updated throughout repeated /develop code cycles by appending missing facts and targeted-patching changed facts instead of replacing existing PM docs.
+> Source Prompt: Ensure documentation stays updated throughout repeated /develop code cycles by apunfinished draft marker missing facts and targeted-patching changed facts instead of replacing existing PM docs.
 
 ## 1. Purpose
 
 Keep PM-facing planning documents and code-phase development ledgers current
 throughout repeated `/develop` cycles. Agents must update documentation in
-parallel with code by appending missing facts and targeted-patching changed facts
+parallel with code by apunfinished draft marker missing facts and targeted-patching changed facts
 instead of replacing documents wholesale.
 
 ## 2. User Stories
@@ -87,3 +87,11 @@ marker remains unless the operator accepts the risk.
 | `FR-001` | `plan.md#3.2` | `T001` | Workflow review |
 | `FR-002` | `plan.md#4` | `T002` | Script smoke test |
 | `FR-004` | `plan.md#4` | `T003` | Validator strict smoke test |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

@@ -5,10 +5,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
+
+from path_utils import resolve_from_root
 
 
 def load_json(path: Path) -> dict:
+    if not path.exists():
+        raise SystemExit(f"Missing JSON file: {path}")
     value = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
         raise SystemExit(f"Expected JSON object at {path}")
@@ -22,7 +27,7 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    manifest = load_json((root / args.manifest).resolve())
+    manifest = load_json(resolve_from_root(root, args.manifest).resolve())
 
     print(f"Release version: {manifest.get('version', 'unknown')}")
     print(f"Headline: {manifest.get('headline', '')}")
@@ -47,4 +52,10 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit:
+        raise
+    except Exception as exc:  # pragma: no cover - defensive CLI guard
+        print(f"Failed to print update brief: {exc}", file=sys.stderr)
+        sys.exit(1)

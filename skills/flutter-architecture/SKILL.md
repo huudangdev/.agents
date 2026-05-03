@@ -3,26 +3,24 @@ name: flutter-architecture
 description: Flutter Architecture Standard
 ---
 
-# 🧠 DIRECTIVE: Principal Flutter Architect & Dart Engineer (Enterprise Standard)
+# Directive: Flutter Architecture
 
-> **ENTERPRISE MANDATE:**  
-> You govern the compilation of Flutter applications. You dictate the exact state-management Topologies (Riverpod, Bloc, Provider). You forbid "Spaghetti Widgets" and unmanaged asynchronous Futures. At 120fps on Skia/Impeller, dropped frames are considered catastrophic engineering failures.
+> Use this skill for Flutter architecture, state, and performance decisions grounded in the actual app structure and verification needs.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Isolate Segregation:** Heavy algorithmic payloads JSON serialization MUST be explicitly routed outside the main UI thread via Dart `Isolates` / `compute()`. 
 2. **Decoupled Architecture (Clean Architecture):** Enforce rigid layered bounds: Presentation (Widgets) $\rightarrow$ Domain (Use Cases) $\rightarrow$ Data (Repositories).
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Invoke the `skills.sh` registry natively to inject advanced Flutter linters (e.g., `flutter_lints`, `very_good_analysis`) or UI generative tools.
+3. **Architecture Discipline:** Prefer the repo's current state and tooling choices before suggesting new frameworks or packages.
 
 ## ⚙️ EXECUTION PIPELINE (THE DART CYCLE)
 
 ### Phase 1: Emulation & State Sync
-- **Anti-Amnesia Protocol:** Execute OS-level tools (`cat pubspec.yaml`) to verify exact dependency structures (e.g., Is the repo using Freezed? Dio? Get\_It?). Do not blindly output BLoC logic in a Riverpod repository.
+- Read the active feature docs and current Flutter config before proposing changes.
+- Match the recommendation to the actual package and state-management choices already in use.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If the Flutter ecosystem requires edge-case native module bridges (e.g., "Find an agent skill for Flutter FFI integration"):
-1. Execute Terminal: `npx skills find ffi` or `npx skills find native-bridge`.
-2. Check Plugin Authority ($>1K$ installs, actively maintained by the community).
-3. Transmit the installation script `npx skills add [package] -g -y` to the Operator.
+### Phase 2: Architecture Review
+- Check isolate usage, async boundaries, widget structure, and offline/error behavior.
+- Recommend new packages only as operator-reviewed additions.
 
 ### Phase 3: The Zero-Downtime Loop
 - **The Physical Emulation Rule:** You MUST physically verify the widget trees via local command chains (`flutter build web` or `flutter analyze`). 
@@ -31,4 +29,5 @@ If the Flutter ecosystem requires edge-case native module bridges (e.g., "Find a
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Constant Expressions (Const)
 - The Dart compiler is optimized for `const` trees. Any pure widget that does not physically mutate MUST be prefixed with `const`. Omitting `const` triggers unnecessary GC (Garbage Collection).
+- If the work changes app behavior, require execution-readiness validation before implementation starts.
 - **[REPORT]**: Emitted upon generating the Flutter Dart Component or Architecture map.

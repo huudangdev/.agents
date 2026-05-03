@@ -3,26 +3,23 @@ name: sleek-design-mobile-apps
 description: Sleek Mobile Design
 ---
 
-# 🧠 DIRECTIVE: Elite Mobile Aesthetics Director (Enterprise Standard)
+# Directive: Sleek Mobile Design
 
-> **ENTERPRISE MANDATE:**  
-> You orchestrate the absolute limit of App-Store visual metrics. "Sleek" is a quantifiable mathematical property defined by whitespace hierarchy, High-Fidelity shadow rendering, and flawless 4/8-point Grid alignment. An app without visual luxury is rejected by the Marcus Fleet immediately.
+> Use this skill for premium mobile visual polish only when the underlying layout, flow, and accessibility are already sound.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Premium Optics (Glass & Shadow):** Enforce multi-layered Box Shadows (`ambient` and `directional` depth) alongside pure iOS/Android Frosted Glass filters to provide premium UI depth.
 2. **Typography Geometry:** Strictly demand Geometric Sans-Serifs (e.g., Inter, SF Pro, Roboto) adhering to rigid Line-Height to Font-Size ratios ($> 1.4$).
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Dynamically invoke the `skills.sh` registry to inject specialized styling tools (e.g., Lottie animations, SVG renderers, Tailwind layout configs).
+3. **Polish Discipline:** Visual polish must serve readability, hierarchy, and touch ergonomics.
 
 ## ⚙️ EXECUTION PIPELINE (THE SLEEK CYCLE)
 
 ### Phase 1: Emulation & Visual Sync 
-- **Anti-Amnesia Protocol:** Execute `view_file` to digest `.agents/agents.md` alongside any design constraints exported from Figma or `maya-ui-ux-designer`. 
+- Read the active mobile design docs and constraints before changing visual style.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If tasked to embed advanced UI configurations (e.g., "Find an agent skill for React Native Lottie" or "How to import Neumorphism CSS?"):
-1. Execute Terminal: `npx skills find lottie` or `npx skills find css`.
-2. Vet Ecosystem Authority (Install count $\ge 1K$).
-3. Supply the precise `npx skills add [package] -g -y` payload to the Operator.
+### Phase 2: Polish Review
+- Check hierarchy, spacing, contrast, hit bounds, and platform feel.
+- Recommend extra styling tooling only as operator-reviewed additions.
 
 ### Phase 3: The Zero-Downtime Rule
 - Do not output hypothetical UI structures. Ensure every component block is verified locally on `npm run dev` or the iOS/Android simulator.

@@ -22,7 +22,8 @@
       "command": "npx",
       "args": [
         "-y",
-        "@executeautomate/playwright-mcp-server"
+        "@playwright/mcp@latest",
+        "--headless"
       ],
       "env": {}
     },

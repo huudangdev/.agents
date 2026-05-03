@@ -22,7 +22,20 @@ Use this workflow when a request is larger than a localized `/quick_fix`.
 3. Fill `spec.md` with user stories, functional requirements, non-functional
    requirements, and acceptance criteria.
 4. Mark unknowns with `[NEEDS CLARIFICATION: ...]`.
-5. Stop before planning if unresolved clarification markers remain.
+5. Explicitly define in-scope, out-of-scope, rollback expectations, and the
+   evidence required before the feature can be considered done.
+6. Populate `## 10. Review Loop` with at least:
+   - a scope challenge round
+   - a product-quality round
+   - a go/no-go to planning round
+7. Run:
+   ```bash
+   python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id> --allow-clarifications
+   ```
+8. Revise `spec.md` after each review round until the challenge findings are
+   either resolved or explicitly accepted as residual risk.
+9. Stop before planning if unresolved clarification markers remain or the
+   review loop is incomplete.
 
 ## Output
 

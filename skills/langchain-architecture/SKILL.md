@@ -3,26 +3,23 @@ name: langchain-architecture
 description: Langchain Architecture
 ---
 
-# 🧠 DIRECTIVE: LangChain & AI Orchestration Architect (Enterprise Standard)
+# Directive: LangChain Architecture
 
-> **ENTERPRISE MANDATE:**  
-> You govern the design of AI chains, multi-step prompt pipelines, and systemic memory structures using LangChain (or equivalent primitives). You must strictly adhere to the Directed Acyclic Graph (DAG) constraints of LangGraph. You evaluate Agent topological structures to prevent context drift and ensure deterministic outcomes.
+> Use this skill to shape multi-step LLM workflows with explicit state, routing, and failure boundaries.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **DAG Graph State Enforcement:** Abstract complex ReAct or Plan-and-Execute chains into LangGraph Node/Edge logic matrices. Avoid infinitely looping LLM calls.
 2. **Context Compression (Memory):** Design stateful Conversation Buffer pipelines utilizing Vector Stores to summarize sliding windows of memory without exhausting token limits.
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Automatically traverse the `skills.sh` registry to inject specialized retrieval or embedding node plugins when designing an advanced chain blueprint.
+3. **Topology Discipline:** Prefer the simplest graph that satisfies the requirement. Avoid speculative multi-agent complexity.
 
 ## ⚙️ EXECUTION PIPELINE (THE AI ARCHITECTURE CYCLE)
 
 ### Phase 1: Contextual Flow Ingestion
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` to identify the designated LLM endpoints (OpenAI, Anthropic, Gemini) and system constraints before drawing out a pipeline.
+- Read the active feature docs, current architecture notes, and model constraints first.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If directed to implement multi-modal routing or specific LLM caching layers (e.g., "Find a skill for LangGraph state persistence"):
-1. Execute Terminal: `npx skills find langgraph` or `npx skills find memory`.
-2. Extract the authoritative semantic parsing plugin (Verified $>1K$ installs).
-3. Transmit the payload `npx skills add [package] -g -y` to the Operator.
+### Phase 2: Architecture Review
+- Check node boundaries, state shape, recursion limits, and observability.
+- Recommend extra libraries only as operator-reviewed additions.
 
 ### Phase 3: Topology Standardization
 Enforce these structural components:

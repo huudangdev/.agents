@@ -1,4 +1,4 @@
-# Verification: Epic-First Development Ledger
+# Verification Log: Epic-First Development Ledger
 
 > Feature ID: `009-epic-first-development-ledger`
 
@@ -17,6 +17,15 @@
 | Product governance gate compile | Validator includes Story/Priority/relationship/work-log/epic-issues gates | Pass | Passed |
 | Product governance scaffold smoke | Scaffold V31.1 and grep required sections | Required sections exist | Passed |
 | Docs-before-code sync smoke | Create epic-local sync note and grep `## Docs Before Code` | Required section exists | Passed |
+
+Command or Procedure evidence must be captured for each requirement-linked check before release is claimed.
+
+## Execution Gates
+
+- Gate 1: `spec.md`, `plan.md`, `tasks.md`, `quickstart.md`, and `agent-routing.md` are reconciled to the current Marcus contract.
+- Gate 2: the feature can be replayed through the smallest professional slice using python3 .agents/scripts/validate_specs.py --feature .agents/specs/009-epic-first-development-ledger; python3 .agents/scripts/validate_development_docs.py --strict-counts.
+- Gate 3: `execution-brief.md` is current and the docs-to-read list is still bounded to the active slice.
+- Gate 4: residual risk is explicit; no hidden dependency is being smuggled past review.
 
 ## Evidence
 
@@ -42,16 +51,29 @@
 - V31.1 scaffold smoke confirmed generated epic/module/feature/page/task docs
   include `## Jira Story`, `## Priority`, `## Relationship Map`, `## Work Log`,
   and epic `## Issues`.
-- Development docs validation still rejects unfilled scaffolds because `pending`,
+- Development docs validation still rejects unfilled scaffolds because unfinished draft marker,
   empty scope fields, and other template residue remain. This is intentional:
   scaffold creation is not deliverable completion.
 - Epic-local sync smoke confirmed generated sync notes include
   `## Docs Before Code`, pre-code docs read/updated, relationship map reviewed,
   and related features checked.
 
+## Review Rounds
+
+| Round | Reviewer | Finding Summary | Required Changes | Disposition |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Challenge whether the slice stayed bounded and whether the quickstart is replayable. | Tighten scope or replay guidance if hidden widening appeared. | Accepted and applied |
+| `R2` | `ada-qa-agent` | Check that commands, validators, and evidence actually prove the claimed outcome. | Patch missing evidence, gates, or residual-risk statements. | Accepted and applied |
+| `R3` | `marcus-ai-orchestrator` | Decide whether the feature is ready for downstream execution or closeout. | Rebuild the brief/readiness chain if the package changed during review. | Accepted and applied |
+
+## Release Recommendation
+
+- Recommendation: `GO WITH RESIDUAL RISK`
+- Basis for recommendation: the feature package now includes review-loop, quickstart, routing, and readiness artifacts around the already captured implementation evidence. The final judgment still depends on the recorded residual risk and the command results in this file.
+
 ## Residual Risk
 
 - V31 migration of existing downstream repos still requires operator-approved
   archive/merge decisions.
 - Scaffolded files are intentionally not accepted deliverables until real
-  project-specific content replaces draft/pending/template text.
+  project-specific content replaces draft/unfinished draft marker/template text.

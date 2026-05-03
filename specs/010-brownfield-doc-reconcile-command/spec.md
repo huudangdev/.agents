@@ -57,6 +57,11 @@ the whole codebase, map code to product docs, migrate or enrich
 - Do not edit downstream app code as part of command creation.
 - Do not delete legacy docs silently.
 
+Out of scope:
+
+- Broad repo-wide migrations unrelated to `010-brownfield-doc-reconcile-command`.
+- New hosted services, credentials, or runtime dependencies not already named by the feature.
+- Silent rewrites of adjacent workflows or docs packages without explicit review evidence.
 ## 8. Risks
 
 | Risk | Impact | Mitigation |
@@ -72,3 +77,11 @@ the whole codebase, map code to product docs, migrate or enrich
 | `FR-001` | `plan.md#3-implementation-plan` | `T001` | workflow file exists |
 | `FR-002` | `plan.md#3-implementation-plan` | `T002` | audit smoke |
 | `FR-003` | `plan.md#3-implementation-plan` | `T003` | scaffold and negative smoke |
+
+## 10. Review Loop
+
+| Round | Reviewer | Focus | Exit Criteria | Status |
+| --- | --- | --- | --- | --- |
+| `R1` | `aurora-plan-challenger` | Scope challenge | the feature stays bounded and out-of-scope lines are explicit | Complete |
+| `R2` | `sophia-product-manager` | Requirement quality | user stories, FRs, ACs, and constraints still align | Complete |
+| `R3` | `marcus-ai-orchestrator` | Go/no-go to execution planning | the package is deep enough for tasks, quickstart, and readiness gates | Complete |

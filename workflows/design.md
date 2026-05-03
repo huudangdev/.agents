@@ -22,8 +22,11 @@ description: Marcus Fleet Enterprise SDLC Phase 2 (Aesthetic, UI/UX, & Brand Gui
 ## 🔲 DAG TOPOLOGY: CHRONOLOGICAL EXECUTION NODES (PHASE 2)
 
 ### 🔵 NODE 0: LOCALHOST ISOLATION & DATA INGESTION
-*🔗 Input Vector:* `.agents/agents.md`, `/docs/planning/screens.md`
-**[Execution Protocol]:** Execute `python3 .agents/adapters/trustgraph_query.py --task "Design Phase Boot"`. Read the PRD screen maps. Absorb the macro-context of the interface.
+*🔗 Input Vector:* root `agents.md` (fallback: legacy `.agents/agents.md` shim), `/docs/planning/screens.md`
+**[Execution Protocol]:**
+1. Run `python3 .agents/scripts/validate_design_readiness.py --root .`
+2. Execute `python3 .agents/adapters/trustgraph_query.py --task "Design Phase Boot"`.
+3. Read the PRD screen maps. Absorb the macro-context of the interface.
 
 ### 🟣 NODE 1: DIGITAL AESTHETIC BASELINE & BRAND ESSENCE
 *🔗 Input Vector:* Macro-context from Node 0.
@@ -41,6 +44,13 @@ description: Marcus Fleet Enterprise SDLC Phase 2 (Aesthetic, UI/UX, & Brand Gui
 *🧠 Injected Tensors:* `bella-frontend-animator`
 *📦 Emitted Artifacts:* `/docs/UI_COMPONENTS_STATE.md`
 **[Execution Protocol]:** Define the interactive physics of the system. Detail Hover states, Focus rings, Loading Skeleton layouts, and Framer Motion / Spring transitions for state changes. Document these behaviors explicitly so the frontend engineers have a deterministic rendering roadmap.
+
+### 🟢 NODE 2.5: DESIGN OUTPUT GATE
+*🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/UI_COMPONENTS_STATE.md`
+**[Execution Protocol]:**
+1. Run `python3 .agents/scripts/validate_design_outputs.py --root .`
+2. If validation fails, repair the missing or empty design artifacts before
+   presenting the phase for human review.
 
 ---
 

@@ -3,26 +3,28 @@ name: compound-brainstorming
 description: Compound Brainstorming
 ---
 
-# 🧠 DIRECTIVE: Multi-Disciplinary Node Orchestrator (Enterprise Standard)
+# Directive: Compound Brainstorming
 
-> **ENTERPRISE MANDATE:**  
-> You execute "Compound Ideation"—the simultaneous intersection of UX, Engineering, Security, and Product strategy. You generate matrices mapping how a single feature (e.g., "Add User Comments") exponentially impacts Database load, DOM state performance, and Security vulnerabilities simultaneously.
+> Use this skill to pressure-test a feature across product, UX, engineering, and security at the same time without losing focus on the active scope.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **The Trilateral Axis Assessment:** Deconstruct every brainstormed feature along three axes: Development Time, User Retention impact, and Cloud Server Debt.
 2. **Compound Cascade Mitigation:** Predict the 2nd and 3rd order consequences of any code implementation (e.g., "If we add real-time WebSockets, how does it negatively scale on our current monolithic backend?").
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Call the `skills.sh` registry to autonomously discover advanced System Architecture heuristics or specialized planning algorithms.
+3. **Focus Discipline:** Stay inside the current feature boundary. Do not turn a planning session into uncontrolled architecture expansion.
 
 ## ⚙️ EXECUTION PIPELINE (THE COMPOUND CYCLE)
 
 ### Phase 1: Contextual Impact Simulation
-- **Anti-Amnesia Protocol:** Execute `view_file` on `.agents/agents.md` mapping the systemic boundaries. If you compound a brainstorming tree that ignores the active React Native state limitations, you break the system.
+- Read the active spec package and current constraints first.
+- Use real system limits, not abstract hypotheticals.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If tasked to visualize compound consequences via data processing (e.g., "Find a skill for Monte Carlo probability simulations"):
-1. Execute Terminal: `npx skills find simulation` or `npx skills find analytics`.
-2. Vet Ecosystem Authority (Install count $\ge 1K$).
-3. Output the raw `npx skills add [package] -g -y` command structure.
+### Phase 2: Cross-Functional Pressure Test
+- For each candidate idea, score:
+  - user value
+  - implementation cost
+  - operational/security risk
+  - verification burden
+- Kill ideas that add wide blast radius for weak product gain.
 
 ### Phase 3: The Synthesis Delivery
 Construct strict Cross-Functional markdown matrices:
@@ -30,5 +32,5 @@ Construct strict Cross-Functional markdown matrices:
 
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Tangible Code Handoff
-- Ideation must not conclude in pure philosophy. The output must mathematically transition into actionable JIRA-style execution steps for `remu-executive-orchestrator`.
+- End with actionable tasks or PM inputs that can feed the strict spec workflow.
 - **[REPORT]**: Emitted upon successful delivery of the Compound Development matrix.

@@ -9,10 +9,28 @@ description: Bypass Protocol for rapid bug patching or micro-feature insertion w
 
 ## 🔸 STAGE 1: RAG WEAPONIZATION (FOCUSED CONTEXT RETRIEVAL)
 *🧠 Mandatory Directives:* 
-- Execute an immediate `view_file` on `.clinerules` and `.agents/agents.md` to establish the macro-context.
+- Read `.clinerules` and root `agents.md` first (fallback: legacy `.agents/agents.md` shim) to establish the macro-context.
 - Rapidly scan `SKILLS_INDEX.md` and dynamically summon **ONLY 1 to 2 SKILLS** to preserve the Token limits (e.g., UI Glitch $\rightarrow$ Load `sleek-design` or `maya-ui-ux-designer`).
 - Dig into the localized `.agents/brain/` state associated with the failing Component to understand structural legacy context.
 - If the fix changes behavior and the brownfield project has missing planning docs, only a boilerplate `README.md`, missing `docs/development/`, or template-only/stale implementation docs, abort `/quick_fix` and route to `/doc_reconcile` first. Quick velocity never overrides doc readiness.
+- If the fix is attached to a feature-scoped spec workspace, the quick fix must
+  still respect that workspace's requirements and verification commitments.
+- If the fix is attached to a feature-scoped spec workspace, read that
+  workspace's `execution-brief.md` first and do not widen beyond the
+  `docs/development/` notes named there unless failing evidence forces it.
+- In that brief, treat `### Task Shape Decision`, `### Required Reads`,
+  `### Forbidden Default Reads`, and `### Expansion Triggers` as the binding
+  context contract for the quick fix.
+- Before a behavior-changing quick fix tied to a feature workspace, run:
+  ```bash
+  python3 .agents/scripts/run_harness_preflight.py --root . --phase execution --feature .agents/specs/<feature-id>
+  python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>
+  ```
+- Inspect `.agents/logs/harness/preflight.jsonl` when the wrapper fails and you
+  need the first failing command plus per-command status without replaying the
+  whole console transcript.
+- If the readiness gate fails or the brief is stale, stop `/quick_fix` and
+  repair the spec/docs package before editing source.
 
 ## 🔸 STAGE 2: SURGICAL MUTATION & ISOLATED DAEMON TEST
 *📦 Execution Vector:* Edit Source Logic. 

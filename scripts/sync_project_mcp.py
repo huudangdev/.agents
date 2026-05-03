@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
-"""Sync .agents/mcp/mcp.json into project-root .mcp.json non-destructively."""
+"""Sync .agents/mcp/mcp.json into project-root .mcp.json safely.
+
+Bundled MCP servers should stay aligned with the source-controlled config in
+.agents/mcp/mcp.json, but project-local secrets and env overrides should not be
+destroyed during sync. This script refreshes managed server definitions from the
+source while preserving destination env values when possible.
+"""
 
 from __future__ import annotations
 
 import argparse
 import json
 import sys
+from copy import deepcopy
 from pathlib import Path
+
+from path_utils import resolve_from_root
 
 
 def load_json(path: Path) -> dict:
@@ -19,6 +28,24 @@ def load_json(path: Path) -> dict:
     if not isinstance(value, dict):
         raise SystemExit(f"Expected JSON object at {path}")
     return value
+
+
+def merge_server_config(source_config: object, existing_config: object) -> object:
+    if not isinstance(source_config, dict):
+        return deepcopy(source_config)
+
+    merged = deepcopy(source_config)
+    if not isinstance(existing_config, dict):
+        return merged
+
+    source_env = source_config.get("env", {})
+    existing_env = existing_config.get("env", {})
+    if isinstance(source_env, dict) and isinstance(existing_env, dict):
+        preserved_env = dict(source_env)
+        preserved_env.update(existing_env)
+        merged["env"] = preserved_env
+
+    return merged
 
 
 def main() -> None:
@@ -39,8 +66,8 @@ def main() -> None:
     args = parser.parse_args()
 
     root = Path(args.root).resolve()
-    source_path = (root / args.source).resolve()
-    dest_path = (root / args.dest).resolve()
+    source_path = resolve_from_root(root, args.source).resolve()
+    dest_path = resolve_from_root(root, args.dest).resolve()
 
     if not source_path.exists():
         raise SystemExit(f"Source MCP config not found: {source_path}")
@@ -59,13 +86,20 @@ def main() -> None:
 
     merged_servers = dict(existing_servers)
     added: list[str] = []
+    refreshed: list[str] = []
     kept: list[str] = []
     for name, config in source_servers.items():
-        if name in merged_servers:
-            kept.append(name)
+        if name not in merged_servers:
+            merged_servers[name] = deepcopy(config)
+            added.append(name)
             continue
-        merged_servers[name] = config
-        added.append(name)
+
+        merged_config = merge_server_config(config, merged_servers[name])
+        if merged_servers[name] != merged_config:
+            merged_servers[name] = merged_config
+            refreshed.append(name)
+        else:
+            kept.append(name)
 
     payload = dict(existing)
     payload["mcpServers"] = merged_servers
@@ -74,6 +108,8 @@ def main() -> None:
     print(f"Synced project MCP config: {dest_path.relative_to(root)}")
     if added:
         print(f"Added MCP servers: {', '.join(sorted(added))}")
+    if refreshed:
+        print(f"Refreshed MCP servers: {', '.join(sorted(refreshed))}")
     if kept:
         print(f"Kept existing MCP servers: {', '.join(sorted(kept))}")
 

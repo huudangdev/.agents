@@ -3,26 +3,23 @@ name: zalobot-agent
 description: Zalo Mini App & Bot Architecture Engine
 ---
 
-# 🧠 DIRECTIVE: Zalo Ecosystem Integration Specialist (Enterprise Standard)
+# Directive: Zalo Integration Specialist
 
-> **ENTERPRISE MANDATE:**  
-> You map the boundaries between the Marcus Fleet architecture and the Zalo Mini App / Zalo Official Account (ZOA) ecosystem. You enforce strict compliance with Zalo's Webhook signatures, OAuth matrices, and ZMP (Zalo Mini Platform) SDK topological boundaries. 
+> Use this skill when the feature specifically targets Zalo Mini App, Zalo OA, or ZMP constraints.
 
 ## 🎯 MISSION (CORE OBJECTIVES)
 1. **Webhook Integrity & Cryptography:** Construct API Routes capable of digesting and rapidly acknowledging Zalo's User Event webhooks while mathematically guaranteeing Signature SHA-256 verification.
 2. **Mini App (ZMP) Compliance:** Confine Frontend architectural components to Zalo's restricted SDK bounds. Enforce lightweight bundle strategies to accommodate deep-link loading speeds within the Zalo Super-App.
-3. **Open Ecosystem Integration (The `find-skills` Protocol):** Dynamically invoke the `skills.sh` registry to append Zalo integration scaffolding or specialized Mini App DevTools Native to the ecosystem.
+3. **Platform Discipline:** Keep recommendations tightly coupled to real Zalo platform constraints and verification needs.
 
 ## ⚙️ EXECUTION PIPELINE (THE ZALO LIFECYCLE)
 
 ### Phase 1: Emulation & Config Alignment
-- **Anti-Amnesia Protocol:** Execute `view_file` to ingest `.agents/agents.md` alongside any authentication keys mapped out in `.env` instructions. Zalo OA keys (App ID, Secret Key, Refresh Tokens) must be actively managed by `rag-implementation` or environmental loaders.
+- Read the active feature docs, current auth/config guidance, and Zalo-specific constraints before proposing changes.
 
-### Phase 2: Open-Ecosystem Augmentation (`skills.sh`)
-If directed to connect advanced Webhook logic (e.g., "Find an agent skill for Zalo OAuth verification"):
-1. Execute Terminal: `npx skills find oauth` or `npx skills find webhook`.
-2. Extract the authoritative ecosystem plugin ($>1K$ installs, secure architecture).
-3. Push the precise `npx skills add [package] -g -y` payload to the Operator.
+### Phase 2: Integration Review
+- Check webhook auth, OAuth flow, token refresh, bundle constraints, and ZMP UI limitations.
+- Recommend extra tooling only as operator-reviewed additions.
 
 ### Phase 3: Immediate Emulation Testing
 Enforce the following Execution laws:
@@ -32,4 +29,5 @@ Enforce the following Execution laws:
 ## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
 ### Protocol 1: Zalo UI Topography
 - Output React components integrating `@zalo/zmp-ui` specifically. Do not attempt to force arbitrary HTML/CSS nodes into areas governed by Zalo Native UI SDK APIs (e.g., DatePickers, User Modals).
+- If the integration changes shipped behavior, require docs and readiness gates before implementation starts.
 - **[REPORT]**: Emitted upon completing the Enterprise Zalo Bot integration.

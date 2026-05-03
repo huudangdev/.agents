@@ -8,7 +8,8 @@
 
 Translate the approved specification into technical design. This document is the
 first place where implementation details, libraries, file paths, and migration
-strategy belong.
+strategy belong. Name the code slices, system boundaries, and failure modes that
+matter most during execution.
 
 ## 2. Constitution Gates
 
@@ -52,9 +53,17 @@ List files under `contracts/` and summarize each contract.
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
 
+Contract rules:
+
+- Every contract must name its owner.
+- Every contract must say how compatibility is checked.
+- If a boundary is intentionally undocumented, explain why that is safe.
+
 ## 5. Data Model
 
 Summarize entities from `data-model.md`.
+
+Include validation, lifecycle, and retention constraints where relevant.
 
 ## 6. Agent Routing
 
@@ -64,11 +73,19 @@ Summarize ownership from `agent-routing.md`.
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
 
+Execution monitoring:
+
+- Blocking gates before implementation:
+- Evidence checkpoints during implementation:
+- Escalation condition after repeated failure:
+
 ## 7. Migration and Rollback
 
 - Migration steps:
 - Rollback steps:
 - Compatibility notes:
+- Blast radius:
+- Containment or feature-flag strategy:
 
 ## 8. Complexity Tracking
 
@@ -78,3 +95,18 @@ introduced.
 | Decision | Reason | Alternative Rejected | Review Needed |
 | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD |
+
+## 9. POC Slice and Review Cadence
+
+Define the smallest professional POC slice that can produce evidence without
+pretending the full product is done.
+
+- POC slice boundary:
+- Success evidence for the slice:
+- What remains intentionally unproven after the slice:
+- Review cadence:
+  - Draft architecture review:
+  - Challenge review:
+  - Verification readiness review:
+- Stop conditions:
+- Proceed conditions:
