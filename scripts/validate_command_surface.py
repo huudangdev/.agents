@@ -297,6 +297,48 @@ COMMAND_CONTRACTS = (
 def missing_markers(text: str, markers: tuple[str, ...]) -> list[str]:
     return [marker for marker in markers if marker not in text]
 
+def section_text(markdown: str, header_snippet: str) -> str:
+    """Extract a bounded section starting at a line containing header_snippet.
+
+    This is used to ensure critical markers exist inside the relevant command
+    section rather than elsewhere in the file.
+    """
+    lines = markdown.splitlines()
+    start = None
+    # Prefer a markdown heading line containing the snippet.
+    for idx, line in enumerate(lines):
+        if line.lstrip().startswith("#") and header_snippet in line:
+            start = idx
+            break
+    # Fallback: any line containing the snippet.
+    if start is None:
+        for idx, line in enumerate(lines):
+            if header_snippet in line:
+                start = idx
+                break
+    if start is None:
+        return ""
+
+    # Determine heading level.
+    header_line = lines[start]
+    level = 0
+    for ch in header_line:
+        if ch == "#":
+            level += 1
+        else:
+            break
+    if level == 0:
+        level = 3
+    boundary = "#" * level + " "
+
+    end = len(lines)
+    for idx in range(start + 1, len(lines)):
+        line = lines[idx]
+        if line.startswith(boundary) and idx != start:
+            end = idx
+            break
+    return "\n".join(lines[start:end])
+
 
 def read_text(root: Path, relpath: str) -> str:
     return resolve_from_root(root, relpath).read_text(encoding="utf-8")
@@ -364,6 +406,22 @@ def main() -> None:
                 f"{contract.command}: `SLASH_COMMAND_REGISTRY.md` missing markers -> "
                 + ", ".join(missing_registry)
             )
+
+    # Section-scoped checks for the index-first hotfix: the index gate must be
+    # visible inside the command section, not just somewhere in the README.
+    section_scoped = {
+        "/develop": ("build_context_index.py", "validate_context_index.py"),
+        "/quick_fix": ("build_context_index.py", "validate_context_index.py"),
+        "/refactor-planning": ("build_context_index.py", "validate_context_index.py"),
+    }
+    for command, markers in section_scoped.items():
+        section = section_text(readme_text, command)
+        if not section:
+            errors.append(f"{command}: `README.md` missing section containing `{command}`")
+            continue
+        missing = missing_markers(section, markers)
+        if missing:
+            errors.append(f"{command}: `README.md` section missing index-first markers -> " + ", ".join(missing))
 
     if errors:
         print("COMMAND SURFACE VALIDATION FAILED")

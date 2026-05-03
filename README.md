@@ -538,6 +538,16 @@ The AI is computationally restricted from generating code until this node return
 
 ### 4. `/develop` (The Software Factory Execution: Phase 3)
 **Deterministic Code Generation & Testing.** The engine executes a sequential factory protocol, consuming `/docs` schemas to construct the physical environment.
+0. **Index-First Gate (Required):** Build and consult the context index before opening broad docs/code trees:
+   ```bash
+   python3 .agents/scripts/build_context_index.py --root .
+   python3 .agents/scripts/validate_context_index.py --root .
+   ```
+   Route reads through:
+   - `.agents/index/architecture_graph.mmd`
+   - `.agents/index/docs_index.md`
+   - `.agents/index/code_index.md`
+   - `.agents/index/skills_index.md`
 1. **Targeting (Cross-Platform Contextualization):** Intelligently probes root-level manifestations (`package.json`, `pubspec.yaml`, `Podfile`) to pivot its underlying toolchain (Next.js, Flutter, iOS Native, etc.).
 2. **TDD Scaffolding:** Writes the Test Suites *first* based on Edge Cases documented in the PRD.
 3. **Component Interpolation:** Melds the PRD logic schemas and the UI/UX `BRAND_GUIDELINES.md` to output the component files into the active workspace.
@@ -558,6 +568,11 @@ captured by the PM documentation package.
 ### 6. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
 1. **Persona Retrieval:** Queries the local GraphRAG database to inherit the user's historical coding patterns and avoid previous anti-patterns.
+2. **Index-First Gate (Required):** Build and consult the context index before reading large doc/code trees:
+   ```bash
+   python3 .agents/scripts/build_context_index.py --root .
+   python3 .agents/scripts/validate_context_index.py --root .
+   ```
 2. **Brownfield Readiness Gate:** Checks the project docs package before refactor planning. If the planning package is missing, `README.md` is still boilerplate, or `docs/development/` is absent or non-substantive, this flow must stop and route to `/doc_reconcile`.
 3. **AST Parsing:** Triggers `npx understand-anything` to mathematically extract an N-dimensional Knowledge Graph mapping API dependencies, missing exports, and prop-drilling depth.
 4. **Cyclomatic Reduction:** Detects monolithic modules (e.g., >300 LOC) and algorithmically decouples them following Feature-Sliced Design (FSD)—flattening states and enforcing `eslint --fix` or typing constraints.
@@ -575,6 +590,13 @@ evidence.
 
 ### 8. `/quick_fix` (Micro-Mutation Bypass)
 **Instantaneous Hotfix Protocol.** Bypasses the monolithic 3-Phase SDLC pipeline entirely only for truly localized work on a doc-ready project. Designed exclusively to execute granular logic tweaks (e.g., fixing a misaligned margin, swapping a deprecated parameter, tracing a discrete stack trace exception) with O(1) latency. Overall cognitive overhead targets execution under 240 seconds by binding exactly one active agent context. If a brownfield project is missing its planning package, relies on boilerplate docs, or lacks a substantive `docs/development/` ledger, `/quick_fix` must stop and route to `/doc_reconcile`. Behavior-changing hotfixes that remain in `/quick_fix` still create a `/docs/development/sync/*.md` note and run `validate_doc_sync.py` so PM documentation does not drift.
+
+Index-first (required for quick fixes too):
+
+```bash
+python3 .agents/scripts/build_context_index.py --root .
+python3 .agents/scripts/validate_context_index.py --root .
+```
 
 ### 9. `/mobile_init` & `/marcus_init` (Ecosystem Bootstrapping)
 **Native & Web Scaffolding Vectors.** Physical boilerplate constructors. 
