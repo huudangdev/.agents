@@ -208,6 +208,7 @@ Validate the ledger before reporting completion:
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution
 ```
 
 The code phase docs are not a replacement for `/planning` outputs. They are a
@@ -280,6 +281,7 @@ run:
 ```bash
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution
 ```
 
 If validation fails, code work pauses until the missing documentation trace is

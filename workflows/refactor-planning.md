@@ -92,5 +92,6 @@ python3 .agents/scripts/validate_refactor_planning_toolchain.py --root .
 4. Run:
    ```bash
    python3 .agents/scripts/validate_refactor_planning_outputs.py --root .
+   python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto
    ```
 5. Emit a Green Terminal status and generate the Final Output payload, indicating to the Operator that the Complexity Graph has been significantly alleviated.

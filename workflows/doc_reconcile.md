@@ -200,6 +200,7 @@ Run:
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --include-development --require-docs
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode all
 ```
 
 If validation fails, continue reconciling docs until the failures are either

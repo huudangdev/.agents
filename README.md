@@ -128,6 +128,7 @@ Core artifacts:
 │   ├── print_update_brief.py         # Prints release highlights and onboarding suggestions after install/update
 │   ├── run_harness_preflight.py      # One-command bootstrap or execution preflight
 │   ├── run_harness_postflight.py     # One-command execution closeout replay
+│   ├── run_required_docs_gates.py    # Mandatory docs gate runner for workflows and Git hooks
 │   ├── validate_harness_contract.py  # Verifies docs/workflows/scripts stay aligned
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
@@ -182,9 +183,11 @@ failure as a public contract regression.
 - `/design`
   - `validate_design_readiness.py`
   - `validate_design_outputs.py`
+  - `run_required_docs_gates.py`
   - Fails Phase 2 when planning inputs are missing or design artifacts are not produced.
 - `/marcus_init`
   - `validate_marcus_init_outputs.py`
+  - `run_required_docs_gates.py`
   - Fails project bootstrap closeout when the scaffolded workspace is missing required root artifacts.
 - `/refactor-planning`
   - `build_context_index.py`
@@ -192,6 +195,7 @@ failure as a public contract regression.
   - `validate_refactor_planning_readiness.py`
   - `validate_refactor_planning_toolchain.py`
   - `validate_refactor_planning_outputs.py`
+  - `run_required_docs_gates.py`
   - Fails brownfield refactor planning when docs are unreconciled or closeout artifacts are missing.
 - Execution-brief freshness gate
   - `validate_execution_brief_freshness.py`
@@ -231,6 +235,7 @@ failure as a public contract regression.
   - `validate_development_docs.py`
   - `validate_doc_sync.py`
   - `validate_docs_substance.py`
+  - `run_required_docs_gates.py`
 - Repo-wide spec contract audit
   - `audit_feature_contracts.py`
   - Reports which feature workspaces are current-contract vs legacy and which
@@ -527,7 +532,7 @@ The AI is computationally restricted from generating code until this node return
 2. **Legacy Output Preservation:** Still outputs the approved `/docs` set: `prd.md`, `tasks.md`, `knowledge.md`, `decisions.md`, `memory.md`, `planning/flows.md`, `planning/screens.md`, and `planning/diagrams.md`.
 3. **Evidence Ledger Upgrade:** Adds `/docs/research/sources.jsonl`, `evidence.jsonl`, `claims.jsonl`, `contradictions.md`, and `research_manifest.json` for traceable claims.
 4. **UML Cartography:** Uses Mermaid/Draw.io-ready diagrams for architecture, data flow, state flow, rollback/CAB path, and observability signals.
-5. **Validation Gates:** Runs `.agents/scripts/validate_planning_research.py`, `.agents/scripts/validate_docs_substance.py --root . --strict-planning`, and `.agents/scripts/validate_specs.py` when a feature workspace is attached.
+5. **Validation Gates:** Runs `.agents/scripts/run_required_docs_gates.py --root . --mode planning`, `.agents/scripts/validate_planning_research.py`, `.agents/scripts/validate_docs_substance.py --root . --strict-planning`, and `.agents/scripts/validate_specs.py` when a feature workspace is attached.
 **Execution Halt:** Code writing operations are securely locked. The System presents the `/docs` payload to the human operator for explicit architectural approval.
 
 ### 3. `/design` (UI/UX Aesthetic Tokenization: Phase 2)
@@ -536,6 +541,7 @@ The AI is computationally restricted from generating code until this node return
 2. **Variable Formulation:** Orchestrates UI/UX specialists (`@maya-ui-ux-designer`, `@aris-designer`) to define specific Figma-equivalent Hex Color Arrays, CSS variables, and padding grids.
 3. **Physical Constraints:** Enforces absolute geometry (4px/8px layout rhythms, Golden Ratio typography scaling).
 4. **Interactive States:** Defines Framer Motion spring properties, hover mechanics, and Skeleton loaders.
+5. **Docs Gate:** Runs `validate_design_outputs.py` and `run_required_docs_gates.py --root . --mode auto` before design artifacts can be presented as complete.
 **Execution Halt:** Yields the `BRAND_GUIDELINES.md` to the user. Iterative prompt tweaks to colors and fonts happen here without reloading the entire SDD architecture.
 
 ### 4. `/develop` (The Software Factory Execution: Phase 3)
@@ -574,7 +580,20 @@ Closeout must include:
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --include-development --require-docs
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode all
 ```
+
+Git hook hardening:
+
+```bash
+cd .agents
+./setup_git_hooks.sh
+```
+
+This installs `pre-commit` and `pre-push` hooks that run
+`run_required_docs_gates.py` and `validate_command_surface.py` before Git accepts
+documentation, workflow, script, or registry changes. Source-like changes are
+blocked unless `docs/development/` exists and the execution docs gates pass.
 
 ### 6. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
@@ -589,6 +608,7 @@ python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --
 4. **Cyclomatic Reduction:** Detects monolithic modules (e.g., >300 LOC) and algorithmically decouples them following Feature-Sliced Design (FSD)—flattening states and enforcing `eslint --fix` or typing constraints.
 5. **Adversarial QA Simulation:** Spins up the Localhost Dev Server to execute endpoint validations or headless UI tests. Compiles the refactored code and applies self-healing try-catch algorithms if the refactor fractured the structural integrity.
 6. **State Syncing:** Commits the refactoring success directly into the Neo4j TrustGraph to orient future agents.
+7. **Docs Gate:** Runs `validate_refactor_planning_outputs.py` and `run_required_docs_gates.py --root . --mode auto` before `/refactor-planning` closeout.
 
 ### 7. `/marcus.routecheck` (Routing Regression Replay)
 **The Narrow-Task Guardrail.** Use after changing `/develop`, `SKILLS_INDEX.md`,
@@ -649,6 +669,7 @@ python3 .agents/scripts/validate_context_index.py --root .
 │   ├── create_doc_sync_note.py
 │   ├── build_context_index.py     # Builds `.agents/index/` for docs/code/skills routing
 │   ├── validate_context_index.py  # Validates `.agents/index/` exists and is fresh enough
+│   ├── run_required_docs_gates.py
 │   ├── validate_specs.py
 │   ├── validate_development_docs.py
 │   ├── validate_doc_sync.py

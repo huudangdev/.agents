@@ -335,6 +335,7 @@ Before presenting results, run:
 
 ```bash
 python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode planning
 python3 .agents/scripts/validate_planning_research.py --root . --strict-outputs
 python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --require-docs
 ```

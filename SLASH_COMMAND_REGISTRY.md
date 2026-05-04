@@ -99,6 +99,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
   - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution`
 - Produced or consumed artifacts:
   - `.agents/logs/harness/postflight.jsonl`
   - `.agents/specs/<feature-id>/verification.md`
@@ -124,6 +125,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
   - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution`
   - `python3 .agents/scripts/run_harness_postflight.py --root . --phase execution --feature .agents/specs/<feature-id>`
 - Produced or consumed artifacts:
   - `.agents/specs/<feature-id>/execution-brief.md`
@@ -141,6 +143,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/create_doc_sync_note.py --name "QuickFix <scope>" --changed-files "<changed-source-and-doc-files>"`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
   - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution`
 - Produced or consumed artifacts:
   - `.agents/logs/harness/preflight.jsonl`
   - `docs/development/sync/`
@@ -151,6 +154,7 @@ underspecified and do not improvise missing script calls.
 - Required invocations:
   - `python3 .agents/scripts/create_feature_spec.py "Project Planning - <Project Name>" --prompt "<original operator request>"`
   - `python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode planning`
   - `python3 .agents/scripts/validate_planning_research.py --root . --strict-outputs`
   - `python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --require-docs`
 - Produced or consumed artifacts:
@@ -167,6 +171,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
   - `python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --include-development --require-docs`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode all`
 - Produced or consumed artifacts:
   - `docs/development/`
   - `docs/development/audits/`
@@ -208,6 +213,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_design_readiness.py --root .`
   - `python3 .agents/adapters/trustgraph_query.py --task "Design Phase Boot"`
   - `python3 .agents/scripts/validate_design_outputs.py --root .`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto`
 - Produced or consumed artifacts:
   - `docs/BRAND_GUIDELINES.md`
   - `docs/UI_COMPONENTS_STATE.md`
@@ -221,6 +227,7 @@ underspecified and do not improvise missing script calls.
   - `cp .agents/.clinerules projects/$PROJECT_NAME/.clinerules`
   - `docker-compose up -d`
   - `python3 .agents/scripts/validate_marcus_init_outputs.py --root projects/$PROJECT_NAME`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root projects/$PROJECT_NAME --mode auto`
 - Produced or consumed artifacts:
   - `projects/$PROJECT_NAME/docs/`
   - `projects/$PROJECT_NAME/.agents/`
@@ -243,6 +250,7 @@ underspecified and do not improvise missing script calls.
   - `eslint --fix`
   - `npm run dev`
   - `python3 .agents/scripts/validate_refactor_planning_outputs.py --root .`
+  - `python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto`
 - Produced or consumed artifacts:
   - `docs/ADR_REFACTOR_LOG.md`
   - `agents.md`

@@ -49,7 +49,8 @@ description: Marcus Fleet Enterprise SDLC Phase 2 (Aesthetic, UI/UX, & Brand Gui
 *🔗 Input Vector:* `/docs/BRAND_GUIDELINES.md`, `/docs/UI_COMPONENTS_STATE.md`
 **[Execution Protocol]:**
 1. Run `python3 .agents/scripts/validate_design_outputs.py --root .`
-2. If validation fails, repair the missing or empty design artifacts before
+2. Run `python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto`
+3. If validation fails, repair the missing, empty, or template-only design artifacts before
    presenting the phase for human review.
 
 ---

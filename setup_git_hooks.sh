@@ -1,21 +1,60 @@
 #!/bin/bash
 
 # Antigravity Enterprise Bootstrapper (V29.4)
-# Configures the Git Post-Commit hook for Incremental Delta Syncronization
+# Configures Git hooks for mandatory docs gates and incremental delta sync.
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-HOOK_DIR="../.git/hooks"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_DIR="$(dirname "$SCRIPT_DIR")"
+HOOK_DIR="$ROOT_DIR/.git/hooks"
 POST_COMMIT_FILE="$HOOK_DIR/post-commit"
+PRE_COMMIT_FILE="$HOOK_DIR/pre-commit"
+PRE_PUSH_FILE="$HOOK_DIR/pre-push"
 
 echo -e "${BLUE}=== Antigravity Enterprise Git Hooks Setup ===${NC}"
 
-if [ ! -d "../.git" ]; then
+if [ ! -d "$ROOT_DIR/.git" ]; then
     echo "Error: Not a git repository. Run this at the root of a Git Project."
     exit 1
 fi
+
+cat << 'EOF' > "$PRE_COMMIT_FILE"
+#!/bin/bash
+# Marcus Fleet Mandatory Docs Gate
+set -e
+
+CHANGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+
+if echo "$CHANGED_FILES" | grep -Eq '^(docs/|\.agents/specs/|\.agents/workflows/|\.agents/scripts/|README\.md|USAGE_GUIDE\.md|SLASH_COMMAND_REGISTRY\.md|agents\.md)'; then
+    echo "[Marcus Fleet] Running mandatory docs gates before commit..."
+    python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto
+    python3 .agents/scripts/validate_command_surface.py --root .
+fi
+
+if echo "$CHANGED_FILES" | grep -Ev '^(docs/|\.agents/|README\.md|USAGE_GUIDE\.md|SLASH_COMMAND_REGISTRY\.md|agents\.md|.*\.md$)' | grep -q .; then
+    echo "[Marcus Fleet] Source-like changes detected; requiring development docs closeout..."
+    python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution --require-development-docs
+fi
+EOF
+
+cat << 'EOF' > "$PRE_PUSH_FILE"
+#!/bin/bash
+# Marcus Fleet Mandatory Closeout Gate
+set -e
+
+echo "[Marcus Fleet] Running mandatory postflight/docs gates before push..."
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto
+python3 .agents/scripts/validate_command_surface.py --root .
+
+CHANGED_SINCE_UPSTREAM=$(git diff --name-only @{upstream}...HEAD 2>/dev/null || true)
+if echo "$CHANGED_SINCE_UPSTREAM" | grep -Ev '^(docs/|\.agents/|README\.md|USAGE_GUIDE\.md|SLASH_COMMAND_REGISTRY\.md|agents\.md|.*\.md$)' | grep -q .; then
+    echo "[Marcus Fleet] Source-like commits detected; requiring development docs closeout..."
+    python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution --require-development-docs
+fi
+EOF
 
 cat << 'EOF' > "$POST_COMMIT_FILE"
 #!/bin/bash
@@ -44,7 +83,9 @@ if [ -n "$FILES_TO_SYNC" ]; then
 fi
 EOF
 
-chmod +x "$POST_COMMIT_FILE"
+chmod +x "$PRE_COMMIT_FILE" "$PRE_PUSH_FILE" "$POST_COMMIT_FILE"
 
+echo -e "${GREEN}✓ Mounted mandatory docs gates into .git/hooks/pre-commit${NC}"
+echo -e "${GREEN}✓ Mounted mandatory closeout gates into .git/hooks/pre-push${NC}"
 echo -e "${GREEN}✓ Successfully mounted Incremental Delta Sync into .git/hooks/post-commit${NC}"
-echo -e "Every 'git commit' will now automatically update Neo4j and ChromaDB transparently."
+echo -e "Every commit/push now runs local gate scripts before Git accepts the action."

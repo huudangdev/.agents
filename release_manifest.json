@@ -3,6 +3,7 @@
   "headline": "Hotfix: Docs substance gate blocks template-only outputs",
   "highlights": [
     "Docs substance gate: validate_docs_substance.py rejects heading-only, placeholder, TBD, pending, and copied-template Markdown outputs.",
+    "Mandatory docs gate runner: run_required_docs_gates.py centralizes planning/execution docs verification for workflows, postflight, and Git hooks.",
     "Index-first routing: build a shallow docs/code/skills index and architecture graph under `.agents/index/` before reading large trees.",
     "Harness wrappers: added one-command preflight/postflight with structured JSONL logs (bootstrap + execution).",
     "Public slash-command contract: README, USAGE_GUIDE, registry, and workflows are enforced together by validate_command_surface.py.",
@@ -17,6 +18,8 @@
     "Run `python3 .agents/scripts/validate_command_surface.py --root .` after merging/updating `.agents` to confirm command contracts stayed aligned.",
     "Run `python3 .agents/scripts/build_context_index.py --root .` once per session to generate `.agents/index/` before reading broad docs/code trees.",
     "Run `python3 .agents/scripts/validate_docs_substance.py --root . --include-development` before closing generated docs work.",
+    "Run `python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto` as the non-optional docs closeout wrapper.",
+    "Run `cd .agents && ./setup_git_hooks.sh` to install pre-commit/pre-push enforcement for docs/workflow/script changes.",
     "Use /doc_reconcile before changing behavior on brownfield projects with missing or stale docs.",
     "If using /refactor-planning, ensure ESLint is available (global or local node_modules/.bin) so the toolchain gate passes before runtime-heavy steps."
   ],

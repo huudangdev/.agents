@@ -81,6 +81,7 @@ python3 .agents/scripts/validate_planning_research.py --root .
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto
 ```
 
 Run the research validator only when `/docs/research/` exists. It is designed to
@@ -136,6 +137,8 @@ For `/planning`, the deep-research gate is
 It must be paired with
 `python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning`
 before the planning package is presented as complete.
+The non-optional wrapper is
+`python3 .agents/scripts/run_required_docs_gates.py --root . --mode planning`.
 
 Execution readiness rule:
 
@@ -192,6 +195,9 @@ Use this default mapping:
   - output gate for `/design`; fails when `BRAND_GUIDELINES.md` or `UI_COMPONENTS_STATE.md` is missing or empty
 - `validate_marcus_init_outputs.py`
   - output gate for `/marcus_init`; fails when the scaffolded project root is missing required bootstrap artifacts
+- `run_required_docs_gates.py`
+  - mandatory docs wrapper for `/planning`, `/design`, `/develop`, `/quick_fix`, `/doc_reconcile`, `/marcus.verify`, `/marcus_init`, and `/refactor-planning`
+  - centralizes docs-substance enforcement so models cannot treat scaffold-only Markdown as complete output
 - `build_context_index.py`
   - builds `.agents/index/` (docs/code/skills + architecture graph) so agents route reads through an index instead of scanning whole trees
 - `validate_context_index.py`
@@ -288,6 +294,7 @@ Code phase documentation rule:
 python3 .agents/scripts/create_development_docs.py --name "Checkout Flow" --feature-id "005-checkout-flow"
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution
 ```
 
 Expected structure:
@@ -338,6 +345,7 @@ Continuous documentation sync rule:
 python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --changed-files "src/api/checkout.ts,tests/checkout.test.ts"
 python3 .agents/scripts/validate_doc_sync.py --strict
 python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution
 ```
 
 For V31 ledgers, prefer:

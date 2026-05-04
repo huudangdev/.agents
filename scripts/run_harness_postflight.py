@@ -33,7 +33,7 @@ def execution_commands(root: Path, feature: str | None) -> list[list[str]]:
         python_command(root, "validate_command_surface.py", "--root", str(root)),
         python_command(root, "validate_routing_regression.py", "--root", str(root)),
         python_command(root, "validate_harness_contract.py", "--root", str(root)),
-        python_command(root, "validate_docs_substance.py", "--root", str(root), "--include-development"),
+        python_command(root, "run_required_docs_gates.py", "--root", str(root), "--mode", "execution"),
         python_command(root, "audit_feature_contracts.py", "--root", str(root)),
     ]
     if feature:

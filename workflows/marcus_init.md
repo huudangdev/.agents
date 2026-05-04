@@ -51,6 +51,7 @@ EOF
 5. **Scaffold Output Gate:** Run:
     ```bash
     python3 .agents/scripts/validate_marcus_init_outputs.py --root projects/$PROJECT_NAME
+    python3 .agents/scripts/run_required_docs_gates.py --root projects/$PROJECT_NAME --mode auto
     ```
     If validation fails, repair the scaffold before claiming `/marcus_init` succeeded.
 

@@ -36,6 +36,7 @@ Use this workflow before closing a feature.
    python3 .agents/scripts/validate_development_docs.py --strict-counts
    python3 .agents/scripts/validate_doc_sync.py --strict
    python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+   python3 .agents/scripts/run_required_docs_gates.py --root . --mode execution
    ```
    Run the development/doc-sync validators only when `docs/development/` exists.
    Inspect `.agents/logs/harness/postflight.jsonl` when you need structured
