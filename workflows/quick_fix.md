@@ -52,6 +52,7 @@ If the quick fix changes source behavior, it must still preserve PM continuity:
 ```bash
 python3 .agents/scripts/create_doc_sync_note.py --name "QuickFix <scope>" --changed-files "<changed-source-and-doc-files>"
 python3 .agents/scripts/validate_doc_sync.py --strict
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
 ```
 
 Use targeted append/patch updates only. Do not replace planning or development

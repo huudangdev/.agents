@@ -336,6 +336,7 @@ Before presenting results, run:
 ```bash
 python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>
 python3 .agents/scripts/validate_planning_research.py --root . --strict-outputs
+python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --require-docs
 ```
 
 If validation fails:
@@ -347,6 +348,8 @@ If validation fails:
 Planning quality gate:
 
 - all 8 legacy files exist and are non-empty
+- all 8 legacy files contain project-specific substance, not copied prompts,
+  placeholder rows, `TBD`, `pending`, or heading-only templates
 - research ledgers exist and are non-empty
 - source quality gate passes
 - supported claims reference evidence ids

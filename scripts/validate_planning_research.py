@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from validate_docs_substance import validate_docs
+
 
 REQUIRED_OUTPUTS = [
     "docs/prd.md",
@@ -63,6 +65,8 @@ def validate(root: Path, strict_outputs: bool) -> list[str]:
                 errors.append(f"Missing required planning output: {rel_path}")
             elif not path.read_text(encoding="utf-8").strip():
                 errors.append(f"Empty required planning output: {rel_path}")
+        for issue in validate_docs(root, strict_planning=True):
+            errors.append(f"{issue.relpath}: {issue.message}")
 
     sources_path = root / "docs/research/sources.jsonl"
     evidence_path = root / "docs/research/evidence.jsonl"

@@ -234,7 +234,11 @@ def main() -> None:
             args.task_number,
         )
 
-    print(f"Development docs scaffold ready ({topology}): {base}")
+    print(f"Development docs scaffold created ({topology}): {base}")
+    print("DRAFT SCAFFOLD ONLY: these files are invalid until filled with code-derived facts.")
+    print("Required closeout:")
+    print("- python3 .agents/scripts/validate_development_docs.py --strict-counts")
+    print("- python3 .agents/scripts/validate_docs_substance.py --root . --include-development")
     for path in created:
         print(f"- {path.relative_to(root)}")
 

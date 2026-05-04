@@ -7,6 +7,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from validate_docs_substance import validate_docs
+
 
 REQUIRED_OUTPUTS = (
     "agents.md",
@@ -29,6 +31,9 @@ def main() -> None:
             continue
         if path.is_file() and not path.read_text(encoding="utf-8").strip():
             errors.append(f"Empty required refactor-planning output: {path}")
+
+    for issue in validate_docs(root, targets=("docs/ADR_REFACTOR_LOG.md",)):
+        errors.append(f"{issue.relpath}: {issue.message}")
 
     if errors:
         print("REFACTOR PLANNING OUTPUT VALIDATION FAILED")

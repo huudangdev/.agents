@@ -2,7 +2,7 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v32.0.1-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v32.0.2-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
@@ -132,7 +132,8 @@ Core artifacts:
 │   ├── create_development_docs.py    # Creates /docs/development scaffolds
 │   ├── validate_development_docs.py  # Validates code-phase knowledge notes
 │   ├── create_doc_sync_note.py       # Creates per-code-slice sync notes
-│   └── validate_doc_sync.py          # Validates docs kept pace with code
+│   ├── validate_doc_sync.py          # Validates docs kept pace with code
+│   └── validate_docs_substance.py    # Rejects template-only or heading-only generated docs
 └── specs/
     └── 001-marcus-spec-foundation/   # First validated feature workspace
 ```
@@ -229,6 +230,7 @@ failure as a public contract regression.
   - `create_doc_sync_note.py`
   - `validate_development_docs.py`
   - `validate_doc_sync.py`
+  - `validate_docs_substance.py`
 - Repo-wide spec contract audit
   - `audit_feature_contracts.py`
   - Reports which feature workspaces are current-contract vs legacy and which
@@ -525,7 +527,7 @@ The AI is computationally restricted from generating code until this node return
 2. **Legacy Output Preservation:** Still outputs the approved `/docs` set: `prd.md`, `tasks.md`, `knowledge.md`, `decisions.md`, `memory.md`, `planning/flows.md`, `planning/screens.md`, and `planning/diagrams.md`.
 3. **Evidence Ledger Upgrade:** Adds `/docs/research/sources.jsonl`, `evidence.jsonl`, `claims.jsonl`, `contradictions.md`, and `research_manifest.json` for traceable claims.
 4. **UML Cartography:** Uses Mermaid/Draw.io-ready diagrams for architecture, data flow, state flow, rollback/CAB path, and observability signals.
-5. **Validation Gates:** Runs `.agents/scripts/validate_planning_research.py` when research ledgers exist and `.agents/scripts/validate_specs.py` when a feature workspace is attached.
+5. **Validation Gates:** Runs `.agents/scripts/validate_planning_research.py`, `.agents/scripts/validate_docs_substance.py --root . --strict-planning`, and `.agents/scripts/validate_specs.py` when a feature workspace is attached.
 **Execution Halt:** Code writing operations are securely locked. The System presents the `/docs` payload to the human operator for explicit architectural approval.
 
 ### 3. `/design` (UI/UX Aesthetic Tokenization: Phase 2)
@@ -553,7 +555,8 @@ The AI is computationally restricted from generating code until this node return
 3. **Component Interpolation:** Melds the PRD logic schemas and the UI/UX `BRAND_GUIDELINES.md` to output the component files into the active workspace.
 4. **Development Knowledge Ledger:** Creates or updates `/docs/development/` notes per epic, module, feature, page, and task before material code edits.
 5. **Continuous Documentation Sync:** After each material code slice, creates `/docs/development/sync/*.md` and patches affected planning/development docs without wholesale replacement.
-6. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
+6. **Docs Substance Gate:** Runs `validate_docs_substance.py --root . --include-development` so generated docs cannot remain scaffold-only, heading-only, `TBD`, `pending`, or copied template instructions.
+7. **Adversarial QA (Self-Healing Loop):** Boots the appropriate background daemon (`npm run dev`, `flutter run`, Xcode simulator) via Playwright or native XCTest. It runs rigorous automated tests. If a 500 Server Error or Hydration mismatch occurs, it analyzes the terminal stream, patches the bug autonomously, and restarts the check until compile outputs yield Green `[OK]`.
 
 ### 5. `/doc_reconcile` (Brownfield Docs Reconciliation)
 **Product-grade documentation recovery.** Reviews the whole codebase, audits
@@ -564,6 +567,14 @@ continuing `/develop` on in-progress projects. This is the mandatory route when
 brownfield code has missing planning docs, boilerplate-only docs, absent or
 template-only `docs/development/`, or implementation reality that is not yet
 captured by the PM documentation package.
+
+Closeout must include:
+
+```bash
+python3 .agents/scripts/validate_development_docs.py --strict-counts
+python3 .agents/scripts/validate_doc_sync.py --strict
+python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --include-development --require-docs
+```
 
 ### 6. `/refactor-planning` (Spaghetti Code Decoupling)
 **The Surgical Cleanse for Brownfield Architectures.** Designed specifically to decrease Cyclomatic Complexity in legacy codebases. It executes a 5-Stage deterministic loop to guarantee runtime safety:
@@ -641,6 +652,7 @@ python3 .agents/scripts/validate_context_index.py --root .
 │   ├── validate_specs.py
 │   ├── validate_development_docs.py
 │   ├── validate_doc_sync.py
+│   ├── validate_docs_substance.py
 │   └── validate_planning_research.py
 ├── specs/                         # Feature-scoped source-of-truth artifacts
 ├── mcp/                           # Model Context Protocol constraints

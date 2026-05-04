@@ -1,7 +1,8 @@
 {
-  "version": "32.0.1",
-  "headline": "Hotfix: Index-first routing to prevent token waste and context drift",
+  "version": "32.0.2",
+  "headline": "Hotfix: Docs substance gate blocks template-only outputs",
   "highlights": [
+    "Docs substance gate: validate_docs_substance.py rejects heading-only, placeholder, TBD, pending, and copied-template Markdown outputs.",
     "Index-first routing: build a shallow docs/code/skills index and architecture graph under `.agents/index/` before reading large trees.",
     "Harness wrappers: added one-command preflight/postflight with structured JSONL logs (bootstrap + execution).",
     "Public slash-command contract: README, USAGE_GUIDE, registry, and workflows are enforced together by validate_command_surface.py.",
@@ -15,6 +16,7 @@
     "Approve new MCP servers in your client the first time they are offered.",
     "Run `python3 .agents/scripts/validate_command_surface.py --root .` after merging/updating `.agents` to confirm command contracts stayed aligned.",
     "Run `python3 .agents/scripts/build_context_index.py --root .` once per session to generate `.agents/index/` before reading broad docs/code trees.",
+    "Run `python3 .agents/scripts/validate_docs_substance.py --root . --include-development` before closing generated docs work.",
     "Use /doc_reconcile before changing behavior on brownfield projects with missing or stale docs.",
     "If using /refactor-planning, ensure ESLint is available (global or local node_modules/.bin) so the toolchain gate passes before runtime-heavy steps."
   ],
@@ -22,6 +24,7 @@
     "Try `/marcus.routecheck` to see how routing regression is enforced after major workflow changes.",
     "Try `/design` and verify gates: `validate_design_readiness.py` and `validate_design_outputs.py` enforce deterministic closeout.",
     "Try `/refactor-planning` and note the new prerequisite chain: readiness -> toolchain -> runtime -> closeout.",
-    "Review `SLASH_COMMAND_REGISTRY.md` to see the canonical command-to-script mapping for this V32 surface."
+    "Review `SLASH_COMMAND_REGISTRY.md` to see the canonical command-to-script mapping for this V32 surface.",
+    "When a doc generator creates scaffolds, treat them as invalid drafts until validate_docs_substance.py passes."
   ]
 }

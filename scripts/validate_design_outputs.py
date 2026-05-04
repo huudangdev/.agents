@@ -7,6 +7,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from validate_docs_substance import validate_docs
+
 
 REQUIRED_OUTPUTS = (
     "docs/BRAND_GUIDELINES.md",
@@ -29,6 +31,9 @@ def main() -> None:
             continue
         if not path.read_text(encoding="utf-8").strip():
             errors.append(f"Empty required design output: {path}")
+
+    for issue in validate_docs(root, targets=REQUIRED_OUTPUTS):
+        errors.append(f"{issue.relpath}: {issue.message}")
 
     if errors:
         print("DESIGN OUTPUT VALIDATION FAILED")

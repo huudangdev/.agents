@@ -7,6 +7,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from validate_docs_substance import validate_docs
+
 
 REQUIRED_PATHS = (
     "docs",
@@ -33,6 +35,9 @@ def main() -> None:
             continue
         if path.is_file() and not path.read_text(encoding="utf-8").strip():
             errors.append(f"Empty required marcus_init output: {path}")
+
+    for issue in validate_docs(root, targets=("docs/prd_draft.md",)):
+        errors.append(f"{issue.relpath}: {issue.message}")
 
     if errors:
         print("MARCUS INIT OUTPUT VALIDATION FAILED")

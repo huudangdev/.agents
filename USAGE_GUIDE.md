@@ -80,6 +80,7 @@ python3 .agents/scripts/validate_specs.py
 python3 .agents/scripts/validate_planning_research.py --root .
 python3 .agents/scripts/validate_development_docs.py --strict-counts
 python3 .agents/scripts/validate_doc_sync.py --strict
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
 ```
 
 Run the research validator only when `/docs/research/` exists. It is designed to
@@ -132,6 +133,9 @@ changing README, `USAGE_GUIDE.md`, or any workflow that alters the published
 slash-command surface.
 For `/planning`, the deep-research gate is
 `python3 .agents/scripts/validate_planning_research.py --root . --strict-outputs`.
+It must be paired with
+`python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning`
+before the planning package is presented as complete.
 
 Execution readiness rule:
 
@@ -283,6 +287,7 @@ Code phase documentation rule:
 ```bash
 python3 .agents/scripts/create_development_docs.py --name "Checkout Flow" --feature-id "005-checkout-flow"
 python3 .agents/scripts/validate_development_docs.py --strict-counts
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
 ```
 
 Expected structure:
@@ -332,6 +337,7 @@ Continuous documentation sync rule:
 ```bash
 python3 .agents/scripts/create_doc_sync_note.py --name "Checkout API slice" --changed-files "src/api/checkout.ts,tests/checkout.test.ts"
 python3 .agents/scripts/validate_doc_sync.py --strict
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
 ```
 
 For V31 ledgers, prefer:

@@ -98,6 +98,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>`
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
+  - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
 - Produced or consumed artifacts:
   - `.agents/logs/harness/postflight.jsonl`
   - `.agents/specs/<feature-id>/verification.md`
@@ -122,6 +123,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/create_doc_sync_note.py --name "<code-slice-name>" --changed-files "<comma-separated-files>"`
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
+  - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
   - `python3 .agents/scripts/run_harness_postflight.py --root . --phase execution --feature .agents/specs/<feature-id>`
 - Produced or consumed artifacts:
   - `.agents/specs/<feature-id>/execution-brief.md`
@@ -138,6 +140,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/validate_execution_readiness.py --root . --feature .agents/specs/<feature-id>`
   - `python3 .agents/scripts/create_doc_sync_note.py --name "QuickFix <scope>" --changed-files "<changed-source-and-doc-files>"`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
+  - `python3 .agents/scripts/validate_docs_substance.py --root . --include-development`
 - Produced or consumed artifacts:
   - `.agents/logs/harness/preflight.jsonl`
   - `docs/development/sync/`
@@ -149,6 +152,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/create_feature_spec.py "Project Planning - <Project Name>" --prompt "<original operator request>"`
   - `python3 .agents/scripts/validate_specs.py --feature .agents/specs/<feature-id>`
   - `python3 .agents/scripts/validate_planning_research.py --root . --strict-outputs`
+  - `python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --require-docs`
 - Produced or consumed artifacts:
   - `.agents/specs/<feature-id>/spec.md`
   - `docs/research/`
@@ -162,6 +166,7 @@ underspecified and do not improvise missing script calls.
   - `python3 .agents/scripts/create_doc_sync_note.py --name "Doc Reconcile <scope>" --epic-id "E-001-description" --changed-files "<changed-doc-files>"`
   - `python3 .agents/scripts/validate_development_docs.py --strict-counts`
   - `python3 .agents/scripts/validate_doc_sync.py --strict`
+  - `python3 .agents/scripts/validate_docs_substance.py --root . --strict-planning --include-development --require-docs`
 - Produced or consumed artifacts:
   - `docs/development/`
   - `docs/development/audits/`
