@@ -109,6 +109,7 @@ underspecified and do not improvise missing script calls.
 - Workflow: `.agents/workflows/marcus_routecheck.md`
 - Required invocations:
   - `python3 .agents/scripts/validate_routing_regression.py --root .`
+  - `python3 .agents/scripts/validate_skill_contracts.py --root .`
 - Produced or consumed artifacts:
   - `.agents/ROUTING_REGRESSION_CHECKLIST.md`
 

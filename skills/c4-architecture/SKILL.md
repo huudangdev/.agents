@@ -1,38 +1,26 @@
 ---
 name: c4-architecture
-description: C4 Architecture Diagramming
+description: Produce C4-style Mermaid diagrams for system boundaries and containers
 ---
 
-# Directive: C4 Architecture Modeler
+# C4 Architecture Modeler
 
-> Use this skill to map system boundaries clearly using C4-style diagrams when a diagram will reduce ambiguity.
+Use this skill when a diagram will reduce ambiguity.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **System Abstraction Mapping:** Render accurate C4 boundary boxes, relationship arrows, and API vectors.
-2. **Mermaid Native CLI Rendering:** Adhere strictly to the physical transformation of `.mmd` files into `.pdf` or `.png` graphs via terminal automation.
-3. **Diagram Discipline:** Produce diagrams only when they clarify decisions already grounded in the docs and code.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE DIAGRAM CYCLE)
+- [c4-contract.md](references/c4-contract.md)
+- The active spec, plan, and architecture notes when they exist.
 
-### Phase 1: Contextual Ingestion
-- Read the relevant spec, plan, and architecture notes first.
-- Map reality, not an imagined target state.
+## Operating Rules
 
-### Phase 2: Diagram Construction
-- Produce one diagram level at a time.
-- Include only the modules, services, and boundaries relevant to the active question.
-- Recommend extra tooling only if the current repo cannot render or store the needed artifact.
+- Render one C4 level at a time.
+- Prefer real boxes and arrows over generic abstractions.
+- Keep the diagram scoped to the current question.
+- If rendering is needed, use the local terminal path only when supported.
 
-### Phase 3: The C4 Execution String
-Construct the physical Diagram payload. **You must strictly obey the following formatting rule:**
-- Output raw, pristine `mermaid` code targeting exactly one level of the C4 structure (Level 1: System Context, or Level 2: Container). Do not mix depth levels chaotically.
-- Quote node labels containing irregular characters (e.g., `Node["Label (Info)"]`).
+## Output Expectations
 
-### Phase 4: Rendering
-- Render locally only if the environment supports it and the artifact is needed.
-- If rendering is not available, keep the Mermaid source as the primary deliverable.
-
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Fallback Diagramming
-- If the OS environment cannot support Node.js/CLI execution, fallback to generating the raw Mermaid markdown block coupled with an actionable `drawio` MCP data structure.
-- **[RENDERED]**: Emitted when a PNG or PDF is physically saved to the local workspace.
+- Output valid Mermaid for the requested C4 level.
+- Quote labels that need it.
+- Keep the diagram physically useful, not decorative.

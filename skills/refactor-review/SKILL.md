@@ -1,37 +1,28 @@
 ---
 name: refactor-review
-description: Review & Refactor Guidelines
+description: Use when reviewing refactor proposals or legacy code changes for regression risk, coupling, and verification quality.
 ---
 
-# Directive: Legacy Code Auditor & Refactor Reviewer
+# Refactor Review
 
-> Review legacy code and refactor proposals with a hostile but evidence-led mindset. Focus on regression risk, coupling, performance hazards, and unverifiable assumptions.
+Use this skill to audit refactor proposals or legacy code changes before they ship.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Code Smells Interrogation:** Detect God Classes, Prop Drilling, Unmanaged subscriptions, and memory leaks.
-2. **Syntactical Optimization:** Condense redundant logic blocks into pure functional abstractions.
-3. **Execution Governance:** Prefer repo-native review evidence, local validators, and explicit verification commands over generic external tooling suggestions.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE REVIEW CYCLE)
+1. Root `agents.md`.
+2. Active feature docs and relevant diffs.
+3. Local tests, linters, and validators when available.
+4. [`references/refactor-review-contract.md`](references/refactor-review-contract.md).
 
-### Phase 1: Differential Context Check
-- Read the root `agents.md`, the active feature docs, and the relevant diffs or affected files first.
-- Review without context is invalid.
+## Operating Rules
 
-### Phase 2: Evidence Expansion
-If review confidence is too low with the current repo tooling:
-1. Inspect local scripts, tests, linters, and security checks first.
-2. Propose additional operator-reviewed tooling only when it would materially improve evidence quality.
-3. Record that recommendation in the feature docs if it changes the release gate.
+- Read the changed files and surrounding context.
+- Identify regression risk, coupling, and hidden assumptions.
+- Use local tooling first.
+- Distinguish real defects from style preferences.
 
-### Phase 3: The Heuristic Audit
-Output the strict Audit Report encapsulating:
-- **Complexity Assessment:** Provide quantitative measurement of N-Path complexity or Nesting depths ($>3$ loops = failure).
-- **Hard-Coded Secrets Limit:** Flag plain-text API keys or environmental parameters for immediate masking.
-- **Zero-Downtime Verification:** Guarantee that the rewritten module passes local Test Server evaluation (`npm run dev`) before merging. 
-- **Docs and Readiness Check:** Confirm whether the feature workspace passed `validate_execution_readiness.py` before approving behavior-changing work.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Lexical Restraint
-- Do not output the entire rewritten codebase within the audit report. Provide the explicit Differential Patches (`diff`) and leave the mass file overwrites to the structural execution agents.
-- **[REPORT]**: Emitted upon conclusion of the PR/Legacy Code dissection. Sarcasm or toxic code shaming is strictly prohibited.
+- Return a blocker-oriented review.
+- Map findings to verification evidence.
+- State NO-GO when the review is not grounded.

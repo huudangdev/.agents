@@ -1,33 +1,34 @@
 {
-  "version": "32.0.2",
-  "headline": "Hotfix: Docs substance gate blocks template-only outputs",
+  "version": "33.0.0",
+  "headline": "V33: Enterprise context harness with strict skill, index, and docs gates",
   "highlights": [
-    "Docs substance gate: validate_docs_substance.py rejects heading-only, placeholder, TBD, pending, and copied-template Markdown outputs.",
-    "Mandatory docs gate runner: run_required_docs_gates.py centralizes planning/execution docs verification for workflows, postflight, and Git hooks.",
-    "Index-first routing: build a shallow docs/code/skills index and architecture graph under `.agents/index/` before reading large trees.",
-    "Harness wrappers: added one-command preflight/postflight with structured JSONL logs (bootstrap + execution).",
-    "Public slash-command contract: README, USAGE_GUIDE, registry, and workflows are enforced together by validate_command_surface.py.",
-    "Dynamic context execution briefs: build_execution_brief supports changed-files + failing-evidence signals to reduce context drift.",
-    "/design and /marcus_init moved to script-backed command contracts with deterministic readiness/output gates.",
-    "/refactor-planning hardened: brownfield readiness gate + closeout gate + toolchain prerequisite gate before runtime-heavy steps."
+    "Index-first routing: build and validate `.agents/index/` before broad docs/code reads so models use architecture, docs, code, and skills maps instead of scanning blindly.",
+    "Skill contract standardization: every local skill now exposes Required Reads, Operating Rules, Output Expectations, and a compact references file.",
+    "Skill release gate: validate_skill_contracts.py blocks missing references, missing required sections, and stale skill discoverability.",
+    "Slash-command contract enforcement: README, USAGE_GUIDE, SLASH_COMMAND_REGISTRY, workflows, and scripts are validated together by validate_command_surface.py.",
+    "Development docs anti-template gate: validate_development_docs.py and validate_docs_substance.py reject empty fields, placeholder IDs, `src/example.*`, copied template instructions, TBD, and pending output.",
+    "/refactor-planning hardening: readiness, toolchain, output, docs, and index gates now fail closed before risky brownfield refactors.",
+    "Required docs gates: run_required_docs_gates.py is the common closeout wrapper for planning, execution, verification, reconciliation, and refactor workflows.",
+    "OTA onboarding: install/update flows print this V33 brief so new and updated projects learn the mandatory index, skill, and docs gates immediately."
   ],
   "post_update_steps": [
-    "Run /init_brain after /update_brain to reload rules, MCP registration, and skill routing.",
-    "Open project-root .mcp.json and fill FIGMA_ACCESS_TOKEN only if you want Figma MCP.",
-    "Approve new MCP servers in your client the first time they are offered.",
+    "Run /init_brain after /update_brain to reload rules, MCP registration, skill routing, and the V33 command surface.",
+    "Run `python3 .agents/scripts/build_context_index.py --root .` before broad code/docs work.",
+    "Run `python3 .agents/scripts/validate_context_index.py --root .` after building the context index.",
+    "Run `python3 .agents/scripts/validate_skill_contracts.py --root .` after installing/updating skills or changing SKILLS_INDEX.md.",
     "Run `python3 .agents/scripts/validate_command_surface.py --root .` after merging/updating `.agents` to confirm command contracts stayed aligned.",
-    "Run `python3 .agents/scripts/build_context_index.py --root .` once per session to generate `.agents/index/` before reading broad docs/code trees.",
     "Run `python3 .agents/scripts/validate_docs_substance.py --root . --include-development` before closing generated docs work.",
     "Run `python3 .agents/scripts/run_required_docs_gates.py --root . --mode auto` as the non-optional docs closeout wrapper.",
     "Run `cd .agents && ./setup_git_hooks.sh` to install pre-commit/pre-push enforcement for docs/workflow/script changes.",
-    "Use /doc_reconcile before changing behavior on brownfield projects with missing or stale docs.",
+    "Use /doc_reconcile before changing behavior on brownfield projects with missing, stale, shallow, or template-only docs.",
     "If using /refactor-planning, ensure ESLint is available (global or local node_modules/.bin) so the toolchain gate passes before runtime-heavy steps."
   ],
   "onboarding_prompts": [
-    "Try `/marcus.routecheck` to see how routing regression is enforced after major workflow changes.",
-    "Try `/design` and verify gates: `validate_design_readiness.py` and `validate_design_outputs.py` enforce deterministic closeout.",
-    "Try `/refactor-planning` and note the new prerequisite chain: readiness -> toolchain -> runtime -> closeout.",
-    "Review `SLASH_COMMAND_REGISTRY.md` to see the canonical command-to-script mapping for this V32 surface.",
-    "When a doc generator creates scaffolds, treat them as invalid drafts until validate_docs_substance.py passes."
+    "Start by running the V33 index gates: `build_context_index.py --root .` then `validate_context_index.py --root .`.",
+    "Review `SLASH_COMMAND_REGISTRY.md` to see the canonical command-to-script mapping for this V33 surface.",
+    "Try `/marcus.routecheck` after workflow or skill changes; it now replays routing and skill-contract validators.",
+    "Treat generated `/docs/development` files as invalid drafts until both development-docs and docs-substance gates pass.",
+    "Use `/doc_reconcile` before `/develop`, `/quick_fix`, or `/refactor-planning` when brownfield docs are missing or weak.",
+    "Read `V33.0_RELEASE_NOTES.md` for the full enterprise context harness and strict gate rollout."
   ]
 }

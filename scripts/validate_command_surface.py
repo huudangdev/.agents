@@ -128,10 +128,10 @@ COMMAND_CONTRACTS = (
     CommandContract(
         command="/marcus.routecheck",
         workflow_relpath=".agents/workflows/marcus_routecheck.md",
-        workflow_markers=("validate_routing_regression.py --root .",),
-        usage_markers=("/marcus.routecheck", "validate_routing_regression.py --root ."),
-        readme_markers=("/marcus.routecheck", "validate_routing_regression.py --root ."),
-        registry_markers=("/marcus.routecheck", "validate_routing_regression.py"),
+        workflow_markers=("validate_routing_regression.py --root .", "validate_skill_contracts.py --root ."),
+        usage_markers=("/marcus.routecheck", "validate_routing_regression.py --root .", "validate_skill_contracts.py --root ."),
+        readme_markers=("/marcus.routecheck", "validate_routing_regression.py --root .", "validate_skill_contracts.py --root ."),
+        registry_markers=("/marcus.routecheck", "validate_routing_regression.py", "validate_skill_contracts.py"),
     ),
     CommandContract(
         command="/design",

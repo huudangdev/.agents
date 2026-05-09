@@ -2,16 +2,16 @@
   <h1>🚀 Marcus Fleet Enterprise Matrix (.agents)</h1>
   <p><strong>The Academic Distributed AGI Core for Feature-Sliced Design, Semantic RAG Routing, and Deterministic Autonomous DevOps.</strong></p>
 
-  ![Version](https://img.shields.io/badge/epoch-v32.0.2-blue.svg?style=for-the-badge)
+  ![Version](https://img.shields.io/badge/epoch-v33.0.0-blue.svg?style=for-the-badge)
   ![License](https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge)
   ![Routing](https://img.shields.io/badge/routing-Semantic%20RAG-orange.svg?style=for-the-badge)
   ![Governance](https://img.shields.io/badge/governance-SOC2%20CAB-purple.svg?style=for-the-badge)
 
   <p>
-    <a href="#-enterprise-overview-v320">Overview</a> •
+    <a href="#-enterprise-overview-v330">Overview</a> •
     <a href="#-system-architecture-topology">Architecture</a> •
     <a href="#-spec-driven-governance-layer">Spec Governance</a> •
-    <a href="#-installation-provisioning--universal-portability-v320">Provisioning</a> •
+    <a href="#-installation-provisioning--universal-portability-v330">Provisioning</a> •
     <a href="#execution-commands">Execution</a> •
     <a href="#academic-contributions">Contributions</a> •
     <a href="#sponsorship--support">Support/Donate</a>
@@ -20,9 +20,9 @@
 
 ---
 
-## 🔬 Enterprise Overview (V32.0)
+## 🔬 Enterprise Overview (V33.0)
 
-The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 32.0** operates as a deterministic harness core bridging **Validated Slash-Command Contracts**, **Spec-Driven Governance**, **Deep Research Planning**, **Epic-First Development Ledgers**, **Brownfield Doc Reconciliation**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **CI-ready release gates**.
+The **Marcus Fleet Enterprise Matrix** represents a paradigm shift in Large Language Model (LLM) orchestration frameworks explicitly built for Enterprise Mono-repos. Distancing itself from monolithic unstructured chat, **Version 33.0** operates as an enterprise context harness bridging **Index-First Routing**, **Validated Slash-Command Contracts**, **Skill Contract Governance**, **Spec-Driven Planning**, **Epic-First Development Ledgers**, **Brownfield Doc Reconciliation**, **Continuous Documentation Sync**, **Ephemeral Sandboxed Execution**, and **CI-ready release gates**.
 
 By binding Agents to rigorous Finite State Machines (FSM) and forcing OS interactions through secure Ephemeral Sandboxes, the Antigravity ecosystem mitigates catastrophic automated failures, token exhaustion, and context window atrophy in codebases exceeding 1 million lines.
 
@@ -162,6 +162,15 @@ The canonical per-command mapping lives in `.agents/SLASH_COMMAND_REGISTRY.md`.
 When README, `USAGE_GUIDE.md`, workflow files, or script chains change, rerun
 `python3 .agents/scripts/validate_command_surface.py --root .` and treat any
 failure as a public contract regression.
+
+V33 release preparation must also replay:
+
+```bash
+python3 .agents/scripts/build_context_index.py --root .
+python3 .agents/scripts/validate_context_index.py --root .
+python3 .agents/scripts/validate_skill_contracts.py --root .
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
+```
 
 - `/marcus.specify`
   - `create_feature_spec.py`
@@ -365,6 +374,7 @@ The scaffold command is:
 ```bash
 python3 .agents/scripts/create_development_docs.py --name "Feature Name" --feature-id "005-feature-name" --epic-number 001 --child-number 001 --task-number 001
 python3 .agents/scripts/validate_development_docs.py --strict-counts
+python3 .agents/scripts/validate_docs_substance.py --root . --include-development
 ```
 
 Each Markdown note must include frontmatter with `owner_skill`, `source_trace`,
@@ -372,6 +382,11 @@ and `verification`, plus the code or write scope it governs. Child notes must
 also include `parent_epic`, and their frontmatter `id` must match the filename
 stem exactly. This keeps epic, module, feature, page, and task knowledge
 queryable by future agents.
+
+Generated development files are scaffold-only until filled. A code slice cannot
+close while any note still contains empty labeled fields, template instructions,
+`pending`, `TBD`, `src/example.*`, scaffold issue IDs, or generic example
+relationships.
 
 Strict mode uses [DEVELOPMENT_DOCS_QUALITY_RUBRIC.md](./DEVELOPMENT_DOCS_QUALITY_RUBRIC.md)
 to reject template-only output. Docs must include concrete code paths,
@@ -474,6 +489,9 @@ Core vs optional MCP behavior:
 ## ✨ Empirical System Features
 
 - **Semantic RAG Vectoring:** Compresses the cognitive load by 95%. The system parses heuristic tags in a normalized `SKILLS_INDEX`, loading only the specific array of specialized computational frameworks required logically for the exact runtime sequence (e.g., `ada-qa-agent` + `benny-frontend-engineer`).
+- **Index-First Context Routing:** Builds `.agents/index/` before broad reads so models enter via architecture, docs, code, and skill maps instead of repeatedly scanning unrelated files.
+- **Skill Contract Governance:** Normalizes all local skills into `Required Reads`, `Operating Rules`, `Output Expectations`, and compact `references/*.md` so skills are discoverable and bounded.
+- **Anti-Template Documentation Gates:** Rejects scaffold-only Markdown, empty labeled fields, placeholder issue IDs, `src/example.*`, `TBD`, and `pending` before code slices can close.
 - **Deterministic Circuit Breaking:** Halts catastrophic infinite-execution edge cases. Any compilation module tracking $N \ge 3$ consecutive failures undergoes hardware-freeze lockouts.
 - **Directed Acyclic Graph (DAG) Persistence:** Long-term memory logic overrides temporal dialog sessions by persistently serializing architectural alterations directly into file-system `.agents/brain/` components.
 - **CAB Feature Flag Governance:** Introduces strict CI integration limits. AI output must be bounded within LaunchDarkly or equivalent Feature Flags, granting the central Change Advisory Board instantaneous Rollback authority.
@@ -482,7 +500,7 @@ Core vs optional MCP behavior:
 
 ---
 
-## 📦 Installation Provisioning & Universal Portability (V32.0)
+## 📦 Installation Provisioning & Universal Portability (V33.0)
 
 Integrate the matrix framework into any local project directory securely via our automated One-Line cURL Installer.
 
@@ -491,7 +509,7 @@ Integrate the matrix framework into any local project directory securely via our
 curl -sL https://raw.githubusercontent.com/huudangdev/.agents/main/install.sh | bash
 ```
 
-### ⚡ The V30.2 Turn-Key Bootstrap
+### ⚡ The V33 Turn-Key Bootstrap
 Once the repository is cloned, you must awaken the Cognitive Brain. From your AI chat window, simply command:
 > `/bootstrap`
 *(Or manually execute `./.agents/bootstrap.sh`)*
@@ -615,7 +633,8 @@ blocked unless `docs/development/` exists and the execution docs gates pass.
 or routing-heavy skills.
 1. **Checklist Binding:** Reads `.agents/ROUTING_REGRESSION_CHECKLIST.md`.
 2. **Validator Gate:** Runs `python3 .agents/scripts/validate_routing_regression.py --root .`.
-3. **Release Discipline:** Fails the release if a narrow task drifts into broad
+3. **Skill Contract Gate:** Runs `python3 .agents/scripts/validate_skill_contracts.py --root .`.
+4. **Release Discipline:** Fails the release if a narrow task drifts into broad
 database, analytics, infrastructure, or full-repo context without explicit
 evidence.
 
@@ -649,7 +668,7 @@ python3 .agents/scripts/validate_context_index.py --root .
 .agents/
 ├── README.md                      # Foundational system topology
 ├── USAGE_GUIDE.md                 # Heuristic routing and dispatch instructions
-├── V32.0_RELEASE_NOTES.md         # Current harness + command-contract release notes
+├── V33.0_RELEASE_NOTES.md         # Current enterprise context harness release notes
 ├── .clinerules                    # Foundational Constitution Protocol (FSM Limits)
 ├── trustgraph.env.example         # Shared Neo4j/Chroma runtime config template
 ├── install.sh                     # Directory genesis installer
@@ -695,7 +714,7 @@ python3 .agents/scripts/validate_context_index.py --root .
 │   ├── app/api/chroma/route.ts    # Shell-safe Chroma search bridge
 │   ├── components/RuntimeStatus.tsx
 │   └── lib/trustgraphConfig.ts    # Shared config reader
-└── skills/                        # 64-Agent Cognitive Swarm Directory
+└── skills/                        # 65-skill Cognitive Swarm Directory
     ├── SKILLS_INDEX.md            # Auto-compiled Semantic Pre-Index
     ├── ada-qa-agent/
     ├── david-systems-architect/

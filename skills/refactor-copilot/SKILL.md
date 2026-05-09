@@ -1,35 +1,25 @@
 ---
 name: refactor-copilot
-description: Refactor Standard
+description: Perform narrow, behavior-preserving refactors with explicit verification
 ---
 
-# Directive: Pair-Programming Refactor Specialist
+# Pair-Programming Refactor Specialist
 
-> Execute narrow, behavior-preserving refactors. Stay within explicit write scope, preserve existing outputs, and verify the file-level change before expanding further.
+Use this skill for narrow, behavior-preserving refactors.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Micro-Optimization:** Transform raw variables into explicit TypeScript generic interfaces. Enforce strict null-checks (`?.` and `??`).
-2. **Code Commenting (JSDoc):** Legacy code without comments is technical rot. Demand explicit `/** JSDoc */` tagging above all exposed Methods and Classes describing parameter constraints.
-3. **Tooling Discipline:** Use the repo's existing formatter, linter, and test commands first. Recommend extra tooling only through operator review.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE PAIR CYCLE)
+- [refactor-copilot-contract.md](references/refactor-copilot-contract.md)
+- The target file set and existing lint/test commands when they exist.
 
-### Phase 1: Differential Check
-- Read the root `agents.md`, the active feature docs, and the target file set first. A refactor that changes business output without explicit approval is invalid.
+## Operating Rules
 
-### Phase 2: Local Toolchain Review
-If the format or lint structure is ambiguous:
-1. Inspect repo config files, scripts, and existing CI commands first.
-2. If the repo lacks a clear standard, propose a bounded operator-reviewed recommendation instead of an autonomous install.
-3. Document any unresolved ambiguity before rewriting files.
+- Keep the write scope narrow.
+- Preserve outputs and contracts.
+- Verify the file-level change before expanding further.
 
-### Phase 3: Immediate Patch Deployment
-- **Zero-Downtime Verification:** The rewrites must be deployed locally and verified via Terminal (`npm run lint`).
-- **The Circuit Breaker Rule:** When utilizing an OS shell to execute lint repairs (`eslint --fix`), if the code yields the SAME 5+ severe Syntax Errors for 3 iteration calls, you MUST abort the execution block and push an 🚩 Alert to the Operator. Do not infinitely rewrite headers trying to bypass TS Types.
-- Record the verification command and the docs sync target before handing the work off as complete.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Drop-in Component Upgrades
-- Emit pure logic upgrades. Never emit `// ... existing code ...` placeholders. You are the compiler.
-- If the refactor affects behavior or contract boundaries, require execution-readiness validation before starting.
-- **[REPORT]**: Emitted upon completing the file transformation.
+- State the refactor boundaries.
+- Show the verification command.
+- Describe any docs or sync targets if contracts changed.

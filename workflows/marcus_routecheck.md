@@ -13,6 +13,7 @@ skills.
 2. Run:
    ```bash
    python3 .agents/scripts/validate_routing_regression.py --root .
+   python3 .agents/scripts/validate_skill_contracts.py --root .
    ```
 3. Replay the five task shapes in the checklist when a release changes routing
    behavior materially:
@@ -29,5 +30,6 @@ skills.
 ## Output
 
 - Routing regression validator result
+- Skill contract validator result
 - Checklist replay notes
 - `pass` or `fail` decision for the new routing behavior

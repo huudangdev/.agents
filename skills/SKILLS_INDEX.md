@@ -27,6 +27,374 @@
 - Architecture/refactor:
   `david-systems-architect`, `alan-tech-lead`, `refactor-plan`
 
+## Product Execution Stack
+
+Use this sequence when a request moves from idea to delivery:
+
+1. `marcus-ai-orchestrator`
+2. `product-brainstorming`
+3. `sophia-product-manager`
+4. `noah-agile-product-owner`
+5. `alan-tech-lead`
+6. `ada-qa-agent`
+
+Reading order for this stack:
+
+- Start with the task shape and routing decision.
+- Move to the narrowest bounded idea or problem statement.
+- Move to PRD/scope only after the problem is narrowed.
+- Move to ticket slicing only after the spec is validated.
+- Move to implementation architecture only after execution readiness is clear.
+- Move to QA only after evidence exists or a failure must be proven.
+
+## Core Routing Stack
+
+Use this sequence when the request is broad and the next step is unclear:
+
+1. `marcus-ai-orchestrator`
+2. `remu-executive-orchestrator`
+3. `sophia-product-manager`
+4. `noah-agile-product-owner`
+5. `alan-tech-lead`
+6. `ada-qa-agent`
+
+## Research Stack
+
+Use this sequence when a request needs evidence, synthesis, or external
+intelligence:
+
+1. `marcus-ai-orchestrator`
+2. `arthur-search-agent`
+3. `elite6-research`
+4. `cyrus-research-critic`
+5. `sage-research-synthesis`
+6. `homer-knowledge-extractor`
+
+Reading order for this stack:
+
+- Start with the evidence question.
+- Retrieve the minimal source set.
+- Expand externally only if the local repo cannot answer the question.
+- Challenge the architecture or web3 claim if one appears.
+- Synthesize only after the source set is bounded.
+
+## Search and Evidence Stack
+
+Use this sequence when you need grounded repository evidence before acting:
+
+1. `marcus-ai-orchestrator`
+2. `arthur-search-agent`
+3. `feynman-skeptic-reviewer`
+
+Reading order for this stack:
+
+- Find the facts first.
+- Challenge unsupported claims.
+- Stop when the evidence is enough for the next decision.
+
+## Refactor Stack
+
+Use this sequence when a brownfield change needs planning, review, and safe
+execution:
+
+1. `marcus-ai-orchestrator`
+2. `refactor-plan`
+3. `refactor-review`
+4. `alan-tech-lead`
+5. `ada-qa-agent`
+
+Reading order for this stack:
+
+- Start with the dependency map and risk.
+- Plan the refactor before touching live code.
+- Review the plan against real evidence.
+- Translate into architecture only after the plan is safe.
+- Verify only after the evidence is concrete.
+
+## Frontend and Mobile Stack
+
+Use this sequence when the request affects screens, motion, or mobile
+interaction:
+
+1. `marcus-ai-orchestrator`
+2. `maya-ui-ux-designer`
+3. `aris-designer`
+4. `benny-frontend-engineer`
+5. `bella-frontend-animator`
+6. `mobile-design-doctrine`
+7. `mobile-app-testing`
+
+Reading order for this stack:
+
+- Start with the user flow and state map.
+- Refine visual hierarchy and tokens.
+- Implement behavior with the narrowest write scope.
+- Add motion only when it clarifies state.
+- Verify mobile interaction under real device assumptions.
+
+## Frontend Delivery Stack
+
+Use this sequence when the task is to implement frontend behavior:
+
+1. `marcus-ai-orchestrator`
+2. `maya-ui-ux-designer`
+3. `benny-frontend-engineer`
+4. `bella-frontend-animator`
+5. `ada-qa-agent`
+
+## Backend, Security, and QA Stack
+
+Use this sequence when the request affects services, security, deployment, or
+release gating:
+
+1. `marcus-ai-orchestrator`
+2. `david-systems-architect`
+3. `devops-system-architect`
+4. `cipher-security-approver`
+5. `software-architecture`
+6. `eve-qa-approver`
+7. `qa-simulator`
+
+Reading order for this stack:
+
+- Start with system boundaries and data flow.
+- Move to pipeline and release safety.
+- Review security risk before approval.
+- Reconcile architecture choice with the active package.
+- Finish with evidence-based QA and live simulation.
+
+## Architecture Delivery Stack
+
+Use this sequence when the task turns into technical design and execution:
+
+1. `marcus-ai-orchestrator`
+2. `alan-tech-lead`
+3. `software-architecture`
+4. `ada-qa-agent`
+
+## Understand and Knowledge Graph Stack
+
+Use this sequence when the request is about graph-building, codebase
+understanding, or dashboard-based exploration:
+
+1. `understand`
+2. `understand-chat`
+3. `understand-explain`
+4. `understand-diff`
+5. `understand-onboard`
+6. `understand-dashboard`
+
+Reading order for this stack:
+
+- Start by building or refreshing the graph.
+- Use chat for bounded questions against the graph.
+- Use explain for a single component deep dive.
+- Use diff for change impact and risk.
+- Use onboard for newcomer orientation.
+- Use dashboard when visual exploration is the goal.
+
+## Product-to-Execution Stack
+
+Use this sequence when product intent has to become delivery-ready work:
+
+1. `remu-executive-orchestrator`
+2. `marcus-ai-orchestrator`
+3. `sophia-product-manager`
+4. `noah-agile-product-owner`
+5. `alan-tech-lead`
+6. `ada-qa-agent`
+
+## Architecture Governance Stack
+
+Use this sequence when the request is about pattern selection, ADRs, or
+diagramming:
+
+1. `marcus-ai-orchestrator`
+2. `architecture-patterns`
+3. `architecture-decision-records`
+4. `c4-architecture`
+5. `software-architecture`
+
+Reading order for this stack:
+
+- Start with the smallest pattern that fits the constraint.
+- Capture the decision as an ADR when the choice has lasting consequences.
+- Draw a diagram only when it clarifies the real system boundary.
+- Reconcile the recommendation with the implementation boundary and verification path.
+
+## RAG Stack
+
+Use this sequence when the request is about retrieval systems, embeddings, or
+context grounding:
+
+1. `marcus-ai-orchestrator`
+2. `rag-architect`
+3. `rag-engineer`
+
+Reading order for this stack:
+
+- Decide retrieval topology and evaluation first.
+- Implement only after the architecture is approved.
+- Keep citations, context bounds, and failure handling explicit.
+
+## Knowledge Work Stack
+
+Use this sequence when the request is about docs, memory, or note topology:
+
+1. `marcus-ai-orchestrator`
+2. `knowledge-work-architecture`
+3. `architecture-decision-records`
+
+Reading order for this stack:
+
+- Define the knowledge topology and ownership model.
+- Record the decision if the docs structure has lasting impact.
+- Keep the structure aligned with repo conventions and validators.
+
+## Mobile Platform Stack
+
+Use this sequence when the request is about mobile UI, motion, or platform
+constraints:
+
+1. `marcus-ai-orchestrator`
+2. `mobile-developer-standards`
+3. `mobile-android-design`
+4. `mobile-ios-design`
+5. `react-native-architecture`
+6. `tailwindcss-mobile-first`
+7. `ui-mobile-bootstrap`
+8. `mobile-touch-animations`
+9. `sleek-design-mobile-apps`
+10. `mobile-app-testing`
+
+Reading order for this stack:
+
+- Start with the mobile implementation standards.
+- Apply platform-specific constraints next.
+- Resolve architecture before styling details.
+- Bootstrap the flow before polishing motion.
+- Verify on real device assumptions last.
+
+## Review and Utility Stack
+
+Use this sequence when the request is about complexity, skepticism, auth,
+visualization, or orchestration:
+
+1. `marcus-ai-orchestrator`
+2. `refactor-complexity`
+3. `feynman-skeptic-reviewer`
+4. `oauth-test`
+5. `chartis-data-visualizer`
+6. `orion-orchestration-engineer`
+
+Reading order for this stack:
+
+- Reduce structural complexity first.
+- Challenge claims that lack evidence.
+- Verify auth flows with hostile tests.
+- Visualize data only after the decision shape is clear.
+- Treat orchestration as an operational boundary, not a styling concern.
+
+## QA and Verification Stack
+
+Use this sequence when the request is about proving behavior, blocking release,
+or simulating user flows:
+
+1. `marcus-ai-orchestrator`
+2. `ada-qa-agent`
+3. `qa-simulator`
+4. `mobile-app-testing`
+5. `oauth-test`
+6. `feynman-skeptic-reviewer`
+
+Reading order for this stack:
+
+- Start with blocking evidence and explicit requirements.
+- Simulate the user path before assuming the code is correct.
+- Test mobile and auth flows under hostile conditions.
+- Challenge unsupported claims before sign-off.
+
+## Brainstorm and Artifact Stack
+
+Use this sequence when the request is about ideation, docs, or architecture
+artifacts:
+
+1. `marcus-ai-orchestrator`
+2. `antigravity-brainstorming`
+3. `compound-brainstorming`
+4. `claude-arch-designer`
+5. `development-ledger-architect`
+6. `improve-codebase-architecture`
+
+Reading order for this stack:
+
+- Start with bounded options, not open-ended brainstorming.
+- Choose the smallest artifact that removes ambiguity.
+- Reconcile docs and architecture with the real change surface.
+- Plan cleanup as a migration, not a rewrite.
+
+## LLM Pipeline Stack
+
+Use this sequence when the request is about LangChain or RAG design:
+
+1. `marcus-ai-orchestrator`
+2. `langchain-architecture`
+3. `langchain-rag`
+4. `rag-architect`
+5. `rag-engineer`
+
+Reading order for this stack:
+
+- Define routing and state boundaries first.
+- Decide the retrieval topology and evaluation path.
+- Implement only after the architecture is clear.
+- Keep recursion limits, citations, and failure handling explicit.
+
+## Executive and Review Stack
+
+Use this sequence when the request is raw, contradictory, or needs a red-team
+pass before execution:
+
+1. `remu-executive-orchestrator`
+2. `aurora-plan-challenger`
+3. `development-ledger-architect`
+
+Reading order for this stack:
+
+- Convert raw intent into a routed statement of work.
+- Stress-test the plan before implementation starts.
+- Reconcile docs and execution readiness if the work is brownfield.
+
+## Extraction and Analytics Stack
+
+Use this sequence when the request is about structured extraction or metrics:
+
+1. `marcus-ai-orchestrator`
+2. `homer-knowledge-extractor`
+3. `leo-data-analytics`
+
+Reading order for this stack:
+
+- Extract faithfully before analyzing.
+- Keep metrics tied to a real decision.
+- Preserve source traceability and explicit event shapes.
+
+## Platform-Specific Integration Stack
+
+Use this sequence when the request is about Zalo, Flutter, or production RAG
+implementation:
+
+1. `marcus-ai-orchestrator`
+2. `zalobot-agent`
+3. `flutter-architecture`
+4. `rag-implementation`
+
+Reading order for this stack:
+
+- Resolve platform constraints first.
+- Define the implementation boundary and verification path.
+- Keep bundle, auth, and fallback behavior explicit.
+
 Do not assume a skill is needed just because it shares a broad tag category.
 
 - **ada-qa-agent** [QA/Test] [Frontend] [Backend/Ops]: (Khối óc nội tại) -> *Preview: > **ENTERPRISE MANDATE:** > You are Ada, the QA Enforcement Matrix. You do not trust code inherently. You operate on the principle of Test-Driven Vali...*

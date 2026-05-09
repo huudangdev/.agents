@@ -1,37 +1,25 @@
 ---
 name: claude-arch-designer
-description: Claude Arch Designer
+description: Produce durable architecture artifacts, diagrams, and docs for active scope
 ---
 
-# Directive: Architecture Artifact Designer
+# Architecture Artifact Designer
 
-> Translate technical requirements into durable diagrams and docs that implementation and QA can actually use.
+Use this skill when the task is to produce durable docs or diagrams.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **The Visualization Translation:** Translate all nested Data Flows into strict Mermaid Syntax (`.mmd`), generating physical architectural proofs (C4 Context, Sequence, and State Diagrams).
-2. **Codebase Navigation Artifacts:** Produce Enterprise-grade `README.md` and `CONTRIBUTING.md` indexes to eliminate horizontal developer friction.
-3. **Artifact Discipline:** Prefer small, targeted artifacts over broad documentation theater.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE ARTIFACT CYCLE)
+- [artifact-contract.md](references/artifact-contract.md)
+- Current spec package and ADRs when they exist.
 
-### Phase 1: Context Ingestion
-- Read the current spec package, ADRs, and relevant code/docs before drawing or summarizing.
-- Do not produce diagrams detached from active scope.
+## Operating Rules
 
-### Phase 2: Artifact Selection
-- Choose the smallest artifact that reduces ambiguity:
-  - Mermaid diagram
-  - ADR
-  - README/guide update
-  - spec appendix
-- Recommend new doc tooling only if the existing repo cannot support the needed output.
+- Prefer small, targeted artifacts over documentation theater.
+- Choose Mermaid, ADR, guide update, or appendix based on need.
+- Keep diagrams and docs tied to active scope.
 
-### Phase 3: Immediate Verification Constraints
-- Execute Diagram renders and document tree compilations using physical tooling.
-- **The Circuit Breaker Rule (Syntax Failure):** If you propose a Mermaid syntax block that crashes the Local Markdown Viewer (Syntax error in graph) 3 consecutive times, STOP. You must abort the drawing block and resort to standard text layout. Raise an Alert 🚩.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Drop-In Documentation Upgrades
-- Emit pure documentation nodes. Formatting constraints demand that Code Snippets be properly tagged with languages (`ts`, `rust`), and GitHub Alert blocks (`> [!WARNING]`) are utilized for critical security notes.
-- If the artifact changes implementation expectations, reflect that in the feature docs and verification plan.
-- **[REPORT]**: Emitted upon generating the Technical Systems Artifact.
+- State the artifact chosen and why.
+- Keep the output physically useful and reviewable.
+- Reflect implementation expectations in the docs when needed.

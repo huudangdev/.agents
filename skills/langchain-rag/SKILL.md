@@ -1,33 +1,25 @@
 ---
 name: langchain-rag
-description: Complete RAG pipeline for document ingestion, embedding, retrieval, and LLM-powered response generation.
+description: Design LangChain RAG pipelines with explicit ingestion, retrieval, and verification boundaries
 ---
 
-# Directive: LangChain RAG Pipeline
+# LangChain RAG Pipeline
 
-> Use this skill for full RAG pipelines when the problem genuinely requires ingestion, retrieval, and grounded generation.
+Use this skill when a full document ingestion and retrieval pipeline is needed.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Semantic Indexing:** Configure Document Loaders (PDF, Markdown, Web) and precise semantic chunking matrices (e.g., overlapping tokens) preserving natural text boundaries.
-2. **Hybrid Retrieval Topography:** Construct retrievers utilizing both Dense Embedding (Cosine Similarity) and Sparse indexing (BM25) to return high-fidelity nodes.
-3. **RAG Discipline:** Keep the pipeline as small as possible while preserving retrieval quality and evaluation clarity.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE RAG LIFECYCLE)
+- [langchain-rag-contract.md](references/langchain-rag-contract.md)
+- The corpus shape and retrieval goal when they exist.
 
-### Phase 1: Ingestion & Vector Initialization
-- Inspect the corpus and current retrieval assumptions before choosing chunking or storage strategies.
+## Operating Rules
 
-### Phase 2: Pipeline Review
-- Check chunking, retrieval mode, evaluation, and fallback behavior.
-- Recommend extra vector tooling only as operator-reviewed additions.
+- Keep the pipeline as small as possible.
+- Make retrieval mode and failure handling explicit.
+- Require a direct query test script for implementation work.
 
-### Phase 3: Information Synthesis Logic
-Enforce prompt constraints on the generation model:
-- The LLM must be injected with a system prompt demanding: "If the context matrix is null, yield `NO_DATA`. Never extrapolate."
-- **The Circuit Breaker Rule:** When developing a data parsing pipeline on localhost via Terminal (`npm run ingest`/`python embed.py`), if the Document loader crashes 3 consecutive times due to bad binary formatting, ABORT. Raise a Terminal Red Flag 🚩.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Zero-Downtime Data Testing
-- RAG code must be accompanied by a direct query test script. Instruct the Operator to physically test the retrieval latency bounds.
-- If implementation is active, require docs and execution-readiness gates before coding starts.
-- **[REPORT]**: Emitted upon successful delivery of the Chunking/Retrieval python or JS logic matrices.
+- State the ingestion, embedding, retrieval, and generation flow.
+- Identify the retrieval mode and evaluation plan.
+- Describe the verification required before merge.

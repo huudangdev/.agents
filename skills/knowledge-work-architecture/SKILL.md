@@ -1,35 +1,26 @@
 ---
 name: knowledge-work-architecture
-description: Knowledge Work Architecture
+description: Design docs and memory topologies that improve retrieval, ownership, and hygiene
 ---
 
-# Directive: Ontological Engineer & Second Brain Architect
+# Ontological Engineer & Second Brain Architect
 
-> Design knowledge structures that keep project memory discoverable, low-friction, and operationally useful. Favor conventions that improve retrieval, authorship clarity, and documentation hygiene.
+Design knowledge structures that keep project memory discoverable, low-friction, and operationally useful.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Bi-Directional Knowledge Graphs:** Map Markdown structures utilizing `[[WikiLinks]]` to generate topological Nodes and Edges of organizational knowledge.
-2. **Zero-Entropy Classification:** Every artifact (`.md`, `.txt`) MUST possess frontmatter metadata (`tags:`, `created:`). Untagged nodes are orphaned data.
-3. **Tooling Discipline:** Use the local repo structure, existing docs validators, and current storage conventions first. Recommend extra integrations only when they solve a documented gap.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE ONTOLOGY CYCLE)
+- [knowledge-architecture-contract.md](references/knowledge-architecture-contract.md)
+- The local docs, memory layout, and active feature workspace when they exist.
 
-### Phase 1: Contextual Emulation Checks
-- Inspect the local docs, notes, and memory layout before proposing a new topology.
-- Review the root `agents.md` and any active feature workspaces when the recommendation affects delivery workflows.
+## Operating Rules
 
-### Phase 2: Capability Escalation
-If interactive graphing, linting, or sync tooling is needed:
-1. Check whether local scripts or MCP tooling already cover the need.
-2. If not, propose a bounded operator-reviewed addition.
-3. Record the expected maintenance cost and documentation impact.
+- Prefer conventions that improve discoverability and ownership.
+- Keep metadata, links, and structure consistent.
+- Use the local repo conventions before adding external tooling.
+- Record the expected maintenance cost when proposing a new topology.
 
-### Phase 3: The Topological Map Generation
-- Structure the directory tree outputs logically.
-- **The Circuit Breaker Rule:** When traversing thousands of Markdown notes via `grep_search` terminal commands, if the command times out ($>10s$) or errors due to memory saturation 3 consecutive times, YOU MUST ABORT. Transition to scoped metadata searches (AST). Raise a Terminal 🚩.
-- Keep recommendations aligned with the `.agents` governance model: evidence-first docs, explicit ownership, and durable handoff artifacts.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Drop-In Markdown Formatting
-- Use Markdown headers `#`, `-` bullet points, and `> [!NOTE]` alerts strictly according to the GitHub Flavored Markdown specification. Un-parsable syntax destroys the Knowledge Graph.
-- **[REPORT]**: Emitted upon concluding the Systemic Vault restructuring.
+- Describe the knowledge topology and ownership model.
+- State how the structure improves retrieval.
+- Identify any validators or sync steps that should exist.

@@ -1,37 +1,28 @@
 ---
 name: maya-ui-ux-designer
-description: Native Antigravity Skill migrated from OpenClaw Agent maya
+description: Shape user flows, interaction patterns, accessibility constraints, and design-ready screen maps
 ---
 
-# Directive: Principal UX Architect & Flow Master
+# Maya UI/UX Designer
 
-> Shape user flows, interaction choices, and friction reduction using documented product goals and real constraints. Produce artifacts that implementation and QA can execute against without guessing.
+Use this skill when the task needs flow design, screen mapping, or accessibility-minded UX direction.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Flow State Topography:** Design Wireframes and Navigation Maps that limit cognitive load. Maximize whitespace and consolidate input forms into Progressive Disclosure tabs.
-2. **Behavioral Heuristics:** Enforce Nielsen's Usability Heuristics. Ensure system status visibility, error prevention (Disabling buttons prior to validation), and aesthetic minimalism.
-3. **Execution Governance:** UX work should strengthen specs, acceptance criteria, and verification plans before it expands tooling or scope.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE UX CYCLE)
+1. Root `agents.md`.
+2. Active product docs, specs, or design constraints.
+3. Existing theme or screen maps when present.
+4. [`references/ux-output-contract.md`](references/ux-output-contract.md).
 
-### Phase 1: Contextual Empathy Check
-- Read the active product docs, specs, and design constraints first.
-- Navigation or flow recommendations that contradict the current product scope must be called out explicitly.
+## Operating Rules
 
-### Phase 2: Capability Escalation
-If the UX plan depends on analytics, experimentation, or design sync tooling:
-1. Inspect current repo tooling and MCP capabilities first.
-2. Propose any addition as an operator-reviewed recommendation.
-3. Capture what evidence or workflow improvement it enables.
+- Design the flow from the product goal backward.
+- Map screens, states, and transitions explicitly.
+- Include failure and recovery states.
+- Keep the flow operable under real device constraints.
 
-### Phase 3: The Screen Mapping
-Map the user flow via physical `.mmd` diagrams or Markdown text arrays.
-- **Zero-Downtime Rule:** Provide explicit validation rules for every input field. Do not leave forms exposed to blind backend crashes.
-- **The Circuit Breaker Rule (Flow Paralysis):** If the UI constraints demand 3+ popups, modals, or overlapping `z-index` layers for a single action, STOP. The UI is fundamentally broken and must be flattened into a single-screen layout.
-- Convert output into spec-ready artifacts: flow map, interaction constraints, error states, accessibility notes, and verification implications.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Accessibility (A11y)
-- Aria-labels, Screen-reader compatibility, and `tabIndex` focus-trap logic are non-negotiable requirements for Enterprise-grade User Interfaces.
-- If the flow becomes active implementation work, require `validate_execution_readiness.py` before development starts.
-- **[REPORT]**: Emitted upon concluding the Wireframe & Flow mapping process.
+- State the flow and the states it must support.
+- Identify accessibility or responsive constraints.
+- Show the simplification path if the flow is too complex.

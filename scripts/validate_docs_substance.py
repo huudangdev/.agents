@@ -44,11 +44,21 @@ PLACEHOLDER_PATTERNS = (
     re.compile(r"\bplaceholder\b", re.IGNORECASE),
     re.compile(r"\bstatus:\s*pending\b", re.IGNORECASE),
     re.compile(r"\|\s*pending\s*\|", re.IGNORECASE),
+    re.compile(r"\bpending\b", re.IGNORECASE),
+    re.compile(r"\bPending targeted fix\b", re.IGNORECASE),
+    re.compile(r"\bValidation/manual finding\b", re.IGNORECASE),
     re.compile(r"\[NEEDS CLARIFICATION:", re.IGNORECASE),
     re.compile(r"\{\{[^}\n]{2,80}\}\}"),
     re.compile(r"<[A-Z0-9_ -]{3,80}>", re.IGNORECASE),
     re.compile(r"^\s*-\s*(Describe|Explain|List|Capture|Record|Insert|Replace)\b", re.IGNORECASE | re.MULTILINE),
-    re.compile(r"\b(lorem ipsum|replace this|insert .* here|fill .* in)\b", re.IGNORECASE),
+    re.compile(r"\b(Write \d+-\d+ paragraphs?|lorem ipsum|replace this|insert .* here|fill .* in)\b", re.IGNORECASE),
+    re.compile(r"\b(F-001-001-example|ISSUE-E-001-001|src/example\.[A-Za-z0-9]+)\b", re.IGNORECASE),
+    re.compile(
+        r"^\s*(?:-\s*)?(Acceptance owner|Research evidence|Rationale|Risk|Evidence|"
+        r"Docs updated before code|Documentation update|Expected output|Actual output|"
+        r"Allowed files|Disallowed files|Command|Result|Agent/skill):\s*$",
+        re.IGNORECASE | re.MULTILINE,
+    ),
 )
 
 DOCS_TO_SKIP = (

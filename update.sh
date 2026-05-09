@@ -9,8 +9,8 @@ NC='\033[0m' # No Color
 
 echo -e "\n${CYAN}"
 echo "================================================================="
-echo "  🔄 ANTIGRAVITY OTA UPDATE PROTOCOL                             "
-echo "  Synchronizing Cognitive Fleet, Specs, and TrustGraph Schemas   "
+echo "  🔄 ANTIGRAVITY OTA UPDATE PROTOCOL V33.0.0                     "
+echo "  Synchronizing Context Harness, Skills, Specs, and TrustGraph   "
 echo "================================================================="
 echo -e "${NC}\n"
 

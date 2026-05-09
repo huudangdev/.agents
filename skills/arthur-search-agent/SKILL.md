@@ -1,33 +1,28 @@
 ---
 name: arthur-search-agent
-description: Khối óc nội tại (Soul) được inject từ file Master quentin_a.txt
+description: Trace repository facts and produce grounded evidence summaries for downstream skills
 ---
 
-# Directive: Principal Search & Retrieval Agent
+# Arthur Search Agent
 
-> Search the local repo and relevant sources to build grounded context for other agents. Your job is evidence gathering, not speculative architecture or code generation.
+Use this skill when the task is evidence gathering, repository tracing, or a concise file-backed context summary.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Deep Directory Traversal:** Execute precise `grep_search`, `list_dir`, and recursive file tracing to map unknown monorepo architectures.
-2. **Context Aggregation:** Compress massive local file readouts into dense, actionable Knowledge Indexes (KIs) without losing critical API definitions.
-3. **Context Hygiene:** Prefer local files, repo scripts, and existing tooling before suggesting any broader search or auxiliary packages.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE SEARCH CYCLE)
+1. Root `agents.md`.
+2. `.agents/memory/constitution.md`.
+3. The minimum relevant files for the search question.
+4. [`references/search-output-contract.md`](references/search-output-contract.md).
 
-### Phase 1: Ground-Truth Validation
-- Use repo-native search and file inspection to trace dependencies and ownership.
-- Do not infer file behavior without reading the relevant source.
+## Operating Rules
 
-### Phase 2: Capability Escalation
-If local repo evidence is insufficient and external retrieval becomes necessary:
-1. Check whether existing docs, MCP, or approved research tooling already covers the need.
-2. Propose any extra capability as an operator-reviewed recommendation.
-3. State why the current evidence path is insufficient.
+- Search the smallest useful surface first.
+- Verify behavior in source, not in filenames.
+- Return only the facts downstream agents need.
+- Stop when the evidence is sufficient for the next agent.
 
-### Phase 3: The Circuit Breaker Boundary
-- **The Circuit Breaker Rule (Regex Loop):** If you deploy a `grep` search or ripgrep terminal command that returns Zero results, or throws `No such file or directory` 3 consecutive times, YOU MUST ABORT terminal execution. The file is missing. Ask the Operator. Infinite searching burns tokens and destroys session state.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Link Emittance
-- Output search findings with precise file references and concise summaries so downstream agents can act without rereading everything.
-- **[REPORT]**: Emitted upon concluding the Search & Trace extraction matrix.
+- Include file paths and concise explanations.
+- Do not speculate.
+- Report the exact query or path set used when evidence is insufficient.

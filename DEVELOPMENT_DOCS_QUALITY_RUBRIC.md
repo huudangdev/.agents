@@ -66,8 +66,13 @@ Invalid content includes:
 - `pending`
 - `<Name>` or other angle-bracket placeholders
 - unchecked checklist items
-- empty bullets such as `Reason:` with no value
-- phrases like `Describe the`, `State the`, or `no change needed / updated because ...`
+- empty bullets or labels such as `Acceptance owner:`, `Evidence:`,
+  `Expected output:`, or `Actual output:` with no value
+- phrases like `Describe the`, `State the`, `Write 2-4 paragraphs`, or
+  `no change needed / updated because ...`
+- scaffold example paths such as `src/example.ts`
+- scaffold examples such as `F-001-001-example`, `ISSUE-E-001-001`,
+  `Pending targeted fix`, or `Validation/manual finding`
 - placeholder IDs such as `epic-000`, `feature-000`, `module-000`, `page-000`, or `task-000`
 - duplicate or malformed names such as `epic-epic-*`, `feature-epic-*`, `E05-*`, or `E-05-*`
 
@@ -204,7 +209,7 @@ Strict validation enforces approximate minimum body depth:
 | Feature | 220 |
 | Page | 180 |
 | Task | 160 |
-| Sync note | 180 |
+| Issues | 160 |
 
 ## Reviewer Checklist
 

@@ -140,11 +140,17 @@ PLACEHOLDER_PATTERNS = [
     r"\b(?:epic|module|feature|page|task)-000\b",
     r"\bE-000-placeholder\b",
     r"\b(?:epic-epic|feature-epic|module-epic|page-epic|task-epic)-",
+    r"\bF-001-001-example\b",
+    r"\bISSUE-E-001-001\b",
+    r"`src/example\.(ts|tsx|js|jsx|py|go|rs|java|kt|swift|dart|cs|php|rb|vue|svelte|css|scss|sql)`",
     r"\bTBD\b",
     r"\bpending\b",
+    r"\bPending targeted fix\b",
+    r"\bValidation/manual finding\b",
     r"Describe the ",
     r"State the ",
     r"Define the ",
+    r"Write \d+-\d+ paragraphs?",
     r"no change needed / updated because",
     r"Changed file:",
     r"Criterion:",
@@ -152,7 +158,118 @@ PLACEHOLDER_PATTERNS = [
     r"Disallowed files:\s*$",
     r"Expected output:\s*$",
     r"Actual output:\s*$",
+    r"PM-visible outcome",
+    r"Linked feature",
+    r"Implementation module",
+    r"Test or demo evidence",
+    r"PM decision enabled",
+    r"QUALITY BAR:",
 ]
+
+EMPTY_FIELD_LABELS = {
+    "Acceptance owner",
+    "Action",
+    "Actual output",
+    "Affected docs",
+    "Affected files",
+    "Agent/skill",
+    "Allowed files",
+    "API",
+    "Architecture owner",
+    "Backend",
+    "Blockers",
+    "Build/lint",
+    "Business value",
+    "Code change",
+    "Code paths",
+    "Code reviewed",
+    "Color/contrast",
+    "Command",
+    "Data",
+    "Data model",
+    "Data/contracts",
+    "Date",
+    "Decision",
+    "Delivery impact",
+    "Demo impact",
+    "Demo narrative",
+    "Demo path",
+    "Demo scenario",
+    "Detection",
+    "Disallowed files",
+    "Docs reviewed",
+    "Docs updated before code",
+    "Entry component",
+    "Error",
+    "Escalation rule",
+    "Evidence",
+    "Excluded",
+    "Expected output",
+    "External",
+    "Failure",
+    "Files intentionally out of scope",
+    "Frontend",
+    "Impact",
+    "Included",
+    "Integration",
+    "Internal",
+    "Issue",
+    "Issue change",
+    "Keyboard",
+    "Layout owner",
+    "Loading",
+    "Mitigation",
+    "Must not touch",
+    "Next task",
+    "Observability",
+    "Open PM decision",
+    "Owns",
+    "Parent story",
+    "Permission denied",
+    "Pre-code docs read",
+    "Pre-code docs updated",
+    "Product hypothesis",
+    "Product owner",
+    "QA owner",
+    "QA skill used",
+    "Recovery",
+    "Related features checked",
+    "Relationship labels",
+    "Research evidence",
+    "Residual documentation risk",
+    "Residual risk",
+    "Resolution plan",
+    "Result",
+    "Review notes",
+    "Risk",
+    "Risk if delayed",
+    "Risk if unresolved",
+    "Risk or open decision",
+    "Rollback or feature flag",
+    "Route",
+    "Runtime",
+    "Runtime impact",
+    "Screen reader",
+    "Severity if missed",
+    "Step",
+    "Success",
+    "Telemetry",
+    "Tests",
+    "Tests reviewed",
+    "Tradeoff",
+    "Tradeoffs and rationale",
+    "Unit",
+    "User/business impact",
+    "User promise",
+    "UX owner",
+    "Visual or copy change",
+    "Writes",
+}
+
+EMPTY_FIELD_PATTERN = re.compile(
+    r"^\s*(?:-\s*)?(?P<label>[A-Z][A-Za-z0-9 /_-]{1,60}):\s*$",
+    re.MULTILINE,
+)
 
 COMMENTARY_MARKERS = [
     "because",
@@ -228,6 +345,15 @@ def word_count(text: str) -> int:
     return len(re.findall(r"\b[\w/-]+\b", body))
 
 
+def empty_field_hits(text: str) -> list[str]:
+    hits: list[str] = []
+    for match in EMPTY_FIELD_PATTERN.finditer(text):
+        label = match.group("label").strip()
+        if label in EMPTY_FIELD_LABELS:
+            hits.append(label)
+    return hits
+
+
 def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     rel = path.as_posix()
@@ -236,6 +362,12 @@ def validate_content_quality(path: Path, bucket_name: str, text: str, gates: dic
         for pattern in PLACEHOLDER_PATTERNS:
             if re.search(pattern, text, flags=re.IGNORECASE | re.MULTILINE):
                 errors.append(f"{rel}: contains template placeholder or unfinished text matching `{pattern}`")
+
+    if gates.get("forbid_empty_fields", True):
+        fields = empty_field_hits(text)
+        if fields:
+            display = ", ".join(sorted(set(fields))[:8])
+            errors.append(f"{rel}: contains scaffold field(s) without content: {display}")
 
     if gates.get("require_completed_checklists", True) and "- [ ]" in text:
         errors.append(f"{rel}: contains unchecked checklist item")
@@ -381,6 +513,7 @@ def validate_epic_first(root: Path, manifest: dict[str, Any] | None, strict_coun
         "require_epic_issues": True,
         "require_epic_issues_file": True,
         "require_epic_first_topology": True,
+        "forbid_empty_fields": True,
         "minimum_words": MIN_WORDS_BY_BUCKET,
     }
     minimum_children = {"features": 1, "modules": 1, "pages": 0, "tasks": 1}
@@ -526,6 +659,7 @@ def validate_legacy_flat(root: Path, manifest: dict[str, Any] | None, strict_cou
         "require_work_log": True,
         "require_epic_issues": True,
         "require_epic_issues_file": False,
+        "forbid_empty_fields": True,
         "minimum_words": MIN_WORDS_BY_BUCKET,
     }
 

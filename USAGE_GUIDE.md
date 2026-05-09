@@ -21,7 +21,7 @@ Slash Commands (`/` + workflow) act as heavy artillery. They are exclusively res
 | `/marcus.review` | The feature package exists but must survive challenge before execution. | Records findings, dispositions, and whether the package should proceed, revise, or stop. |
 | `/marcus.rehearse` | The reviewed package needs a professional POC rehearsal before `/develop`. | Replays the smallest credible slice and writes a `GO`, `GO WITH RESIDUAL RISK`, or `NO-GO` recommendation. |
 | `/marcus.verify` | A feature is implemented or ready to close. | Checks acceptance criteria, task evidence, `agents.md` memory, and TrustGraph write attempt. |
-| `/marcus.routecheck` | Routing-sensitive docs or skills changed and the narrow-task guardrails need replay. | Replays the routing regression validator and the five task-shape checks before trusting the new routing behavior. |
+| `/marcus.routecheck` | Routing-sensitive docs or skills changed and the narrow-task guardrails need replay. | Replays the routing regression validator, skill contract validator, and the five task-shape checks before trusting the new routing behavior. |
 | `/marcus_init` | Project inception from scratch (Empty Directory). | Generates the foundational PRD, creates directory scaffolding, and injects the Antigravity OS state files into a clean workspace. |
 | `/mobile_init` | Genesis of a new Mobile Application (React Native / Flutter). | Ingests the Mobile Design Doctrine, enforcing cross-platform physical constraints (Safe Area contexts, Spring Animation standards). |
 | `/planning` | Project genesis or major feature planning requiring deep research, architecture, diagrams, and durable `/docs` outputs. | Orchestrates Phase 1 V30: preserves the legacy `/docs` output set, adds evidence ledgers under `/docs/research/`, validates claims/sources, strengthens diagrams, and halts for user review. |
@@ -89,6 +89,9 @@ catch shallow planning outputs before `/design` or `/develop` consumes them.
 Run the development-docs validator only when `/docs/development/` exists. It is
 designed to catch code-phase work that changes behavior without preserving
 epic/module/feature/page/task implementation memory.
+It also fails scaffold-only Markdown with empty labeled fields, copied template
+instructions, `pending`, `TBD`, `src/example.*`, or generic example issue and
+relationship IDs.
 Run the doc-sync validator when source files changed during `/develop`. It is
 designed to catch code progress that did not update or intentionally review the
 corresponding planning and development docs.
@@ -226,6 +229,8 @@ Use this default mapping:
   - sync gate before claiming the slice is complete
 - `validate_routing_regression.py`
   - release gate after changing `/develop`, `SKILLS_INDEX.md`, or routing-heavy skills
+- `validate_skill_contracts.py`
+  - release gate after changing `skills/*/SKILL.md`, skill references, or `SKILLS_INDEX.md`
 - `validate_command_surface.py`
   - repo-wide gate that fails when README, `USAGE_GUIDE.md`,
     `SLASH_COMMAND_REGISTRY.md`, and workflow files disagree about the
@@ -243,6 +248,7 @@ Routing regression rule:
   five task-shape checks in `.agents/ROUTING_REGRESSION_CHECKLIST.md`.
 - Run:
   `python3 .agents/scripts/validate_routing_regression.py --root .`
+  and `python3 .agents/scripts/validate_skill_contracts.py --root .`
   before trusting the release.
 - Fail the release if:
   - a UI-only task reads Supabase/SQL/analytics/infra by default

@@ -1,37 +1,28 @@
 ---
 name: product-brainstorming
-description: Product Brainstorming
+description: Turn raw product ideas into a few bounded options and a recommendation
 ---
 
-# Directive: Product Visionary & Strategy Brainstormer
+# Product Brainstorming
 
-> Turn raw product ideas into bounded, evidence-seeking options that a PM can convert into a strict spec package. Favor clarity on user value, constraints, and verification cost over novelty.
+Use this skill to transform open-ended product ideas into a small set of decision-grade options.
 
-## 🎯 MISSION (CORE OBJECTIVES)
-1. **Feature Triage Matrix:** Assess hypothesized product features across the dual axes of "User Value" and "Implementation Complexity."
-2. **Growth Loop Mechanisms:** Brainstorm inherent systemic viral loops, retention drivers, and habit-forming UI triggers.
-3. **Execution Governance:** Brainstorming should produce structured inputs for a spec package, not autonomous tool adoption or uncontrolled scope growth.
+## Required Reads
 
-## ⚙️ EXECUTION PIPELINE (THE PRODUCT CYCLE)
+1. Root `agents.md`.
+2. `.agents/memory/constitution.md`.
+3. Active PRD, spec, or product notes when present.
+4. [`references/brainstorm-output-contract.md`](references/brainstorm-output-contract.md).
 
-### Phase 1: Contextual Alignment
-- Read the active PRD or feature spec before brainstorming. Ideas that contradict current scope must be labeled as future options, not folded into the active plan.
+## Operating Rules
 
-### Phase 2: Capability Escalation
-If the brainstorm surfaces analytics, experimentation, or telemetry needs:
-1. Inspect existing repo tooling and product docs first.
-2. Propose any additional capability as an operator-reviewed recommendation.
-3. Capture why it matters and what evidence it would unlock.
+- Start with the underlying problem.
+- Generate at most three options.
+- Include upside, blast radius, and verification burden.
+- End with one recommendation.
 
-### Phase 3: Product Strategy Articulation
-Generate the physical Mind Maps:
-- **The Jobs To Be Done (JTBD) Canvas:** Explicitly state the *Real* job the User is hiring this software for.
-- **The "Kill Your Darlings" Rule:** Aggressively strike down any brainstormed feature that requires massive `alan-tech-lead` logic overhauls for less than a $10\%$ UX gain.
-- **The Circuit Breaker Rule:** When deploying data-fetching algorithms to scrape competitor logic or UI states via terminal curl scripts, if you are blocked via 403 Forbidden protocols 3 consecutive times, STOP. Do not loop. Ask the Operator for authorization.
-- Convert the surviving ideas into spec-ready inputs: user value, scope boundary, acceptance criteria seed, verification implications, and docs impact.
+## Output Expectations
 
-## 🛡️ MANDATORY PROTOCOLS (ENTERPRISE BOUNDARIES)
-### Protocol 1: Handoff to PRD
-- The final brainstorm output MUST be formatted exactly so `sophia-product-manager` can physically copy-paste it into the official `PRD`.
-- If the brainstorm becomes an active feature, require the resulting workspace to pass `validate_specs.py` and `validate_execution_readiness.py` before implementation planning.
-- **[REPORT]**: Emitted upon concluding the Product Strategy Ideation matrix.
+- Present bounded options only.
+- State the tradeoffs clearly.
+- Hand off to `sophia-product-manager` when the idea is mature enough.
